@@ -15,12 +15,20 @@ getTimeText = {
 	_timeText
 };
 
+notifyPassportChanged = {
+	params ["_receiver"];
+	hint "Внёс изменения в паспорт игрока";
+	["В ваш паспорт внесены изменения"] remoteExec ["hint", _receiver];
+};
+
 addTextToVisas = {
 	params ["_receiver", "_addText"];
 	
 	_text = _receiver getVariable ["grad_passport_misc1", ""];
 	_text = _text + "<br/>" + _addText;
 	_receiver setVariable ["grad_passport_misc1",_text, true];
+	
+	[_receiver] call notifyPassportChanged;
 };
 
 addTextToNotes = {
@@ -29,6 +37,7 @@ addTextToNotes = {
 	_text = _receiver getVariable ["grad_passport_misc2", ""];
 	_text = _text + "<br/>" + _addText;
 	_receiver setVariable ["grad_passport_misc2",_text, true];
+	[_receiver] call notifyPassportChanged;
 };
 
 cacheTarget = {
@@ -74,20 +83,20 @@ if (player getVariable ["visa_giver", false]) then {
 		] call CAU_UserInputMenus_fnc_text;
 	};
 	
-	_addcustomnote = {
-		[_target] call cachetarget;
+	_addCustomNote = {
+		[_target] call cacheTarget;
 		[
 			[false,""],
-			"добавить текст к доп. информации",
+			"Добавить текст к доп. информации",
 			{
 				if _confirmed then {
-					_cachedtarget = call loadcachedtarget;
-					[_cachedtarget, _text] call addtexttonotes;
+					_cachedTarget = call loadCachedTarget;
+					[_cachedTarget, _text] call addTextToNotes;
 				};
 			},
-			"добавить",
-			"отмена"  // reverts to default
-		] call cau_userinputmenus_fnc_text;
+			"Добавить",
+			"Отмена"  // reverts to default
+		] call CAU_UserInputMenus_fnc_text;
 	};
 
 	_root = ["VisaRoot","Visa","",{nil},{true}] call ace_interact_menu_fnc_createAction;
