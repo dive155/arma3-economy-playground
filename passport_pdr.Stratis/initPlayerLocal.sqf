@@ -23,6 +23,16 @@ addTextToVisas = {
 	_receiver setVariable ["grad_passport_misc1",_text, true];
 };
 
+cacheTarget = {
+	params ["_toCache"];
+	player setVariable ["cachedTarget", _toCache, true];
+};
+
+loadCachedTarget = {
+	_cachedTarget = player getVariable ["cachedTarget", objNull];
+	_cachedTarget
+};
+
 if (player getVariable ["visa_giver", false]) then {
 
 	_issueVisa = {
@@ -39,6 +49,22 @@ if (player getVariable ["visa_giver", false]) then {
 		_message = (call getDateText) + (call getTimeText) + " <t shadow='2'>Выпущен</t> из Молдовы";
 		[_target, _message] call addTextToVisas;
 	};
+	
+	_addCustom = {
+		[_target] call cacheTarget;
+		[
+			[false,""],
+			"Добавить текст к визам",
+			{
+				if _confirmed then {
+					_cachedTarget = call loadCachedTarget;
+					[_cachedTarget, _text] call addTextToVisas;
+				};
+			},
+			"Send",
+			""  // reverts to default
+		] call CAU_UserInputMenus_fnc_text;
+	};
 
 	_root = ["VisaRoot","Visa","",{nil},{true}] call ace_interact_menu_fnc_createAction;
 	["CAManBase", 0, ["ACE_MainActions"], _root, true] call ace_interact_menu_fnc_addActionToClass;
@@ -51,4 +77,7 @@ if (player getVariable ["visa_giver", false]) then {
 	
 	_registerEntryAction = ["Allow Entry", "Allow Entry (Moldova)", "", _registerEntry, {true}] call ace_interact_menu_fnc_createAction;
 	["CAManBase", 0, ["ACE_MainActions", "VisaRoot"], _registerEntryAction, true] call ace_interact_menu_fnc_addActionToClass;
+	
+	_addCustomAction = ["Add Custom", "Add Custom", "", _addCustom, {true}] call ace_interact_menu_fnc_createAction;
+	["CAManBase", 0, ["ACE_MainActions", "VisaRoot"], _addCustomAction, true] call ace_interact_menu_fnc_addActionToClass;
 };
