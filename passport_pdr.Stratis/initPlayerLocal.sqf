@@ -15,30 +15,29 @@ getTimeText = {
 	_timeText
 };
 
+addTextToVisas = {
+	params ["_receiver", "_addText"];
+	
+	_text = _receiver getVariable ["grad_passport_misc1", ""];
+	_text = _text + "<br/>" + _addText;
+	_receiver setVariable ["grad_passport_misc1",_text, true];
+};
+
 if (player getVariable ["visa_giver", false]) then {
 
 	_issueVisa = {
 		_message = (call getDateText) + " <t shadow='2'>Виза</t> выдана в Молдову";
-	
-		_text = _target getVariable ["grad_passport_misc1", ""];
-		_text = _text + "<br/>" + _message;
-		_target setVariable ["grad_passport_misc1",_text, true];
+		[_target, _message] call addTextToVisas;
 	};
 	
 	_registerEntry = {
 		_message = (call getDateText) + (call getTimeText) + " <t shadow='2'>Впущен</t> в Молдову";
-	
-		_text = _target getVariable ["grad_passport_misc1", ""];
-		_text = _text + "<br/>" + _message;
-		_target setVariable ["grad_passport_misc1",_text, true];
+		[_target, _message] call addTextToVisas;
 	};
 	
 	_registerExit = {
 		_message = (call getDateText) + (call getTimeText) + " <t shadow='2'>Выпущен</t> из Молдовы";
-	
-		_text = _target getVariable ["grad_passport_misc1", ""];
-		_text = _text + "<br/>" + _message;
-		_target setVariable ["grad_passport_misc1",_text, true];
+		[_target, _message] call addTextToVisas;
 	};
 
 	_root = ["VisaRoot","Visa","",{nil},{true}] call ace_interact_menu_fnc_createAction;
@@ -52,9 +51,4 @@ if (player getVariable ["visa_giver", false]) then {
 	
 	_registerEntryAction = ["Allow Entry", "Allow Entry (Moldova)", "", _registerEntry, {true}] call ace_interact_menu_fnc_createAction;
 	["CAManBase", 0, ["ACE_MainActions", "VisaRoot"], _registerEntryAction, true] call ace_interact_menu_fnc_addActionToClass;
-	
-	
-	
-	//[C130, 1, ["ACE_SelfActions"], _static] call ace_interact_menu_fnc_addActionToObject;
-	//[C130, 1, ["ACE_SelfActions","StaticLine"], _hook] call ace_interact_menu_fnc_addActionToObject;
 };
