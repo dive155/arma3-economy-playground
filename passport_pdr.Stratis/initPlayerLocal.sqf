@@ -23,6 +23,14 @@ addTextToVisas = {
 	_receiver setVariable ["grad_passport_misc1",_text, true];
 };
 
+addTextToNotes = {
+	params ["_receiver", "_addText"];
+	
+	_text = _receiver getVariable ["grad_passport_misc2", ""];
+	_text = _text + "<br/>" + _addText;
+	_receiver setVariable ["grad_passport_misc2",_text, true];
+};
+
 cacheTarget = {
 	params ["_toCache"];
 	player setVariable ["cachedTarget", _toCache, true];
@@ -50,7 +58,7 @@ if (player getVariable ["visa_giver", false]) then {
 		[_target, _message] call addTextToVisas;
 	};
 	
-	_addCustom = {
+	_addCustomVisa = {
 		[_target] call cacheTarget;
 		[
 			[false,""],
@@ -61,9 +69,25 @@ if (player getVariable ["visa_giver", false]) then {
 					[_cachedTarget, _text] call addTextToVisas;
 				};
 			},
-			"Send",
-			""  // reverts to default
+			"Добавить",
+			"Отмена"  // reverts to default
 		] call CAU_UserInputMenus_fnc_text;
+	};
+	
+	_addcustomnote = {
+		[_target] call cachetarget;
+		[
+			[false,""],
+			"добавить текст к доп. информации",
+			{
+				if _confirmed then {
+					_cachedtarget = call loadcachedtarget;
+					[_cachedtarget, _text] call addtexttonotes;
+				};
+			},
+			"добавить",
+			"отмена"  // reverts to default
+		] call cau_userinputmenus_fnc_text;
 	};
 
 	_root = ["VisaRoot","Visa","",{nil},{true}] call ace_interact_menu_fnc_createAction;
@@ -78,6 +102,9 @@ if (player getVariable ["visa_giver", false]) then {
 	_registerEntryAction = ["Allow Entry", "Allow Entry (Moldova)", "", _registerEntry, {true}] call ace_interact_menu_fnc_createAction;
 	["CAManBase", 0, ["ACE_MainActions", "VisaRoot"], _registerEntryAction, true] call ace_interact_menu_fnc_addActionToClass;
 	
-	_addCustomAction = ["Add Custom", "Add Custom", "", _addCustom, {true}] call ace_interact_menu_fnc_createAction;
-	["CAManBase", 0, ["ACE_MainActions", "VisaRoot"], _addCustomAction, true] call ace_interact_menu_fnc_addActionToClass;
+	_addCustomVisaAction = ["Add Custom", "Add Custom", "", _addCustomVisa, {true}] call ace_interact_menu_fnc_createAction;
+	["CAManBase", 0, ["ACE_MainActions", "VisaRoot"], _addCustomVisaAction, true] call ace_interact_menu_fnc_addActionToClass;
+	
+	_addCustomNoteAction = ["Add Note", "Add Note", "", _addCustomNote, {true}] call ace_interact_menu_fnc_createAction;
+	["CAManBase", 0, ["ACE_MainActions"], _addCustomNoteAction, true] call ace_interact_menu_fnc_addActionToClass;
 };

@@ -143,7 +143,7 @@ class passportPdr: grad_passport_defaultPassport {
             sizeEx = 0.03 * TEXT_SCALE;
             colorText[] = {0,0,0,1};
         };
-		class Abobus: GVAR(RscCustomText) {
+		class Visas: GVAR(RscCustomText) {
             idc = GRAD_IDC_MISC1;
 
             x = GRAD_PASSPORT_DEFAULT_RIGHTCOLUMN_X + GRAD_PASSPORT_DEFAULT_INDENT_X;
@@ -153,6 +153,25 @@ class passportPdr: grad_passport_defaultPassport {
 			
 			font = "EtelkaMonospacePro";
             colorText[] = {0,0,0,1};
+        };
+		class Notes: GVAR(RscCustomText) {
+            idc = GRAD_IDC_MISC2;
+
+            x = GRAD_PASSPORT_DEFAULT_RIGHTCOLUMN_X + GRAD_PASSPORT_DEFAULT_INDENT_X;
+            y = GRAD_PASSPORT_DEFAULT_LINE_Y(1);
+            w = GRAD_PASSPORT_CONTENT_W;
+            h = GRAD_PASSPORT_DEFAULT_H;
+			
+			font = "EtelkaMonospacePro";
+            colorText[] = {0,0,0,1};
+        };
+    };
+};
+
+class passportMoldova: passportPdr {
+    class ControlsBackground: ControlsBackground {
+        class BGPic: BGPic {
+            text = "node_modules\grad-passport\data\passport_moldova.paa";
         };
     };
 };
