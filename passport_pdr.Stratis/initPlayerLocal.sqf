@@ -28,6 +28,8 @@ addTextToVisas = {
 	_text = _text + "<br/>" + _addText;
 	_receiver setVariable ["grad_passport_misc1",_text, true];
 	
+	//33 letters
+	
 	[_receiver] call notifyPassportChanged;
 };
 

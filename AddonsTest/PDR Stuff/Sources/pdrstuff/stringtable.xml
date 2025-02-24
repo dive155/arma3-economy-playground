@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="pdr">
+  <Package name="items">
+	<Key ID="STR_backpack_grain">
+		<Original>Bag with Grain</Original>
+		<English>Bag with Grain</English>
+		<Russian>Мешок с Зерном</Russian>
+	</Key>
+</Package>
+</Project>
