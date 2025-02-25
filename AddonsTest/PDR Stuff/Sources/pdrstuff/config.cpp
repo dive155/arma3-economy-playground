@@ -40,11 +40,12 @@ class CfgVehicles
 	class ACE_Box_Misc;
     class DIVE_Haystack: ACE_Box_Misc {
         author = "Dive";
-        displayName = "Haystack";
-        transportMaxWeapons = 9001;
-        transportMaxMagazines = 9001;
-        transportMaxItems = 9001;
-        maximumload = 9001;
+        displayName = $STR_haystack;
+		model = "\a3\structures_f_enoch\industrial\agriculture\haybale_01_f.p3d";
+        transportMaxWeapons = 0;
+        transportMaxMagazines = 0;
+        transportMaxItems = 0;
+        maximumload = 0;
 
         class TransportWeapons {};
         class TransportMagazines {};

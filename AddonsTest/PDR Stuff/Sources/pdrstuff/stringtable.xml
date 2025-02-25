@@ -6,5 +6,10 @@
 		<English>Bag with Grain</English>
 		<Russian>Мешок с Зерном</Russian>
 	</Key>
+	<Key ID="STR_haystack">
+		<Original>Haystack</Original>
+		<English>Haystack</English>
+		<Russian>Стог сена</Russian>
+	</Key>
 </Package>
 </Project>
