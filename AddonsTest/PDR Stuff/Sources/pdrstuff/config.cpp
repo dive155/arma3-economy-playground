@@ -8,13 +8,15 @@ class CfgPatches
 		units[]=
 		{
 			"b_dive_grain_bag",
+			"DIVE_Haystack"
 		};
 		weapons[]={};
 		requiredVersion=0.1;
 		requiredAddons[]=
 		{
 			"A3_Weapons_F",
-			"A3_Weapons_F_Ammoboxes"
+			"A3_Weapons_F_Ammoboxes",
+			"ace_common"
 		};
 	};
 };
@@ -34,4 +36,19 @@ class CfgVehicles
 			"pdrstuff\data\backpack_grain.paa"
 		};
 	};
+	
+	class ACE_Box_Misc;
+    class DIVE_Haystack: ACE_Box_Misc {
+        author = "Dive";
+        displayName = "Haystack";
+        transportMaxWeapons = 9001;
+        transportMaxMagazines = 9001;
+        transportMaxItems = 9001;
+        maximumload = 9001;
+
+        class TransportWeapons {};
+        class TransportMagazines {};
+        class TransportItems {};
+        class TransportBackpacks {};
+    };
 };
