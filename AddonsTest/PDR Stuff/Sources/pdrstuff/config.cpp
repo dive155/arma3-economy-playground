@@ -52,4 +52,19 @@ class CfgVehicles
         class TransportItems {};
         class TransportBackpacks {};
     };
+	
+	class DIVE_OreRock: ACE_Box_Misc {
+        author = "Dive";
+        displayName = $STR_ore;
+		model = "\a3\rocks_f_exp\lavastones\lavastone_small_f.p3d";
+        transportMaxWeapons = 0;
+        transportMaxMagazines = 0;
+        transportMaxItems = 0;
+        maximumload = 0;
+
+        class TransportWeapons {};
+        class TransportMagazines {};
+        class TransportItems {};
+        class TransportBackpacks {};
+    };
 };

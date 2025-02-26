@@ -11,5 +11,10 @@
 		<English>Haystack</English>
 		<Russian>Стог сена</Russian>
 	</Key>
+	<Key ID="STR_ore">
+		<Original>Ore</Original>
+		<English>Ore</English>
+		<Russian>Руда</Russian>
+	</Key>
 </Package>
 </Project>
