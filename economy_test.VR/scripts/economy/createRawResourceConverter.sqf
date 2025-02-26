@@ -1,13 +1,15 @@
 params [
 	"_buttonObject", 				// Button to press
 	"_inputTrigger",                // Where to place raw items
-	"_outputItemBox",           // Where to put processed items
+	"_outputItemBox",               // Where to put processed items
 	"_outputMoneyBox",              // Where to put money
 	"_rawResourceClassname",        // Classname of the raw resource to be processed
 	"_outputItemClassname",         // Classname of the item to be outputed
 	"_outputMoneyAmount"            // How much money to pay
 ];
 
+_scriptHandle = execVM "scripts\economy\banknoteConversion.sqf";
+waitUntil { scriptDone _scriptHandle };
 
 if (isServer) then {
 	// Initialize conversion method on the SERVER for all future conversions to use
@@ -19,9 +21,15 @@ if (isServer) then {
 			params ["_buttonObject", "_submittedObject"];
 			deleteVehicle _submittedObject;
 			
+			// Give processed resource
 			_outputItemBox = _buttonObject getVariable ["outputItemBox", objNull];
 			_outputItemClassname = _buttonObject getVariable ["outputItemClassname", ""];
 			_outputItemBox addBackpackCargoGlobal [_outputItemClassname, 1];
+			
+			// Give money
+			_outputMoneyBox = _buttonObject getVariable ["outputMoneyBox", objNull];
+			_outputMoneyAmount = _buttonObject getVariable ["outputMoneyAmount", 0];
+			[_outputMoneyBox, _outputMoneyAmount] call fnc_putMoneyIntoContainer;
 		};
 	};
 	
