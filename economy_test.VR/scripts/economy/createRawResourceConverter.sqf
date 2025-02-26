@@ -44,16 +44,23 @@ if (isServer) then {
 
 if (hasInterface) then {
 	_processRawResource = {
-		_trigger = _target getVariable ["inputTrigger", objNull];
-		_rawResourceClassname = _target getVariable ["rawResourceClassname", ""];
+		_this select 0 spawn {
+			params ["_target"];
 		
-		_matches = entities [[_rawResourceClassname],[]] inAreaArray _trigger;
-		if (count _matches < 1) then {
-			hint ("no matches");
-		} else {
-			hint ("success");
+			playSound3D ["a3\missions_f_beta\data\sounds\firing_drills\target_pop-down_large.wss", _target, false, getPosASL _target, 5];
+			sleep 1;
 			
-			[_target, _matches select 0] remoteExec ["fnc_convertRawResourceServer" , 2];
+			_trigger = _target getVariable ["inputTrigger", objNull];
+			_rawResourceClassname = _target getVariable ["rawResourceClassname", ""];
+			
+			_matches = entities [[_rawResourceClassname],[]] inAreaArray _trigger;
+			if (count _matches < 1) then {
+				hint ("no matches");
+			} else {
+				hint ("success");
+				
+				[_target, _matches select 0] remoteExec ["fnc_convertRawResourceServer" , 2];
+			};
 		};
 	};
 	
