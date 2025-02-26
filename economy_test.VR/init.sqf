@@ -14,6 +14,6 @@
 	ore_output_box,
 	ore_money_box,
 	"DIVE_OreRock",
-	"b_dive_grain_bag",
+	"b_dive_ore_bag",
 	140
 ]execVM "scripts\economy\createRawResourceConverter.sqf";

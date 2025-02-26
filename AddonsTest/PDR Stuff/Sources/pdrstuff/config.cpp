@@ -8,7 +8,9 @@ class CfgPatches
 		units[]=
 		{
 			"b_dive_grain_bag",
-			"DIVE_Haystack"
+			"b_dive_ore_bag",
+			"DIVE_Haystack",
+			"DIVE_OreRock"
 		};
 		weapons[]={};
 		requiredVersion=0.1;
@@ -34,6 +36,20 @@ class CfgVehicles
 		hiddenSelectionsTextures[]=
 		{
 			"pdrstuff\data\backpack_grain.paa"
+		};
+	};
+	
+	class b_dive_ore_bag: B_Carryall_cbr
+	{
+		author="Dive";
+		scope=2;
+		displayName=$STR_backpack_ore;
+		picture="\pdrstuff\data\UI\ico_backpack_ore.paa";
+		maximumLoad = 0; 
+		mass = 400;
+		hiddenSelectionsTextures[]=
+		{
+			"pdrstuff\data\backpack_ore.paa"
 		};
 	};
 	

@@ -2,9 +2,14 @@
 <Project name="pdr">
   <Package name="items">
 	<Key ID="STR_backpack_grain">
-		<Original>Bag with Grain</Original>
-		<English>Bag with Grain</English>
-		<Russian>Мешок с Зерном</Russian>
+		<Original>Bag of Agricultural Products</Original>
+		<English>Bag of Agricultural Products</English>
+		<Russian>Мешок с Сельхоз Продукцией</Russian>
+	</Key>
+	<Key ID="STR_backpack_ore">
+		<Original>Bag of Ore</Original>
+		<English>Bag of Ore</English>
+		<Russian>Мешок с Рудой</Russian>
 	</Key>
 	<Key ID="STR_haystack">
 		<Original>Haystack</Original>
