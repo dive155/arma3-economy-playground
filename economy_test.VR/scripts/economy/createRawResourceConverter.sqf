@@ -5,7 +5,8 @@ params [
 	"_outputMoneyBox",              // Where to put money
 	"_rawResourceClassname",        // Classname of the raw resource to be processed
 	"_outputItemClassname",         // Classname of the item to be outputed
-	"_outputMoneyAmount"            // How much money to pay
+	"_outputMoneyAmount",           // How much money to pay
+	"_soundsConfig"                 // Format: [soundAction, soundSuccess, soundFailure, soundMoney]
 ];
 
 _scriptHandle = execVM "scripts\economy\banknoteConversion.sqf";
@@ -28,7 +29,6 @@ fnc_convertRawResourceServer = {
 	_outputItemClassname = _buttonObject getVariable ["outputItemClassname", ""];
 	
 	// Check if we're giving a backpack or an item
-	systemChat _outputItemClassname;
 	if (isClass (configFile >> "CfgVehicles" >> _outputItemClassname)) then {
 		_outputItemBox addBackpackCargoGlobal [_outputItemClassname, 1];
 	} else {
@@ -50,6 +50,13 @@ if (isServer) then {
 	_buttonObject setVariable ["rawResourceClassname", _rawResourceClassname, true];
 	_buttonObject setVariable ["outputItemClassname", _outputItemClassname, true];
 	_buttonObject setVariable ["outputMoneyAmount", _outputMoneyAmount, true];
+	
+	_soundsMap = createHashMap;
+	_soundsMap set ["action", _soundsConfig select 0];
+	_soundsMap set ["success", _soundsConfig select 1];
+	_soundsMap set ["failure", _soundsConfig select 2];
+	_soundsMap set ["money", _soundsConfig select 3];
+	_buttonObject setVariable ["soundsMap", _soundsMap, true];
 	
 	if (not isNil "_outputMoneyBox") then {
 		_buttonObject setVariable ["outputMoneyBox", _outputMoneyBox, true];
@@ -78,6 +85,15 @@ fnc_checkBackpacksInBox = {
 	_matches
 };
 
+fnc_playConverterSound = {
+	params ["_buttonObject", "_source", "_soundKey", "_volume"];
+	
+	_sounds = _buttonObject getVariable ["soundsMap", createHashMap];
+	_soundName = _sounds get _soundKey;
+	
+	playSound3D [_soundName, _source, false, getPosASL _source, _volume];
+};
+
 // CLIENT part
 if (hasInterface) then {
 	//Action to pass to ace actions
@@ -85,8 +101,8 @@ if (hasInterface) then {
 		// Using spawn to get to scheduled environment
 		_this select 0 spawn {
 			params ["_target"];
-		
-			playSound3D ["a3\missions_f_beta\data\sounds\firing_drills\target_pop-down_large.wss", _target, false, getPosASL _target, 4];
+			
+			[_target, _target, "action", 4] call fnc_playConverterSound;
 			sleep 1.6;
 			
 			// Checking whether we have resource to convert
@@ -100,17 +116,17 @@ if (hasInterface) then {
 			
 			if (count _matches < 1) then {
 				hint ("no matches");
-				playSound3D ["pdrstuff\sounds\machine_error.ogg", _target, false, getPosASL _target, 3];
+				[_target, _target, "failure", 3] call fnc_playConverterSound;
 			} else {
 				[_target, _matches select 0, _rawResourceSource] remoteExec ["fnc_convertRawResourceServer" , 2];
 				
 				hint ("success");
-				playSound3D ["pdrstuff\sounds\machine_success.ogg", _target, false, getPosASL _target, 3];
+				[_target, _target, "success", 3] call fnc_playConverterSound;
 				sleep 0.8;
 				_outputMoneyBox = _target getVariable ["outputMoneyBox", objNull];
 				
 				if (not isNil "_outputMoneyBox") then {
-					playSound3D ["pdrstuff\sounds\machine_success_money.ogg", _outputMoneyBox, false, getPosASL _outputMoneyBox, 0.8];
+					[_target, _outputMoneyBox, "money", 0.8] call fnc_playConverterSound;
 				};
 			};
 		};

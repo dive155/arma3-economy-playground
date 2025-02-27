@@ -1,3 +1,10 @@
+_defaultSoundsConfig = [
+	"a3\missions_f_beta\data\sounds\firing_drills\target_pop-down_large.wss",
+	"pdrstuff\sounds\machine_success.ogg",
+	"pdrstuff\sounds\machine_error.ogg",
+	"pdrstuff\sounds\machine_success_money.ogg"
+];
+
 [
 	hay_button,
 	hay_trigger,
@@ -5,7 +12,8 @@
 	hay_money_box,
 	"DIVE_Haystack",
 	"b_dive_grain_bag",
-	120
+	120,
+	_defaultSoundsConfig
 ]execVM "scripts\economy\createRawResourceConverter.sqf";
 
 [
@@ -15,7 +23,8 @@
 	ore_money_box,
 	"DIVE_OreRock",
 	"b_dive_ore_bag",
-	140
+	140,
+	_defaultSoundsConfig
 ]execVM "scripts\economy\createRawResourceConverter.sqf";
 
 
@@ -26,7 +35,8 @@
 	nil,
 	"b_dive_grain_bag",
 	"ACE_Banana",
-	0
+	0,
+	["", "pdrstuff\sounds\stove_cooking.ogg", "", ""]
 ]execVM "scripts\economy\createRawResourceConverter.sqf";
 
 
