@@ -1,24 +1,54 @@
 if (not isNil "DIVE_BanknoteConverterInitialized") exitWith { };
 DIVE_BanknoteConverterInitialized = true;
 
-banknoteValues = createHashMapFromArray [["pdr_1000_leu", 1000], ["pdr_500_leu", 500], ["pdr_100_leu", 100], ["pdr_50_leu", 50], ["pdr_10_leu", 10], ["pdr_5_leu", 5], ["pdr_1_leu", 1]];
+currencyDefinitions = createHashMap;
+fnc_createCurrencyDefinition = {
+	params ["_currencyCode", "_moneyArray"];
+	
+	_banknoteValues = createHashMapFromArray _moneyArray;
 
-sortedBanknotes = [];
-// Extract key-value pairs and sort by value in descending order
-{
-	sortedBanknotes pushBack [_x, banknoteValues get _x];
-} forEach (keys banknoteValues);
+	_sortedBanknotes = [];
+	// Extract key-value pairs and sort by value in descending order
+	{
+		_sortedBanknotes pushBack [_x, _banknoteValues get _x];
+	} forEach (keys _banknoteValues);
 
-sortedBanknotes sort false; // Sort in ascending order
-sortedBanknotes = sortedBanknotes apply { [_x select 1, _x select 0] };
-sortedBanknotes sort false; // Sort by value
-sortedBanknotes = sortedBanknotes apply { [_x select 1, _x select 0] };
+	_sortedBanknotes sort false; // Sort in ascending order
+	_sortedBanknotes = _sortedBanknotes apply { [_x select 1, _x select 0] };
+	_sortedBanknotes sort false; // Sort by value
+	_sortedBanknotes = _sortedBanknotes apply { [_x select 1, _x select 0] };
+	
+	_definition = [_banknoteValues, _sortedBanknotes];
+	currencyDefinitions set [_currencyCode, _definition];
+};
 
+currencyCodePdrLeu = "pdrLeu";
+[
+	currencyCodePdrLeu, 
+	[["pdr_1000_leu", 1000], 
+	["pdr_500_leu", 500], 
+	["pdr_100_leu", 100], 
+	["pdr_50_leu", 50], 
+	["pdr_10_leu", 10], 
+	["pdr_5_leu", 5], 
+	["pdr_1_leu", 1]]
+] call fnc_createCurrencyDefinition;
+
+currencyCodeMoldovaLeu = "moldovaLeu";
+[
+	currencyCodeMoldovaLeu,
+	[["moldova_100_leu", 100], 
+	["moldova_50_leu", 50], 
+	["moldova_10_leu", 10], 
+	["moldova_5_leu", 5], 
+	["moldova_1_leu", 1]]
+] call fnc_createCurrencyDefinition;
 
 fnc_getBanknotes = {
-    params ["_moneyAmount"];
+    params ["_currencyCode", "_moneyAmount"];
     
     private _result = [];
+	private _sortedBanknotes = (currencyDefinitions get _currencyCode) select 1;
 	
     {
         private _noteName = _x select 0;
@@ -29,22 +59,23 @@ fnc_getBanknotes = {
             _result pushBack [_noteName, _count];
             _moneyAmount = _moneyAmount - (_count * _noteValue);
         };
-    } forEach sortedBanknotes;
+    } forEach _sortedBanknotes;
     
     _result
 };
 
 fnc_getMoneyAmount = {
-    params ["_banknotesArray"];
+    params ["_currencyCode", "_banknotesArray"];
     
     private _totalAmount = 0;
-    
+    private _banknoteValues = (currencyDefinitions get _currencyCode) select 1;
+	
     {
         private _noteName = _x select 0;
         private _count = _x select 1;
         
-        if (banknoteValues find _noteName != -1) then {
-            _totalAmount = _totalAmount + (banknoteValues get _noteName) * _count;
+        if (_banknoteValues find _noteName != -1) then {
+            _totalAmount = _totalAmount + (_banknoteValues get _noteName) * _count;
         };
     } forEach _banknotesArray;
     
@@ -52,8 +83,8 @@ fnc_getMoneyAmount = {
 };
 
 fnc_putMoneyIntoContainer = {
-	params ["_container", "_amount"];
-	_banknotes = [_amount] call fnc_getBanknotes;
+	params ["_container","_currencyCode", "_amount"];
+	_banknotes = [_currencyCode, _amount] call fnc_getBanknotes;
 	
 	{
 		_className = _x select 0;

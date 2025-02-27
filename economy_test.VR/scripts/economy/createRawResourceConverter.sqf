@@ -5,13 +5,11 @@ params [
 	"_outputMoneyBox",              // Where to put money
 	"_rawResourceClassname",        // Classname of the raw resource to be processed
 	"_outputItemClassname",         // Classname of the item to be outputed
+	"_outputMoneyCurrency",         // Which currency to pay in
 	"_outputMoneyAmount",           // How much money to pay
 	"_soundsConfig",                // Format: [soundAction, soundSuccess, soundFailure, soundMoney]
 	"_localizationConfig"			// Format: [keyAction, keySuccess, keyFailure]
 ];
-
-_scriptHandle = execVM "scripts\economy\banknoteConversion.sqf";
-waitUntil { scriptDone _scriptHandle };
 
 if (isServer) then {
 	// Save converter settings to the master object (button) on the SERVER
@@ -19,6 +17,7 @@ if (isServer) then {
 	_buttonObject setVariable ["outputItemBox", _outputItemBox, true];
 	_buttonObject setVariable ["rawResourceClassname", _rawResourceClassname, true];
 	_buttonObject setVariable ["outputItemClassname", _outputItemClassname, true];
+	_buttonObject setVariable ["outputMoneyCurrency", _outputMoneyCurrency, true];
 	_buttonObject setVariable ["outputMoneyAmount", _outputMoneyAmount, true];
 	_buttonObject setVariable ["localizationConfig", _localizationConfig, true];
 	
@@ -91,8 +90,9 @@ fnc_convertRawResource = {
 	// Give money
 	_outputMoneyBox = _buttonObject getVariable ["outputMoneyBox", objNull];
 	if (not isNil "_outputMoneyBox") then {
+		_outputMoneyCurrency = _buttonObject getVariable ["outputMoneyCurrency", currencyCodePdrLeu];
 		_outputMoneyAmount = _buttonObject getVariable ["outputMoneyAmount", 0];
-		[_outputMoneyBox, _outputMoneyAmount] call fnc_putMoneyIntoContainer;
+		[_outputMoneyBox, _outputMoneyCurrency, _outputMoneyAmount] call fnc_putMoneyIntoContainer;
 		
 		sleep 0.8;			
 		[_buttonObject, _outputMoneyBox, "money", 0.8] call fnc_playConverterSound;
