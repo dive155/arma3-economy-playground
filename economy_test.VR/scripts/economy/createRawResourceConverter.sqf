@@ -42,28 +42,37 @@ if (isServer) then {
 	_buttonObject setVariable ["outputMoneyAmount", _outputMoneyAmount, true];
 };
 
+// CLIENT part
 if (hasInterface) then {
 	_processRawResource = {
+		// Using spawn to get to scheduled environment
 		_this select 0 spawn {
 			params ["_target"];
 		
-			playSound3D ["a3\missions_f_beta\data\sounds\firing_drills\target_pop-down_large.wss", _target, false, getPosASL _target, 5];
-			sleep 1;
+			playSound3D ["a3\missions_f_beta\data\sounds\firing_drills\target_pop-down_large.wss", _target, false, getPosASL _target, 4];
+			sleep 1.6;
 			
+			// Resources check on CLIENT
 			_trigger = _target getVariable ["inputTrigger", objNull];
 			_rawResourceClassname = _target getVariable ["rawResourceClassname", ""];
-			
 			_matches = entities [[_rawResourceClassname],[]] inAreaArray _trigger;
+			
 			if (count _matches < 1) then {
 				hint ("no matches");
+				playSound3D ["pdrstuff\sounds\machine_error.ogg", _target, false, getPosASL _target, 3];
 			} else {
-				hint ("success");
-				
 				[_target, _matches select 0] remoteExec ["fnc_convertRawResourceServer" , 2];
+				
+				hint ("success");
+				playSound3D ["pdrstuff\sounds\machine_success.ogg", _target, false, getPosASL _target, 3];
+				sleep 0.8;
+				_outputMoneyBox = _target getVariable ["outputMoneyBox", objNull];
+				playSound3D ["pdrstuff\sounds\machine_success_money.ogg", _outputMoneyBox, false, getPosASL _outputMoneyBox, 0.8];
+				
 			};
 		};
 	};
 	
 	_processRawResourceAction = ["ProcessRawResource", "Обработать ресурс", "", _processRawResource, {true}] call ace_interact_menu_fnc_createAction;
-	[_buttonObject, 0, ["ACE_MainActions"], _processRawResourceAction] call ace_interact_menu_fnc_addActionToObject;
+	[_buttonObject, 0, [], _processRawResourceAction] call ace_interact_menu_fnc_addActionToObject;
 };

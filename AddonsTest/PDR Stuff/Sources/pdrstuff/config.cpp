@@ -84,3 +84,5 @@ class CfgVehicles
         class TransportBackpacks {};
     };
 };
+
+#include "CfgSounds.hpp"
