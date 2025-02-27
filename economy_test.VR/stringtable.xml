@@ -46,5 +46,27 @@
 		<English>Lunch has been cooked and put into the case.</English>
 		<Russian>Обед приготовлен и добавлен в кейс.</Russian>
 	</Key>
-</Package>
+  </Package>
+  <Package name="stats">
+	<Key ID="STR_misc_yes">
+		<Original>Yes</Original>
+		<English>Yes</English>
+		<Russian>Да</Russian>
+	</Key>
+	<Key ID="STR_misc_no">
+		<Original>No</Original>
+		<English>No</English>
+		<Russian>Нет</Russian>
+	</Key>
+	<Key ID="STR_check_stats_action">
+		<Original>Check own Stats</Original>
+		<English>Check own Stats</English>
+		<Russian>Посмотреть свои Статы</Russian>
+	</Key>
+	<Key ID="STR_stats_text_format">
+		<Original>Had Lunch Today: %1\nWork Fatigue: %2%%\nDebt (PDR): %3\nDebt (Moldova): %4</Original>
+		<English>Had Lunch Today: %1\nWork Fatigue: %2%%\nDebt (PDR): %3\nDebt (Moldova): %4</English>
+		<Russian>Ел Обед Сегодня: %1\nУсталость от Работы: %2%%\nДолг (ПДР): %3\nДолг (Молдова): %4</Russian>
+	</Key>
+  </Package>
 </Project>

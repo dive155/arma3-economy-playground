@@ -1,3 +1,6 @@
+_scriptHandle = execVM "scripts\stats\playerStatsInit.sqf";
+waitUntil { scriptDone _scriptHandle };
+
 _scriptHandle = execVM "scripts\economy\initCurrencies.sqf";
 waitUntil { scriptDone _scriptHandle };
 
