@@ -41,14 +41,3 @@ _defaultSoundsConfig = [
 	["pdrstuff\sounds\stove_ignition.ogg", "pdrstuff\sounds\stove_cooking.ogg", "pdrstuff\sounds\stove_failure.ogg", ""],
 	["STR_stove_action", "STR_stove_success", "STR_stove_failure"]
 ]execVM "scripts\economy\createRawResourceConverter.sqf";
-
-
-
-sleep 2;
-//hint typeof hay_trigger;
-
-//hint typeName "abobus";
-//"B_Messenger_Black_F" isKindOf 
-
-//hint str(isClass (configFile >> "CfgWeapons" >> "B_Messenger_Black_F"));
-//hint str(isClass (configFile >> "CfgVehicles" >> "B_Messenger_Black_F"));
