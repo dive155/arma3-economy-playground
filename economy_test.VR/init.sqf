@@ -1,4 +1,4 @@
-_scriptHandle = execVM "scripts\economy\banknoteConversion.sqf";
+_scriptHandle = execVM "scripts\economy\initCurrencies.sqf";
 waitUntil { scriptDone _scriptHandle };
 
 _defaultSoundsConfig = [
@@ -28,7 +28,7 @@ _defaultSoundsConfig = [
 	ore_money_box,
 	"DIVE_OreRock",
 	"b_dive_ore_bag",
-	currencyCodePdrLeu,
+	currencyCodeMoldovaLeu,
 	14,
 	_defaultSoundsConfig,
 	["STR_ore_converter_action", "STR_ore_converter_success", "STR_ore_converter_failure"]
