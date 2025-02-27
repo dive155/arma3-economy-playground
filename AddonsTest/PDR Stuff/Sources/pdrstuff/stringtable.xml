@@ -21,5 +21,65 @@
 		<English>Ore</English>
 		<Russian>Руда</Russian>
 	</Key>
+	<Key ID="STR_moldova_1_ley">
+		<Original>(Moldova) 1 Leu</Original>
+		<English>(Moldova) 1 Leu</English>
+		<Russian>(Молдова) 1 Лей</Russian>
+	</Key>
+	<Key ID="STR_moldova_5_ley">
+		<Original>(Moldova) 5 Leu</Original>
+		<English>(Moldova) 5 Leu</English>
+		<Russian>(Молдова) 5 Лей</Russian>
+	</Key>
+	<Key ID="STR_moldova_10_ley">
+		<Original>(Moldova) 10 Leu</Original>
+		<English>(Moldova) 10 Leu</English>
+		<Russian>(Молдова) 10 Лей</Russian>
+	</Key>
+	<Key ID="STR_moldova_50_ley">
+		<Original>(Moldova) 50 Leu</Original>
+		<English>(Moldova) 50 Leu</English>
+		<Russian>(Молдова) 50 Лей</Russian>
+	</Key>
+	<Key ID="STR_moldova_100_ley">
+		<Original>(Moldova) 100 Leu</Original>
+		<English>(Moldova) 100 Leu</English>
+		<Russian>(Молдова) 100 Лей</Russian>
+	</Key>
+	<Key ID="STR_pdr_1_ley">
+		<Original>(PDR) 1 Leu</Original>
+		<English>(PDR) 1 Leu</English>
+		<Russian>(ПДР) 1 Лей</Russian>
+	</Key>
+	<Key ID="STR_pdr_5_ley">
+		<Original>(PDR) 5 Leu</Original>
+		<English>(PDR) 5 Leu</English>
+		<Russian>(ПДР) 5 Лей</Russian>
+	</Key>
+	<Key ID="STR_pdr_10_ley">
+		<Original>(PDR) 10 Leu</Original>
+		<English>(PDR) 10 Leu</English>
+		<Russian>(ПДР) 10 Лей</Russian>
+	</Key>
+	<Key ID="STR_pdr_50_ley">
+		<Original>(PDR) 50 Leu</Original>
+		<English>(PDR) 50 Leu</English>
+		<Russian>(ПДР) 50 Лей</Russian>
+	</Key>
+	<Key ID="STR_pdr_100_ley">
+		<Original>(PDR) 100 Leu</Original>
+		<English>(PDR) 100 Leu</English>
+		<Russian>(ПДР) 100 Лей</Russian>
+	</Key>
+	<Key ID="STR_pdr_500_ley">
+		<Original>(PDR) 500 Leu</Original>
+		<English>(PDR) 500 Leu</English>
+		<Russian>(ПДР) 500 Лей</Russian>
+	</Key>
+	<Key ID="STR_pdr_1000_ley">
+		<Original>(PDR) 1000 Leu</Original>
+		<English>(PDR) 1000 Leu</English>
+		<Russian>(ПДР) 1000 Лей</Russian>
+	</Key>
 </Package>
 </Project>

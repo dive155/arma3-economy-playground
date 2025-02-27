@@ -1,7 +1,7 @@
 if (not isNil "DIVE_BanknoteConverterInitialized") exitWith { };
 DIVE_BanknoteConverterInitialized = true;
 
-banknoteValues = createHashMapFromArray [["UA_500hrn", 500], ["UA_100hrn", 100], ["UA_50hrn", 50], ["UA_10hrn", 10], ["UA_1hrn", 1]];
+banknoteValues = createHashMapFromArray [["pdr_1000_leu", 1000], ["pdr_500_leu", 500], ["pdr_100_leu", 100], ["pdr_50_leu", 50], ["pdr_10_leu", 10], ["pdr_5_leu", 5], ["pdr_1_leu", 1]];
 
 sortedBanknotes = [];
 // Extract key-value pairs and sort by value in descending order

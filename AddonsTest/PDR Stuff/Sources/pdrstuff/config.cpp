@@ -4,6 +4,7 @@ class CfgPatches
 	{
 		name = "PDR Stuff";
 		author = "Dive";
+		fileName="pdrstuff.pbo";
 		
 		units[]=
 		{
@@ -12,7 +13,20 @@ class CfgPatches
 			"DIVE_Haystack",
 			"DIVE_OreRock"
 		};
-		weapons[]={};
+		weapons[]={
+			"moldova_1_leu",
+			"moldova_5_leu",
+			"moldova_10_leu",
+			"moldova_50_leu",
+			"moldova_100_leu",
+			"pdr_1_leu",
+			"pdr_5_leu",
+			"pdr_10_leu",
+			"pdr_50_leu",
+			"pdr_100_leu",
+			"pdr_500_leu",
+			"pdr_1000_leu"
+		};
 		requiredVersion=0.1;
 		requiredAddons[]=
 		{
@@ -86,3 +100,4 @@ class CfgVehicles
 };
 
 #include "CfgSounds.hpp"
+#include "CfgWeapons.hpp"
