@@ -17,3 +17,21 @@
 	"b_dive_ore_bag",
 	140
 ]execVM "scripts\economy\createRawResourceConverter.sqf";
+
+
+[
+	stove,
+	stove_input_box,
+	stove_output_box,
+	nil,
+	"b_dive_grain_bag",
+	"B_Messenger_Black_F",
+	0
+]execVM "scripts\economy\createRawResourceConverter.sqf";
+
+
+
+sleep 2;
+//hint typeof hay_trigger;
+
+hint typeName "abobus";

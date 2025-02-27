@@ -1,6 +1,6 @@
 params [
 	"_buttonObject", 				// Button to press
-	"_rawResourceSource",           // Where to place raw items
+	"_rawResourceSource",           // Where raw items are checked for. Could be a trigger or a container.
 	"_outputItemBox",               // Where to put processed items
 	"_outputMoneyBox",              // Where to put money
 	"_rawResourceClassname",        // Classname of the raw resource to be processed
@@ -13,8 +13,15 @@ waitUntil { scriptDone _scriptHandle };
 
 // Do conversion on the SERVER
 fnc_convertRawResourceServer = {
-	params ["_buttonObject", "_submittedObject"];
-	deleteVehicle _submittedObject;
+	params ["_buttonObject", "_submittedObject", "_rawResourceSource"];
+	
+	if (_rawResourceSource isKindOf "EmptyDetector") then {
+		// If source is a trigger we need to remove the object inside the trigger
+		deleteVehicle _submittedObject;
+	} else {
+		// If source is a box we need to remove a backpack inside the box
+		_rawResourceSource addBackpackCargoGlobal [_submittedObject, -1];
+	};
 	
 	// Give processed resource
 	_outputItemBox = _buttonObject getVariable ["outputItemBox", objNull];
@@ -23,37 +30,50 @@ fnc_convertRawResourceServer = {
 	
 	// Give money
 	_outputMoneyBox = _buttonObject getVariable ["outputMoneyBox", objNull];
-	_outputMoneyAmount = _buttonObject getVariable ["outputMoneyAmount", 0];
-	[_outputMoneyBox, _outputMoneyAmount] call fnc_putMoneyIntoContainer;
+	if (not isNil "_outputMoneyBox") then {
+		_outputMoneyAmount = _buttonObject getVariable ["outputMoneyAmount", 0];
+		[_outputMoneyBox, _outputMoneyAmount] call fnc_putMoneyIntoContainer;
+	};
 };
 
 if (isServer) then {
 	// Save converter settings to the master object (button) on the SERVER
 	_buttonObject setVariable ["rawResourceSource", _rawResourceSource, true];
 	_buttonObject setVariable ["outputItemBox", _outputItemBox, true];
-	_buttonObject setVariable ["outputMoneyBox", _outputMoneyBox, true];
 	_buttonObject setVariable ["rawResourceClassname", _rawResourceClassname, true];
 	_buttonObject setVariable ["outputItemClassname", _outputItemClassname, true];
 	_buttonObject setVariable ["outputMoneyAmount", _outputMoneyAmount, true];
+	
+	if (not isNil "_outputMoneyBox") then {
+		_buttonObject setVariable ["outputMoneyBox", _outputMoneyBox, true];
+	};
 };
 
 fnc_checkItemsInTrigger = {
-	params ["_buttonObject"];
-	_trigger = _buttonObject getVariable ["rawResourceSource", objNull];
+	params ["_buttonObject", "_rawResourceSource"];
+	_trigger = _rawResourceSource;
 	_rawResourceClassname = _buttonObject getVariable ["rawResourceClassname", ""];
 	_matches = entities [[_rawResourceClassname],[]] inAreaArray _trigger;
 	_matches
 };
 
 fnc_checkBackpacksInBox = {
-	params ["_buttonObject"];
+	params ["_buttonObject", "_rawResourceSource"];
+	
+	_cargo = getBackpackCargo _rawResourceSource;
+	_cargo = _cargo select 0;
+	_rawResourceClassname = _buttonObject getVariable ["rawResourceClassname", ""];
+	
+	_matches = [];
+	if ((_cargo find _rawResourceClassname) != -1) then {
+		_matches pushBack _rawResourceClassname;
+	};
+	_matches
 };
 
 // CLIENT part
 if (hasInterface) then {
 	//Action to pass to ace actions
-	
-	
 	_processRawResource = {
 		// Using spawn to get to scheduled environment
 		_this select 0 spawn {
@@ -62,21 +82,29 @@ if (hasInterface) then {
 			playSound3D ["a3\missions_f_beta\data\sounds\firing_drills\target_pop-down_large.wss", _target, false, getPosASL _target, 4];
 			sleep 1.6;
 			
-			// Resources check on CLIENT
-			_matches = _target call fnc_checkItemsInTrigger;
+			// Checking whether we have resource to convert
+			_matches = [];
+			_rawResourceSource = _target getVariable ["rawResourceSource", objNull];
+			if (_rawResourceSource isKindOf "EmptyDetector") then {
+				_matches = [_target, _rawResourceSource] call fnc_checkItemsInTrigger;
+			} else {
+				_matches = [_target, _rawResourceSource] call fnc_checkBackpacksInBox;
+			};
 			
 			if (count _matches < 1) then {
 				hint ("no matches");
 				playSound3D ["pdrstuff\sounds\machine_error.ogg", _target, false, getPosASL _target, 3];
 			} else {
-				[_target, _matches select 0] remoteExec ["fnc_convertRawResourceServer" , 2];
+				[_target, _matches select 0, _rawResourceSource] remoteExec ["fnc_convertRawResourceServer" , 2];
 				
 				hint ("success");
 				playSound3D ["pdrstuff\sounds\machine_success.ogg", _target, false, getPosASL _target, 3];
 				sleep 0.8;
 				_outputMoneyBox = _target getVariable ["outputMoneyBox", objNull];
-				playSound3D ["pdrstuff\sounds\machine_success_money.ogg", _outputMoneyBox, false, getPosASL _outputMoneyBox, 0.8];
 				
+				if (not isNil "_outputMoneyBox") then {
+					playSound3D ["pdrstuff\sounds\machine_success_money.ogg", _outputMoneyBox, false, getPosASL _outputMoneyBox, 0.8];
+				};
 			};
 		};
 	};
