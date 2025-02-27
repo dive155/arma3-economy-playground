@@ -26,7 +26,14 @@ fnc_convertRawResourceServer = {
 	// Give processed resource
 	_outputItemBox = _buttonObject getVariable ["outputItemBox", objNull];
 	_outputItemClassname = _buttonObject getVariable ["outputItemClassname", ""];
-	_outputItemBox addBackpackCargoGlobal [_outputItemClassname, 1];
+	
+	// Check if we're giving a backpack or an item
+	systemChat _outputItemClassname;
+	if (isClass (configFile >> "CfgVehicles" >> _outputItemClassname)) then {
+		_outputItemBox addBackpackCargoGlobal [_outputItemClassname, 1];
+	} else {
+		_outputItemBox addItemCargoGlobal [_outputItemClassname, 1];
+	};
 	
 	// Give money
 	_outputMoneyBox = _buttonObject getVariable ["outputMoneyBox", objNull];

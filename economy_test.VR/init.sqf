@@ -25,7 +25,7 @@
 	stove_output_box,
 	nil,
 	"b_dive_grain_bag",
-	"B_Messenger_Black_F",
+	"ACE_Banana",
 	0
 ]execVM "scripts\economy\createRawResourceConverter.sqf";
 
@@ -34,4 +34,8 @@
 sleep 2;
 //hint typeof hay_trigger;
 
-hint typeName "abobus";
+//hint typeName "abobus";
+//"B_Messenger_Black_F" isKindOf 
+
+//hint str(isClass (configFile >> "CfgWeapons" >> "B_Messenger_Black_F"));
+//hint str(isClass (configFile >> "CfgVehicles" >> "B_Messenger_Black_F"));
