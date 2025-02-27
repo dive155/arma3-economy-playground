@@ -54,6 +54,7 @@ fnc_checkBackpacksInBox = {
 	_matches
 };
 
+// Play sound based on a sound key from _soundsConfig
 fnc_playConverterSound = {
 	params ["_buttonObject", "_source", "_soundKey", "_volume"];
 	
@@ -93,8 +94,7 @@ fnc_convertRawResource = {
 		_outputMoneyAmount = _buttonObject getVariable ["outputMoneyAmount", 0];
 		[_outputMoneyBox, _outputMoneyAmount] call fnc_putMoneyIntoContainer;
 		
-		sleep 0.8;
-						
+		sleep 0.8;			
 		[_buttonObject, _outputMoneyBox, "money", 0.8] call fnc_playConverterSound;
 	};
 };
