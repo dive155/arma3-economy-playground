@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="pdr">
+  <Package name="items">
+	<Key ID="STR_ore_converter_action">
+		<Original>Process Ore</Original>
+		<English>Process Ore</English>
+		<Russian>Переработать Руду</Russian>
+	</Key>
+	<Key ID="STR_ore_converter_failure">
+		<Original>No ore found in the loading zone</Original>
+		<English>No ore found in the loading zone</English>
+		<Russian>Не найдено руды в зоне погрузки.</Russian>
+	</Key>
+	<Key ID="STR_ore_converter_success">
+		<Original>Ore has been processed! Money has been added in the cash register.</Original>
+		<English>Ore has been processed! Money has been added in the cash register.</English>
+		<Russian>Руда переработана! Деньги добавлены в кассу.</Russian>
+	</Key>
+	<Key ID="STR_hay_converter_action">
+		<Original>Process Hay</Original>
+		<English>Process Hay</English>
+		<Russian>Переработать Сено</Russian>
+	</Key>
+	<Key ID="STR_hay_converter_failure">
+		<Original>No hay found in the loading zone</Original>
+		<English>No hay found in the loading zone</English>
+		<Russian>Не найдено сена в зоне погрузки.</Russian>
+	</Key>
+	<Key ID="STR_hay_converter_success">
+		<Original>Hay has been processed! Money has been added in the cash register.</Original>
+		<English>Hay has been processed! Money has been added in the cash register.</English>
+		<Russian>Сено переработано! Деньги добавлены в кассу.</Russian>
+	</Key>
+	<Key ID="STR_stove_action">
+		<Original>Cook Lunch</Original>
+		<English>Cook Lunch</English>
+		<Russian>Приготовить Обед</Russian>
+	</Key>
+	<Key ID="STR_stove_failure">
+		<Original>No agricultural products found in the box</Original>
+		<English>No agricultural products found in the box</English>
+		<Russian>Не найдено сельхоз продукции в ящике.</Russian>
+	</Key>
+	<Key ID="STR_stove_success">
+		<Original>Lunch has been cooked and put into the case.</Original>
+		<English>Lunch has been cooked and put into the case.</English>
+		<Russian>Обед приготовлен и добавлен в кейс.</Russian>
+	</Key>
+</Package>
+</Project>

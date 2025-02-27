@@ -1,5 +1,5 @@
 class CfgSounds {
-    sounds[]={DIVE_Machine_Error, DIVE_Machine_Success, DIVE_Machine_Success_Money, DIVE_Stove_Cooking};
+    sounds[]={DIVE_Machine_Error, DIVE_Machine_Success, DIVE_Machine_Success_Money, DIVE_Stove_Cooking, DIVE_Stove_Ignition, DIVE_Stove_Failure};
 	
 	class DIVE_Machine_Error {
         name = "DIVE_Machine_Error";
@@ -22,6 +22,18 @@ class CfgSounds {
 	class DIVE_Stove_Cooking {
         name = "DIVE_Stove_Cooking";
         sound[] = {"pdrstuff\sounds\stove_cooking.ogg", "db+10", 1};
+        titles[] = {};
+    };
+	
+	class DIVE_Stove_Ignition {
+        name = "DIVE_Stove_Ignition";
+        sound[] = {"pdrstuff\sounds\stove_ignition.ogg", "db+10", 1};
+        titles[] = {};
+    };
+	
+	class DIVE_Stove_Failure {
+        name = "DIVE_Stove_Failure";
+        sound[] = {"pdrstuff\sounds\stove_failure.ogg", "db+10", 1};
         titles[] = {};
     };
 };

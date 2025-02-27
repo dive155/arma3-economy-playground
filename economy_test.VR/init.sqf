@@ -13,7 +13,8 @@ _defaultSoundsConfig = [
 	"DIVE_Haystack",
 	"b_dive_grain_bag",
 	120,
-	_defaultSoundsConfig
+	_defaultSoundsConfig,
+	["STR_hay_converter_action", "STR_hay_converter_success", "STR_hay_converter_failure"]
 ]execVM "scripts\economy\createRawResourceConverter.sqf";
 
 [
@@ -24,7 +25,8 @@ _defaultSoundsConfig = [
 	"DIVE_OreRock",
 	"b_dive_ore_bag",
 	140,
-	_defaultSoundsConfig
+	_defaultSoundsConfig,
+	["STR_ore_converter_action", "STR_ore_converter_success", "STR_ore_converter_failure"]
 ]execVM "scripts\economy\createRawResourceConverter.sqf";
 
 
@@ -36,7 +38,8 @@ _defaultSoundsConfig = [
 	"b_dive_grain_bag",
 	"ACE_Banana",
 	0,
-	["", "pdrstuff\sounds\stove_cooking.ogg", "", ""]
+	["pdrstuff\sounds\stove_ignition.ogg", "pdrstuff\sounds\stove_cooking.ogg", "pdrstuff\sounds\stove_failure.ogg", ""],
+	["STR_stove_action", "STR_stove_success", "STR_stove_failure"]
 ]execVM "scripts\economy\createRawResourceConverter.sqf";
 
 

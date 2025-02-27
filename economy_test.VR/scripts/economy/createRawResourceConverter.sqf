@@ -6,7 +6,8 @@ params [
 	"_rawResourceClassname",        // Classname of the raw resource to be processed
 	"_outputItemClassname",         // Classname of the item to be outputed
 	"_outputMoneyAmount",           // How much money to pay
-	"_soundsConfig"                 // Format: [soundAction, soundSuccess, soundFailure, soundMoney]
+	"_soundsConfig",                // Format: [soundAction, soundSuccess, soundFailure, soundMoney]
+	"_localizationConfig"			// Format: [keyAction, keySuccess, keyFailure]
 ];
 
 _scriptHandle = execVM "scripts\economy\banknoteConversion.sqf";
@@ -50,6 +51,7 @@ if (isServer) then {
 	_buttonObject setVariable ["rawResourceClassname", _rawResourceClassname, true];
 	_buttonObject setVariable ["outputItemClassname", _outputItemClassname, true];
 	_buttonObject setVariable ["outputMoneyAmount", _outputMoneyAmount, true];
+	_buttonObject setVariable ["localizationConfig", _localizationConfig, true];
 	
 	_soundsMap = createHashMap;
 	_soundsMap set ["action", _soundsConfig select 0];
@@ -103,6 +105,8 @@ if (hasInterface) then {
 			params ["_target"];
 			
 			[_target, _target, "action", 4] call fnc_playConverterSound;
+			_localizationConfig = _target getVariable["localizationConfig", []];
+			
 			sleep 1.6;
 			
 			// Checking whether we have resource to convert
@@ -115,12 +119,14 @@ if (hasInterface) then {
 			};
 			
 			if (count _matches < 1) then {
-				hint ("no matches");
+				//hint ("no matches");
+				hint localize (_localizationConfig select 2);
 				[_target, _target, "failure", 3] call fnc_playConverterSound;
 			} else {
 				[_target, _matches select 0, _rawResourceSource] remoteExec ["fnc_convertRawResourceServer" , 2];
 				
-				hint ("success");
+				//hint ("success");
+				hint localize (_localizationConfig select 1);
 				[_target, _target, "success", 3] call fnc_playConverterSound;
 				sleep 0.8;
 				_outputMoneyBox = _target getVariable ["outputMoneyBox", objNull];
@@ -132,6 +138,7 @@ if (hasInterface) then {
 		};
 	};
 	
-	_processRawResourceAction = ["ProcessRawResource", "Обработать ресурс", "", _processRawResource, {true}] call ace_interact_menu_fnc_createAction;
+	_localizationConfig = _buttonObject getVariable["localizationConfig", []];
+	_processRawResourceAction = ["ProcessRawResource", localize (_localizationConfig select 0), "", _processRawResource, {true}] call ace_interact_menu_fnc_createAction;
 	[_buttonObject, 0, [], _processRawResourceAction] call ace_interact_menu_fnc_addActionToObject;
 };
