@@ -8,7 +8,11 @@ params [
 	"_outputMoneyCurrency",         // Which currency to pay in
 	"_outputMoneyAmount",           // How much money to pay
 	"_soundsConfig",                // Format: [soundAction, soundSuccess, soundFailure, soundMoney]
-	"_localizationConfig"			// Format: [keyAction, keySuccess, keyFailure]
+	"_localizationConfig",			// Format: [keyAction, keySuccess, keyFailure]
+	
+	// Callbacks
+	["_extraCondition", { params["_buttonObject"]; true }],      // Extra condition is in place in case player should not be able to use the thing
+	["_onSuccess", { params["_buttonObject"]; }]				 // Executed when the converter has been used successfully
 ];
 
 if (isServer) then {
@@ -20,6 +24,8 @@ if (isServer) then {
 	_buttonObject setVariable ["outputMoneyCurrency", _outputMoneyCurrency, true];
 	_buttonObject setVariable ["outputMoneyAmount", _outputMoneyAmount, true];
 	_buttonObject setVariable ["localizationConfig", _localizationConfig, true];
+	_buttonObject setVariable ["extraCondition", _extraCondition, true];
+	_buttonObject setVariable ["onSuccess", _onSuccess, true];
 	
 	_soundsMap = createHashMap;
 	_soundsMap set ["action", _soundsConfig select 0];
@@ -94,8 +100,11 @@ fnc_convertRawResource = {
 		_outputMoneyAmount = _buttonObject getVariable ["outputMoneyAmount", 0];
 		[_outputMoneyBox, _outputMoneyCurrency, _outputMoneyAmount] call fnc_putMoneyIntoContainer;
 		
-		sleep 0.8;			
-		[_buttonObject, _outputMoneyBox, "money", 0.8] call fnc_playConverterSound;
+		[_buttonObject, _outputMoneyBox] spawn {
+			params ["_buttonObject", "_outputMoneyBox"];
+			sleep 2.4;			
+			[_buttonObject, _outputMoneyBox, "money", 0.8] call fnc_playConverterSound;
+		}
 	};
 };
 
@@ -107,10 +116,11 @@ if (hasInterface) then {
 		_this select 0 spawn {
 			params ["_target"];
 			
-			[_target, _target, "action", 4] call fnc_playConverterSound;
-			_localizationConfig = _target getVariable["localizationConfig", []];
+			// Extra condition is in place in case player should not be able to use the thing, maybe too tired, doesn't have perms etc.
+			_extraCondition = _target getVariable ["extraCondition", {true}];
+			if not (_target call _extraCondition) exitWith {};
 			
-			sleep 1.6;
+			[_target, _target, "action", 4] call fnc_playConverterSound;
 			
 			// Checking whether we have resource to convert
 			_matches = [];
@@ -121,11 +131,23 @@ if (hasInterface) then {
 			} else {
 				_matches = [_rawResourceSource, _rawResourceClassname] call fnc_checkBackpacksInBox;
 			};
+			_hasResourceToConvert = count _matches > 0;
 			
-			if (count _matches > 0) then {
+			// Logic happens instantaneously to prevent exploits
+			if (_hasResourceToConvert) then {
+
+				[_target, _matches select 0, _rawResourceSource] call fnc_convertRawResource;
+				_onSuccess = _target getVariable ["onSuccess", {}];
+				_target spawn _onSuccess;
+			};
+			
+			sleep 1.6;
+			
+			// Cosmetics happen with a bit of a delay
+			_localizationConfig = _target getVariable["localizationConfig", []];
+			if (_hasResourceToConvert) then {
 				hint localize (_localizationConfig select 1);
 				[_target, _target, "success", 3] call fnc_playConverterSound;
-				[_target, _matches select 0, _rawResourceSource] call fnc_convertRawResource;
 			} else {
 				hint localize (_localizationConfig select 2);
 				[_target, _target, "failure", 3] call fnc_playConverterSound;

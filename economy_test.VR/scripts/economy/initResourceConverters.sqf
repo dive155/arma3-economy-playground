@@ -15,7 +15,9 @@ _industrialConverterSoundsConfig = [
 	currencyCodePdrLeu,
 	120,
 	_industrialConverterSoundsConfig,
-	["STR_hay_converter_action", "STR_hay_converter_success", "STR_hay_converter_failure"]
+	["STR_hay_converter_action", "STR_hay_converter_success", "STR_hay_converter_failure"],
+	fnc_checkIfCanWorkOnConverter,
+	fnc_onWorkCompletedOnConverter
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
 [
@@ -28,7 +30,9 @@ _industrialConverterSoundsConfig = [
 	currencyCodeMoldovaLeu,
 	14,
 	_industrialConverterSoundsConfig,
-	["STR_ore_converter_action", "STR_ore_converter_success", "STR_ore_converter_failure"]
+	["STR_ore_converter_action", "STR_ore_converter_success", "STR_ore_converter_failure"],
+	fnc_checkIfCanWorkOnConverter,
+	fnc_onWorkCompletedOnConverter
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
 
