@@ -6,3 +6,6 @@ waitUntil { scriptDone _scriptHandle };
 
 _scriptHandle = execVM "scripts\economy\initResourceConverters.sqf";
 waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "scripts\economy\initGasStations.sqf";
+waitUntil { scriptDone _scriptHandle };

@@ -46,6 +46,11 @@
 		<English>Lunch has been cooked and put into the case.</English>
 		<Russian>Обед приготовлен и добавлен в кейс.</Russian>
 	</Key>
+	<Key ID="STR_pay_for_fuel">
+		<Original>Pay for Fuel.</Original>
+		<English>Pay for Fuel.</English>
+		<Russian>Оплатить топливо.</Russian>
+	</Key>
   </Package>
   <Package name="stats">
 	<Key ID="STR_misc_yes">
