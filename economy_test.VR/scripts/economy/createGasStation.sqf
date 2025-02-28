@@ -7,9 +7,11 @@ params [
 	["_getStartingFuelInPump", { 0 }],
 	["_getFuelInStorage", {99999}],
 	["_getPrice", {[currencyCodePdrLeu, 100]}],
-	["_onFuelSentToPump", { params ["_litersSent"]}]
+	["_onFuelSentToPump", { params ["_litersSent", "_moneyCurrency", "_moneyAmount"]}]
 ];
-	
+
+gas_station_pump_capacity = 1000;
+
 if (isServer) then {
 	// Save gas pump settings to the master object (button) on the SERVER
 	_buttonObject setVariable ["inputMoneyBox", _inputMoneyBox, true];
@@ -24,23 +26,76 @@ if (isServer) then {
 	_soundsMap set ["failure", _soundsConfig select 2];
 	_buttonObject setVariable ["soundsMap", _soundsMap, true];
 	
-	_gasPump setVariable ["ace_refuel_capacity", 1000, true];
+	_gasPump setVariable ["ace_refuel_capacity", gas_station_pump_capacity, true];
 	_gasPump setVariable ["ace_refuel_currentfuelcargo", call _getStartingFuelInPump, true];
+};
+
+fnc_playSound = {
+	params ["_buttonObject", "_source", "_soundKey", "_volume"];
+	
+	_sounds = _buttonObject getVariable ["soundsMap", createHashMap];
+	_soundName = _sounds get _soundKey;
+	
+	playSound3D [_soundName, _source, false, getPosASL _source, _volume];
 };
 
 fnc_handleFuelPaymentRequested = {
 	params ["_buttonObject"];
 	
 	_inputMoneyBox = _buttonObject getVariable ["inputMoneyBox", objNull];
+	_gasPump = _buttonObject getVariable ["gasPump", objNull];
+	_fuelInPump = _gasPump getVariable ["ace_refuel_currentfuelcargo", 0];
+	
+	[_target, _target, "action", 3] call fnc_playSound;
 	
 	_priceConfig = call (_buttonObject getVariable ["getPrice", {}]);
 	_currencyCode = _priceConfig select 0;
 	_pricePerLiter = _priceConfig select 1;
 	
-	_moneyInBox = [_inputMoneyBox, _currencyCode] call fnc_getMoneyAmountInContainer;
-	_desiredLiters = _moneyInBox / _pricePerLiter;
+	_moneyInTheBox = [_inputMoneyBox, _currencyCode] call fnc_getMoneyAmountInContainer;
+	if (_moneyInTheBox == 0) exitWith { 
+		sleep 1;
+		hint(localize "STR_fuel_payment_no_money");
+		[_buttonObject, _buttonObject, "failure", 3] call fnc_playSound;
+	};
 	
-	hint format["There are %1 leu in the box, enough for %2 liters", _moneyInBox, _desiredLiters];
+	_moneyForPayment = _moneyInTheBox;
+	_desiredLiters = _moneyForPayment / _pricePerLiter;
+	
+	//hint format["There are %1 leu in the box, enough for %2 liters", _moneyForPayment, _desiredLiters];
+	_fuelInStorage = _buttonObject call (_buttonObject getVariable ["getFuelInStorage", {0}]);
+	
+	// Checking if enough fuel is stored in the underground storage
+	if (_desiredLiters > _fuelInStorage) then {
+		_desiredLiters = _fuelInStorage;
+	};
+	
+	// Checking if we can fit this much fuel into the fuel pump
+	if (_fuelInPump + _desiredLiters > gas_station_pump_capacity) then {
+		_desiredLiters = gas_station_pump_capacity - _fuelInPump;
+	};
+	
+	_moneyForPayment = _desiredLiters * _pricePerLiter;
+	[_inputMoneyBox, _currencyCode, _moneyForPayment] call fnc_takeMoneyFromContainer;
+	
+	_finalFuelInPump = _fuelInPump + _desiredLiters;
+	_gasPump setVariable ["ace_refuel_currentfuelcargo", _finalFuelInPump, true];
+	
+	_onFuelSentToPump = _buttonObject getVariable ["onFuelSentToPump", {}];
+	[_desiredLiters, _currencyCode, _moneyForPayment] call _onFuelSentToPump;
+	
+	// Cosmetics
+	_currencyTranslation = localize ("STR_" + _currencyCode);
+	_message = format [(localize "STR_fuel_payment_description"), _moneyForPayment, _currencyTranslation, _desiredLiters];
+	
+	_change = _moneyInTheBox - _moneyForPayment;
+	if (_change > 0) then {
+		_message = _message + "\n\n" + format[localize "STR_fuel_payment_change", _change, _currencyTranslation];
+	};
+	
+	sleep 1;
+	[_buttonObject, _buttonObject, "success", 3] call fnc_playSound;
+	hint(_message);
 };
 
 

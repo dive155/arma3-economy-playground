@@ -86,9 +86,6 @@ fnc_takeMoneyFromContainer = {
 	// Get total money in the container for the specified currency
     private _moneyInContainer = [_container, _currencyCode] call fnc_getMoneyAmountInContainer;
     
-	systemChat str(_banknotesArray);
-	systemChat str(_moneyInContainer);
-    
     // Ensure there is enough money in the container
     if (_moneyInContainer < _amount) exitWith {
         //hint format ["Not enough money in the container. Available: %1, Required: %2", _moneyInContainer, _amount];

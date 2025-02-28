@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="pdr">
   <Package name="items">
-	<Key ID="STR_ore_converter_action">
-		<Original>Process Ore</Original>
-		<English>Process Ore</English>
-		<Russian>Переработать Руду</Russian>
+	<Key ID="STR_pdrLeu">
+		<Original>Leu (PDR)</Original>
+		<English>Leu (PDR)</English>
+		<Russian>Лей (ПДР)</Russian>
+	</Key>
+	<Key ID="STR_moldovaLeu">
+		<Original>Leu (Moldova)</Original>
+		<English>Leu (Moldova)</English>
+		<Russian>Лей (Молдова)</Russian>
 	</Key>
 	<Key ID="STR_ore_converter_failure">
 		<Original>No ore found in the loading zone</Original>
@@ -50,6 +55,21 @@
 		<Original>Pay for Fuel.</Original>
 		<English>Pay for Fuel.</English>
 		<Russian>Оплатить топливо.</Russian>
+	</Key>
+	<Key ID="STR_fuel_payment_no_money">
+		<Original>Put appropriate money into the box to pay for Fuel.</Original>
+		<English>Put appropriate money into the box to pay for Fuel.</English>
+		<Russian>Положите подходящие деньги в ящик чтобы оплатить Топливо.</Russian>
+	</Key>
+	<Key ID="STR_fuel_payment_description">
+		<Original>Paid:%1 %2\nFuel added to the Pump:%3 liters</Original>
+		<English>Paid:%1 %2\nFuel added to the Pump:%3 liters</English>
+		<Russian>Оплачено:%1 %2\nТоплива добавлено в Колонку:%3 литра</Russian>
+	</Key>
+	<Key ID="STR_fuel_payment_change">
+		<Original>WARNING! Could not fully fulfill order. Maybe fuel storage is empty or the pump is overflowing.\n%1 %2 of change have been added back to the money box.</Original>
+		<English>WARNING! Could not fully fulfill order. Maybe fuel storage is empty or the pump is overflowing.\n%1 %2 of change have been added back to the money box.</English>
+		<Russian>ВНИМАНИЕ! Не удалось полностью выполнить заказ. Возможно хранилище топлива опустело или колонка переполнена.\n%1 %2 сдачи положены обратно в кейс с деньгами.</Russian>
 	</Key>
   </Package>
   <Package name="stats">
