@@ -42,24 +42,6 @@ fnc_getBanknotes = {
     _result
 };
 
-fnc_getMoneyAmount = {
-    params ["_currencyCode", "_banknotesArray"];
-    
-    private _totalAmount = 0;
-    private _banknoteValues = (currencyDefinitions get _currencyCode) select 0;
-    
-    {
-        private _noteName = _x select 0;
-        private _count = _x select 1;
-        
-        if (_banknoteValues getOrDefault [_noteName, -1] != -1) then {
-            _totalAmount = _totalAmount + ((_banknoteValues get _noteName) * _count);
-        };
-    } forEach _banknotesArray;
-    
-    _totalAmount
-};
-
 fnc_putMoneyIntoContainer = {
 	params ["_container","_currencyCode", "_amount"];
 	_banknotes = [_currencyCode, _amount] call fnc_getBanknotes;
@@ -71,33 +53,45 @@ fnc_putMoneyIntoContainer = {
 	} forEach _banknotes;
 };
 
-fnc_takeMoneyFromContainer = {
-    params ["_container", "_currencyCode", "_amount"];
+fnc_getMoneyAmountInContainer = {
+    params ["_container", "_currencyCode"];
     
-	private _currencyDefinition = currencyDefinitions get _currencyCode;
-	
     // Get all money in the container for the specified currency
     private _itemCargo = getItemCargo _container;
-    private _banknotesArray = [];
+    private _totalAmount = 0;
+    private _banknoteValues = (currencyDefinitions get _currencyCode) select 0;
+    
     {
         private _banknoteName = _x;
         private _index = (_itemCargo select 0) find _banknoteName;
         if (_index != -1) then {
             private _count = (_itemCargo select 1) select _index;
             if (_count > 0) then {
-                _banknotesArray pushBack [_banknoteName, _count];
+                private _noteValue = _banknoteValues getOrDefault [_banknoteName, -1];
+                if (_noteValue != -1) then {
+                    _totalAmount = _totalAmount + (_noteValue * _count);
+                };
             };
         };
-    } forEach (keys (_currencyDefinition select 0));
+    } forEach (keys _banknoteValues);
     
-    private _moneyInContainer = [_currencyCode, _banknotesArray] call fnc_getMoneyAmount;
+    _totalAmount
+};
+
+fnc_takeMoneyFromContainer = {
+    params ["_container", "_currencyCode", "_amount"];
+    
+	private _currencyDefinition = currencyDefinitions get _currencyCode;
+		
+	// Get total money in the container for the specified currency
+    private _moneyInContainer = [_container, _currencyCode] call fnc_getMoneyAmountInContainer;
     
 	systemChat str(_banknotesArray);
 	systemChat str(_moneyInContainer);
     
     // Ensure there is enough money in the container
     if (_moneyInContainer < _amount) exitWith {
-        hint format ["Not enough money in the container. Available: %1, Required: %2", _moneyInContainer, _amount];
+        //hint format ["Not enough money in the container. Available: %1, Required: %2", _moneyInContainer, _amount];
     };
     
     // Remove all money of the specified currency from the container
