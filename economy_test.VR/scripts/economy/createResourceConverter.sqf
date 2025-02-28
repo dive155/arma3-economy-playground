@@ -69,9 +69,8 @@ fnc_playConverterSound = {
 	playSound3D [_soundName, _source, false, getPosASL _source, _volume];
 };
 
-
 // Do conversion on the CLIENT
-fnc_convertRawResource = {
+fnc_removeRawResouce = {
 	params ["_buttonObject", "_submittedObject", "_rawResourceSource"];
 	
 	if (_rawResourceSource isKindOf "EmptyDetector") then {
@@ -81,7 +80,12 @@ fnc_convertRawResource = {
 		// If source is a box we need to remove a backpack inside the box
 		_rawResourceSource addBackpackCargoGlobal [_submittedObject, -1];
 	};
-	
+};
+
+// Do conversion on the CLIENT
+fnc_giveConversionOutput = {
+	params ["_buttonObject"];
+		
 	// Check where and what to give
 	_outputItemBox = _buttonObject getVariable ["outputItemBox", objNull];
 	_outputItemClassname = _buttonObject getVariable ["outputItemClassname", ""];
@@ -116,19 +120,20 @@ if (hasInterface) then {
 		_this select 0 spawn {
 			params ["_target"];
 			
-			// Extra condition is in place in case player should not be able to use the thing, maybe too tired, doesn't have perms etc.
-			_extraCondition = _target getVariable ["extraCondition", {true}];
-			if not (_target call _extraCondition) exitWith {};
-			
-			[_target, _target, "action", 4] call fnc_playConverterSound;
-			
-			// Checking whether we have resource to convert
-			_matches = [];
-			// TODO multiple resources
+			// Getting vars
 			_rawResources = (_target getVariable ["rawResources", []]) select 0;
+			_localizationConfig = _target getVariable["localizationConfig", []];
+			_onSuccess = _target getVariable ["onSuccess", {}];
+			_extraCondition = _target getVariable ["extraCondition", {true}];
+			
+			// Extra condition is in place in case player should not be able to use the thing, maybe too tired, doesn't have perms etc.
+			if not (_target call _extraCondition) exitWith {};
+
+			// TODO multiple resources
 			_rawResourceSource = _rawResources select 0;
 			_rawResourceClassname = _rawResources select 1;
-			
+			// Checking whether we have resource to convert
+			_matches = [];
 			if (_rawResourceSource isKindOf "EmptyDetector") then {
 				_matches = [_rawResourceSource, _rawResourceClassname] call fnc_checkItemsInTrigger;
 			} else {
@@ -138,16 +143,17 @@ if (hasInterface) then {
 			
 			// Logic happens instantaneously to prevent exploits
 			if (_hasResourceToConvert) then {
-
-				[_target, _matches select 0, _rawResourceSource] call fnc_convertRawResource;
-				_onSuccess = _target getVariable ["onSuccess", {}];
+				[_target, _matches select 0, _rawResourceSource] call fnc_removeRawResouce;
+				[_target] call fnc_giveConversionOutput;
+				
 				_target spawn _onSuccess;
 			};
 			
+			
+			// Cosmetics 
+			[_target, _target, "action", 4] call fnc_playConverterSound;
 			sleep 1.6;
 			
-			// Cosmetics happen with a bit of a delay
-			_localizationConfig = _target getVariable["localizationConfig", []];
 			if (_hasResourceToConvert) then {
 				hint localize (_localizationConfig select 1);
 				[_target, _target, "success", 3] call fnc_playConverterSound;
