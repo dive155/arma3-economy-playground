@@ -7,10 +7,9 @@ _industrialConverterSoundsConfig = [
 
 [
 	hay_button,
-	hay_trigger,
+	[[hay_trigger, "DIVE_Haystack"]],
 	hay_output_box,
 	hay_money_box,
-	"DIVE_Haystack",
 	"b_dive_grain_bag",
 	currencyCodePdrLeu,
 	120,
@@ -22,10 +21,9 @@ _industrialConverterSoundsConfig = [
 
 [
 	ore_button,
-	ore_trigger,
+	[[ore_trigger, "DIVE_OreRock"]],
 	ore_output_box,
 	ore_money_box,
-	"DIVE_OreRock",
 	"b_dive_ore_bag",
 	currencyCodeMoldovaLeu,
 	14,
@@ -38,10 +36,9 @@ _industrialConverterSoundsConfig = [
 
 [
 	stove,
-	stove_input_box,
+	[[stove_input_box, "b_dive_grain_bag"]],
 	stove_output_box,
-	nil,
-	"b_dive_grain_bag",
+	objNull,
 	"ACE_Banana",
 	currencyCodePdrLeu,
 	0,

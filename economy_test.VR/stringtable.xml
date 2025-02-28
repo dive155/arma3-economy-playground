@@ -17,8 +17,8 @@
 		<Russian>Не найдено руды в зоне погрузки.</Russian>
 	</Key>
 	<Key ID="STR_ore_converter_success">
-		<Original>Ore has been processed! You can take your pay from the cash register Your Work Fatique has increased.</Original>
-		<English>Ore has been processed! You can take your pay from the cash register Your Work Fatique has increased.</English>
+		<Original>Ore has been processed! You can take your pay from the cash register. Your Work Fatique has increased.</Original>
+		<English>Ore has been processed! You can take your pay from the cash register. Your Work Fatique has increased.</English>
 		<Russian>Руда переработана! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
 	</Key>
 	<Key ID="STR_hay_converter_action">

@@ -1,9 +1,10 @@
 params [
 	"_buttonObject", 				// Button to press
-	"_rawResourceSource",           // Where raw items are checked for. Could be a trigger or a container.
+	"_rawResources",                // Format: [[_rawResource1Source, _rawResource1Classname],[...]]
+									// _rawResource1Source - Where raw items are checked for. Could be a trigger or a container.
+									// _rawResource1Classname - Classname of the raw resource to be processed
 	"_outputItemBox",               // Where to put processed items
 	"_outputMoneyBox",              // Where to put money
-	"_rawResourceClassname",        // Classname of the raw resource to be processed
 	"_outputItemClassname",         // Classname of the item to be outputed
 	"_outputMoneyCurrency",         // Which currency to pay in
 	"_outputMoneyAmount",           // How much money to pay
@@ -17,9 +18,8 @@ params [
 
 if (isServer) then {
 	// Save converter settings to the master object (button) on the SERVER
-	_buttonObject setVariable ["rawResourceSource", _rawResourceSource, true];
+	_buttonObject setVariable ["rawResources", _rawResources, true];
 	_buttonObject setVariable ["outputItemBox", _outputItemBox, true];
-	_buttonObject setVariable ["rawResourceClassname", _rawResourceClassname, true];
 	_buttonObject setVariable ["outputItemClassname", _outputItemClassname, true];
 	_buttonObject setVariable ["outputMoneyCurrency", _outputMoneyCurrency, true];
 	_buttonObject setVariable ["outputMoneyAmount", _outputMoneyAmount, true];
@@ -124,8 +124,11 @@ if (hasInterface) then {
 			
 			// Checking whether we have resource to convert
 			_matches = [];
-			_rawResourceSource = _target getVariable ["rawResourceSource", objNull];
-			_rawResourceClassname = _target getVariable ["rawResourceClassname", ""];
+			// TODO multiple resources
+			_rawResources = (_target getVariable ["rawResources", []]) select 0;
+			_rawResourceSource = _rawResources select 0;
+			_rawResourceClassname = _rawResources select 1;
+			
 			if (_rawResourceSource isKindOf "EmptyDetector") then {
 				_matches = [_rawResourceSource, _rawResourceClassname] call fnc_checkItemsInTrigger;
 			} else {
