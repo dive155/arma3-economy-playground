@@ -7,7 +7,7 @@ params [
 	["_getStartingFuelInPump", { 0 }],
 	["_getFuelInStorage", {99999}],
 	["_getPrice", {[currencyCodePdrLeu, 100]}],
-	["_onFuelSentToPump", { params ["_litersSent", "_moneyCurrency", "_moneyAmount"]}]
+	["_onFuelSentToPump", { params ["_litersSent", "_moneyCurrency", "_moneyAmount"];}]
 ];
 
 gas_station_pump_capacity = 1000;
