@@ -12,10 +12,9 @@ _industrialConverterSoundsConfig = [
 	hay_output_box,
 	hay_money_box,
 	"b_dive_grain_bag",
-	currencyCodePdrLeu,
-	120,
 	_industrialConverterSoundsConfig,
 	["STR_hay_converter_action", "STR_hay_converter_success", "STR_hay_converter_failure"],
+	{[currencyCodePdrLeu, 120]},
 	fnc_checkIfCanWorkOnConverter,
 	fnc_onWorkCompletedOnConverter
 ]execVM "scripts\economy\createResourceConverter.sqf";
@@ -27,10 +26,9 @@ _industrialConverterSoundsConfig = [
 	ore_output_box,
 	ore_money_box,
 	"b_dive_ore_bag",
-	currencyCodeMoldovaLeu,
-	14,
 	_industrialConverterSoundsConfig,
 	["STR_ore_converter_action", "STR_ore_converter_success", "STR_ore_converter_failure"],
+	{[currencyCodeMoldovaLeu, 14]},
 	fnc_checkIfCanWorkOnConverter,
 	fnc_onWorkCompletedOnConverter
 ]execVM "scripts\economy\createResourceConverter.sqf";
@@ -42,10 +40,9 @@ _industrialConverterSoundsConfig = [
 	objNull,
 	factory_money_box,
 	"",
-	currencyCodePdrLeu,
-	60,
 	_industrialConverterSoundsConfig,
 	["STR_factory_action", "STR_factory_success", "STR_factory_failure"],
+	{[currencyCodePdrLeu, 60]},
 	fnc_checkIfCanWorkOnConverter,
 	fnc_onWorkCompletedOnConverter
 ]execVM "scripts\economy\createResourceConverter.sqf";
@@ -57,8 +54,6 @@ _industrialConverterSoundsConfig = [
 	stove_output_box,
 	objNull,
 	"ACE_Banana",
-	currencyCodePdrLeu,
-	0,
 	["pdrstuff\sounds\stove_ignition.ogg", "pdrstuff\sounds\stove_cooking.ogg", "pdrstuff\sounds\stove_failure.ogg", ""],
 	["STR_stove_action", "STR_stove_success", "STR_stove_failure"]
 ]execVM "scripts\economy\createResourceConverter.sqf";

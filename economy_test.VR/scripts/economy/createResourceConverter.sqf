@@ -6,12 +6,11 @@ params [
 	"_outputItemBox",               // Where to put processed items
 	"_outputMoneyBox",              // Where to put money
 	"_outputItemClassname",         // Classname of the item to be outputed
-	"_outputMoneyCurrency",         // Which currency to pay in
-	"_outputMoneyAmount",           // How much money to pay
 	"_soundsConfig",                // Format: [soundAction, soundSuccess, soundFailure, soundMoney]
 	"_localizationConfig",			// Format: [keyAction, keySuccess, keyFailure]
 	
 	// Callbacks
+	["_getPayConfig", {["", 100]}],                              // Which currency to pay in and how much
 	["_extraCondition", { params["_buttonObject"]; true }],      // Extra condition is in place in case player should not be able to use the thing
 	["_onSuccess", { params["_buttonObject"]; }]				 // Executed when the converter has been used successfully
 ];
@@ -21,9 +20,8 @@ if (isServer) then {
 	_buttonObject setVariable ["rawResources", _rawResources, true];
 	_buttonObject setVariable ["outputItemBox", _outputItemBox, true];
 	_buttonObject setVariable ["outputItemClassname", _outputItemClassname, true];
-	_buttonObject setVariable ["outputMoneyCurrency", _outputMoneyCurrency, true];
-	_buttonObject setVariable ["outputMoneyAmount", _outputMoneyAmount, true];
 	_buttonObject setVariable ["localizationConfig", _localizationConfig, true];
+	_buttonObject setVariable ["getPayConfig", _getPayConfig, true];
 	_buttonObject setVariable ["extraCondition", _extraCondition, true];
 	_buttonObject setVariable ["onSuccess", _onSuccess, true];
 	
@@ -103,9 +101,8 @@ fnc_giveConversionOutput = {
 	// Give money
 	_outputMoneyBox = _buttonObject getVariable ["outputMoneyBox", objNull];
 	if (not isNull _outputMoneyBox) then {
-		_outputMoneyCurrency = _buttonObject getVariable ["outputMoneyCurrency", currencyCodePdrLeu];
-		_outputMoneyAmount = _buttonObject getVariable ["outputMoneyAmount", 0];
-		[_outputMoneyBox, _outputMoneyCurrency, _outputMoneyAmount] call fnc_putMoneyIntoContainer;
+		_payConfig = call (_buttonObject getVariable "getPayConfig");
+		[_outputMoneyBox, _payConfig select 0, _payConfig select 1] call fnc_putMoneyIntoContainer;
 		
 		[_buttonObject, _outputMoneyBox] spawn {
 			params ["_buttonObject", "_outputMoneyBox"];
