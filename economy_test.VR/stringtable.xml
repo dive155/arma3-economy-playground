@@ -61,6 +61,11 @@
 		<English>Factory doesn't have enough money to pay for this work.</English>
 		<Russian>У Завода не хватает денег чтобы оплатить эту работу.</Russian>
 	</Key>
+	<Key ID="STR_city_no_money">
+		<Original>City does not have enough money for this.</Original>
+		<English>City does not have enough money for this.</English>
+		<Russian>У Города не хватает денег для этого.</Russian>
+	</Key>
 	<Key ID="STR_stove_action">
 		<Original>Cook Lunch</Original>
 		<English>Cook Lunch</English>

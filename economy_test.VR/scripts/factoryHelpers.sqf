@@ -17,11 +17,11 @@ fnc_checkIfFactoryCanPay = {
 	};
 };
 
-fnc_takeMoneyFromFactory = {
-	params["_moneyToTake"];
+fnc_addMoneyToFactory = {
+	params["_moneyToAdd"];
 	
 	_factoryMoney = "factoryMoney" call fnc_getWorldVariable;
-	_factoryMoney = _factoryMoney - _moneyToTake;
+	_factoryMoney = _factoryMoney + _moneyToAdd;
 	["factoryMoney", _factoryMoney] call fnc_setWorldVariable;
 };
 
@@ -39,6 +39,16 @@ fnc_handleFactoryWorkCompleted = {
 	_fatigueIncrease = _fatigueKey call fnc_getWorldVariable;
 	
 	_moneyToTake = _payConfig select 1;
-	_moneyToTake call fnc_takeMoneyFromFactory;
+	(-1 * _moneyToTake) call fnc_addMoneyToFactory;
 	_fatigueIncrease call fnc_increasePlayerFatigue;
+};
+
+fnc_sellProducedFactoryGoods = {
+	_price = "factoryGoodsSellPrice" call fnc_getWorldVariable;
+	_tax = "factoryGoodsTax" call fnc_getWorldVariable;
+	_tax = _tax * _price;
+	_price = _price - _tax;
+	
+	_price call fnc_addMoneyToFactory;
+	_tax call fnc_addMoneyToCity;
 };

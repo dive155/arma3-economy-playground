@@ -1,3 +1,7 @@
+// TODO this does not belong here?
+_scriptHandle = execVM "scripts\cityHelpers.sqf";
+waitUntil { scriptDone _scriptHandle };
+
 _scriptHandle = execVM "scripts\factoryHelpers.sqf";
 waitUntil { scriptDone _scriptHandle };
 
@@ -19,7 +23,7 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueHay"] call  fnc_handleFactoryWorkCompleted
+		[_payConfig, "fatigueHay"] call  fnc_handleFactoryWorkCompleted;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
@@ -41,7 +45,7 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueOre"] call  fnc_handleFactoryWorkCompleted
+		[_payConfig, "fatigueOre"] call  fnc_handleFactoryWorkCompleted;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
@@ -63,7 +67,8 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueFactory"] call  fnc_handleFactoryWorkCompleted
+		[_payConfig, "fatigueFactory"] call  fnc_handleFactoryWorkCompleted;
+		call fnc_sellProducedFactoryGoods;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
