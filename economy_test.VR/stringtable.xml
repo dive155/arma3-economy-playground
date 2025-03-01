@@ -11,6 +11,11 @@
 		<English>Leu (Moldova)</English>
 		<Russian>Лей (Молдова)</Russian>
 	</Key>
+	<Key ID="STR_ore_converter_action">
+		<Original>Process Ore</Original>
+		<English>Process Ore</English>
+		<Russian>Переработать Руду</Russian>
+	</Key>
 	<Key ID="STR_ore_converter_failure">
 		<Original>No ore found in the loading zone</Original>
 		<English>No ore found in the loading zone</English>
