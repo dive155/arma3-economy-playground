@@ -121,7 +121,8 @@ if (hasInterface) then {
 			params ["_target"];
 			
 			// Getting vars
-			_rawResources = (_target getVariable ["rawResources", []]) select 0;
+			//_rawResources = (_target getVariable ["rawResources", []]) select 0;
+			_rawResources = _target getVariable ["rawResources", []];
 			_localizationConfig = _target getVariable["localizationConfig", []];
 			_onSuccess = _target getVariable ["onSuccess", {}];
 			_extraCondition = _target getVariable ["extraCondition", {true}];
@@ -129,26 +130,41 @@ if (hasInterface) then {
 			// Extra condition is in place in case player should not be able to use the thing, maybe too tired, doesn't have perms etc.
 			if not (_target call _extraCondition) exitWith {};
 
-			// TODO multiple resources
-			_rawResourceSource = _rawResources select 0;
-			_rawResourceClassname = _rawResources select 1;
-			// Checking whether we have resource to convert
-			_matches = [];
-			if (_rawResourceSource isKindOf "EmptyDetector") then {
-				_matches = [_rawResourceSource, _rawResourceClassname] call fnc_checkItemsInTrigger;
-			} else {
-				_matches = [_rawResourceSource, _rawResourceClassname] call fnc_checkBackpacksInBox;
-			};
-			_hasResourceToConvert = count _matches > 0;
-			
-			// Logic happens instantaneously to prevent exploits
-			if (_hasResourceToConvert) then {
-				[_target, _matches select 0, _rawResourceSource] call fnc_removeRawResouce;
-				[_target] call fnc_giveConversionOutput;
+			// Checking if player has provided all the needed resources
+			_hasResourceToConvert = true;
+			_allMatches = [];
+			{
+				_rawResourceSource = _x select 0;
+				_rawResourceClassname = _x select 1;
+				_matches = [];
 				
+				if (_rawResourceSource isKindOf "EmptyDetector") then {
+					_matches = [_rawResourceSource, _rawResourceClassname] call fnc_checkItemsInTrigger;
+				} else {
+					_matches = [_rawResourceSource, _rawResourceClassname] call fnc_checkBackpacksInBox;
+				};
+				
+				// Conversion happens only if EVERY type of resource has at least 1 item present
+				if (count _matches == 0) exitWith {
+					_hasResourceToConvert = false;
+				};
+				
+				_allMatches pushBack [_matches select 0, _rawResourceSource];
+			} forEach _rawResources;
+			
+			if (_hasResourceToConvert) then {
+				{
+					_match = _x select 0;
+					_rawResourceSource = _x select 1;
+					
+					// Only 1 item of each type is consumed
+					[_target, _match, _rawResourceSource] call fnc_removeRawResouce;
+					
+				} forEach _allMatches;
+				
+				[_target] call fnc_giveConversionOutput;
 				_target spawn _onSuccess;
 			};
-			
 			
 			// Cosmetics 
 			[_target, _target, "action", 4] call fnc_playConverterSound;
