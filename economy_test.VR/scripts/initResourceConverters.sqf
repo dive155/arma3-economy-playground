@@ -1,29 +1,5 @@
-_industrialConverterSoundsConfig = [
-	"a3\missions_f_beta\data\sounds\firing_drills\target_pop-down_large.wss",
-	"pdrstuff\sounds\machine_success.ogg",
-	"pdrstuff\sounds\machine_error.ogg",
-	"pdrstuff\sounds\machine_success_money.ogg"
-];
-
-fnc_checkIfFactoryCanPay = {
-	params ["_payConfig"];
-	_toPay = _payConfig select 1;
-	_factoryMoney = "factoryMoney" call fnc_getWorldVariable;
-	_leftover = _factoryMoney - _toPay;
-	
-	if (_leftover > 0) then { true } else {
-		hint(localize "STR_factory_no_money");
-		false
-	};
-};
-
-fnc_takeMoneyFromFactory = {
-	params["_moneyToTake"];
-	
-	_factoryMoney = "factoryMoney" call fnc_getWorldVariable;
-	_factoryMoney = _factoryMoney - _moneyToTake;
-	["factoryMoney", _factoryMoney] call fnc_setWorldVariable;
-};
+_scriptHandle = execVM "scripts\factoryHelpers.sqf";
+waitUntil { scriptDone _scriptHandle };
 
 // Hay to Agricultural Products Converter
 [
@@ -32,24 +8,18 @@ fnc_takeMoneyFromFactory = {
 	hay_output_box,
 	hay_money_box,
 	"b_dive_grain_bag",
-	_industrialConverterSoundsConfig,
+	industrialConverterSoundsConfig,
 	["STR_hay_converter_action", "STR_hay_converter_success", "STR_hay_converter_failure"],
-	{[currencyCodePdrLeu, 120]},
-	
-	{   // Extra condition
-		params["_buttonObject", "_payConfig"];
-		_fatigueIncrease = "fatigueHay" call fnc_getWorldVariable;
-		([_payConfig] call fnc_checkIfFactoryCanPay)
-			and ([_fatigueIncrease] call fnc_checkIfNotTooFatigued)
+	{ // Get pay config
+		[currencyCodePdrLeu, "payHay" call fnc_getWorldVariable]
 	},
-	
-	{	// On work completed
-		params["_buttonObject", "_payConfig"];
-		_fatigueIncrease = "fatigueHay" call fnc_getWorldVariable;
-		_moneyToTake = _payConfig select 1;
-		_moneyToTake call fnc_takeMoneyFromFactory;
-		
-		_fatigueIncrease call fnc_increasePlayerFatigue;
+	{ // Extra condition
+		params["_buttonObject", "_payConfig"]; 
+		[_payConfig, "fatigueHay"] call  fnc_checkFactoryWorkConditions
+	},
+	{ // On work completed
+		params["_buttonObject", "_payConfig"]; 
+		[_payConfig, "fatigueHay"] call  fnc_handleFactoryWorkCompleted
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
@@ -60,7 +30,7 @@ fnc_takeMoneyFromFactory = {
 	// ore_output_box,
 	// ore_money_box,
 	// "b_dive_ore_bag",
-	// _industrialConverterSoundsConfig,
+	// industrialConverterSoundsConfig,
 	// ["STR_ore_converter_action", "STR_ore_converter_success", "STR_ore_converter_failure"],
 	// {[currencyCodeMoldovaLeu, 14]},
 	// fnc_checkIfCanWorkOnConverter,
@@ -74,7 +44,7 @@ fnc_takeMoneyFromFactory = {
 	// objNull,
 	// factory_money_box,
 	// "",
-	// _industrialConverterSoundsConfig,
+	// industrialConverterSoundsConfig,
 	// ["STR_factory_action", "STR_factory_success", "STR_factory_failure"],
 	// {[currencyCodePdrLeu, 60]},
 	// fnc_checkIfCanWorkOnConverter,
