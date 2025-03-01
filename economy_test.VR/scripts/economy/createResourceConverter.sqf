@@ -34,7 +34,7 @@ if (isServer) then {
 	_soundsMap set ["money", _soundsConfig select 3];
 	_buttonObject setVariable ["soundsMap", _soundsMap, true];
 	
-	if (not isNil "_outputMoneyBox") then {
+	if (not isNull _outputMoneyBox) then {
 		_buttonObject setVariable ["outputMoneyBox", _outputMoneyBox, true];
 	};
 };
@@ -85,21 +85,24 @@ fnc_removeRawResouce = {
 // Do conversion on the CLIENT
 fnc_giveConversionOutput = {
 	params ["_buttonObject"];
-		
-	// Check where and what to give
-	_outputItemBox = _buttonObject getVariable ["outputItemBox", objNull];
-	_outputItemClassname = _buttonObject getVariable ["outputItemClassname", ""];
 	
-	// Check if we're giving a backpack or an item
-	if (isClass (configFile >> "CfgVehicles" >> _outputItemClassname)) then {
-		_outputItemBox addBackpackCargoGlobal [_outputItemClassname, 1];
-	} else {
-		_outputItemBox addItemCargoGlobal [_outputItemClassname, 1];
+	// Give Item
+	_outputItemBox = _buttonObject getVariable ["outputItemBox", objNull];
+	if (not isNull _outputItemBox) then {
+		// Check where and what to give
+		_outputItemClassname = _buttonObject getVariable ["outputItemClassname", ""];
+		
+		// Check if we're giving a backpack or an item
+		if (isClass (configFile >> "CfgVehicles" >> _outputItemClassname)) then {
+			_outputItemBox addBackpackCargoGlobal [_outputItemClassname, 1];
+		} else {
+			_outputItemBox addItemCargoGlobal [_outputItemClassname, 1];
+		};
 	};
 	
 	// Give money
 	_outputMoneyBox = _buttonObject getVariable ["outputMoneyBox", objNull];
-	if (not isNil "_outputMoneyBox") then {
+	if (not isNull _outputMoneyBox) then {
 		_outputMoneyCurrency = _buttonObject getVariable ["outputMoneyCurrency", currencyCodePdrLeu];
 		_outputMoneyAmount = _buttonObject getVariable ["outputMoneyAmount", 0];
 		[_outputMoneyBox, _outputMoneyCurrency, _outputMoneyAmount] call fnc_putMoneyIntoContainer;

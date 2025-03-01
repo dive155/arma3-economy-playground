@@ -32,9 +32,24 @@
 		<Russian>Не найдено сена в зоне погрузки.</Russian>
 	</Key>
 	<Key ID="STR_hay_converter_success">
-		<Original>Hay has been processed! You can take your pay from the cash register Your Work Fatique has increased.</Original>
-		<English>Hay has been processed! You can take your pay from the cash register Your Work Fatique has increased.</English>
+		<Original>Hay has been processed! You can take your pay from the cash register. Your Work Fatique has increased.</Original>
+		<English>Hay has been processed! You can take your pay from the cash register. Your Work Fatique has increased.</English>
 		<Russian>Сено переработано! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
+	</Key>
+	<Key ID="STR_factory_action">
+		<Original>Produce Goods</Original>
+		<English>Produce Goods</English>
+		<Russian>Произвести Товар</Russian>
+	</Key>
+	<Key ID="STR_factory_failure">
+		<Original>No Agricultural Products found or no Ore found in their corresponding boxes.</Original>
+		<English>No Agricultural Products found or no Ore found in their corresponding boxes.</English>
+		<Russian>Не найдено Сельхоз Продукции или Руды в соответствующих им ящиках.</Russian>
+	</Key>
+	<Key ID="STR_factory_success">
+		<Original>Goods have been produced! You can take your pay from the cash register. Your Work Fatique has increased.</Original>
+		<English>Goods have been produced! You can take your pay from the cash register. Your Work Fatique has increased.</English>
+		<Russian>Товар произведен! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
 	</Key>
 	<Key ID="STR_stove_action">
 		<Original>Cook Lunch</Original>

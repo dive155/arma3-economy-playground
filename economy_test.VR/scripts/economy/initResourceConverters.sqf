@@ -5,6 +5,7 @@ _industrialConverterSoundsConfig = [
 	"pdrstuff\sounds\machine_success_money.ogg"
 ];
 
+// Hay to Agricultural Products Converter
 [
 	hay_button,
 	[[hay_trigger, "DIVE_Haystack"]],
@@ -19,6 +20,7 @@ _industrialConverterSoundsConfig = [
 	fnc_onWorkCompletedOnConverter
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
+// Ore to Minerals Converter
 [
 	ore_button,
 	[[ore_trigger, "DIVE_OreRock"]],
@@ -33,7 +35,22 @@ _industrialConverterSoundsConfig = [
 	fnc_onWorkCompletedOnConverter
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
+// Factory
+[
+	factory_button,
+	[[factory_hay_box, "b_dive_grain_bag"], [factory_ore_box, "b_dive_ore_bag"]],
+	objNull,
+	factory_money_box,
+	"",
+	currencyCodePdrLeu,
+	60,
+	_industrialConverterSoundsConfig,
+	["STR_factory_action", "STR_factory_success", "STR_factory_failure"],
+	fnc_checkIfCanWorkOnConverter,
+	fnc_onWorkCompletedOnConverter
+]execVM "scripts\economy\createResourceConverter.sqf";
 
+// Cafe stove
 [
 	stove,
 	[[stove_input_box, "b_dive_grain_bag"]],
