@@ -11,18 +11,18 @@ fnc_setPlayerFatigue = {
 
 converterFatigueIncrement = 0.125;
 
-fnc_checkIfCanWorkOnConverter = {
-	params ["_converterButton"];
+fnc_checkIfNotTooFatigued = {
+	params ["_fatigueIncrement"];
 	
-	_potentialFatigue = (call fnc_getPlayerFatigue) + converterFatigueIncrement;
+	_potentialFatigue = (call fnc_getPlayerFatigue) + _fatigueIncrement;
 	if (_potentialFatigue <= 1) then { true } else {
 		hint(localize "STR_fatigue_cant_work");
 		false
 	}
 };
 
-fnc_onWorkCompletedOnConverter = {
-	params ["_converterButton"];
-	_fatigue = (call fnc_getPlayerFatigue) + converterFatigueIncrement;
+fnc_increasePlayerFatigue = {
+	params ["_fatigueIncrement"];
+	_fatigue = (call fnc_getPlayerFatigue) + _fatigueIncrement;
 	_fatigue call fnc_setPlayerFatigue;
 };

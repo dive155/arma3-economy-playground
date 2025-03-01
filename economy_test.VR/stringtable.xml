@@ -51,6 +51,11 @@
 		<English>Goods have been produced! You can take your pay from the cash register. Your Work Fatique has increased.</English>
 		<Russian>Товар произведен! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
 	</Key>
+	<Key ID="STR_factory_no_money">
+		<Original>Factory doesn't have enough money to pay for this work.</Original>
+		<English>Factory doesn't have enough money to pay for this work.</English>
+		<Russian>У Завода не хватает денег чтобы оплатить эту работу.</Russian>
+	</Key>
 	<Key ID="STR_stove_action">
 		<Original>Cook Lunch</Original>
 		<English>Cook Lunch</English>

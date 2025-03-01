@@ -4,8 +4,12 @@ fnc_createDefaultWorldState = {
 	["fuelInStorage", 100] call fnc_setWorldVariable;
 	["factoryMoney", 2000] call fnc_setWorldVariable;
 	["payHay", 120] call fnc_setWorldVariable;
+	["fatigueHay", 0.125] call fnc_setWorldVariable;
 	["payOre", 140] call fnc_setWorldVariable;
+	["fatigueOre", 0.125] call fnc_setWorldVariable;
 	["payFactory", 60] call fnc_setWorldVariable;
+	["fatigueFactory", 0.0625] call fnc_setWorldVariable;
+	
 };
 
 _handle = [

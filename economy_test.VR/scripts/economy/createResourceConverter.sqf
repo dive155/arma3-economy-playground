@@ -10,9 +10,9 @@ params [
 	"_localizationConfig",			// Format: [keyAction, keySuccess, keyFailure]
 	
 	// Callbacks
-	["_getPayConfig", {["", 100]}],                              // Which currency to pay in and how much
-	["_extraCondition", { params["_buttonObject"]; true }],      // Extra condition is in place in case player should not be able to use the thing
-	["_onSuccess", { params["_buttonObject"]; }]				 // Executed when the converter has been used successfully
+	["_getPayConfig", {["", 0]}],                                          // Which currency to pay in and how much
+	["_extraCondition", { params["_buttonObject", "_payConfig"]; true }],  // Extra condition is in place in case player should not be able to use the thing
+	["_onSuccess", { params["_buttonObject", "_payConfig"]; }]            // Executed when the converter has been used successfully
 ];
 
 if (isServer) then {
@@ -125,10 +125,11 @@ if (hasInterface) then {
 			_rawResources = _target getVariable ["rawResources", []];
 			_localizationConfig = _target getVariable["localizationConfig", []];
 			_onSuccess = _target getVariable ["onSuccess", {}];
+			_payConfig = call (_target getVariable "getPayConfig");
 			_extraCondition = _target getVariable ["extraCondition", {true}];
 			
 			// Extra condition is in place in case player should not be able to use the thing, maybe too tired, doesn't have perms etc.
-			if not (_target call _extraCondition) exitWith {};
+			if not ([_target, _payConfig] call _extraCondition) exitWith {};
 
 			// Checking if player has provided all the needed resources
 			_hasResourceToConvert = true;
@@ -163,7 +164,7 @@ if (hasInterface) then {
 				} forEach _allMatches;
 				
 				[_target] call fnc_giveConversionOutput;
-				_target spawn _onSuccess;
+				[_target, _payConfig] spawn _onSuccess;
 			};
 			
 			// Cosmetics 
