@@ -11,6 +11,8 @@ if (_unit isKindOf "MAN") then {
 	
 	_inv = ["read",[_namePlr, "plrStuff",[]]] call _player_SaveDBLocal;
 	_pos = ["read",[_namePlr, "plrPosition",[]]] call _player_SaveDBLocal;
+	_dir = ["read",[_namePlr, "plrDirection",0]] call _player_SaveDBLocal;
+	
 	_vars = ["read",[_namePlr, "plrVariables",[]]] call _player_SaveDBLocal;
 	_varsWeap = ["read",[_namePlr, "plrSecondWeapon",[]]] call _player_SaveDBLocal;
 	
@@ -19,6 +21,7 @@ if (_unit isKindOf "MAN") then {
 	
 	sleep 0.1;
 	_unit setPosATL _pos;
+	_unit setDir _dir;
 	_var = _vars select 0;
 	[_unit, _var] remoteExec ["setFace",0];
 	
