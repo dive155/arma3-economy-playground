@@ -1,26 +1,24 @@
-params [ 
-	"_anchorObject", 
-	["_initialize", { params["_worldState"]; }],
+params [  
+	["_initialize", { params["_missionNamespace"]; }],
 	["_onVariableChanged", { params ["_varName", "_newValue"];}]
 ];
 
-worldState = _anchorObject;
-worldStateVariableChangedCallbacks = [_onVariableChanged];
+missionNamespaceVariableChangedCallbacks = [_onVariableChanged];
 allWorldVariablesKey = "allWorldVariables";
 
 // Public method for CLIENT and SERVER
 fnc_subscribeToVariableChange = {
 	params ["_callback"];
-	worldStateVariableChangedCallbacks pushBack _callback;
+	missionNamespaceVariableChangedCallbacks pushBack _callback;
 };
 
 // Public method for CLIENT and SERVER
 fnc_getWorldVariable = {
 	params ["_varName"];
-	worldState getVariable _varName;
+	missionNamespace getVariable _varName;
 };
 
-// fnc_setWorldVariable asks server to change variable in worldState
+// fnc_setWorldVariable asks server to change variable in missionNamespace
 // server does it and then broadcast the changes to all clients so they could
 // invoke their localcallbacks
 // Public method for CLIENT and SERVER
@@ -32,11 +30,11 @@ fnc_setWorldVariable = {
 // Private method, meant to be called on SERVER
 fnc_setWorldVariableServer = {
 	params ["_varName", "_value"];
-	worldState setVariable [_varName, _value];
+	missionNamespace setVariable [_varName, _value, true];
 	
-	_allVars = worldState getVariable allWorldVariablesKey;
+	_allVars = missionNamespace getVariable allWorldVariablesKey;
 	_allVars pushBackUnique [_varName];
-	 worldState setVariable [allWorldVariablesKey, _allVars];
+	 missionNamespace setVariable [allWorldVariablesKey, _allVars, true];
 	
 	[_varName, _value] remoteExec ["fnc_handleWorldVariableChanged", 0];
 };
@@ -46,11 +44,11 @@ fnc_handleWorldVariableChanged = {
 	params ["_varName", "_value"];
 	{
 		[_varName, _value] call _x;
-	} forEach worldStateVariableChangedCallbacks;
+	} forEach missionNamespaceVariableChangedCallbacks;
 };
 
 if isServer then {
-	worldState setVariable [allWorldVariablesKey, []];
-	worldState call _initialize;
+	missionNamespace setVariable [allWorldVariablesKey, [], true];
+	missionNamespace call _initialize;
 };
 
