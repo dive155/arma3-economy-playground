@@ -1,0 +1,6 @@
++ Added proper support for singleplayer and 3Den testing
++ Simplified initServer.sqf and initPlayerLocal.sqf
++ Implemented customizeable database name to allow for separate databases for different missions
++ Split database into two environments (DEV and PROD), DEV to be used in 3Den and PROD to be used in live missions
++ Fixed playerData script crashing when no data present for the player when joining the game
++ Simplified how persistent crates are defined
