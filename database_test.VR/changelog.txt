@@ -6,8 +6,5 @@
 + Added ability to pass a list of names of custom persistent player variables to be used with getVariable
 + Simplified initServer.sqf and initPlayerLocal.sqf
 + Fixed playerData script crashing when no data present for the player when joining the game
++ Properly store preset player data when joining the game for the first time
 + Simplified how persistent crates are defined
-
-
-
-// TODO first time connection

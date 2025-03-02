@@ -1,3 +1,6 @@
+call compile preprocessFileLineNumbers "dataBase\savePlayerData.sqf";
+call compile preprocessFileLineNumbers "dataBase\loadPlayerData.sqf";
+
 params [
 	["_dbNameRoot", "DefaultDatabase"],
 	["_useIn3DEN", true],
@@ -12,8 +15,13 @@ shouldUseDB = not _is3DEN or (_is3DEN and _useIn3DEN);
 fnc_db_handlePlayerConnected = {
 	params ["_unit"];
 	
-	if (shouldUseDB) then {
-		[_unit] execVM "DataBase\loadPlayerData.sqf";
+	if not shouldUseDB exitWith { };
+	
+	if (_unit call fnc_db_checkIfHasDataForPlayer) then {
+		_unit call fnc_db_loadPlayerData;
+	} else {
+		// Player joining for the first time - save his data instead of loading
+		[_unit, false, dbPlrVarNames] call fnc_db_savePlayerData;
 	};
 };
 
@@ -34,7 +42,7 @@ addMissionEventHandler ['HandleDisconnect',{
 	_un = _this select 0;
 	_un enableSimulationGlobal false;
 	_un setDamage 0;
-	[_un, true, dbPlrVarNames] execVM "DataBase\savePlayerData.sqf";
+	[_un, true, dbPlrVarNames] call fnc_db_savePlayerData;
 }];
 
 sleep 5;
@@ -66,8 +74,8 @@ sleep 10;
 			// Making sure the player has not left the game since we started the loop
 			_currentPlayers = call BIS_fnc_listPlayers;
 			
-			if (_x in _currentPlayers) then {
-				[_x, false, dbPlrVarNames] execVM "DataBase\savePlayerData.sqf";
+			if (_x in _currentPlayers) then {;
+				[_x, false, dbPlrVarNames] call fnc_db_savePlayerData;
 				
 				// Saving is spaced out to avoid overloading server with save requests
 				sleep 3;
