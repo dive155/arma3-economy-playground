@@ -24,7 +24,11 @@ fnc_getVehicleData = {
 	} forEach _rawAnimSources;
 	
 	_textures = _rawVehData select 2;
-
+	
+	_damageStructural = damage _vehicle;
+	_damageHitPointsTemp = getAllHitPointsDamage _vehicle;
+	_damageHitPoints = [_damageHitPointsTemp select 0, _damageHitPointsTemp select 2];
+	
     _vehicleData = [
 		_className,
 		_position,
@@ -32,7 +36,9 @@ fnc_getVehicleData = {
 		_fuel,
 		_plate,
 		_flatAnimSources,
-		_textures
+		_textures,
+		_damageStructural,
+		_damageHitPoints
 	];
     _vehicleData
 };
@@ -46,7 +52,9 @@ fnc_createVehicleFromData = {
 		"_fuel",
 		"_plate",
 		"_flatAnimSources",
-		"_textures"
+		"_textures",
+		"_damageStructural",
+		"_damageHitPoints"
 	];
 	
 	_veh = createVehicle [_className, _position];
@@ -55,8 +63,23 @@ fnc_createVehicleFromData = {
 	[_veh, _plate] remoteExec ["setPlateNumber", _veh];
 	
     [_veh, false, _flatAnimSources] remoteExec ["BIS_fnc_initVehicle", _veh];
-	
 	{
 		_veh setObjectTextureGlobal [_forEachIndex, _x];
 	} forEach _textures;
+	
+	[_veh, _damageStructural, _damageHitPoints] remoteExec ["fnc_applyDamageLocal", _veh];
+};
+
+fnc_applyDamageLocal = {
+	params ["_vehicle", "_damageStructural", "_damageHitPoints"];
+	
+	_vehicle setDamage [_damageStructural, false];
+	
+	_hitPointNames = _damageHitPoints select 0;
+	_hitPointDamageValues = _damageHitPoints select 1;
+	systemChat str(_hitPointDamageValues);
+	{
+		_damage = _hitPointDamageValues select _forEachIndex;
+		_vehicle setHitPointDamage [_x, _damage, false];
+	} forEach _hitPointNames;
 };
