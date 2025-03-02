@@ -54,3 +54,22 @@ sleep 10;
 		sleep 20;
 	};
 };
+
+// Save players stuff from time to time
+0 spawn {
+	while { true } do {
+		_allPlayersToSave = call BIS_fnc_listPlayers;
+		{
+			// Making sure the player has not left the game since we started the loop
+			_currentPlayers = call BIS_fnc_listPlayers;
+			
+			if (_x in _currentPlayers) then {
+				[_x] execVM "DataBase\savePlayerData.sqf";
+				
+				// Saving is spaced out to avoid overloading server with save requests
+				sleep 3;
+			};
+			
+		} forEach _allPlayersToSave;
+	};
+};
