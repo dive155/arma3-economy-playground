@@ -1,14 +1,17 @@
-call compile preprocessFileLineNumbers "dataBase\savePlayerData.sqf";
-call compile preprocessFileLineNumbers "dataBase\loadPlayerData.sqf";
-call compile preprocessFileLineNumbers "dataBase\saveCrateData.sqf";
-call compile preprocessFileLineNumbers "dataBase\loadCrateData.sqf";
-
 params [
 	["_dbNameRoot", "DefaultDatabase"],
 	["_useIn3DEN", true],
 	["_crates", []],
-	["_plrVarNames", []]
+	["_plrVarNames", []],
+	["_worldGetters", []],
+	["_worldSetters", []]
 ];
+
+call compile preprocessFileLineNumbers "dataBase\savePlayerData.sqf";
+call compile preprocessFileLineNumbers "dataBase\loadPlayerData.sqf";
+call compile preprocessFileLineNumbers "dataBase\saveCrateData.sqf";
+call compile preprocessFileLineNumbers "dataBase\loadCrateData.sqf";
+[_worldGetters, _worldSetters] call compile preprocessFileLineNumbers "dataBase\handleWorldData.sqf";
 
 _is3DEN = is3DENPreview;
 shouldUseDB = not _is3DEN or (_is3DEN and _useIn3DEN);
@@ -37,6 +40,7 @@ _environmentPrefix = if (_is3DEN) then { "DEV_" } else { "PROD_" };
 _dbNameRootFull = _environmentPrefix + _dbNameRoot;
 dbNamePlayers = _dbNameRootFull + "_players";
 dbNameCrates = _dbNameRootFull + "_crates";
+dbNameWorld = _dbNameRootFull + "_world";
 dbPlrVarNames = _plrVarNames;
 
 // Save players stuff when they disconnect
@@ -54,8 +58,14 @@ sleep 5;
 	[_x] call fnc_db_loadCrateData;
 } forEach _crates;
 
-sleep 10;
+// Load world data
+if (call fnc_db_checkHasWorldData) then {
+	call fnc_db_loadWorldData;
+} else {
+	call fnc_db_saveWorldData;
+};
 
+sleep 10;
 
 // Save persistent crates inventory every 20 seconds
 [_crates] spawn {
@@ -84,5 +94,15 @@ sleep 10;
 			};
 			
 		} forEach _allPlayersToSave;
+	};
+};
+
+// Save world data every 25 seconds
+if ((count _worldGetters > 0) or (count _worldSetters > 0)) then {
+	0 spawn {
+		while { true } do {
+			call fnc_db_saveWorldData;
+			sleep 25;
+		};
 	};
 };
