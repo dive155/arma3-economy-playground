@@ -5,10 +5,10 @@
 + Added database splitting into two environments (DEV and PROD), DEV to be used in 3Den and PROD to be used in live missions
 + Added ability to pass a list of names of custom persistent player variables to be used with getVariable
 + Added storing preset player data when joining the game for the first time
-+ Added ability to stored any custom world data by providing delegates to the new handleWorldData script
++ Added ability to store any custom world data by providing delegates to the new handleWorldData script
 + Refactored initServer.sqf and initPlayerLocal.sqf
 + Refactored and simplified how persistent crates are defined in initServer
 + Refactored crate database to be more human-readable
-+ Refactored database scripts to be used as functions as opposed having to compile the whole script each time
++ Refactored database scripts to be used as functions as opposed to having to compile the whole script each time
 + Refactoring: merged load- and save- scripts to reduce clutter
-+ Fixed playerData script crashing when no data present for the player when joining the game
++ Fixed playerData script crashing when no data is present for the player when joining the game

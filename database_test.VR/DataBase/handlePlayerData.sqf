@@ -91,8 +91,11 @@ fnc_db_savePlayerData = {
 		
 		// If player is disconnecting delete the unit
 		if (_isDisconnecting) then {
-			sleep 2;
-			deleteVehicle _unit;
+			_unit spawn {
+				params ["_unit"];
+				sleep 2;
+				deleteVehicle _unit;
+			};
 		};
 	};
 };
