@@ -1,3 +1,6 @@
+
+_scriptHandle = execVM "dataBase\cloneVehicle.sqf";
+
 [
 	// Name root for the Database for this mission. It is recommended to have different names for different missions.
 	"TestDatabase",
@@ -20,3 +23,4 @@
 	// [["dateVar", { params["_value"]; [_value] call BIS_fnc_setDate }]]
 	[["dateVar", { params["_value"]; [_value] call BIS_fnc_setDate }]]
 ]call compile preprocessFileLineNumbers "dataBase\initDatabaseServer.sqf";
+
