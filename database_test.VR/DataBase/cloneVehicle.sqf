@@ -16,6 +16,7 @@ fnc_getVehicleData = {
 	_rawVehData = [_vehicle, [missionNamespace, "db_tempVehSave"]] call BIS_fnc_saveVehicle;
 	_className = _rawVehData select 0;
 	
+	// Default array is in a wrong format so we flatten it
 	_rawAnimSources = _rawVehData select 1;
 	_flatAnimSources = [];
 	{
@@ -29,6 +30,8 @@ fnc_getVehicleData = {
 	_damageHitPointsTemp = getAllHitPointsDamage _vehicle;
 	_damageHitPoints = [_damageHitPointsTemp select 0, _damageHitPointsTemp select 2];
 	
+	_cargo = _vehicle call KRV_saveCrate;
+	
     _vehicleData = [
 		_className,
 		_position,
@@ -38,7 +41,8 @@ fnc_getVehicleData = {
 		_flatAnimSources,
 		_textures,
 		_damageStructural,
-		_damageHitPoints
+		_damageHitPoints,
+		_cargo
 	];
     _vehicleData
 };
@@ -54,7 +58,8 @@ fnc_createVehicleFromData = {
 		"_flatAnimSources",
 		"_textures",
 		"_damageStructural",
-		"_damageHitPoints"
+		"_damageHitPoints",
+		"_cargo"
 	];
 	
 	_veh = createVehicle [_className, _position];
@@ -68,6 +73,8 @@ fnc_createVehicleFromData = {
 	} forEach _textures;
 	
 	[_veh, _damageStructural, _damageHitPoints] remoteExec ["fnc_applyDamageLocal", _veh];
+	
+	[_veh, _cargo] call KRV_loadCrate;
 };
 
 fnc_applyDamageLocal = {
@@ -77,9 +84,9 @@ fnc_applyDamageLocal = {
 	
 	_hitPointNames = _damageHitPoints select 0;
 	_hitPointDamageValues = _damageHitPoints select 1;
-	systemChat str(_hitPointDamageValues);
+
 	{
 		_damage = _hitPointDamageValues select _forEachIndex;
-		_vehicle setHitPointDamage [_x, _damage, false];
+		_vehicle setHitPointDamage [_x, _damage, true];
 	} forEach _hitPointNames;
 };
