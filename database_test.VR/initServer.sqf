@@ -9,5 +9,5 @@
 	[crate_1],
 	
 	// Names of custom persistent player variables to be used with getVariable.
-	["testVar"]
+	[]
 ]call compile preprocessFileLineNumbers "dataBase\initDatabaseServer.sqf";
