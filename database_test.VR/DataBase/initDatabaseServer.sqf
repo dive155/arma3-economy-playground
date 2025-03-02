@@ -7,10 +7,8 @@ params [
 	["_worldSetters", []]
 ];
 
-call compile preprocessFileLineNumbers "dataBase\savePlayerData.sqf";
-call compile preprocessFileLineNumbers "dataBase\loadPlayerData.sqf";
-call compile preprocessFileLineNumbers "dataBase\saveCrateData.sqf";
-call compile preprocessFileLineNumbers "dataBase\loadCrateData.sqf";
+call compile preprocessFileLineNumbers "dataBase\handlePlayerData.sqf";
+call compile preprocessFileLineNumbers "dataBase\handleCrateData.sqf";
 [_worldGetters, _worldSetters] call compile preprocessFileLineNumbers "dataBase\handleWorldData.sqf";
 
 _is3DEN = is3DENPreview;

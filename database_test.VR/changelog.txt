@@ -10,4 +10,5 @@
 + Refactored and simplified how persistent crates are defined in initServer
 + Refactored crate database to be more human-readable
 + Refactored database scripts to be used as functions as opposed having to compile the whole script each time
++ Refactoring: merged load- and save- scripts to reduce clutter
 + Fixed playerData script crashing when no data present for the player when joining the game
