@@ -1,7 +1,8 @@
 params [
 	["_dbNameRoot", "DefaultDatabase"],
 	["_useIn3DEN", true],
-	["_crates", []]
+	["_crates", []],
+	["_plrVarNames", []]
 ];
 
 _is3DEN = is3DENPreview;
@@ -26,13 +27,14 @@ _environmentPrefix = if (_is3DEN) then { "DEV_" } else { "PROD_" };
 _dbNameRootFull = _environmentPrefix + _dbNameRoot;
 dbNamePlayers = _dbNameRootFull + "_players";
 dbNameCrates = _dbNameRootFull + "_crates";
+dbPlrVarNames = _plrVarNames;
 
 // Save players stuff when they disconnect
 addMissionEventHandler ['HandleDisconnect',{
 	_un = _this select 0;
 	_un enableSimulationGlobal false;
 	_un setDamage 0;
-	[_un, true] execVM "DataBase\savePlayerData.sqf";
+	[_un, true, dbPlrVarNames] execVM "DataBase\savePlayerData.sqf";
 }];
 
 sleep 5;
@@ -65,7 +67,7 @@ sleep 10;
 			_currentPlayers = call BIS_fnc_listPlayers;
 			
 			if (_x in _currentPlayers) then {
-				[_x, false] execVM "DataBase\savePlayerData.sqf";
+				[_x, false, dbPlrVarNames] execVM "DataBase\savePlayerData.sqf";
 				
 				// Saving is spaced out to avoid overloading server with save requests
 				sleep 3;

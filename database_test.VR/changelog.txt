@@ -3,6 +3,11 @@
 + Added persistent player look direction
 + Added customizeable database name to allow for separate databases for different missions
 + Added database splitting into two environments (DEV and PROD), DEV to be used in 3Den and PROD to be used in live missions
++ Added ability to pass a list of names of custom persistent player variables to be used with getVariable
 + Simplified initServer.sqf and initPlayerLocal.sqf
 + Fixed playerData script crashing when no data present for the player when joining the game
 + Simplified how persistent crates are defined
+
+
+
+// TODO first time connection
