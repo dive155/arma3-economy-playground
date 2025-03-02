@@ -54,7 +54,7 @@ sleep 5;
 
 // Load inventory for all crates
 {
-	[_x] call fnc_db_loadCrateData;
+	[_x] spawn fnc_db_loadCrateData;
 } forEach _crates;
 
 // Load world data

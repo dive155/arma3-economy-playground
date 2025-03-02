@@ -30,7 +30,7 @@ fnc_getVehicleData = {
 	_damageHitPointsTemp = getAllHitPointsDamage _vehicle;
 	_damageHitPoints = [_damageHitPointsTemp select 0, _damageHitPointsTemp select 2];
 	
-	_cargo = _vehicle call KRV_saveCrate;
+	_cargo = _vehicle call fnc_db_getCargoData;
 	
     _vehicleData = [
 		_className,
@@ -74,7 +74,7 @@ fnc_createVehicleFromData = {
 	
 	[_veh, _damageStructural, _damageHitPoints] remoteExec ["fnc_applyDamageLocal", _veh];
 	
-	[_veh, _cargo] call KRV_loadCrate;
+	[_veh, _cargo] call fnc_db_loadCargoFromData;
 };
 
 fnc_applyDamageLocal = {
@@ -87,6 +87,6 @@ fnc_applyDamageLocal = {
 
 	{
 		_damage = _hitPointDamageValues select _forEachIndex;
-		_vehicle setHitPointDamage [_x, _damage, true];
+		_vehicle setHitPointDamage [_x, _damage, false];
 	} forEach _hitPointNames;
 };
