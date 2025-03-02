@@ -36,7 +36,11 @@ fnc_db_loadCrateData = {
 	_sections = "getSections" call _player_SaveDBLocal;
 	if not (_var in _sections) exitWith {}; 
 
-	_inv = ["read",[_var, "allCrateItems",[]]] call _player_SaveDBLocal;
-
-	[_crate,_inv] spawn KRV_loadCrate;
+	_weapons = ["read",[_var, "crateWeapons",[]]] call _player_SaveDBLocal;
+	_magazines = ["read",[_var, "crateMagazines",[]]] call _player_SaveDBLocal;
+	_items = ["read",[_var, "crateItems",[]]] call _player_SaveDBLocal;
+	_backpacks = ["read",[_var, "crateBackpacks",[]]] call _player_SaveDBLocal;
+	
+	_cargo = [_weapons, _magazines, _items, _backpacks];
+	[_crate,_cargo] spawn KRV_loadCrate;
 };
