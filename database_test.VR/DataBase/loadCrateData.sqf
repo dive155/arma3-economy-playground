@@ -1,14 +1,4 @@
-_unit = _this select 0;
-_player_SaveDBLocal = ["new", dbNameCrates] call OO_INIDBI;
-_var = vehicleVarName _unit;
-
-// No data yet for this crate - skipping.
-_sections = "getSections" call _player_SaveDBLocal;
-if not (_var in _sections) exitWith {}; 
-
-_inv = ["read",[_var, "allCrateItems",[]]] call _player_SaveDBLocal;
-
-KRV_LoadCrate = {
+KRV_loadCrate = {
 	_crate = _this select 0;
 	_cargo = _this select 1;
 	_weapons = _cargo select 0;
@@ -36,4 +26,17 @@ KRV_LoadCrate = {
 		_crate addBackpackCargoGlobal [((_backpacks select 0) select _i), ((_backpacks select 1) select _i)];
 	};
 };
-[_unit,_inv] spawn KRV_LoadCrate;
+
+fnc_db_loadCrateData = {
+	params ["_crate"];
+	_player_SaveDBLocal = ["new", dbNameCrates] call OO_INIDBI;
+	_var = vehicleVarName _crate;
+
+	// No data yet for this crate - skipping.
+	_sections = "getSections" call _player_SaveDBLocal;
+	if not (_var in _sections) exitWith {}; 
+
+	_inv = ["read",[_var, "allCrateItems",[]]] call _player_SaveDBLocal;
+
+	[_crate,_inv] spawn KRV_loadCrate;
+};

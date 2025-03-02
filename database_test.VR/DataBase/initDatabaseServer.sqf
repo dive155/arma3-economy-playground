@@ -1,5 +1,7 @@
 call compile preprocessFileLineNumbers "dataBase\savePlayerData.sqf";
 call compile preprocessFileLineNumbers "dataBase\loadPlayerData.sqf";
+call compile preprocessFileLineNumbers "dataBase\saveCrateData.sqf";
+call compile preprocessFileLineNumbers "dataBase\loadCrateData.sqf";
 
 params [
 	["_dbNameRoot", "DefaultDatabase"],
@@ -49,7 +51,7 @@ sleep 5;
 
 // Load inventory for all crates
 {
-	[_x] execVM "DataBase\loadCrateData.sqf";
+	[_x] call fnc_db_loadCrateData;
 } forEach _crates;
 
 sleep 10;
@@ -60,7 +62,7 @@ sleep 10;
 	params ["_crates"];
 	while {true} do {
 		{
-			[_x] execVM "DataBase\saveCrateData.sqf";
+			[_x] call fnc_db_saveCrateData;
 		} forEach _crates;
 		sleep 20;
 	};

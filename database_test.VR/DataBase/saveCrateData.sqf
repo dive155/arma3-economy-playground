@@ -1,4 +1,3 @@
-_unit = _this select 0;
 KRV_saveCrate = {
 	_crate = _this;
 	_weapons = getWeaponCargo _crate;
@@ -9,8 +8,11 @@ KRV_saveCrate = {
 	_cargo
 };
 
-_cargo = _unit call KRV_saveCrate;
-_var = vehicleVarName _unit;
-_player_SaveDBLocal = ["new", dbNameCrates] call OO_INIDBI;
-_loadout = ["write", [_var, "allCrateItems", _cargo]] call _player_SaveDBLocal;
+fnc_db_saveCrateData = {
+	params ["_crate"];
 
+	_cargo = _crate call KRV_saveCrate;
+	_var = vehicleVarName _crate;
+	_player_SaveDBLocal = ["new", dbNameCrates] call OO_INIDBI;
+	_loadout = ["write", [_var, "allCrateItems", _cargo]] call _player_SaveDBLocal;
+};
