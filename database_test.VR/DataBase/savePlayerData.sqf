@@ -1,4 +1,5 @@
-_unit = _this select 0;
+params ["_unit", "_isDisconnecting"];
+
 if (_unit isKindOf "MAN") then {
 	_namePlr = _unit getVariable "KRV_playerID";
 	_player_SaveDBLocal = ["new", dbNamePlayers] call OO_INIDBI;
@@ -10,10 +11,16 @@ if (_unit isKindOf "MAN") then {
 	
 	if (!(isNil {_unit getVariable "WBK_SecondWeapon"})) then {
 		_crate = (_unit getVariable "WBK_SecondWeapon") select 0;
-		deleteVehicle _crate;
 		_plSecWeap = (_unit getVariable "WBK_SecondWeapon") select 1;
 		_varsWeap = ["write", [_namePlr, "plrSecondWeapon", _plSecWeap]] call _player_SaveDBLocal;
+		
+		if (_isDisconnecting) then {
+			deleteVehicle _crate;
+		};
 	};
-	sleep 2;
-	deleteVehicle _unit;
+	
+	if (_isDisconnecting) then {
+		sleep 2;
+		deleteVehicle _unit;
+	};
 };

@@ -32,7 +32,7 @@ addMissionEventHandler ['HandleDisconnect',{
 	_un = _this select 0;
 	_un enableSimulationGlobal false;
 	_un setDamage 0;
-	[_un] execVM "DataBase\savePlayerData.sqf";
+	[_un, true] execVM "DataBase\savePlayerData.sqf";
 }];
 
 sleep 5;
@@ -43,6 +43,7 @@ sleep 5;
 } forEach _crates;
 
 sleep 10;
+
 
 // Save persistent crates inventory every 20 seconds
 [_crates] spawn {
@@ -64,7 +65,7 @@ sleep 10;
 			_currentPlayers = call BIS_fnc_listPlayers;
 			
 			if (_x in _currentPlayers) then {
-				[_x] execVM "DataBase\savePlayerData.sqf";
+				[_x, false] execVM "DataBase\savePlayerData.sqf";
 				
 				// Saving is spaced out to avoid overloading server with save requests
 				sleep 3;
