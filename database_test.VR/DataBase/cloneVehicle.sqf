@@ -28,7 +28,10 @@ fnc_getVehicleData = {
 	
 	_damageStructural = damage _vehicle;
 	_damageHitPointsTemp = getAllHitPointsDamage _vehicle;
-	_damageHitPoints = [_damageHitPointsTemp select 0, _damageHitPointsTemp select 2];
+	
+	_damageHitPoints = if (count _damageHitPointsTemp < 3) then { [] } else {
+		[_damageHitPointsTemp select 0, _damageHitPointsTemp select 2]
+	};
 	
 	_cargo = _vehicle call fnc_db_getCargoData;
 	
@@ -81,6 +84,8 @@ fnc_applyDamageLocal = {
 	params ["_vehicle", "_damageStructural", "_damageHitPoints"];
 	
 	_vehicle setDamage [_damageStructural, false];
+	
+	if (count _damageHitPoints < 2) exitWith {};
 	
 	_hitPointNames = _damageHitPoints select 0;
 	_hitPointDamageValues = _damageHitPoints select 1;
