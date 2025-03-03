@@ -37,6 +37,8 @@ fnc_getVehicleData = {
 	
 	_turretMagazines = magazinesAllTurrets _vehicle;
 	
+	_pylons = getAllPylonsInfo _vehicle;
+	
     _vehicleData = [
 		_className,
 		_position,
@@ -48,7 +50,8 @@ fnc_getVehicleData = {
 		_damageStructural,
 		_damageHitPoints,
 		_cargo,
-		_turretMagazines
+		_turretMagazines,
+		_pylons
 	];
     _vehicleData
 };
@@ -66,7 +69,8 @@ fnc_createVehicleFromData = {
 		"_damageStructural",
 		"_damageHitPoints",
 		"_cargo",
-		"_turretMagazines"
+		"_turretMagazines",
+		"_pylons"
 	];
 	
 	_veh = createVehicle [_className, _position];
@@ -83,7 +87,11 @@ fnc_createVehicleFromData = {
 	
 	[_veh, _cargo] spawn fnc_db_loadCargoFromData;
 	
-	[_veh, _turretMagazines] spawn fnc_addTurretMagazinesLocal;
+	[_veh, _turretMagazines] call fnc_addTurretMagazines;
+	
+	sleep 1.5;
+	
+	[_veh, _pylons] spawn fnc_addVehiclePylons;
 };
 
 fnc_applyDamageLocal = {
@@ -102,7 +110,7 @@ fnc_applyDamageLocal = {
 	} forEach _hitPointNames;
 };
 
-fnc_addTurretMagazinesLocal = {
+fnc_addTurretMagazines = {
 	params ["_vehicle", "_turretMagazines"];
 	_vehicle setVehicleAmmo 0;
 	
@@ -122,6 +130,7 @@ fnc_addTurretMagazinesLocal = {
 			[_vehicle, [_x, _path]] remoteExec ["removeWeaponTurret", _owner]; ;
 		} forEach _weapons;
 	} forEach _allPaths;
+	sleep 0.5;
 	
 	// Adding magazines
 	{
@@ -132,6 +141,7 @@ fnc_addTurretMagazinesLocal = {
 		
 		[_vehicle, [_magType, _path, _ammoCount]] remoteExec ["addMagazineTurret", _owner];
 	} forEach _turretMagazines;
+	sleep 0.5;
 	
 	// Adding weapons back in
 	{
@@ -144,4 +154,20 @@ fnc_addTurretMagazinesLocal = {
 		} forEach _weapons;
 
 	} forEach _allWeapons;
+};
+
+fnc_addVehiclePylons = {
+	params ["_vehicle", "_pylonsData"];
+	
+	{
+		_pylonId = _x select 0;
+		_path = _x select 2;
+		_magazine = _x select 3;
+		_ammo = _x select 4;
+		
+		[_vehicle, [_pylonId, _magazine, false, _path]] remoteExec ["setPylonLoadout", _vehicle];
+		sleep 0.5;
+		[_vehicle, [_pylonId, _ammo]] remoteExec ["setAmmoOnPylon", _vehicle];
+		
+	} forEach _pylonsData;
 };

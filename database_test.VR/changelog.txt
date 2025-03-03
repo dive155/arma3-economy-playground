@@ -19,3 +19,4 @@ TODO
 Probably don't save world state unless requested
 Cloning of crates
 Check where call can be replaced with spawn
+Save everything at set interval
