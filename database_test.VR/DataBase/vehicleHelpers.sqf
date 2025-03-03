@@ -12,8 +12,9 @@ fnc_generateUniqueID = {
 };
 
 fnc_assignRandomVarName = {
-	params ["_vehicle", ["_prefix", ""]];
+	params ["_vehicle"];
 	
+	_prefix = typeOf _vehicle;
 	_varName = "";
 	while { true } do {
 		_suffix = call fnc_generateUniqueID;
@@ -25,6 +26,7 @@ fnc_assignRandomVarName = {
 	};
 	
 	[_vehicle, _varName] remoteExec ["fnc_db_setVarName", 0];
+	_varName;
 };
 
 fnc_db_setVarName = {
@@ -33,12 +35,12 @@ params ["_vehicle", "_varName"];
 	missionNamespace setVariable [_varName, _vehicle];
 };
 
-fnc_cloneVehicle = {
-	params ["_vehicle"];
+// fnc_cloneVehicle = {
+	// params ["_vehicle"];
 	
-	_vehicleData = [_vehicle] call fnc_getVehicleData;
-	[_vehicleData] call fnc_createVehicleFromData;
-};
+	// _vehicleData = [_vehicle] call fnc_getVehicleData;
+	// [_vehicleData] call fnc_createVehicleFromData;
+// };
 
 fnc_getVehicleData = {
 	params ["_vehicle"];
@@ -119,19 +121,39 @@ fnc_createVehicleFromData = {
 	};
 	
 	[_veh, _varName] remoteExec ["fnc_db_setVarName", 0];
-	[_veh, _rotation] remoteExec ["setVectorDir", _veh];
-	[_veh, _fuel] remoteExec ["setFuel", _veh];
-	[_veh, _plate] remoteExec ["setPlateNumber", _veh];
+	[_veh, _vehicleData] remoteExec ["fnc_initializeExistingVehicleLocally", _veh];
+};
+
+fnc_initializeExistingVehicleLocally = {
+	params ["_veh", "_vehicleData"];
+	_vehicleData params [
+		"_varName",
+		"_className",
+		"_position",
+		"_rotation",
+		"_fuel",
+		"_plate",
+		"_flatAnimSources",
+		"_textures",
+		"_damageStructural",
+		"_damageHitPoints",
+		"_cargo",
+		"_turretMagazines",
+		"_pylons"
+	];
+		
+	_veh setVectorDir _rotation;
+	_veh setFuel _fuel;
+	_veh setPlateNumber _plate;
 	
     [_veh, false, _flatAnimSources] remoteExec ["BIS_fnc_initVehicle", _veh];
 	{
 		_veh setObjectTextureGlobal [_forEachIndex, _x];
 	} forEach _textures;
 	
+	// TODO this bunch could be called without remoteExec but it crashes, fix later
 	[_veh, _damageStructural, _damageHitPoints] remoteExec ["fnc_applyDamageLocal", _veh];
-	
 	[_veh, _cargo] spawn fnc_db_loadCargoFromData;
-	
 	[_veh, _turretMagazines] call fnc_addTurretMagazines;
 	
 	sleep 1.5;

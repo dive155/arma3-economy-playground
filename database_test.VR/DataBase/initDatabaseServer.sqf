@@ -61,7 +61,7 @@ sleep 5;
 } forEach _crates;
 
 // Load all vehicles
-0 spawn fn_db_loadAllVehicleData;
+0 spawn fn_db_loadAllVehicles;
 
 // Load world data
 if (call fnc_db_checkHasWorldData) then {

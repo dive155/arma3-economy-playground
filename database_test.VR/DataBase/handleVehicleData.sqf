@@ -1,8 +1,14 @@
 fn_db_saveVehicleData = {
 	params ["_vehicle"];
 	
+	_varName = vehicleVarName _vehicle;
+	if (_varName == "") then {
+		_varName = [_vehicle] call fnc_assignRandomVarName;
+		waitUntil { (vehicleVarName _vehicle) != "" };
+	};
+	
 	_vehicleData = _vehicle call fnc_getVehicleData;
-	_section = vehicleVarName _vehicle;
+	_section = _varName;
 	_dbHandle = ["new", dbNameVehicles] call OO_INIDBI;
 	
 	["write", [_section, "varName", _vehicleData select 0]] call _dbHandle;
@@ -22,7 +28,7 @@ fn_db_saveVehicleData = {
 	["write", [_section, "pylons", _vehicleData select 12]] call _dbHandle;
 };
 
-fn_db_loadAllVehicleData = {
+fn_db_loadAllVehicles = {
 	_dbHandle = ["new", dbNameVehicles] call OO_INIDBI;
 	_sections = "getSections" call _dbHandle;
 	
