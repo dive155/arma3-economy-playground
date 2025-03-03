@@ -35,6 +35,8 @@ fnc_getVehicleData = {
 	
 	_cargo = _vehicle call fnc_db_getCargoData;
 	
+	_turretMagazines = magazinesAllTurrets _vehicle;
+	
     _vehicleData = [
 		_className,
 		_position,
@@ -45,7 +47,8 @@ fnc_getVehicleData = {
 		_textures,
 		_damageStructural,
 		_damageHitPoints,
-		_cargo
+		_cargo,
+		_turretMagazines
 	];
     _vehicleData
 };
@@ -62,7 +65,8 @@ fnc_createVehicleFromData = {
 		"_textures",
 		"_damageStructural",
 		"_damageHitPoints",
-		"_cargo"
+		"_cargo",
+		"_turretMagazines"
 	];
 	
 	_veh = createVehicle [_className, _position];
@@ -77,7 +81,9 @@ fnc_createVehicleFromData = {
 	
 	[_veh, _damageStructural, _damageHitPoints] remoteExec ["fnc_applyDamageLocal", _veh];
 	
-	[_veh, _cargo] call fnc_db_loadCargoFromData;
+	[_veh, _cargo] spawn fnc_db_loadCargoFromData;
+	
+	[_veh, _turretMagazines] spawn fnc_addTurretMagazinesLocal;
 };
 
 fnc_applyDamageLocal = {
@@ -94,4 +100,29 @@ fnc_applyDamageLocal = {
 		_damage = _hitPointDamageValues select _forEachIndex;
 		_vehicle setHitPointDamage [_x, _damage, false];
 	} forEach _hitPointNames;
+};
+
+fnc_addTurretMagazinesLocal = {
+	params ["_vehicle", "_turretMagazines"];
+	_vehicle setVehicleAmmo 0;
+	
+	if (count _turretMagazines == 0) exitWith {};
+	
+	_allPaths = [];
+	{
+		_magType = _x select 0;
+		_path = _x select 1;
+		_ammoCount = _x select 2;
+		_owner = _vehicle turretOwner _path;
+		
+		[_vehicle, [_magType, _path, _ammoCount]] remoteExec ["addMagazineTurret", _owner];
+		
+		_allPaths pushBackUnique _path;
+		
+		//_weapons = vehicle player weaponsTurret [0,0];
+	} forEach _turretMagazines;
+	
+	{
+		_weapons = _vehicle weaponsTurret _x;
+	} forEach _allPaths;
 };
