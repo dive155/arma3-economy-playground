@@ -2,6 +2,7 @@ params [
 	["_dbNameRoot", "DefaultDatabase"],
 	["_useIn3DEN", true],
 	["_crates", []],
+	["_vehicles", []],
 	["_plrVarNames", []],
 	["_worldGetters", []],
 	["_worldSetters", []]
@@ -9,6 +10,7 @@ params [
 
 call compile preprocessFileLineNumbers "dataBase\cargoHelpers.sqf";
 call compile preprocessFileLineNumbers "dataBase\handleCrateData.sqf";
+call compile preprocessFileLineNumbers "dataBase\handleVehicleData.sqf";
 call compile preprocessFileLineNumbers "dataBase\handlePlayerData.sqf";
 [_worldGetters, _worldSetters] call compile preprocessFileLineNumbers "dataBase\handleWorldData.sqf";
 
@@ -40,6 +42,7 @@ _dbNameRootFull = _environmentPrefix + _dbNameRoot;
 dbNamePlayers = _dbNameRootFull + "_players";
 dbNameCrates = _dbNameRootFull + "_crates";
 dbNameWorld = _dbNameRootFull + "_world";
+dbNameVehicles = _dbNameRootFull + "_vehicles";
 dbPlrVarNames = _plrVarNames;
 
 // Save players stuff when they disconnect
@@ -57,6 +60,9 @@ sleep 5;
 	[_x] spawn fnc_db_loadCrateData;
 } forEach _crates;
 
+// Load all vehicles
+0 spawn fn_db_loadAllVehicleData;
+
 // Load world data
 if (call fnc_db_checkHasWorldData) then {
 	call fnc_db_loadWorldData;
@@ -67,12 +73,16 @@ if (call fnc_db_checkHasWorldData) then {
 sleep 10;
 
 // Save persistent crates inventory every 20 seconds
-[_crates] spawn {
-	params ["_crates"];
+[_crates, _vehicles] spawn {
+	params ["_crates", "_vehicles"];
 	while {true} do {
 		{
-			[_x] call fnc_db_saveCrateData;
+			[_x] spawn fnc_db_saveCrateData;
 		} forEach _crates;
+		sleep 20;
+		{
+			[_x] spawn fn_db_saveVehicleData;
+		} forEach _vehicles;
 		sleep 20;
 	};
 };

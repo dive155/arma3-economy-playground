@@ -1,3 +1,8 @@
++ Added saving of vehicles, including:
+	+ Appearance (skin, components, number plate etc)
+	+ Damage state
+	+ Ammo in turrets
+	+ Ammo on pylon
 + Added proper support for singleplayer and 3Den testing
 + Added player data autosaving which happens from time to time, as opposed to only on disconnecting
 + Added persistent player look direction
@@ -20,3 +25,4 @@ Probably don't save world state unless requested
 Cloning of crates
 Check where call can be replaced with spawn
 Save everything at set interval
+Optimize saving, too much remoteexecs when cloning

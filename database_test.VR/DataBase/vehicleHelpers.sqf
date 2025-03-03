@@ -1,3 +1,38 @@
+db_lastUniqueId = 0;
+fnc_generateUniqueID = {
+    // Use time as the seed for the random number generator
+    private _seed = time + db_lastUniqueId;
+
+    // Generate a random number between 0 and a large value (e.g., 1 million)
+    private _uniqueID = floor (_seed random 1000000);
+	
+	db_lastUniqueId = _uniqueID;
+	
+    _uniqueID
+};
+
+fnc_assignRandomVarName = {
+	params ["_vehicle", ["_prefix", ""]];
+	
+	_varName = "";
+	while { true } do {
+		_suffix = call fnc_generateUniqueID;
+		_varName = _prefix + "_" + str(_suffix);
+		
+		// Make sure the name is unique
+		_existingVar = missionNamespace getVariable [_varName, objNull];
+		if (isNull _existingVar) exitWith {};
+	};
+	
+	[_vehicle, _varName] remoteExec ["fnc_db_setVarName", 0];
+};
+
+fnc_db_setVarName = {
+params ["_vehicle", "_varName"];
+	_vehicle setVehicleVarName _varName;
+	missionNamespace setVariable [_varName, _vehicle];
+};
+
 fnc_cloneVehicle = {
 	params ["_vehicle"];
 	
@@ -7,8 +42,8 @@ fnc_cloneVehicle = {
 
 fnc_getVehicleData = {
 	params ["_vehicle"];
-	
-	_position = (getPosATL _vehicle) vectorAdd [20, 0, 0];
+	_varName = vehicleVarName _vehicle;
+	_position = getPosATL _vehicle;
     _rotation = vectorDir _vehicle;
 	_fuel = fuel _vehicle;
 	_plate = getPlateNumber _vehicle;
@@ -40,6 +75,7 @@ fnc_getVehicleData = {
 	_pylons = getAllPylonsInfo _vehicle;
 	
     _vehicleData = [
+		_varName,
 		_className,
 		_position,
 		_rotation,
@@ -57,8 +93,9 @@ fnc_getVehicleData = {
 };
 
 fnc_createVehicleFromData = {
-	params ["_vehicleData"];
+	params ["_vehicleData", ["_existingVehicle", objNull]];
 	_vehicleData params [
+		"_varName",
 		"_className",
 		"_position",
 		"_rotation",
@@ -73,7 +110,15 @@ fnc_createVehicleFromData = {
 		"_pylons"
 	];
 	
-	_veh = createVehicle [_className, _position];
+	_veh = _existingVehicle;
+	if (isNull _veh) then { 
+		_veh = createVehicle [_className, _position];
+		[_veh, _varName] remoteExec ["fnc_db_setVarName", 0];
+	} else {
+		[_veh, _position] remoteExec ["setPostATL", _veh];
+	};
+	
+	[_veh, _varName] remoteExec ["fnc_db_setVarName", 0];
 	[_veh, _rotation] remoteExec ["setVectorDir", _veh];
 	[_veh, _fuel] remoteExec ["setFuel", _veh];
 	[_veh, _plate] remoteExec ["setPlateNumber", _veh];
@@ -158,6 +203,8 @@ fnc_addTurretMagazines = {
 
 fnc_addVehiclePylons = {
 	params ["_vehicle", "_pylonsData"];
+	
+	if (count _pylonsData == 0) exitWith {};
 	
 	{
 		_pylonId = _x select 0;

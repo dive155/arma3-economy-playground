@@ -1,5 +1,5 @@
 
-_scriptHandle = execVM "dataBase\cloneVehicle.sqf";
+_scriptHandle = execVM "dataBase\vehicleHelpers.sqf";
 
 [
 	// Name root for the Database for this mission. It is recommended to have different names for different missions.
@@ -10,6 +10,9 @@ _scriptHandle = execVM "dataBase\cloneVehicle.sqf";
 	
 	// List of persistent crates.
 	[crate_1],
+	
+	// List of persistent vehicles.
+	[amobus],
 	
 	// Names of custom persistent player variables to be used with getVariable.
 	[],
