@@ -26,3 +26,4 @@ Cloning of crates
 Check where call can be replaced with spawn
 Save everything at set interval
 Optimize saving, too much remoteexecs when cloning
+Optimize saving, it lags

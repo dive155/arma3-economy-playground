@@ -43,7 +43,10 @@ dbNamePlayers = _dbNameRootFull + "_players";
 dbNameCrates = _dbNameRootFull + "_crates";
 dbNameWorld = _dbNameRootFull + "_world";
 dbNameVehicles = _dbNameRootFull + "_vehicles";
+
 dbPlrVarNames = _plrVarNames;
+dbVehiclesToTrack = _vehicles;
+systemChat ("0 " + str(dbVehiclesToTrack));
 
 // Save players stuff when they disconnect
 addMissionEventHandler ['HandleDisconnect',{
@@ -73,17 +76,19 @@ if (call fnc_db_checkHasWorldData) then {
 sleep 10;
 
 // Save persistent crates inventory every 20 seconds
-[_crates, _vehicles] spawn {
-	params ["_crates", "_vehicles"];
+[_crates] spawn {
+	params ["_crates"];
 	while {true} do {
 		{
 			[_x] spawn fnc_db_saveCrateData;
 		} forEach _crates;
-		sleep 20;
+		systemChat ("saved crates");
+		sleep 2;
 		{
 			[_x] spawn fn_db_saveVehicleData;
-		} forEach _vehicles;
-		sleep 20;
+		} forEach dbVehiclesToTrack;
+		systemChat ("saved vics");
+		sleep 2;
 	};
 };
 

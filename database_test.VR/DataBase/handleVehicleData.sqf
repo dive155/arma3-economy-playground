@@ -1,11 +1,15 @@
 fn_db_saveVehicleData = {
 	params ["_vehicle"];
 	
+	systemChat ("aa " + str(_vehicle) + " bb " + typeName _vehicle);
+	
 	_varName = vehicleVarName _vehicle;
 	if (_varName == "") then {
 		_varName = [_vehicle] call fnc_assignRandomVarName;
 		waitUntil { (vehicleVarName _vehicle) != "" };
 	};
+	
+	dbVehiclesToTrack pushBackUnique _vehicle;
 	
 	_vehicleData = _vehicle call fnc_getVehicleData;
 	_section = _varName;
@@ -32,10 +36,23 @@ fn_db_loadAllVehicles = {
 	_dbHandle = ["new", dbNameVehicles] call OO_INIDBI;
 	_sections = "getSections" call _dbHandle;
 	
+	// Vehicles that we need to track but are not in the db
+	{
+		if not ((vehicleVarName _x) in _sections) then {
+			_x call fn_db_saveVehicleData;
+		};
+	} forEach dbVehiclesToTrack;
+	
+	// Load the DB, add new elements to dbVehiclesToTrack
 	{
 		_exsistingVehicle = missionNamespace getVariable [_x, objNull];
 		_vehicleData = [_x] call fn_db_loadVehicleData;
 		[_vehicleData, _exsistingVehicle] call fnc_createVehicleFromData;
+		
+		_varName = _vehicleData select 0;
+		waitUntil { not isNull (missionNamespace getVariable [_varName, objNull]) };
+		
+		dbVehiclesToTrack pushBackUnique (missionNamespace getVariable _varName);
 	} forEach _sections;
 };
 
@@ -80,5 +97,7 @@ fn_db_loadVehicleData = {
 fn_db_removeVehicleFromData = {
 	params ["_vehicle"];
 	_dbHandle = ["new", dbNameVehicles] call OO_INIDBI;
+	_varName = vehicleVarName _vehicle;
 	["deleteSection", vehicleVarName _vehicle] call _dbHandle;
+	dbVehiclesToTrack = dbVehiclesToTrack  - [_vehicle];
 };

@@ -70,11 +70,14 @@ fnc_getVehicleData = {
 		[_damageHitPointsTemp select 0, _damageHitPointsTemp select 2]
 	};
 	
-	_cargo = _vehicle call fnc_db_getCargoData;
-	
-	_turretMagazines = magazinesAllTurrets _vehicle;
-	
-	_pylons = getAllPylonsInfo _vehicle;
+	_cargo = [];
+	_turretMagazines = [];
+	_pylons = [];
+	if (_damageStructural < 1) then {
+		_cargo = _vehicle call fnc_db_getCargoData;
+		_turretMagazines = magazinesAllTurrets _vehicle;
+		_pylons = getAllPylonsInfo _vehicle;
+	};
 	
     _vehicleData = [
 		_varName,
@@ -153,12 +156,15 @@ fnc_initializeExistingVehicleLocally = {
 	
 	// TODO this bunch could be called without remoteExec but it crashes, fix later
 	[_veh, _damageStructural, _damageHitPoints] remoteExec ["fnc_applyDamageLocal", _veh];
-	[_veh, _cargo] spawn fnc_db_loadCargoFromData;
-	[_veh, _turretMagazines] call fnc_addTurretMagazines;
 	
-	sleep 1.5;
-	
-	[_veh, _pylons] spawn fnc_addVehiclePylons;
+	if (_damageStructural < 1) then {
+		[_veh, _cargo] spawn fnc_db_loadCargoFromData;
+		[_veh, _turretMagazines] call fnc_addTurretMagazines;
+		
+		sleep 1.5;
+		
+		[_veh, _pylons] spawn fnc_addVehiclePylons;
+	};
 };
 
 fnc_applyDamageLocal = {
