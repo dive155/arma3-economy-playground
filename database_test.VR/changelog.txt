@@ -18,8 +18,4 @@
 TODO
 Probably don't save world state unless requested
 Cloning of crates
-Clone turret ammo
-https://community.bistudio.com/wiki/weaponsTurret examples
 Check where call can be replaced with spawn
-
-Reload turret weapon https://www.reddit.com/r/arma/comments/esavat/comment/ff9c10p/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button

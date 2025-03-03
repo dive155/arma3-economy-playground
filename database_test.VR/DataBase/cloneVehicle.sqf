@@ -108,7 +108,22 @@ fnc_addTurretMagazinesLocal = {
 	
 	if (count _turretMagazines == 0) exitWith {};
 	
-	_allPaths = [];
+	// Without this hack weapons will be unloaded when the vehicle is spawned
+	// Gathering all weapons and removing them
+	_allWeapons = [];
+	_allPaths = [[-1]] + allTurrets _vehicle;
+	{
+		_path = _x;
+		_weapons = _vehicle weaponsTurret _path;
+		_allWeapons pushBack [_path, _weapons];
+		_owner = _vehicle turretOwner _path;
+		
+		{
+			[_vehicle, [_x, _path]] remoteExec ["removeWeaponTurret", _owner]; ;
+		} forEach _weapons;
+	} forEach _allPaths;
+	
+	// Adding magazines
 	{
 		_magType = _x select 0;
 		_path = _x select 1;
@@ -116,13 +131,17 @@ fnc_addTurretMagazinesLocal = {
 		_owner = _vehicle turretOwner _path;
 		
 		[_vehicle, [_magType, _path, _ammoCount]] remoteExec ["addMagazineTurret", _owner];
-		
-		_allPaths pushBackUnique _path;
-		
-		//_weapons = vehicle player weaponsTurret [0,0];
 	} forEach _turretMagazines;
 	
+	// Adding weapons back in
 	{
-		_weapons = _vehicle weaponsTurret _x;
-	} forEach _allPaths;
+		_path = _x select 0;
+		_weapons = _x select 1;
+		_owner = _vehicle turretOwner _path;
+		
+		{
+			[_vehicle, [_x, _path]] remoteExec ["addWeaponTurret", _owner];
+		} forEach _weapons;
+
+	} forEach _allWeapons;
 };
