@@ -85,7 +85,8 @@ sleep 10;
 		systemChat ("saved crates");
 		sleep 2;
 		{
-			[_x] spawn fn_db_saveVehicleData;
+			_handle = [_x] spawn fn_db_saveVehicleData;
+			waitUntil { scriptDone _handle };
 		} forEach dbVehiclesToTrack;
 		systemChat ("saved vics");
 		sleep 2;

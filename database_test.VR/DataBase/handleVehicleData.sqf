@@ -1,8 +1,6 @@
 fn_db_saveVehicleData = {
 	params ["_vehicle"];
 	
-	systemChat ("aa " + str(_vehicle) + " bb " + typeName _vehicle);
-	
 	_varName = vehicleVarName _vehicle;
 	if (_varName == "") then {
 		_varName = [_vehicle] call fnc_assignRandomVarName;
@@ -13,6 +11,7 @@ fn_db_saveVehicleData = {
 	
 	_vehicleData = _vehicle call fnc_getVehicleData;
 	_section = _varName;
+		
 	_dbHandle = ["new", dbNameVehicles] call OO_INIDBI;
 	
 	["write", [_section, "varName", _vehicleData select 0]] call _dbHandle;

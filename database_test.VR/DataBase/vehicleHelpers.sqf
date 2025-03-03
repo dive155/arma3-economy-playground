@@ -50,26 +50,24 @@ fnc_getVehicleData = {
 	_fuel = fuel _vehicle;
 	_plate = getPlateNumber _vehicle;
 	
-	_rawVehData = [_vehicle, [missionNamespace, "db_tempVehSave"]] call BIS_fnc_saveVehicle;
-	_className = _rawVehData select 0;
+	_className = typeOf _vehicle;
 	
-	// Default array is in a wrong format so we flatten it
-	_rawAnimSources = _rawVehData select 1;
 	_flatAnimSources = [];
 	{
-		_flatAnimSources pushBack (_x select 0);
-		_flatAnimSources pushBack (_x select 1);
-	} forEach _rawAnimSources;
-	
-	_textures = _rawVehData select 2;
-	
+		_anim = configname _x;
+		_flatAnimSources pushback _anim;
+		_flatAnimSources pushback (_vehicle animationphase _anim);
+	} foreach (configProperties [configfile >> "CfgVehicles" >> typeof _vehicle >> "animationSources","isclass _x",true]);
+
+	_textures = getobjecttextures _vehicle;
+
 	_damageStructural = damage _vehicle;
 	_damageHitPointsTemp = getAllHitPointsDamage _vehicle;
 	
 	_damageHitPoints = if (count _damageHitPointsTemp < 3) then { [] } else {
 		[_damageHitPointsTemp select 0, _damageHitPointsTemp select 2]
 	};
-	
+
 	_cargo = [];
 	_turretMagazines = [];
 	_pylons = [];
@@ -119,8 +117,6 @@ fnc_createVehicleFromData = {
 	if (isNull _veh) then { 
 		_veh = createVehicle [_className, _position];
 		[_veh, _varName] remoteExec ["fnc_db_setVarName", 0];
-	} else {
-		[_veh, _position] remoteExec ["setPostATL", _veh];
 	};
 	
 	[_veh, _varName] remoteExec ["fnc_db_setVarName", 0];
@@ -144,7 +140,8 @@ fnc_initializeExistingVehicleLocally = {
 		"_turretMagazines",
 		"_pylons"
 	];
-		
+	
+	_veh setPosATL _position;	
 	_veh setVectorDir _rotation;
 	_veh setFuel _fuel;
 	_veh setPlateNumber _plate;

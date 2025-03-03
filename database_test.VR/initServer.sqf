@@ -12,7 +12,8 @@ _scriptHandle = execVM "dataBase\vehicleHelpers.sqf";
 	[crate_1],
 	
 	// List of persistent vehicles.
-	[amobus, amobus_1, amobus_2, amobus_3, amobus_4, amobus_5, amobus_6, amobus_7, amobus_8, amobus_9, amobus_10 ],
+	//[amobus, amobus_1, amobus_2, amobus_3, amobus_4, amobus_5, amobus_6, amobus_7, amobus_8, amobus_9, amobus_10 ],
+	[amobus],
 	
 	// Names of custom persistent player variables to be used with getVariable.
 	[],
