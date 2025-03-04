@@ -128,5 +128,20 @@
 		<English>You have accumulated too much Work Fatique for the day and can't do this action.</English>
 		<Russian>Вы накопили слишком много Усталости от Работы за день и не можете совершить это действие.</Russian>
 	</Key>
+	<Key ID="STR_buyThing">
+		<Original>Buy %1</Original>
+		<English>Buy %1</English>
+		<Russian>Купить %1.</Russian>
+	</Key>
+	<Key ID="STR_moneyExchangeReport">
+		<Original>Exchanged %1 %2\nTo %3 %4\nExchange Rate: %5\nChange: %6</Original>
+		<English>Exchanged %1 %2\nTo %3 %4\nExchange Rate: %5\nChange: %6</English>
+		<Russian>Обменял %1 %2\nНа %3 %4\nКурс Обмена: %5\nСдача: %6</Russian>
+	</Key>
+	<Key ID="STR_moneyExchangeNoMoney">
+		<Original>Not enough money in the box for exchange.</Original>
+		<English>Not enough money in the box for exchange.</English>
+		<Russian>Недостаточно денег в ящике для обмена.</Russian>
+	</Key>
   </Package>
 </Project>

@@ -57,16 +57,6 @@ fnc_checkBackpacksInBox = {
 	_matches
 };
 
-// Play sound based on a sound key from _soundsConfig
-fnc_playConverterSound = {
-	params ["_buttonObject", "_source", "_soundKey", "_volume"];
-	
-	_sounds = _buttonObject getVariable ["soundsMap", createHashMap];
-	_soundName = _sounds get _soundKey;
-	
-	playSound3D [_soundName, _source, false, getPosASL _source, _volume];
-};
-
 // Do conversion on the CLIENT
 fnc_removeRawResouce = {
 	params ["_buttonObject", "_submittedObject", "_rawResourceSource"];
@@ -107,7 +97,7 @@ fnc_giveConversionOutput = {
 		[_buttonObject, _outputMoneyBox] spawn {
 			params ["_buttonObject", "_outputMoneyBox"];
 			sleep 2.4;			
-			[_buttonObject, _outputMoneyBox, "money", 0.8] call fnc_playConverterSound;
+			[_buttonObject, _outputMoneyBox, "money", 0.8] call fnc_playStoreSound;
 		}
 	};
 };
@@ -168,15 +158,15 @@ if (hasInterface) then {
 			};
 			
 			// Cosmetics 
-			[_target, _target, "action", 4] call fnc_playConverterSound;
+			[_target, _target, "action", 4] call fnc_playStoreSound;
 			sleep 1.6;
 			
 			if (_hasResourceToConvert) then {
 				hint localize (_localizationConfig select 1);
-				[_target, _target, "success", 3] call fnc_playConverterSound;
+				[_target, _target, "success", 3] call fnc_playStoreSound;
 			} else {
 				hint localize (_localizationConfig select 2);
-				[_target, _target, "failure", 3] call fnc_playConverterSound;
+				[_target, _target, "failure", 3] call fnc_playStoreSound;
 			};
 		};
 	};

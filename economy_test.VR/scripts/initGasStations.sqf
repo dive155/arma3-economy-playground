@@ -11,6 +11,10 @@ _gasStationSoundsConfig = [
 	"pdrstuff\sounds\machine_error.ogg"
 ];
 
+fnc_handleFuelSentToPump = {
+	params ["_litersSent", "_moneyCurrency", "_moneyAmount"];
+};
+
 [
 	gas_station_button,
 	gas_station_money_box,

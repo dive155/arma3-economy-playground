@@ -30,15 +30,6 @@ if (isServer) then {
 	_gasPump setVariable ["ace_refuel_currentfuelcargo", call _getStartingFuelInPump, true];
 };
 
-fnc_playSound = {
-	params ["_buttonObject", "_source", "_soundKey", "_volume"];
-	
-	_sounds = _buttonObject getVariable ["soundsMap", createHashMap];
-	_soundName = _sounds get _soundKey;
-	
-	playSound3D [_soundName, _source, false, getPosASL _source, _volume];
-};
-
 fnc_handleFuelPaymentRequested = {
 	params ["_buttonObject"];
 	
@@ -46,7 +37,7 @@ fnc_handleFuelPaymentRequested = {
 	_gasPump = _buttonObject getVariable ["gasPump", objNull];
 	_fuelInPump = _gasPump getVariable ["ace_refuel_currentfuelcargo", 0];
 	
-	[_target, _target, "action", 3] call fnc_playSound;
+	[_target, _target, "action", 3] call fnc_playStoreSound;
 	
 	_priceConfig = call (_buttonObject getVariable ["getPrice", {}]);
 	_currencyCode = _priceConfig select 0;
@@ -56,7 +47,7 @@ fnc_handleFuelPaymentRequested = {
 	if (_moneyInTheBox == 0) exitWith { 
 		sleep 1;
 		hint(localize "STR_fuel_payment_no_money");
-		[_buttonObject, _buttonObject, "failure", 3] call fnc_playSound;
+		[_buttonObject, _buttonObject, "failure", 3] call fnc_playStoreSound;
 	};
 	
 	_moneyForPayment = _moneyInTheBox;
@@ -94,7 +85,7 @@ fnc_handleFuelPaymentRequested = {
 	};
 	
 	sleep 1;
-	[_buttonObject, _buttonObject, "success", 3] call fnc_playSound;
+	[_buttonObject, _buttonObject, "success", 3] call fnc_playStoreSound;
 	hint(_message);
 };
 

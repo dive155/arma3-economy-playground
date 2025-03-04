@@ -25,5 +25,11 @@ Probably don't save world state unless requested
 Cloning of crates
 Check where call can be replaced with spawn
 Save everything at set interval
-Optimize saving, too much remoteexecs when cloning
-Optimize saving, it lags
+Unify crates and vehicles
+ACE cargo?
+
+
+fullCrew [_object, "", true] isNotEqualTo [] // Vehicle
+
+private _hasInventory = getNumber (configFile >> "CfgVehicles" >> _objectClass >> "maximumLoad") > 0; // crate
+So isNumber rather than getNumber? Behaviour for missing entry isn't documented.
