@@ -1,10 +1,3 @@
-fnc_onPdrFuelSent = {
-	params ["_litersSent", "_moneyCurrency", "_moneyAmount"];
-	
-	_currentFuelInStorage = "fuelInStorage" call fnc_getWorldVariable;
-	["fuelInStorage", (_currentFuelInStorage - _litersSent) max 0]  call fnc_setWorldVariable;
-};
-
 _gasStationSoundsConfig = [
 	"a3\missions_f_beta\data\sounds\firing_drills\target_pop-down_large.wss",
 	"pdrstuff\sounds\machine_success_money.ogg",
@@ -13,6 +6,9 @@ _gasStationSoundsConfig = [
 
 fnc_handleFuelSentToPump = {
 	params ["_litersSent", "_moneyCurrency", "_moneyAmount"];
+	
+	["fuelInStorage", -1 * _litersSent] call fnc_increaseWorldVariable;
+	["cityMoney", _moneyAmount] call fnc_increaseWorldVariable;
 };
 
 [
@@ -22,6 +18,6 @@ fnc_handleFuelSentToPump = {
 	_gasStationSoundsConfig,
 	{0},
 	{"fuelInStorage" call fnc_getWorldVariable},
-	{[currencyCodePdrLeu, 100]},
-	fnc_onPdrFuelSent
+	{[currencyCodePdrLeu, "fuelPricePDR" call fnc_getWorldVariable]},
+	fnc_handleFuelSentToPump
 ]execVM "scripts\economy\createGasStation.sqf";

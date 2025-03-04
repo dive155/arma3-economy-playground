@@ -47,6 +47,14 @@ fnc_handleWorldVariableChanged = {
 	} forEach missionNamespaceVariableChangedCallbacks;
 };
 
+fnc_increaseWorldVariable = {
+	params ["_varName", "_toAdd"];
+	
+	_value = _varName call fnc_getWorldVariable;
+	_value = _value + _toAdd;
+	[_varName, _value] call fnc_setWorldVariable;
+};
+
 if isServer then {
 	missionNamespace setVariable [allWorldVariablesKey, [], true];
 	missionNamespace call _initialize;
