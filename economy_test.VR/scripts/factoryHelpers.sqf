@@ -30,7 +30,7 @@ fnc_checkFactoryWorkConditions = {
 		and ([_fatigueIncrease] call fnc_checkIfNotTooFatigued)
 };
 
-fnc_handleFactoryWorkCompleted = {
+fnc_handleConverterWorkCompleted = {
 	params["_payConfig", "_fatigueKey"];
 	
 	_fatigueIncrease = _fatigueKey call fnc_getWorldVariable;
@@ -41,11 +41,22 @@ fnc_handleFactoryWorkCompleted = {
 };
 
 fnc_sellProducedFactoryGoods = {
-	_price = "factoryGoodsSellPrice" call fnc_getWorldVariable;
+	_income = "factoryGoodsSellPrice" call fnc_getWorldVariable;
 	_tax = "factoryGoodsTax" call fnc_getWorldVariable;
-	_tax = _tax * _price;
-	_price = _price - _tax;
+	_productionCost = 
+		("payHay" call fnc_getWorldVariable)
+		+ ("payOre" call fnc_getWorldVariable)
+		+ ("payFactory" call fnc_getWorldVariable);
 	
-	_price call fnc_addMoneyToFactory;
+	_profit = _income - _productionCost;
+	
+	_tax = _tax * _profit;
+	_final = _income - _tax;
+	
+	_commission = "factoryBossCommission" call fnc_getWorldVariable;
+	[factory_commission_box, currencyCodePdrLeu, _commission] call fnc_putMoneyIntoContainer;
+	
+	_final = _final - _commission;
+	_final call fnc_addMoneyToFactory;
 	_tax call fnc_addMoneyToCity;
 };

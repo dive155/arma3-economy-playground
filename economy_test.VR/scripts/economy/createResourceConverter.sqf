@@ -5,7 +5,7 @@ params [
 									// _rawResource1Classname - Classname of the raw resource to be processed
 	"_outputItemBox",               // Where to put processed items
 	"_outputMoneyBox",              // Where to put money
-	"_outputItemClassname",         // Classname of the item to be outputed
+	"_outputItemConfig",            // Items to be outputed, Format [_classname, _amount]
 	"_soundsConfig",                // Format: [soundAction, soundSuccess, soundFailure, soundMoney]
 	"_localizationConfig",			// Format: [keyAction, keySuccess, keyFailure]
 	
@@ -19,7 +19,7 @@ if (isServer) then {
 	// Save converter settings to the master object (button) on the SERVER
 	_buttonObject setVariable ["rawResources", _rawResources, true];
 	_buttonObject setVariable ["outputItemBox", _outputItemBox, true];
-	_buttonObject setVariable ["outputItemClassname", _outputItemClassname, true];
+	_buttonObject setVariable ["outputItemConfig", _outputItemConfig, true];
 	_buttonObject setVariable ["localizationConfig", _localizationConfig, true];
 	_buttonObject setVariable ["getPayConfig", _getPayConfig, true];
 	_buttonObject setVariable ["extraCondition", _extraCondition, true];
@@ -78,13 +78,14 @@ fnc_giveConversionOutput = {
 	_outputItemBox = _buttonObject getVariable ["outputItemBox", objNull];
 	if (not isNull _outputItemBox) then {
 		// Check where and what to give
-		_outputItemClassname = _buttonObject getVariable ["outputItemClassname", ""];
+		_outputItemConfig = _buttonObject getVariable ["outputItemConfig", ""];
+		_outputItemConfig params ["_outputItemClassname", "_outputItemAmount"];
 		
 		// Check if we're giving a backpack or an item
 		if (isClass (configFile >> "CfgVehicles" >> _outputItemClassname)) then {
-			_outputItemBox addBackpackCargoGlobal [_outputItemClassname, 1];
+			_outputItemBox addBackpackCargoGlobal [_outputItemClassname, _outputItemAmount];
 		} else {
-			_outputItemBox addItemCargoGlobal [_outputItemClassname, 1];
+			_outputItemBox addItemCargoGlobal [_outputItemClassname, _outputItemAmount];
 		};
 	};
 	

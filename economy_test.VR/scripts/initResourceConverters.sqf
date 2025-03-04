@@ -11,7 +11,7 @@ waitUntil { scriptDone _scriptHandle };
 	[[hay_trigger, "DIVE_Haystack"]],
 	hay_output_box,
 	hay_money_box,
-	"b_dive_grain_bag",
+	["b_dive_grain_bag", 1],
 	industrialConverterSoundsConfig,
 	["STR_hay_converter_action", "STR_hay_converter_success", "STR_hay_converter_failure"],
 	{ // Get pay config
@@ -23,7 +23,7 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueHay"] call  fnc_handleFactoryWorkCompleted;
+		[_payConfig, "fatigueHay"] call  fnc_handleConverterWorkCompleted;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
@@ -33,7 +33,7 @@ waitUntil { scriptDone _scriptHandle };
 	[[ore_trigger, "DIVE_OreRock"]],
 	ore_output_box,
 	ore_money_box,
-	"b_dive_ore_bag",
+	["b_dive_ore_bag", 1],
 	industrialConverterSoundsConfig,
 	["STR_ore_converter_action", "STR_ore_converter_success", "STR_ore_converter_failure"],
 	{ // Get pay config
@@ -45,7 +45,7 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueOre"] call  fnc_handleFactoryWorkCompleted;
+		[_payConfig, "fatigueOre"] call  fnc_handleConverterWorkCompleted;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
@@ -55,7 +55,7 @@ waitUntil { scriptDone _scriptHandle };
 	[[factory_hay_box, "b_dive_grain_bag"], [factory_ore_box, "b_dive_ore_bag"]],
 	objNull,
 	factory_money_box,
-	"",
+	["",0],
 	industrialConverterSoundsConfig,
 	["STR_factory_action", "STR_factory_success", "STR_factory_failure"],
 		{ // Get pay config
@@ -67,7 +67,7 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueFactory"] call  fnc_handleFactoryWorkCompleted;
+		[_payConfig, "fatigueFactory"] call  fnc_handleConverterWorkCompleted;
 		call fnc_sellProducedFactoryGoods;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
@@ -78,7 +78,7 @@ waitUntil { scriptDone _scriptHandle };
 	[[stove_input_box, "b_dive_grain_bag"]],
 	stove_output_box,
 	objNull,
-	"ACE_Banana",
+	["ACE_Banana", 2],
 	["pdrstuff\sounds\stove_ignition.ogg", "pdrstuff\sounds\stove_cooking.ogg", "pdrstuff\sounds\stove_failure.ogg", ""],
 	["STR_stove_action", "STR_stove_success", "STR_stove_failure"]
 ]execVM "scripts\economy\createResourceConverter.sqf";

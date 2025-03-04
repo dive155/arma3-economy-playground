@@ -2,14 +2,16 @@ fnc_createDefaultWorldState = {
 	["cityMoney", 1000] call fnc_setWorldVariable;
 	["factoryMoney", 2000] call fnc_setWorldVariable;
 	["fuelInStorage", 100] call fnc_setWorldVariable;
-	["payHay", 120] call fnc_setWorldVariable;
+	["payHay", 240] call fnc_setWorldVariable;
 	["fatigueHay", 1] call fnc_setWorldVariable;
-	["payOre", 140] call fnc_setWorldVariable;
+	["payOre", 220] call fnc_setWorldVariable;
 	["fatigueOre", 1] call fnc_setWorldVariable;
-	["payFactory", 90] call fnc_setWorldVariable;
+	["payFactory", 140] call fnc_setWorldVariable;
 	["fatigueFactory", 0.5] call fnc_setWorldVariable;
-	["factoryGoodsSellPrice", 900] call fnc_setWorldVariable;
-	["factoryGoodsTax", 0.25] call fnc_setWorldVariable;
+	["factoryGoodsSellPrice", 2000] call fnc_setWorldVariable;
+	["factoryGoodsTax", 0.45] call fnc_setWorldVariable;
+	["factoryBossCommission", 110] call fnc_setWorldVariable;
+	
 	["fuelPricePDR", 50] call fnc_setWorldVariable;
 };
 
