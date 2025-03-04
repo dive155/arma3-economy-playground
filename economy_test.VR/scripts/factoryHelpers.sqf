@@ -19,10 +19,7 @@ fnc_checkIfFactoryCanPay = {
 
 fnc_addMoneyToFactory = {
 	params["_moneyToAdd"];
-	
-	_factoryMoney = "factoryMoney" call fnc_getWorldVariable;
-	_factoryMoney = _factoryMoney + _moneyToAdd;
-	["factoryMoney", _factoryMoney] call fnc_setWorldVariable;
+	["factoryMoney", _moneyToAdd] call fnc_increaseWorldVariable
 };
 
 fnc_checkFactoryWorkConditions = {

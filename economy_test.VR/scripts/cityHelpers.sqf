@@ -13,7 +13,5 @@ fnc_checkIfCityCanPay = {
 fnc_addMoneyToCity = {
 	params["_moneyToAdd"];
 	
-	_cityMoney = "cityMoney" call fnc_getWorldVariable;
-	_cityMoney = _cityMoney + _moneyToAdd;
-	["cityMoney", _cityMoney] call fnc_setWorldVariable;
+	["cityMoney", _moneyToAdd] call fnc_increaseWorldVariable
 };
