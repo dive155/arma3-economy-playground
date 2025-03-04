@@ -119,9 +119,9 @@
 		<Russian>Посмотреть свои Статы</Russian>
 	</Key>
 	<Key ID="STR_stats_text_format">
-		<Original>Had Lunch Today: %1\nWork Fatigue: %2%%\nDebt (PDR): %3\nDebt (Moldova): %4</Original>
-		<English>Had Lunch Today: %1\nWork Fatigue: %2%%\nDebt (PDR): %3\nDebt (Moldova): %4</English>
-		<Russian>Ел Обед Сегодня: %1\nУсталость от Работы: %2%%\nДолг (ПДР): %3\nДолг (Молдова): %4</Russian>
+		<Original>Had Lunch Today: %1\nWork Fatigue: %2/%3\nDebt (PDR): %4\nDebt (Moldova): %5</Original>
+		<English>Had Lunch Today: %1\nWork Fatigue: %2/%3\nDebt (PDR): %4\nDebt (Moldova): %5</English>
+		<Russian>Ел Обед Сегодня: %1\nУсталость от Работы: %2/%3\nДолг (ПДР): %4\nДолг (Молдова): %5</Russian>
 	</Key>
 	<Key ID="STR_fatigue_cant_work">
 		<Original>You have accumulated too much Work Fatique for the day and can't do this action.</Original>
