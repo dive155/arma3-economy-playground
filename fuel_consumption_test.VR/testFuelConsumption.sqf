@@ -58,8 +58,8 @@ while { (testDistance - currentDistance) > 0 } do {
 	_fuelConsumedLiters = fuelCapacity * _fuelConsumed;
 	_ratePerKM = (1000 / currentDistance) * _fuelConsumedLiters;
 	
-	_msg = format ["ConsumptionCoef:%1\nDistance: %2/%3\nConsumed Liters:%4\nLiters per km: %5\nFuel capacity: %6",
-		consCoef, currentDistance, testDistance, _fuelConsumedLiters, _ratePerKM, fuelCapacity];
+	_msg = format ["ConsumptionCoef:%1\nDistance: %2/%3\nConsumed Liters:%4\nLiters per km: %5\nFuel capacity: %6\nClassname: %7",
+		consCoef, currentDistance, testDistance, _fuelConsumedLiters, _ratePerKM, fuelCapacity, typeOf vehicle player];
 	
 	hintSilent _msg;
 	copyToClipboard _msg;
