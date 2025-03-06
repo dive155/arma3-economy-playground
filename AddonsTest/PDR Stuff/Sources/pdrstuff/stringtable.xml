@@ -81,5 +81,10 @@
 		<English>(PDR) 1000 Leu</English>
 		<Russian>(ПДР) 1000 Лей</Russian>
 	</Key>
+		<Key ID="STR_pdr_lunch">
+		<Original>Hearty Lunch</Original>
+		<English>Hearty Lunch</English>
+		<Russian>Сытный Обед</Russian>
+	</Key>
 </Package>
 </Project>

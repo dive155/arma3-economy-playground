@@ -25,14 +25,16 @@ class CfgPatches
 			"pdr_50_leu",
 			"pdr_100_leu",
 			"pdr_500_leu",
-			"pdr_1000_leu"
+			"pdr_1000_leu",
+			"pdr_full_lunch"
 		};
 		requiredVersion=0.1;
 		requiredAddons[]=
 		{
 			"A3_Weapons_F",
 			"A3_Weapons_F_Ammoboxes",
-			"ace_common"
+			"ace_common",
+			"KSS"
 		};
 	};
 };

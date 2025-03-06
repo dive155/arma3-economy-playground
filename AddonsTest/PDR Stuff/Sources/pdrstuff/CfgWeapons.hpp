@@ -152,4 +152,29 @@ class cfgWeapons
 			mass=0;
 		};
 	};
+	
+	class food_itemcore : ItemCore {
+		type = 4096;
+		detectRange = -1;
+		simulation = "ItemMineDetector";
+		scope = 0;
+		author = "Dive";
+	};
+
+	class pdr_lunch_full : food_itemcore
+	{
+		scope = 2;
+		displayName = $STR_pdr_lunch;
+		descriptionShort = "";
+		picture = "\pdrstuff\data\pdr_lunch";
+		class ItemInfo: InventoryItem_Base_F {
+			mass = 25;
+		};
+		class KSS
+		{
+			delay = 30;
+			type = "both";
+			add = "90";
+		};
+	};
 };
