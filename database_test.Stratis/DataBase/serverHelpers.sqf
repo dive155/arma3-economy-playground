@@ -25,13 +25,6 @@ fnc_db_savePlayers = {
 	} forEach _allPlayersToSave;
 };
 
-fnc_db_saveWorld = {
-	if ((count dbWorldGetters > 0) or (count dbWorldSetters > 0)) then {
-		call fnc_db_saveWorldData;
-	};
-	systemChat ("saved world");
-};
-
 fnc_db_getPersistenObjectCategory = {
 	params ["_object"];
 	

@@ -1,17 +1,18 @@
 params [
 	["_dbNameRoot", "DefaultDatabase"],
+	["_saveInterval", 60],
 	["_useIn3DEN", true],
+	["_saveDate", true],
+	["_saveWeather", true],
 	["_vehicles", []],
-	["_plrVarNames", []],
-	["_worldGetters", []],
-	["_worldSetters", []]
+	["_plrVarNames", []]
 ];
 
 call compile preprocessFileLineNumbers "dataBase\serverHelpers.sqf";
 call compile preprocessFileLineNumbers "dataBase\cargoHelpers.sqf";
 call compile preprocessFileLineNumbers "dataBase\handleVehicleData.sqf";
 call compile preprocessFileLineNumbers "dataBase\handlePlayerData.sqf";
-[true, true] call compile preprocessFileLineNumbers "dataBase\handleWorldData.sqf";
+[_saveDate, _saveWeather] call compile preprocessFileLineNumbers "dataBase\handleWorldData.sqf";
 
 _is3DEN = is3DENPreview;
 shouldUseDB = not _is3DEN or (_is3DEN and _useIn3DEN);
@@ -30,28 +31,24 @@ dbNameVehicles = _dbNameRootFull + "_vehicles";
 
 dbPlrVarNames = _plrVarNames;
 dbVehiclesToTrack = _vehicles;
-
-dbWorldGetters = _worldGetters;
-dbWorldSetters = _worldSetters;
+dbSaveInterval = _saveInterval;
 
 call fnc_db_initHandlePlayerDisconnecting;
 
-sleep 5;
+sleep 3;
 
 // Load world data
 call fnc_db_loadWorldData;
-sleep 1;
+sleep 3;
 
 // Load all vehicles
 0 spawn fn_db_loadAllVehicles;
-sleep 2;
-
 sleep 10;
 
 while { true } do {
 	call fnc_db_saveVehicles;
 	call fnc_db_savePlayers;
-	call fnc_db_saveWorld;
+	call fnc_db_saveWorldData;
 	
-	sleep 60;
+	sleep dbSaveInterval;
 };

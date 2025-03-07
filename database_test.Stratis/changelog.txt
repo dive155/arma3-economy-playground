@@ -3,8 +3,10 @@
 	+ Damage state
 	+ Ammo in turrets
 	+ Ammo on pylon
++ Added saving of date and time
++ Added saving of weather
 + Added proper support for singleplayer and 3Den testing
-+ Added player data autosaving which happens from time to time, as opposed to only on disconnecting
++ Added player data autosaving which happens periodically and upon disconnecting
 + Added persistent player look direction
 + Added customizeable database name to allow for separate databases for different missions
 + Added database splitting into two environments (DEV and PROD), DEV to be used in 3Den and PROD to be used in live missions
