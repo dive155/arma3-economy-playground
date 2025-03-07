@@ -17,6 +17,7 @@ fnc_db_saveWorldData = {
 	
 	if (dbWorldSaveWeather) then {
 		["write", [dbWorldSectionName, "overcast", overcast]] call _dbHandle;
+		["write", [dbWorldSectionName, "rain", rain]] call _dbHandle;
 		["write", [dbWorldSectionName, "rainParams", rainParams]] call _dbHandle;
 		["write", [dbWorldSectionName, "lightning", lightnings]] call _dbHandle;
 		["write", [dbWorldSectionName, "rainbow", rainbow]] call _dbHandle;
@@ -44,6 +45,7 @@ fnc_db_loadWorldData = {
 	
 	if (dbWorldSaveWeather) then {
 		_overcast = ["read", [dbWorldSectionName, "overcast", overcast]] call _dbHandle;
+		_rain = ["read", [dbWorldSectionName, "rain", rain]] call _dbHandle;
 		_rainParams = ["read", [dbWorldSectionName, "rainParams", rainParams]] call _dbHandle;
 		_lightnings = ["read", [dbWorldSectionName, "lightning", lightnings]] call _dbHandle;
 		_rainbow = ["read", [dbWorldSectionName, "rainbow", rainbow]] call _dbHandle;
@@ -53,23 +55,30 @@ fnc_db_loadWorldData = {
 		_fogParams = ["read", [dbWorldSectionName, "fogParams", fogParams]] call _dbHandle;	
 		_humidity = ["read", [dbWorldSectionName, "humidity", humidity]] call _dbHandle;
 		
-		_values = [_overcast, _rainParams, _lightnings, _rainbow, _waves, _wind, _gusts, _fogParams, _humidity];
+		_values = [_overcast, _rain, _rainParams, _lightnings, _rainbow, _waves, _wind, _gusts, _fogParams, _humidity];
 		[_values] remoteExec ["fnc_db_setWeatherLocal", 0];
 		
-		sleep 0.5;
-		forceWeatherChange;
+		0 setOvercast _overcast;
+		0 setLightnings _lightnings;
+		0 setRainbow _rainbow;
+		0 setWaves _waves;
+		setWind [_wind select 0, _wind select 1, false];
+		0 setGusts _gusts;
+		0 setFog _fogparams;
+		setHumidity _humidity;
 		
-		sleep 0.5;
-		_rainParams call BIS_fnc_setRain;
+		setRain _rainParams;
+		0 setRain _rain;
+		
+		forceWeatherChange;
 	};
-	
-	
 };
 
 fnc_db_setWeatherLocal = {
 	params ["_values"];
 	_values params [
 		"_overcast", 
+		"_rain",
 		"_rainParams", 
 		"_lightnings", 
 		"_rainbow", 
@@ -88,6 +97,9 @@ fnc_db_setWeatherLocal = {
 	0 setGusts _gusts;
 	0 setFog _fogparams;
 	setHumidity _humidity;
+	
+	setRain _rainParams;
+	0 setRain _rain;
 };
 
 
