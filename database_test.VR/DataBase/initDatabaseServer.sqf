@@ -11,7 +11,7 @@ call compile preprocessFileLineNumbers "dataBase\serverHelpers.sqf";
 call compile preprocessFileLineNumbers "dataBase\cargoHelpers.sqf";
 call compile preprocessFileLineNumbers "dataBase\handleVehicleData.sqf";
 call compile preprocessFileLineNumbers "dataBase\handlePlayerData.sqf";
-[_worldGetters, _worldSetters] call compile preprocessFileLineNumbers "dataBase\handleWorldData.sqf";
+[true, true] call compile preprocessFileLineNumbers "dataBase\handleWorldData.sqf";
 
 _is3DEN = is3DENPreview;
 shouldUseDB = not _is3DEN or (_is3DEN and _useIn3DEN);
@@ -38,16 +38,13 @@ call fnc_db_initHandlePlayerDisconnecting;
 
 sleep 5;
 
+// Load world data
+call fnc_db_loadWorldData;
+sleep 1;
+
 // Load all vehicles
 0 spawn fn_db_loadAllVehicles;
 sleep 2;
-
-// Load world data
-if (call fnc_db_checkHasWorldData) then {
-	call fnc_db_loadWorldData;
-} else {
-	call fnc_db_saveWorldData;
-};
 
 sleep 10;
 

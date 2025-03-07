@@ -1,39 +1,95 @@
 params[
-	// Value getters used when saving data, format: [["varName", { 123 }], [..]]
-	["_getters", []],
-	// Value setters used when loading data, format [["varName", { params["_value"]; }], [..]]
-	["_setters", []]  
+	["_saveDateTime", true],
+	["_saveWeather", true]
 ];
 
-dbWorldGetters = _getters;
-dbWorldSetters = _setters;
+dbWorldSaveDateTime = _saveDateTime;
+dbWorldSaveWeather = _saveWeather;
 dbWorldSectionName = "World";
 
-// Designed to be used to store any kind of world variable like weather, date, custom missionNamespace variables etc
 fnc_db_saveWorldData = {
 	_dbHandle = ["new", dbNameWorld] call OO_INIDBI;
-	{
-		_varName = _x select 0;
-		_delegate = _x select 1;
-		_value = call _delegate;
-		
-		_loadout = ["write", [dbWorldSectionName, _varName, _value]] call _dbHandle;
-	} forEach dbWorldGetters
-};
 
-fnc_db_checkHasWorldData = {
-	_dbHandle = ["new", dbNameWorld] call OO_INIDBI;
-	_sections = "getSections" call _dbHandle;
-	dbWorldSectionName in _sections
+	if (dbWorldSaveDateTime) then {
+		["write", [dbWorldSectionName, "dateTime", date]] call _dbHandle;
+		["write", [dbWorldSectionName, "timeMultiplier", timeMultiplier]] call _dbHandle;
+	};
+	
+	if (dbWorldSaveWeather) then {
+		["write", [dbWorldSectionName, "overcast", overcast]] call _dbHandle;
+		["write", [dbWorldSectionName, "rainParams", rainParams]] call _dbHandle;
+		["write", [dbWorldSectionName, "lightning", lightnings]] call _dbHandle;
+		["write", [dbWorldSectionName, "rainbow", rainbow]] call _dbHandle;
+		["write", [dbWorldSectionName, "waves", waves]] call _dbHandle;
+		["write", [dbWorldSectionName, "wind", wind]] call _dbHandle;
+		["write", [dbWorldSectionName, "gusts", gusts]] call _dbHandle;
+		["write", [dbWorldSectionName, "fogParams", fogParams]] call _dbHandle;
+		["write", [dbWorldSectionName, "humidity", humidity]] call _dbHandle;
+	};
 };
 
 fnc_db_loadWorldData = {
 	_dbHandle = ["new", dbNameWorld] call OO_INIDBI;
-	{
-		_varName = _x select 0;
-		_delegate = _x select 1;
+
+	_sections = "getSections" call _dbHandle;
+	if not (dbWorldSectionName in _sections) exitWith { call fnc_db_saveWorldData; };
+
+	if (dbWorldSaveDateTime) then {
+		_dateTime = ["read", [dbWorldSectionName, "dateTime", date]] call _dbHandle;
+		_timeMultiplier = ["read", [dbWorldSectionName, "timeMultiplier", timeMultiplier]] call _dbHandle;
 		
-		_value = ["read",[dbWorldSectionName, _varName, objNull]] call _dbHandle;
-		[_value] call _delegate;
-	} forEach dbWorldSetters;
-}
+		[_dateTime] call BIS_fnc_setDate;
+		setTimeMultiplier _timeMultiplier;
+	};
+	
+	if (dbWorldSaveWeather) then {
+		_overcast = ["read", [dbWorldSectionName, "overcast", overcast]] call _dbHandle;
+		_rainParams = ["read", [dbWorldSectionName, "rainParams", rainParams]] call _dbHandle;
+		_lightnings = ["read", [dbWorldSectionName, "lightning", lightnings]] call _dbHandle;
+		_rainbow = ["read", [dbWorldSectionName, "rainbow", rainbow]] call _dbHandle;
+		_waves = ["read", [dbWorldSectionName, "waves", waves]] call _dbHandle;
+		_wind = ["read", [dbWorldSectionName, "wind", wind]] call _dbHandle;
+		_gusts = ["read", [dbWorldSectionName, "gusts", gusts]] call _dbHandle;
+		_fogParams = ["read", [dbWorldSectionName, "fogParams", fogParams]] call _dbHandle;	
+		_humidity = ["read", [dbWorldSectionName, "humidity", humidity]] call _dbHandle;
+		
+		_values = [_overcast, _rainParams, _lightnings, _rainbow, _waves, _wind, _gusts, _fogParams, _humidity];
+		[_values] remoteExec ["fnc_db_setWeatherLocal", 0];
+		
+		sleep 0.5;
+		forceWeatherChange;
+		
+		sleep 0.5;
+		_rainParams call BIS_fnc_setRain;
+	};
+	
+	
+};
+
+fnc_db_setWeatherLocal = {
+	params ["_values"];
+	_values params [
+		"_overcast", 
+		"_rainParams", 
+		"_lightnings", 
+		"_rainbow", 
+		"_waves", 
+		"_wind", 
+		"_gusts", 
+		"_fogParams",
+		"_humidity"
+	];
+	
+	0 setOvercast _overcast;
+	0 setLightnings _lightnings;
+	0 setRainbow _rainbow;
+	0 setWaves _waves;
+	setWind [_wind select 0, _wind select 1, false];
+	0 setGusts _gusts;
+	0 setFog _fogparams;
+	setHumidity _humidity;
+};
+
+
+
+// _forced, _overcast, _rain, _precipitationType, _lightning, _rainbow, _waves, _wind, _gusts, _fog
