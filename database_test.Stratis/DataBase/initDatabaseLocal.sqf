@@ -1,4 +1,4 @@
-player setVariable ["KRV_playerID",getPlayerUID player, true];
-sleep 0.1;
+player setVariable ["DB_SteamID",getPlayerUID player, true];
+sleep 0.5;
 
 [player] remoteExec ["fnc_db_handlePlayerConnected", 2];
