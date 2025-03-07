@@ -9,7 +9,6 @@ params [
 
 call compile preprocessFileLineNumbers "dataBase\serverHelpers.sqf";
 call compile preprocessFileLineNumbers "dataBase\cargoHelpers.sqf";
-call compile preprocessFileLineNumbers "dataBase\handleCrateData.sqf";
 call compile preprocessFileLineNumbers "dataBase\handleVehicleData.sqf";
 call compile preprocessFileLineNumbers "dataBase\handlePlayerData.sqf";
 [_worldGetters, _worldSetters] call compile preprocessFileLineNumbers "dataBase\handleWorldData.sqf";

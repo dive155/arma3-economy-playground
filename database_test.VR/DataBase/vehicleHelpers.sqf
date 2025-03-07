@@ -219,6 +219,12 @@ fnc_addTurretMagazines = {
 		{
 			[_vehicle, [_x, _path]] remoteExec ["removeWeaponTurret", _owner]; ;
 		} forEach _weapons;
+		
+		_mags = _vehicle magazinesTurret _path;
+		{
+			[_vehicle, [_x, _path]] remoteExec ["removeMagazinesTurret", _owner];
+		} forEach _mags;
+		
 	} forEach _allPaths;
 	sleep 0.5;
 	
