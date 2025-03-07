@@ -28,10 +28,7 @@ Save everything at set interval
 Unify crates and vehicles
 ACE cargo?
 
+Server shutdown
 
-fullCrew [_object, "", true] isNotEqualTo [] // Vehicle
 
-private _hasInventory = getNumber (configFile >> "CfgVehicles" >> _objectClass >> "maximumLoad") > 0; // crate
-So isNumber rather than getNumber? Behaviour for missing entry isn't documented.
-
-turret magazines duping
+_forced, _overcast, _rain, _precipitationType, _lightning, _rainbow, _waves, _wind, _gusts, _fog

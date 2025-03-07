@@ -9,6 +9,8 @@ fn_db_saveVehicleData = {
 	
 	dbVehiclesToTrack pushBackUnique _vehicle;
 	
+	if (speed _vehicle > 1) exitWith {};
+	
 	_vehicleData = _vehicle call fnc_getVehicleData;
 	
 	if (_varName == "") exitWith {diag_log "Can't save vehicle with empty varname"; };
