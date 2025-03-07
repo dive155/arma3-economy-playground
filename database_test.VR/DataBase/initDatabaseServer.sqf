@@ -1,7 +1,6 @@
 params [
 	["_dbNameRoot", "DefaultDatabase"],
 	["_useIn3DEN", true],
-	["_crates", []],
 	["_vehicles", []],
 	["_plrVarNames", []],
 	["_worldGetters", []],
@@ -27,12 +26,10 @@ if not shouldUseDB exitWith {
 _environmentPrefix = if (_is3DEN) then { "DEV_" } else { "PROD_" };
 _dbNameRootFull = _environmentPrefix + _dbNameRoot;
 dbNamePlayers = _dbNameRootFull + "_players";
-dbNameCrates = _dbNameRootFull + "_crates";
 dbNameWorld = _dbNameRootFull + "_world";
 dbNameVehicles = _dbNameRootFull + "_vehicles";
 
 dbPlrVarNames = _plrVarNames;
-dbCratesToTrack = _crates;
 dbVehiclesToTrack = _vehicles;
 
 dbWorldGetters = _worldGetters;
@@ -41,11 +38,6 @@ dbWorldSetters = _worldSetters;
 call fnc_db_initHandlePlayerDisconnecting;
 
 sleep 5;
-
-// Load inventory for all crates
-{
-	[_x] spawn fnc_db_loadCrateData;
-} forEach _crates;
 
 // Load all vehicles
 0 spawn fn_db_loadAllVehicles;

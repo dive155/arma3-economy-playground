@@ -8,12 +8,9 @@ _scriptHandle = execVM "dataBase\vehicleHelpers.sqf";
 	// Whether or not to use database when testing in 3Den editor. Set to false to not use.
 	true,
 	
-	// List of persistent crates.
-	[crate_1],
-	
 	// List of persistent vehicles.
 	//[amobus, amobus_1, amobus_2, amobus_3, amobus_4, amobus_5, amobus_6, amobus_7, amobus_8, amobus_9, amobus_10 ],
-	[amobus],
+	[amobus, crate_1],
 	
 	// Names of custom persistent player variables to be used with getVariable.
 	[],

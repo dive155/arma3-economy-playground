@@ -47,34 +47,54 @@ fnc_getVehicleData = {
 	_varName = vehicleVarName _vehicle;
 	_position = getPosATL _vehicle;
     _rotation = vectorDir _vehicle;
-	_fuel = fuel _vehicle;
-	_plate = getPlateNumber _vehicle;
-	
 	_className = typeOf _vehicle;
 	
-	_flatAnimSources = [];
-	{
-		_anim = configname _x;
-		_flatAnimSources pushback _anim;
-		_flatAnimSources pushback (_vehicle animationphase _anim);
-	} foreach (configProperties [configfile >> "CfgVehicles" >> typeof _vehicle >> "animationSources","isclass _x",true]);
-
-	_textures = getobjecttextures _vehicle;
-
-	_damageStructural = damage _vehicle;
-	_damageHitPointsTemp = getAllHitPointsDamage _vehicle;
+	_category = call fnc_db_getPersistenObjectCategory;
 	
-	_damageHitPoints = if (count _damageHitPointsTemp < 3) then { [] } else {
-		[_damageHitPointsTemp select 0, _damageHitPointsTemp select 2]
-	};
-
 	_cargo = [];
+	_damageStructural = damage _vehicle;
+	
+	// If not a Prop
+	if (_category != 2) then {
+		if (_damageStructural < 1) then {
+			_cargo = _vehicle call fnc_db_getCargoData;
+		};
+	};
+		
+	_fuel = 0;
+	_plate = "";
+	_flatAnimSources = [];
+	_textures = [];
+	_damageHitPoints = [];
 	_turretMagazines = [];
 	_pylons = [];
-	if (_damageStructural < 1) then {
-		_cargo = _vehicle call fnc_db_getCargoData;
-		_turretMagazines = magazinesAllTurrets _vehicle;
-		_pylons = getAllPylonsInfo _vehicle;
+
+	// If it's a vehicle
+	if (_category == 0) then {
+		_fuel = fuel _vehicle;
+		_plate = getPlateNumber _vehicle;
+			
+		_flatAnimSources = [];
+		{
+			_anim = configname _x;
+			_flatAnimSources pushback _anim;
+			_flatAnimSources pushback (_vehicle animationphase _anim);
+		} foreach (configProperties [configfile >> "CfgVehicles" >> typeof _vehicle >> "animationSources","isclass _x",true]);
+
+		_textures = getobjecttextures _vehicle;
+		
+		_damageHitPointsTemp = getAllHitPointsDamage _vehicle;
+		
+		_damageHitPoints = if (count _damageHitPointsTemp < 3) then { [] } else {
+			[_damageHitPointsTemp select 0, _damageHitPointsTemp select 2]
+		};
+		
+		_turretMagazines = [];
+		_pylons = [];
+		if (_damageStructural < 1) then {
+			_turretMagazines = magazinesAllTurrets _vehicle;
+			_pylons = getAllPylonsInfo _vehicle;
+		};
 	};
 	
     _vehicleData = [

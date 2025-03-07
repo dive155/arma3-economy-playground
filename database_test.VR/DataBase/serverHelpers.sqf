@@ -1,16 +1,11 @@
 fnc_db_saveVehicles = {
 	{
-		[_x] spawn fnc_db_saveCrateData;
-	} forEach dbCratesToTrack;
-	systemChat ("saved crates");
-	sleep 2;
-	{
 		_handle = [_x] spawn fn_db_saveVehicleData;
 		waitUntil { scriptDone _handle };
 		systemChat ("saved" + str(_x));
 	} forEach dbVehiclesToTrack;
 	systemChat ("saved vics");
-	sleep 2;
+	sleep 1;
 };
 
 fnc_db_savePlayers = {
@@ -35,4 +30,17 @@ fnc_db_saveWorld = {
 		call fnc_db_saveWorldData;
 	};
 	systemChat ("saved world");
+};
+
+fnc_db_getPersistenObjectCategory = {
+	params ["_object"];
+	
+	// Check if Vehicle
+	if (fullCrew [_object, "", true] isNotEqualTo []) exitWith { 0 };
+	
+	// Check if Crate
+	if (getNumber (configFile >> "CfgVehicles" >> typeOf _object >> "maximumLoad") > 0) exitWith { 1 };
+	
+	// It's a Prop
+	2
 };

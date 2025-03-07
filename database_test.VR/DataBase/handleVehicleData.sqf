@@ -10,8 +10,10 @@ fn_db_saveVehicleData = {
 	dbVehiclesToTrack pushBackUnique _vehicle;
 	
 	_vehicleData = _vehicle call fnc_getVehicleData;
+	
+	if (_varName == "") exitWith {diag_log "Can't save vehicle with empty varname"; };
+	
 	_section = _varName;
-		
 	_dbHandle = ["new", dbNameVehicles] call OO_INIDBI;
 	
 	["write", [_section, "varName", _vehicleData select 0]] call _dbHandle;
