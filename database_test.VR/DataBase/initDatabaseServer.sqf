@@ -8,6 +8,7 @@ params [
 	["_worldSetters", []]
 ];
 
+call compile preprocessFileLineNumbers "dataBase\serverHelpers.sqf";
 call compile preprocessFileLineNumbers "dataBase\cargoHelpers.sqf";
 call compile preprocessFileLineNumbers "dataBase\handleCrateData.sqf";
 call compile preprocessFileLineNumbers "dataBase\handleVehicleData.sqf";
@@ -16,20 +17,6 @@ call compile preprocessFileLineNumbers "dataBase\handlePlayerData.sqf";
 
 _is3DEN = is3DENPreview;
 shouldUseDB = not _is3DEN or (_is3DEN and _useIn3DEN);
-
-// Give players their stuff when they connect
-fnc_db_handlePlayerConnected = {
-	params ["_unit"];
-	
-	if not shouldUseDB exitWith { };
-	
-	if (_unit call fnc_db_checkIfHasDataForPlayer) then {
-		_unit call fnc_db_loadPlayerData;
-	} else {
-		// Player joining for the first time - save his data instead of loading
-		[_unit, false, dbPlrVarNames] call fnc_db_savePlayerData;
-	};
-};
 
 if not shouldUseDB exitWith { 
 	systemChat "Skipping persistent inventory initServer because 3Den preview mode detected"; 
@@ -45,16 +32,13 @@ dbNameWorld = _dbNameRootFull + "_world";
 dbNameVehicles = _dbNameRootFull + "_vehicles";
 
 dbPlrVarNames = _plrVarNames;
+dbCratesToTrack = _crates;
 dbVehiclesToTrack = _vehicles;
-systemChat ("0 " + str(dbVehiclesToTrack));
 
-// Save players stuff when they disconnect
-addMissionEventHandler ['HandleDisconnect',{
-	_un = _this select 0;
-	_un enableSimulationGlobal false;
-	_un setDamage 0;
-	[_un, true, dbPlrVarNames] call fnc_db_savePlayerData;
-}];
+dbWorldGetters = _worldGetters;
+dbWorldSetters = _worldSetters;
+
+call fnc_db_initHandlePlayerDisconnecting;
 
 sleep 5;
 
@@ -65,6 +49,7 @@ sleep 5;
 
 // Load all vehicles
 0 spawn fn_db_loadAllVehicles;
+sleep 2;
 
 // Load world data
 if (call fnc_db_checkHasWorldData) then {
@@ -75,49 +60,10 @@ if (call fnc_db_checkHasWorldData) then {
 
 sleep 10;
 
-// Save persistent crates inventory every 20 seconds
-[_crates] spawn {
-	params ["_crates"];
-	while {true} do {
-		{
-			[_x] spawn fnc_db_saveCrateData;
-		} forEach _crates;
-		systemChat ("saved crates");
-		sleep 2;
-		{
-			_handle = [_x] spawn fn_db_saveVehicleData;
-			waitUntil { scriptDone _handle };
-		} forEach dbVehiclesToTrack;
-		systemChat ("saved vics");
-		sleep 2;
-	};
-};
-
-// Save players stuff from time to time
-0 spawn {
-	while { true } do {
-		_allPlayersToSave = call BIS_fnc_listPlayers;
-		{
-			// Making sure the player has not left the game since we started the loop
-			_currentPlayers = call BIS_fnc_listPlayers;
-			
-			if (_x in _currentPlayers) then {;
-				[_x, false, dbPlrVarNames] call fnc_db_savePlayerData;
-				
-				// Saving is spaced out to avoid overloading server with save requests
-				sleep 3;
-			};
-			
-		} forEach _allPlayersToSave;
-	};
-};
-
-// Save world data every 25 seconds
-if ((count _worldGetters > 0) or (count _worldSetters > 0)) then {
-	0 spawn {
-		while { true } do {
-			call fnc_db_saveWorldData;
-			sleep 25;
-		};
-	};
+while { true } do {
+	call fnc_db_saveVehicles;
+	call fnc_db_savePlayers;
+	call fnc_db_saveWorld;
+	
+	sleep 60;
 };
