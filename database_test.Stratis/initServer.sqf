@@ -22,6 +22,6 @@ _scriptHandle = execVM "dataBase\vehicleHelpers.sqf";
 	[amobus, crate_1],
 	
 	// Names of custom persistent player variables to be used with getVariable.
-	[]
+	["pdr_fatigue"]
 ]call compile preprocessFileLineNumbers "dataBase\initDatabaseServer.sqf";
 

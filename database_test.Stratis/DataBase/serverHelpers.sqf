@@ -16,10 +16,10 @@ fnc_db_savePlayers = {
 		_currentPlayers = call BIS_fnc_listPlayers;
 		
 		if (_x in _currentPlayers) then {;
-			[_x, false, dbPlrVarNames] call fnc_db_savePlayerData;
+			[_x, false, dbPlayerVarNames] call fnc_db_savePlayerData;
 			
 			// Saving is spaced out to avoid overloading server with save requests
-			sleep 1;
+			sleep 0.3;
 		};
 		
 	} forEach _allPlayersToSave;

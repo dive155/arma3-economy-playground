@@ -5,7 +5,7 @@ params [
 	["_saveDate", true],
 	["_saveWeather", true],
 	["_vehicles", []],
-	["_plrVarNames", []]
+	["_playerVarNames", []]
 ];
 
 call compile preprocessFileLineNumbers "dataBase\serverHelpers.sqf";
@@ -29,7 +29,7 @@ dbNamePlayers = _dbNameRootFull + "_players";
 dbNameWorld = _dbNameRootFull + "_world";
 dbNameVehicles = _dbNameRootFull + "_vehicles";
 
-dbPlrVarNames = _plrVarNames;
+dbPlayerVarNames = _playerVarNames;
 dbVehiclesToTrack = _vehicles;
 dbSaveInterval = _saveInterval;
 

@@ -8,7 +8,7 @@ fnc_db_handlePlayerConnected = {
 		_unit call fnc_db_loadPlayerData;
 	} else {
 		// Player joining for the first time - save his data instead of loading
-		[_unit, false, dbPlrVarNames] call fnc_db_savePlayerData;
+		[_unit, false, dbPlayerVarNames] call fnc_db_savePlayerData;
 	};
 };
 
@@ -17,7 +17,7 @@ fnc_db_initHandlePlayerDisconnecting = {
 		_un = _this select 0;
 		_un enableSimulationGlobal false;
 		_un setDamage 0;
-		[_un, true, dbPlrVarNames] call fnc_db_savePlayerData;
+		[_un, true, dbPlayerVarNames] call fnc_db_savePlayerData;
 	}];
 };
 
@@ -44,13 +44,12 @@ fnc_db_loadPlayerData = {
 		_dir = ["read",[_steamId, "dir",0]] call _dbHandle;
 		_face = ["read",[_steamId, "face",""]] call _dbHandle;
 		
-		_allCustomVars = ["read",[_steamId, "plrCustomVars",[]]] call _dbHandle;
+		// Custom variables dependent on getVariable
 		{
-			_varName = _x select 0;
-			_value = _x select 1;
-		
+			_varName = _x;
+			_value = ["read",[_steamId, _varName,[]]] call _dbHandle;
 			_unit setVariable [_varName, _value, true];
-		} forEach _allCustomVars;
+		} forEach dbPlayerVarNames;
 		
 		_varsSecondWeapon = ["read",[_steamId, "secondWeapon",[]]] call _dbHandle;
 		
@@ -88,12 +87,11 @@ fnc_db_savePlayerData = {
 		_face = ["write", [_steamId, "face", face _unit]] call _dbHandle;
 		
 		// Custom variables dependent on getVariable
-		_allCustomVars = [];
 		{
-			_customVarValue = _unit getVariable [_x, ""];
-			_allCustomVars pushBack [_x, _customVarValue];
-		} forEach _plrVarNames;
-		_custom = ["write", [_steamId, "plrCustomVars", _allCustomVars]] call _dbHandle;
+			_varName = _x;
+			_value = _unit getVariable [_varName, ""];
+			["write", [_steamId, _varName, _value]] call _dbHandle;
+		} forEach dbPlayerVarNames;
 		
 		// Handle WBK second weapon mod
 		if (!(isNil {_unit getVariable "WBK_SecondWeapon"})) then {
