@@ -2,7 +2,8 @@
 	+ Appearance (skin, components, number plate etc)
 	+ Damage state
 	+ Ammo in turrets
-	+ Ammo on pylon
+	+ Ammo on pylons
+	+ Fuel
 + Added saving of date and time
 + Added saving of weather
 + Added proper support for singleplayer and 3Den testing
@@ -12,7 +13,7 @@
 + Added database splitting into two environments (DEV and PROD), DEV to be used in 3Den and PROD to be used in live missions
 + Added ability to pass a list of names of custom persistent player variables to be used with getVariable
 + Added storing preset player data when joining the game for the first time
-+ Added ability to store any custom world data by providing delegates to the new handleWorldData script
++ Added handling of situations when persistent objects are deleted
 + Fixed playerData script crashing when no data is present for the player when joining the game
 + Fixed bug with items disappearing from crates when they are stored inside backpacks or other containers
 + Refactored initServer.sqf and initPlayerLocal.sqf
@@ -23,14 +24,8 @@
 
 
 TODO
-Probably don't save world state unless requested
-Cloning of crates
 Check where call can be replaced with spawn
-Save everything at set interval
-Unify crates and vehicles
 ACE cargo?
 
 Server shutdown
-
-
-_forced, _overcast, _rain, _precipitationType, _lightning, _rainbow, _waves, _wind, _gusts, _fog
+Props

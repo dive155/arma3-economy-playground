@@ -174,6 +174,8 @@ fnc_initializeExistingVehicleLocally = {
 	// TODO this bunch could be called without remoteExec but it crashes, fix later
 	[_veh, _damageStructural, _damageHitPoints] remoteExec ["fnc_applyDamageLocal", _veh];
 	
+	_veh addEventHandler ["Deleted", fn_db_handleVehicleDeleted];
+	
 	if (_damageStructural < 1) then {
 		[_veh, _cargo] spawn fnc_db_loadCargoFromData;
 		[_veh, _turretMagazines] call fnc_addTurretMagazines;

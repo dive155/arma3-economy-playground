@@ -1,5 +1,5 @@
 fn_db_saveVehicleData = {
-	params ["_vehicle"];
+	params ["_vehicle", ["_addDeleteEventHandler", true]];
 	
 	_varName = vehicleVarName _vehicle;
 	if (_varName == "") then {
@@ -33,6 +33,10 @@ fn_db_saveVehicleData = {
 	["write", [_section, "cargo", _vehicleData select 10]] call _dbHandle;
 	["write", [_section, "turretMagazines", _vehicleData select 11]] call _dbHandle;
 	["write", [_section, "pylons", _vehicleData select 12]] call _dbHandle;
+	
+	if (_addDeleteEventHandler) then {
+		_vehicle addEventHandler ["Deleted", fn_db_handleVehicleDeleted];
+	};
 };
 
 fn_db_loadAllVehicles = {
@@ -42,7 +46,7 @@ fn_db_loadAllVehicles = {
 	// Vehicles that we need to track but are not in the db
 	{
 		if not ((vehicleVarName _x) in _sections) then {
-			_x call fn_db_saveVehicleData;
+			[_x, false] call fn_db_saveVehicleData;
 		};
 	} forEach dbVehiclesToTrack;
 	
@@ -95,6 +99,15 @@ fn_db_loadVehicleData = {
 		_pylons
 	];
     _vehicleData
+};
+
+fn_db_handleVehicleDeleted = {
+	params ["_entity"];
+	
+	if (isServer) then {
+		systemChat ("Removing from db: " + str(_entity));
+		_entity call fn_db_removeVehicleFromData;
+	};
 };
 
 fn_db_removeVehicleFromData = {
