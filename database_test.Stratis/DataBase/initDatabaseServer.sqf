@@ -13,6 +13,7 @@ call compile preprocessFileLineNumbers "dataBase\cargoHelpers.sqf";
 call compile preprocessFileLineNumbers "dataBase\handleVehicleData.sqf";
 call compile preprocessFileLineNumbers "dataBase\handlePlayerData.sqf";
 [_saveDate, _saveWeather] call compile preprocessFileLineNumbers "dataBase\handleWorldData.sqf";
+call compile preprocessFileLineNumbers "dataBase\handlePersistentVars.sqf";
 
 _is3DEN = is3DENPreview;
 shouldUseDB = not _is3DEN or (_is3DEN and _useIn3DEN);
@@ -28,6 +29,7 @@ _dbNameRootFull = _environmentPrefix + _dbNameRoot;
 dbNamePlayers = _dbNameRootFull + "_players";
 dbNameWorld = _dbNameRootFull + "_world";
 dbNameVehicles = _dbNameRootFull + "_vehicles";
+dbNameVariables = _dbNameRootFull + "_variables";
 
 dbPlayerVarNames = _playerVarNames;
 dbVehiclesToTrack = _vehicles;

@@ -208,7 +208,7 @@ fnc_addTurretMagazines = {
 	
 	if (count _turretMagazines == 0) exitWith {};
 	
-	// Without this hack weapons will be unloaded when the vehicle is spawned
+	// Without this hack weapons would have unloaded mags when the vehicle is spawned
 	// Gathering all weapons and removing them
 	_allWeapons = [];
 	_allPaths = [[-1]] + allTurrets _vehicle;
