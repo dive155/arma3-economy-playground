@@ -31,10 +31,12 @@ class CfgPatches
 		requiredVersion=0.1;
 		requiredAddons[]=
 		{
+			"A3_Data_F",
 			"A3_Weapons_F",
 			"A3_Weapons_F_Ammoboxes",
 			"ace_common",
-			"KSS"
+			"KSS",
+			"G_Armbands"
 		};
 	};
 };
@@ -99,6 +101,47 @@ class CfgVehicles
         class TransportItems {};
         class TransportBackpacks {};
     };
+};
+
+class cfgGlasses
+{
+	class G_Armband_blk_F;
+	class G_Armband_pdr_F: G_Armband_blk_F
+	{
+		author="Dive";
+		scope=2;
+		scopeArsenal=2;
+		displayName="Armband [PDR]";
+		picture="\pdrstuff\data\UI\ico_armband_pdr.paa";
+		hiddenSelectionsTextures[]=
+		{
+			"\pdrstuff\data\armbands\pdr_armband.paa"
+		};
+		identityTypes[]=
+		{
+			"NoGlasses",
+			0
+		};
+	};
+	
+	class G_Armband_blk_alt_F;
+	class G_Armband_pdr_alt_F: G_Armband_blk_alt_F
+	{
+		author="Dive";
+		scope=2;
+		scopeArsenal=2;
+		displayName="Armband [PDR, Alt]";
+		picture="\pdrstuff\data\UI\ico_armband_pdr.paa";
+		hiddenSelectionsTextures[]=
+		{
+			"\pdrstuff\data\armbands\pdr_armband.paa"
+		};
+		identityTypes[]=
+		{
+			"NoGlasses",
+			0
+		};
+	};
 };
 
 #include "CfgSounds.hpp"

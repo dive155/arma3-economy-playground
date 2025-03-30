@@ -1,5 +1,5 @@
 class cfgWeapons
-{
+{	
 	class ItemCore;
 	class InventoryItem_Base_F;
 	class pdr_money_base: ItemCore
