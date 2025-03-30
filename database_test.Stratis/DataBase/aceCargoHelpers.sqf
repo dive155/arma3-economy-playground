@@ -8,14 +8,15 @@ fnc_db_getAceCargoData = {
 		} else {
 			_cargo = [_x] call fnc_db_getCargoData;
 			
-			_fuelCargoData = [];
-			_currentFuelCargo = _x getVariable "ace_refuel_currentfuelcargo";
-			if not (isNil "_currentFuelCargo") then {
-				_fuelCargoData = [
-					_x getVariable "ace_refuel_capacity",
-					_x getVariable "ace_refuel_currentfuelcargo"
-				];
-			};
+			_fuelCargoData = [_x] call fnc_db_getAceFuelCargoData;
+			// _fuelCargoData = [];
+			// _currentFuelCargo = _x getVariable "ace_refuel_currentfuelcargo";
+			// if not (isNil "_currentFuelCargo") then {
+				// _fuelCargoData = [
+					// _x getVariable "ace_refuel_capacity",
+					// _x getVariable "ace_refuel_currentfuelcargo"
+				// ];
+			// };
 			
 			_cargoSerialized pushBack [typeOf _x, getAllHitPointsDamage _x, _cargo,_fuelCargoData, _x getVariable ["ace_cargo_customName",""]];
 		};
@@ -48,14 +49,41 @@ fnc_db_loadAceCargoFromData = {
 			} forEach _damage#0;
 			[_cargo, _crate, true] call ace_cargo_fnc_loadItem;
 			
-			if (count _fuelCargoData > 0) then {
-				[_cargo, _fuelCargoData] spawn {
-					params["_cargo", "_fuelCargoData"];
-					sleep 1;
-					_cargo setVariable ["ace_refuel_capacity", _fuelCargoData select 0, true];
-					_cargo setVariable ["ace_refuel_currentfuelcargo", _fuelCargoData select 1, true];
-				};
-			};
+			[_cargo, _fuelCargoData] call fnc_db_setAceFuelCargo;
+			
+			// if (count _fuelCargoData > 0) then {
+				// [_cargo, _fuelCargoData] spawn {
+					// params["_cargo", "_fuelCargoData"];
+					// _cargo setVariable ["ace_refuel_capacity", _fuelCargoData select 0, true];
+					// _cargo setVariable ["ace_refuel_currentfuelcargo", _fuelCargoData select 1, true];
+				// };
+			// };
 		};
 	} forEach _serializedCargo;
+};
+
+fnc_db_getAceFuelCargoData = {
+	params ["_veh"];
+	_fuelCargoData = [];
+	_currentFuelCargo = _veh getVariable "ace_refuel_currentfuelcargo";
+	if not (isNil "_currentFuelCargo") then {
+		_fuelCargoData = [
+			_veh getVariable "ace_refuel_capacity",
+			_veh getVariable "ace_refuel_currentfuelcargo"
+		];
+	};
+	_fuelCargoData
+};
+
+fnc_db_setAceFuelCargo = {
+	params["_veh", "_fuelCargoData"];
+
+	if (count _fuelCargoData > 0) then {
+		[_veh, _fuelCargoData] spawn {
+			params ["_veh", "_fuelCargoData"];
+			sleep 1;
+			_veh setVariable ["ace_refuel_capacity", _fuelCargoData select 0, true];
+			_veh setVariable ["ace_refuel_currentfuelcargo", _fuelCargoData select 1, true];
+		};
+	};
 };
