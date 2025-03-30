@@ -34,6 +34,7 @@ fn_db_saveVehicleData = {
 	["write", [_section, "turretMagazines", _vehicleData select 11]] call _dbHandle;
 	["write", [_section, "pylons", _vehicleData select 12]] call _dbHandle;
 	["write", [_section, "aceCargo", _vehicleData select 13]] call _dbHandle;
+	["write", [_section, "aceFuelCargo", _vehicleData select 14]] call _dbHandle;
 	
 	if (_addDeleteEventHandler) then {
 		_vehicle addEventHandler ["Deleted", fn_db_handleVehicleDeleted];
@@ -84,6 +85,7 @@ fn_db_loadVehicleData = {
 	_turretMagazines = ["read", [_varName, "turretMagazines", []]] call _dbHandle;
 	_pylons = ["read", [_varName, "pylons", []]] call _dbHandle;
 	_aceCargo = ["read", [_varName, "aceCargo", []]] call _dbHandle;
+	_aceFuelCargo = ["read", [_varName, "aceFuelCargo", []]] call _dbHandle;
 	
 	_vehicleData = [
 		_varName,
@@ -99,7 +101,8 @@ fn_db_loadVehicleData = {
 		_cargo,
 		_turretMagazines,
 		_pylons,
-		_aceCargo
+		_aceCargo,
+		_aceFuelCargo
 	];
     _vehicleData
 };

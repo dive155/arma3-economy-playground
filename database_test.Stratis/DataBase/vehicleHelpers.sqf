@@ -69,6 +69,7 @@ fnc_getVehicleData = {
 	_turretMagazines = [];
 	_pylons = [];
 	_aceCargo = [];
+	_aceFuelCargo = [];
 
 	// If it's a vehicle
 	if (_category == 0) then {
@@ -98,6 +99,7 @@ fnc_getVehicleData = {
 		};
 		
 		_aceCargo = [_vehicle] call fnc_db_getAceCargoData;
+		_aceFuelCargo = [_vehicle] call fnc_db_getAceFuelCargoData;
 	};
 	
     _vehicleData = [
@@ -114,7 +116,8 @@ fnc_getVehicleData = {
 		_cargo,
 		_turretMagazines,
 		_pylons,
-		_aceCargo
+		_aceCargo,
+		_aceFuelCargo
 	];
     _vehicleData
 };
@@ -135,7 +138,8 @@ fnc_createVehicleFromData = {
 		"_cargo",
 		"_turretMagazines",
 		"_pylons",
-		"_aceCargo"
+		"_aceCargo",
+		"_aceFuelCargo"
 	];
 	
 	_veh = _existingVehicle;
@@ -164,7 +168,8 @@ fnc_initializeExistingVehicleLocally = {
 		"_cargo",
 		"_turretMagazines",
 		"_pylons",
-		"_aceCargo"
+		"_aceCargo",
+		"_aceFuelCargo"
 	];
 	
 	_veh setPosATL _position;	
@@ -186,6 +191,7 @@ fnc_initializeExistingVehicleLocally = {
 		[_veh, _cargo] spawn fnc_db_loadCargoFromData;
 		[_veh, _turretMagazines] call fnc_addTurretMagazines;
 		[_veh, _aceCargo] call fnc_db_loadAceCargoFromData;
+		[_veh, _aceFuelCargo] call fnc_db_setAceFuelCargo;
 		
 		sleep 1.5;
 		
