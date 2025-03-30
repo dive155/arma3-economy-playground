@@ -14,6 +14,8 @@
 + Added ability to pass a list of names of custom persistent player variables to be used with getVariable
 + Added storing preset player data when joining the game for the first time
 + Added handling of situations when persistent objects are deleted
++ Added persistent variables system
++ Added persistent journals system
 + Fixed playerData script crashing when no data is present for the player when joining the game
 + Fixed bug with items disappearing from crates when they are stored inside backpacks or other containers
 + Refactored initServer.sqf and initPlayerLocal.sqf
