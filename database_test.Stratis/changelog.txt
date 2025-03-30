@@ -28,6 +28,8 @@
 TODO
 Check where call can be replaced with spawn
 ACE cargo?
+Fuel cargo
+Handle when persistent crate is loaded into ace cargo
 
 Server shutdown
 Props
