@@ -35,13 +35,6 @@ params ["_vehicle", "_varName"];
 	missionNamespace setVariable [_varName, _vehicle];
 };
 
-// fnc_cloneVehicle = {
-	// params ["_vehicle"];
-	
-	// _vehicleData = [_vehicle] call fnc_getVehicleData;
-	// [_vehicleData] call fnc_createVehicleFromData;
-// };
-
 fnc_getVehicleData = {
 	params ["_vehicle"];
 	_varName = vehicleVarName _vehicle;

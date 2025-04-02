@@ -10,9 +10,10 @@ params [
 
 call compile preprocessFileLineNumbers "dataBase\serverHelpers.sqf";
 call compile preprocessFileLineNumbers "dataBase\cargoHelpers.sqf";
-call compile preprocessFileLineNumbers "dataBase\aceCargoHelpers.sqf";
+call compile preprocessFileLineNumbers "dataBase\vehicleHelpers.sqf";
 call compile preprocessFileLineNumbers "dataBase\handleVehicleData.sqf";
 call compile preprocessFileLineNumbers "dataBase\handlePlayerData.sqf";
+call compile preprocessFileLineNumbers "dataBase\aceCargoHelpers.sqf";
 [_saveDate, _saveWeather] call compile preprocessFileLineNumbers "dataBase\handleWorldData.sqf";
 call compile preprocessFileLineNumbers "dataBase\handlePersistentVars.sqf";
 call compile preprocessFileLineNumbers "dataBase\handleJournals.sqf";
@@ -47,7 +48,8 @@ call fnc_db_loadWorldData;
 sleep 3;
 
 // Load all vehicles
-0 spawn fn_db_loadAllVehicles;
+0 call fn_db_loadAllVehicles;
+0 call fnc_db_addAceCargoHandlers;
 sleep 10;
 
 while { true } do {

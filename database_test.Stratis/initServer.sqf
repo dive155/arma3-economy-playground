@@ -1,6 +1,3 @@
-
-_scriptHandle = execVM "dataBase\vehicleHelpers.sqf";
-
 [
 	// Name root for the Database for this mission. It is recommended to have different names for different missions.
 	"TestDatabase",
