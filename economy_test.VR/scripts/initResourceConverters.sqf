@@ -58,7 +58,7 @@ waitUntil { scriptDone _scriptHandle };
 	["",0],
 	industrialConverterSoundsConfig,
 	["STR_factory_action", "STR_factory_success", "STR_factory_failure"],
-		{ // Get pay config
+	{ // Get pay config
 		[currencyCodePdrLeu, "payFactory" call fnc_getWorldVariable]
 	},
 	{ // Extra condition
@@ -78,7 +78,11 @@ waitUntil { scriptDone _scriptHandle };
 	[[stove_input_box, "b_dive_grain_bag"]],
 	stove_output_box,
 	objNull,
-	["ACE_Banana", 2],
+	["pdr_lunch_full", 2],
 	["pdrstuff\sounds\stove_ignition.ogg", "pdrstuff\sounds\stove_cooking.ogg", "pdrstuff\sounds\stove_failure.ogg", ""],
-	["STR_stove_action", "STR_stove_success", "STR_stove_failure"]
+	["STR_stove_action", "STR_stove_success", "STR_stove_failure"],
+	{["", 0]},
+	{ // Extra condition
+		["cooking", true] call fnc_checkHasPermission;
+	}
 ]execVM "scripts\economy\createResourceConverter.sqf";

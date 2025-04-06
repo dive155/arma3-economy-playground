@@ -144,4 +144,14 @@
 		<Russian>Недостаточно денег в ящике для обмена.</Russian>
 	</Key>
   </Package>
+    <Package name="perms">
+	<Key ID="STR_permissionMissing">
+		<Original>The Ability is missing: </Original>
+		<Russian>Отсутствует способность: </Russian>
+	</Key>
+	<Key ID="STR_permission_cooking">
+		<Original>Cooking</Original>
+		<Russian>Готовка</Russian>
+	</Key>
+  </Package>
 </Project>

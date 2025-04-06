@@ -24,3 +24,4 @@ fnc_showPlayerStats = {
 _checkStatsAction = ["CheckOwnStats", localize "STR_check_stats_action", "", {call fnc_showPlayerStats}, {true}] call ace_interact_menu_fnc_createAction;
 [player, 1, ["ACE_SelfActions"], _checkStatsAction] call ace_interact_menu_fnc_addActionToObject;
 
+_scriptHandle = execVM "scripts\stats\permissionsSystem.sqf";
