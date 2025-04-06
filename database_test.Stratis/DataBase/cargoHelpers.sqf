@@ -44,6 +44,8 @@ fnc_db_loadCargoFromData = {
 	clearWeaponCargoGlobal _crate;
 	clearBackpackCargoGlobal _crate;
 	
+	if (count _data < 2) exitWith {};
+	
 	_cargoData = _data select 0;
 	_containersData = _data select 1;
 		

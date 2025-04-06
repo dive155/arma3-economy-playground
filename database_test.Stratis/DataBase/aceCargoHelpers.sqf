@@ -100,7 +100,7 @@ fnc_db_addAceCargoHandlers = {
 			_item setVariable ["dbCargoPersistentVarname", _varName, true];
 			[_item] call fn_db_removeVehicleFromData;
 			systemChat ("cargo persistent, removing from db varname " + _varName);
-			[_vehicle] call fn_db_saveVehicleData;
+			[_vehicle] spawn fn_db_saveVehicleData;
 		};
 		
 	}] call CBA_fnc_addEventHandler;
@@ -112,7 +112,7 @@ fnc_db_addAceCargoHandlers = {
 		_persistentVarName = _item getVariable ["dbCargoPersistentVarname", ""];
 		if (_persistentVarName != "") then {
 			systemChat ("cargo persistent, saving to db varname " + _varName);
-			[_item] call fn_db_saveVehicleData;
+			[_item] spawn fn_db_saveVehicleData;
 		};
 		
 	}] call CBA_fnc_addEventHandler;
