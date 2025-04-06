@@ -18,3 +18,6 @@ waitUntil { scriptDone _scriptHandle };
 
 _scriptHandle = execVM "scripts\initGasStations.sqf";
 waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "scripts\initExtraInteractions.sqf";
+waitUntil { scriptDone _scriptHandle };

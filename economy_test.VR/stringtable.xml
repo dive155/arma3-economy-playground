@@ -142,8 +142,8 @@
 		<English>Not enough money in the box for exchange.</English>
 		<Russian>Недостаточно денег в ящике для обмена.</Russian>
 	</Key>
-  </Package>
-    <Package name="perms">
+   </Package>
+   <Package name="perms">
 	<Key ID="STR_permissionMissing">
 		<Original>The Ability is missing: </Original>
 		<Russian>Отсутствует способность: </Russian>
@@ -151,6 +151,24 @@
 	<Key ID="STR_permission_cooking">
 		<Original>Cooking</Original>
 		<Russian>Готовка</Russian>
+	</Key>
+  </Package>
+  <Package name="misc">
+	<Key ID="STR_checkNumberPlate">
+		<Original>Check Number Plate</Original>
+		<Russian>Посмотреть Номерной Знак</Russian>
+	</Key>
+	<Key ID="STR_checkRemainingFuel">
+		<Original>Check Fuel in own Gas Tank</Original>
+		<Russian>Проверить Уровень Топлива в Бензобаке</Russian>
+	</Key>
+	<Key ID="STR_checkingRemainingFuel">
+		<Original>Checking Remaining Fuel</Original>
+		<Russian>Проверка Уровня Топлива</Russian>
+	</Key>
+	<Key ID="STR_remainingFuel">
+		<Original>Remaining Fuel in own Gas Tank (Liters):\n %1/%2</Original>
+		<Russian>Осталось Топлива в Бензобаке (Литры):\n %1/%2</Russian>
 	</Key>
   </Package>
 </Project>
