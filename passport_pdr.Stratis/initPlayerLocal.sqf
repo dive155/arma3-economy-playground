@@ -1,3 +1,3 @@
 waitUntil { not isNull player };
 
-execVM "scripts\passports\initPassports.sqf"
+execVM "scripts\passports\initVisaGivers.sqf"

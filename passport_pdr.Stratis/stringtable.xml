@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="pdr">
+  <Package name="visas">
+	<Key ID="STR_visaAction">
+		<Original>Visas</Original>
+		<Russian>Визы</Russian>
+	</Key>
+	<Key ID="STR_issueVisaActionFormat">
+		<Original>Issue Visa (%1)</Original>
+		<Russian>Выдать Визу (%1)</Russian>
+	</Key>
+	<Key ID="STR_revokeVisaActionFormat">
+		<Original>Revoke Visa (%1)</Original>
+		<Russian>Аннулировать Визу (%1)</Russian>
+	</Key>
+	<Key ID="STR_putEntryActionFormat">
+		<Original>Put Entry Stamp (%1)</Original>
+		<Russian>Поставить Штамп о Въезде (%1)</Russian>
+	</Key>
+	<Key ID="STR_putExitActionFormat">
+		<Original>Put Exit Stamp (%1)</Original>
+		<Russian>Поставить Штамп о Выезде (%1)</Russian>
+	</Key>
+	<Key ID="STR_visaFormat">
+		<Original>%1 Visa: %2</Original>
+		<Russian>%1 Виза: %2</Russian>
+	</Key>
+	<Key ID="STR_visaStatusValid">
+		<Original>Valid</Original>
+		<Russian>Валидна</Russian>
+	</Key>
+	<Key ID="STR_visaStatusRevoked">
+		<Original>Revoked</Original>
+		<Russian>Аннулирована</Russian>
+	</Key>
+	<Key ID="STR_borderCrossings">
+		<Original>Latest Border Crossings</Original>
+		<Russian>Последние пересечения границ</Russian>
+	</Key>
+	<Key ID="STR_borderEntry">
+		<Original>Entry</Original>
+		<Russian>Въезд</Russian>
+	</Key>
+	<Key ID="STR_borderExit">
+		<Original>Exit</Original>
+		<Russian>Выезд</Russian>
+	</Key>
+	<Key ID="STR_countryPDR">
+		<Original>PDR</Original>
+		<Russian>ПДР</Russian>
+	</Key>
+	<Key ID="STR_countryMoldova">
+		<Original>Moldova</Original>
+		<Russian>Молдова</Russian>
+	</Key>
+  </Package>
+  <Package name="characterInfo">
+	<Key ID="STR_govtJobFormat">
+		<Original>Government Job: %1</Original>
+		<Russian>Государственная Должность: %1</Russian>
+	</Key>
+	<Key ID="STR_govtSalaryFormat">
+		<Original>Government Salary: %1</Original>
+		<Russian>Государственный Оклад: %1</Russian>
+	</Key>
+	<Key ID="STR_debtInfo">
+		<Original>[Debt Information]</Original>
+		<Russian>[Информация о Долгах]</Russian>
+	</Key>
+	<Key ID="STR_registrationAddress">
+		<Original>[Registration address]</Original>
+		<Russian>[Адрес Прописки]</Russian>
+	</Key>
+	<Key ID="STR_ownedProperty">
+		<Original>[Owned Property]</Original>
+		<Russian>[Недвижимость в собственности]</Russian>
+	</Key>
+	<Key ID="STR_registeredVehicles">
+		<Original>[Registered Vehicles]</Original>
+		<Russian>[Зарегистрированные Т.С.]</Russian>
+	</Key>
+	<Key ID="STR_passportNotes">
+		<Original>[Notes]</Original>
+		<Russian>[Прочее]</Russian>
+	</Key>
+  </Package>
+</Project>
