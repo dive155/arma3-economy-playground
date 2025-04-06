@@ -2,35 +2,37 @@ fatigueVarName = "rp_fatigue_current";
 fatigueCapacityVarName = "rp_fatigue_capacity";
 
 fnc_getFatigueCapacity = {
-	player getVariable [fatigueCapacityVarName, 4];
+	params ["_player"];
+	_player getVariable [fatigueCapacityVarName, 4];
 };
 
 fnc_setFatigueCapacity = {
-	params ["_fatigueCapacity"];
-	player setVariable [fatigueCapacityVarName, _fatigueCapacity, true];
+	params ["_player", "_fatigueCapacity"];
+	_player setVariable [fatigueCapacityVarName, _fatigueCapacity, true];
 };
 
 fnc_getPlayerFatigue = {
-	player getVariable [fatigueVarName, 0.0];
+	params ["_player"];
+	_player getVariable [fatigueVarName, 0.0];
 };
 
 fnc_setPlayerFatigue = {
-	params ["_fatigue"];
-	player setVariable [fatigueVarName, _fatigue, true];
+	params ["_player", "_fatigue"];
+	_player setVariable [fatigueVarName, _fatigue, true];
 };
 
 fnc_checkIfNotTooFatigued = {
-	params ["_fatigueIncrement"];
+	params ["_player", "_fatigueIncrement"];
 	
 	_potentialFatigue = (call fnc_getPlayerFatigue) + _fatigueIncrement;
-	if (_potentialFatigue <= call fnc_getFatigueCapacity) then { true } else {
+	if (_potentialFatigue <= [_player] call fnc_getFatigueCapacity) then { true } else {
 		hint(localize "STR_fatigue_cant_work");
 		false
 	}
 };
 
 fnc_increasePlayerFatigue = {
-	params ["_fatigueIncrement"];
-	_fatigue = (call fnc_getPlayerFatigue) + _fatigueIncrement;
-	_fatigue call fnc_setPlayerFatigue;
+	params ["_player", "_fatigueIncrement"];
+	_fatigue = ([_player] call fnc_getPlayerFatigue) + _fatigueIncrement;
+	[_player, _fatigue] call fnc_setPlayerFatigue;
 };

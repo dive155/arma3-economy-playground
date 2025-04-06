@@ -83,6 +83,6 @@ waitUntil { scriptDone _scriptHandle };
 	["STR_stove_action", "STR_stove_success", "STR_stove_failure"],
 	{["", 0]},
 	{ // Extra condition
-		["cooking", true] call fnc_checkHasPermission;
+		[player, "cooking", true] call fnc_checkHasPermission;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";

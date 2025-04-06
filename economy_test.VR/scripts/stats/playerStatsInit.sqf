@@ -8,9 +8,9 @@ debtMoldovaVarName = "rp_debtMoldova";
 fnc_showPlayerStats = {
 	_result = format [
 		(localize "STR_stats_text_format"),
-		call fnc_getDaysSinceLastMeal,
-		call fnc_getPlayerFatigue,
-		call fnc_getFatigueCapacity,
+		[player] call fnc_getDaysSinceLastMeal,
+		[player] call fnc_getPlayerFatigue,
+		[player] call fnc_getFatigueCapacity,
 		player getVariable [debtPdrVarName, 100],
 		player getVariable [debtMoldovaVarName, 10]
 	];

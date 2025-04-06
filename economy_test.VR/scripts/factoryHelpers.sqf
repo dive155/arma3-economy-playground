@@ -27,7 +27,7 @@ fnc_checkFactoryWorkConditions = {
 	
 	_fatigueIncrease = _fatigueKey call fnc_getWorldVariable;
 	([_payConfig] call fnc_checkIfFactoryCanPay)
-		and ([_fatigueIncrease] call fnc_checkIfNotTooFatigued)
+		and ([player, _fatigueIncrease] call fnc_checkIfNotTooFatigued)
 };
 
 fnc_handleConverterWorkCompleted = {
@@ -37,7 +37,7 @@ fnc_handleConverterWorkCompleted = {
 	
 	_moneyToTake = _payConfig select 1;
 	(-1 * _moneyToTake) call fnc_addMoneyToFactory;
-	_fatigueIncrease call fnc_increasePlayerFatigue;
+	[player, _fatigueIncrease] call fnc_increasePlayerFatigue;
 };
 
 fnc_sellProducedFactoryGoods = {
