@@ -48,6 +48,11 @@ fnc_db_loadPlayerData = {
 		{
 			_varName = _x;
 			_value = ["read",[_steamId, _varName,[]]] call _dbHandle;
+			
+			if (typeName _value == "STRING") then {
+				_value = [_value] call fnc_db_restoreLineFeeds;
+			};
+			
 			_unit setVariable [_varName, _value, true];
 		} forEach dbPlayerVarNames;
 		
@@ -90,6 +95,11 @@ fnc_db_savePlayerData = {
 		{
 			_varName = _x;
 			_value = _unit getVariable [_varName, ""];
+			
+			if (typeName _value == "STRING") then {
+				_value = [_value] call fnc_db_replaceLineFeeds;
+			};
+			
 			["write", [_steamId, _varName, _value]] call _dbHandle;
 		} forEach dbPlayerVarNames;
 		

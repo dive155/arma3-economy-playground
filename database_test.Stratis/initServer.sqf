@@ -19,6 +19,6 @@
 	[amobus, crate_1],
 	
 	// Names of custom persistent player variables to be used with getVariable.
-	["pdr_fatigue"]
+	["pdr_fatigue", "pdr_address"]
 ]call compile preprocessFileLineNumbers "dataBase\initDatabaseServer.sqf";
 
