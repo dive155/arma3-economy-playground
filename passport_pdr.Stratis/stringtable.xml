@@ -72,8 +72,8 @@
 		<Russian>[Информация о Долгах]</Russian>
 	</Key>
 	<Key ID="STR_registrationAddress">
-		<Original>[Registration address]\n%1</Original>
-		<Russian>[Адрес Прописки]\n%1</Russian>
+		<Original>[Registration address]</Original>
+		<Russian>[Адрес Прописки]</Russian>
 	</Key>
 	<Key ID="STR_ownedProperty">
 		<Original>[Owned Property]</Original>

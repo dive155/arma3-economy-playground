@@ -151,6 +151,8 @@ class passportPdr: grad_passport_defaultPassport {
             w = GRAD_PASSPORT_CONTENT_W;
             h = GRAD_PASSPORT_DEFAULT_H;
 			
+			size = 0.6 * TEXT_SCALE;
+			
 			font = "EtelkaMonospacePro";
             colorText[] = {0,0,0,1};
         };
@@ -161,7 +163,7 @@ class passportPdr: grad_passport_defaultPassport {
             y = GRAD_PASSPORT_DEFAULT_LINE_Y(1);
             w = GRAD_PASSPORT_CONTENT_W;
             h = GRAD_PASSPORT_DEFAULT_H;
-			
+			size = 0.6 * TEXT_SCALE;
 			font = "EtelkaMonospacePro";
             colorText[] = {0,0,0,1};
         };

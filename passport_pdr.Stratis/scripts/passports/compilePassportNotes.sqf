@@ -62,3 +62,60 @@ fn_compileCrossingsText = {
 	};
 	_visasText
 };
+
+fn_compileCivilianDataText = {
+	params ["_player"];
+	private _text = "";
+
+	// Government Job
+	private _govtJob = _player getVariable ["rp_govtjob", ""];
+	_text = _text + format [localize "STR_govtJobFormat", _govtJob] + "<br/>";
+
+	// Government Salary
+	private _govtSalary = _player getVariable ["rb_govtsalary", 0];
+	_text = _text + format [localize "STR_govtSalaryFormat", _govtSalary] + "<br/>";
+
+	// Daily Bills
+	private _dailyBills = _player getVariable ["rp_dailybills", 0];
+	_text = _text + format [localize "STR_dailyBills", _dailyBills] + "<br/>";
+
+	// Debt Information
+	_text = _text + localize "STR_debtInfo" + "<br/>";
+	private _debts = _player getVariable ["rp_debts", []];
+	{
+		private _countryCode = _x select 0;
+		private _debt = _x select 1;
+		private _countryName = localize format ["STR_country%1", _countryCode];
+		_text = _text + format ["%1: %2", _countryName, _debt] + "<br/>";
+	} forEach _debts;
+
+	// Registration Address
+	private _address = _player getVariable ["rp_registrationaddress", ""];
+	_text = _text + localize "STR_registrationAddress" + "<br/>";
+	if (_address != "") then {
+		_text = _text + _address + "<br/>";
+	};
+
+	// Owned Property
+	_text = _text + localize "STR_ownedProperty" + "<br/>";
+	private _properties = _player getVariable ["rp_ownedproperties", []];
+	{
+		_text = _text + _x + "<br/>";
+	} forEach _properties;
+
+	// Registered Vehicles
+	_text = _text + localize "STR_registeredVehicles" + "<br/>";
+	private _vehicles = _player getVariable ["rp_registeredvehicles", []];
+	{
+		_text = _text + _x + "<br/>";
+	} forEach _vehicles;
+
+	// Passport Notes
+	private _notes = _player getVariable ["rp_passportnotes", ""];
+	_text = _text + localize "STR_passportNotes" + "<br/>";
+	if (_notes != "") then {
+		_text = _text + _notes + "<br/>";
+	};
+
+	_text
+};
