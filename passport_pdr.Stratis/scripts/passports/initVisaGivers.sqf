@@ -30,6 +30,18 @@ fn_applyVisaGiverPermissions = {
 fn_applyVisaGiverPermissionsLocal = {
 	params ["_countryName"];
 	
+	// Add permission to player
+	private _perm = "visaGiving" + _countryName;
+
+	if (isNil {player getVariable "rp_permissions"}) then {
+		player setVariable ["rp_permissions", [], true];
+	};
+	private _perms = player getVariable "rp_permissions";
+	if (!(_perm in _perms)) then {
+		_perms pushBack _perm;
+		player setVariable ["rp_permissions", _perms, true];
+	};
+	
 	if (isNil "visa_root_action") then {
 		visa_root_action = ["VisaRoot",localize "STR_visaAction","",{nil},{true}] call ace_interact_menu_fnc_createAction;
 		["CAManBase", 0, ["ACE_MainActions"], visa_root_action, true] call ace_interact_menu_fnc_addActionToClass;

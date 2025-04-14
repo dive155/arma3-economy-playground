@@ -127,5 +127,19 @@
 		<Original>Player data updated successfully.</Original>
 		<Russian>Данные игрока успешно обновлены.</Russian>
 	</Key>
+	<Key ID="STR_editAnyPassportAction">
+		<Original>Edit Passport</Original>
+		<Russian>Редактировать паспорт</Russian>
+	</Key>
+
+	<Key ID="STR_editErrorWrongCountry">
+    <Original>You do not have permission to edit the passport of this country: %1</Original>
+    <Russian>У вас нет прав на редактирование паспорта этой страны: %1</Russian>
+</Key>
+
+	<Key ID="STR_passportEditCategory">
+		<Original>Passport Editing</Original>
+		<Russian>Редактирование паспорта</Russian>
+	</Key>
   </Package>
 </Project>

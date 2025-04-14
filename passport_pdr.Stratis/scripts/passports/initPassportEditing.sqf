@@ -74,3 +74,64 @@ fn_showPlayerEditDialog = {
 		[_player, _invoker]
 	] call zen_dialog_fnc_create;
 };
+
+fn_applyPassportEditorPermission = {
+	params ["_player", "_countryName"];
+	[_countryName] remoteExec ["fn_applyPassportEditorPermissionLocal", _player];
+};
+
+fn_applyPassportEditorPermissionLocal = {
+	params ["_countryName"];
+
+	// Add permission to caller
+	private _perm = "passportEditing" + _countryName;
+
+	if (isNil {player getVariable "rp_permissions"}) then {
+		player setVariable ["rp_permissions", [], true];
+	};
+	private _perms = player getVariable "rp_permissions";
+	if (!(_perm in _perms)) then {
+		_perms pushBack _perm;
+		player setVariable ["rp_permissions", _perms, true];
+	};
+
+	// Add the root menu if not already created
+	if (isNil "passport_edit_root_action") then {
+		passport_edit_root_action = [
+			"PassportEditRoot",
+			localize "STR_passportEditCategory",
+			"",
+			{nil},
+			{ true }
+		] call ace_interact_menu_fnc_createAction;
+
+		["CAManBase", 0, ["ACE_MainActions"], passport_edit_root_action, true] call ace_interact_menu_fnc_addActionToClass;
+	};
+
+	// Add the single universal edit action if not already created
+	if (isNil "passport_edit_action") then {
+		passport_edit_action = [
+			"EditAnyPassport",
+			localize "STR_editAnyPassportAction",
+			"",
+			{
+				params ["_target", "_caller"];
+
+				private _passportRsc = _target getVariable ["grad_passport_passportRsc", ""];
+				private _country = _passportRsc select [8]; // strips "passport" prefix
+				private _perm = "passportEditing" + _country;
+				private _callerPerms = _caller getVariable ["rp_permissions", []];
+
+				if (_perm in _callerPerms) then {
+					[_target, _caller] call fn_showPlayerEditDialog;
+				} else {
+					hint format [localize "STR_editErrorWrongCountry", _country];
+				};
+			},
+			{ true },
+			{}
+		] call ace_interact_menu_fnc_createAction;
+
+		["CAManBase", 0, ["ACE_MainActions", "PassportEditRoot"], passport_edit_action, true] call ace_interact_menu_fnc_addActionToClass;
+	};
+};
