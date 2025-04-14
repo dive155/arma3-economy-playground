@@ -54,7 +54,49 @@
 		<Russian>Молдова</Russian>
 	</Key>
   </Package>
-  <Package name="civilianInfo">
+  <Package name="passportActions">
+	<Key ID="STR_checkPassport">
+		<Original>Check Passport</Original>
+		<Russian>Посмотреть Паспорт</Russian>
+	</Key>
+	<Key ID="STR_showPassport">
+		<Original>Show Passport</Original>
+		<Russian>Показать Паспорт</Russian>
+	</Key>
+	<Key ID="STR_showingPassport">
+		<Original>Showing Passport</Original>
+		<Russian>Показывается Паспорт</Russian>
+	</Key>
+	<Key ID="STR_stopShowingPassport">
+		<Original>Stop Showing</Original>
+		<Russian>Перестать Показывать</Russian>
+	</Key>
+	<Key ID="STR_passportAlreadyShown">
+		<Original>%1 tried to show you their Passport.</Original>
+		<Russian>%1 попытался показать вам своё Паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportShowing">
+		<Original>%1 is showing you their Passport.</Original>
+		<Russian>%1 показывает вам своё Паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportHiding">
+		<Original>%1 is no longer showing you their Passport.</Original>
+		<Russian>%1 больше не показывает вам своё Паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportStateLooking">
+		<Original>%1 is looking at your passport.</Original>
+		<Russian>%1 смотрит ваш паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportStateNotLooking">
+		<Original>%1 is no longer looking at your passport.</Original>
+		<Russian>%1 больше не смотрит ваш паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportStateBusy">
+		<Original>%1 is busy right now and can't look at your passport.</Original>
+		<Russian>%1 сейчас занят и не может посмотреть ваш паспорт.</Russian>
+	</Key>
+	</Package>
+	<Package name="civilianInfo">
 	<Key ID="STR_govtJobFormat">
 		<Original>Government Job: %1</Original>
 		<Russian>Гос. Должность: %1</Russian>
