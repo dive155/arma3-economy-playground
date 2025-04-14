@@ -1,0 +1,2 @@
+passport notes editing bugged
+changes notification localized

@@ -24,13 +24,13 @@ fn_showPlayerEditDialog = {
 	[
 		localize "STR_editPlayerDataHeader",
 		[
-			["EDIT", [format [localize "STR_govtJobFormat", ""], localize "STR_editDescGovtJob"], [_govtJob]],
-			["EDIT", [format [localize "STR_govtSalaryFormat", ""], localize "STR_editDescGovtSalary"], [_govtSalary]],
-			["EDIT", [format [localize "STR_dailyBills", ""], localize "STR_editDescDailyBills"], [_dailyBills]],
-			["EDIT", [localize "STR_registrationAddress", localize "STR_editDescRegAddress"], [_regAddress]],
-			["EDIT:MULTI", [localize "STR_ownedProperty", localize "STR_editDescOwnedProps"], [_ownedProps]],
-			["EDIT:MULTI", [localize "STR_registeredVehicles", localize "STR_editDescRegVehicles"], [_regVehicles]],
-			["EDIT:MULTI", [localize "STR_passportNotes", localize "STR_editDescPassportNotes"], [_passportNotes]]
+			["EDIT", [format [localize "STR_govtJobFormat", ""], localize "STR_editDescGovtJob"], [_govtJob], true],
+			["EDIT", [format [localize "STR_govtSalaryFormat", ""], localize "STR_editDescGovtSalary"], [_govtSalary], true],
+			["EDIT", [format [localize "STR_dailyBills", ""], localize "STR_editDescDailyBills"], [_dailyBills], true],
+			["EDIT", [localize "STR_registrationAddress", localize "STR_editDescRegAddress"], [_regAddress], true],
+			["EDIT:MULTI", [localize "STR_ownedProperty", localize "STR_editDescOwnedProps"], [_ownedProps], true],
+			["EDIT:MULTI", [localize "STR_registeredVehicles", localize "STR_editDescRegVehicles"], [_regVehicles], true],
+			["EDIT:MULTI", [localize "STR_passportNotes", localize "STR_editDescPassportNotes"], [_passportNotes], true]
 		],
 		{
 			params ["_values", "_args"];
@@ -41,9 +41,8 @@ fn_showPlayerEditDialog = {
 				(_this) regexMatch "^-?[0-9]+(\.[0-9]+)?$"
 			};
 
-			if (!((_values select 1) call _isNumber) || !((_values select 2) call _isNumber)) then {
+			if (!((_values select 1) call _isNumber) || !((_values select 2) call _isNumber)) exitWith {
 				["STR_editErrorInvalidNumbers"] remoteExec ["fn_hintLocalized", _invoker];
-				breakOut "exitDialog";
 			};
 
 			private _salary = parseNumber (_values select 1);

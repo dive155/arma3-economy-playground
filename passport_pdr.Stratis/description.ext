@@ -18,7 +18,7 @@ class CfgFunctions {
 #include "cau\userinputmenus\systems\displayText.cpp"
 #include "cau\userinputmenus\systems\displayTextMulti.cpp"
 
-class passportPdr: grad_passport_defaultPassport {
+class passportPDR: grad_passport_defaultPassport {
     class ControlsBackground: ControlsBackground {
         class BGPic: BGPic {
             text = "node_modules\grad-passport\data\passport_pdr.paa";
@@ -170,7 +170,7 @@ class passportPdr: grad_passport_defaultPassport {
     };
 };
 
-class passportMoldova: passportPdr {
+class passportMoldova: passportPDR {
     class ControlsBackground: ControlsBackground {
         class BGPic: BGPic {
             text = "node_modules\grad-passport\data\passport_moldova.paa";

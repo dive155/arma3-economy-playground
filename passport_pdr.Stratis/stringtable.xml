@@ -65,7 +65,7 @@
 	</Key>
 	<Key ID="STR_dailyBills">
 		<Original>Daily Bills: %1</Original>
-		<Russian>Ежедневные Счета: %1</Russian>
+		<Russian>Ежедневные Налоги: %1</Russian>
 	</Key>
 	<Key ID="STR_debtInfo">
 		<Original>[Debt Information]</Original>
