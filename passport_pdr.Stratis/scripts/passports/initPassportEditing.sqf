@@ -1,0 +1,77 @@
+fn_showPlayerEditDialog = {
+	/*
+		Function: fn_showPlayerEditDialog.sqf
+
+		Parameters:
+		0: OBJECT - The player to edit
+		1: OBJECT - The invoker (admin or other)
+
+		Usage:
+		[targetPlayer, adminPlayer] call fn_showPlayerEditDialog;
+	*/
+
+	params ["_player", "_invoker"];
+
+	// Load current values
+	private _govtJob = _player getVariable ["rp_govtjob", ""];
+	private _govtSalary = str (_player getVariable ["rp_govtsalary", 0]);
+	private _dailyBills = str (_player getVariable ["rp_dailybills", 0]);
+	private _regAddress = _player getVariable ["rp_registrationaddress", ""];
+	private _ownedProps = (_player getVariable ["rp_ownedproperties", []]) joinString toString [10];
+	private _regVehicles = (_player getVariable ["rp_registeredvehicles", []]) joinString toString [10];
+	private _passportNotes = _player getVariable ["rp_passportnotes", ""];
+
+	[
+		localize "STR_editPlayerDataHeader",
+		[
+			["EDIT", [format [localize "STR_govtJobFormat", ""], localize "STR_editDescGovtJob"], [_govtJob]],
+			["EDIT", [format [localize "STR_govtSalaryFormat", ""], localize "STR_editDescGovtSalary"], [_govtSalary]],
+			["EDIT", [format [localize "STR_dailyBills", ""], localize "STR_editDescDailyBills"], [_dailyBills]],
+			["EDIT", [localize "STR_registrationAddress", localize "STR_editDescRegAddress"], [_regAddress]],
+			["EDIT:MULTI", [localize "STR_ownedProperty", localize "STR_editDescOwnedProps"], [_ownedProps]],
+			["EDIT:MULTI", [localize "STR_registeredVehicles", localize "STR_editDescRegVehicles"], [_regVehicles]],
+			["EDIT:MULTI", [localize "STR_passportNotes", localize "STR_editDescPassportNotes"], [_passportNotes]]
+		],
+		{
+			params ["_values", "_args"];
+			private _player = _args select 0;
+			private _invoker = _args select 1;
+			
+			private _isNumber = {
+				(_this) regexMatch "^-?[0-9]+(\.[0-9]+)?$"
+			};
+
+			if (!((_values select 1) call _isNumber) || !((_values select 2) call _isNumber)) then {
+				["STR_editErrorInvalidNumbers"] remoteExec ["fn_hintLocalized", _invoker];
+				breakOut "exitDialog";
+			};
+
+			private _salary = parseNumber (_values select 1);
+			private _bills = parseNumber (_values select 2);
+
+			// Parse multiline edits into arrays, trim whitespace, filter empty
+			private _parseArray = {
+				(_this splitString toString [10]) apply {trim _x} select {_x != ""}
+			};
+
+			private _ownedPropsArr = (_values select 4) call _parseArray;
+			private _regVehiclesArr = (_values select 5) call _parseArray;
+
+			// Save all variables
+			_player setVariable ["rp_govtjob", _values select 0, true];
+			_player setVariable ["rp_govtsalary", _salary, true];
+			_player setVariable ["rp_dailybills", _bills, true];
+			_player setVariable ["rp_registrationaddress", _values select 3, true];
+			_player setVariable ["rp_ownedproperties", _ownedPropsArr, true];
+			_player setVariable ["rp_registeredvehicles", _regVehiclesArr, true];
+			_player setVariable ["rp_passportnotes", _values select 6, true];
+			
+			[_player] call fn_updateCivilianInfo; 
+			
+			["STR_editSuccess"] remoteExec ["fn_hintLocalized", _invoker];
+			[_player] call notifyPassportChanged;
+		},
+		{},
+		[_player, _invoker]
+	] call zen_dialog_fnc_create;
+};

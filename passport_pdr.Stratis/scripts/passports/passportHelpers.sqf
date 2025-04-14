@@ -17,7 +17,10 @@ getTimeText = {
 
 notifyPassportChanged = {
 	params ["_receiver"];
-	hint "Внёс изменения в паспорт игрока";
+	
+	if (_receiver != player) then {
+		hint "Внёс изменения в паспорт игрока";
+	};
 	["В ваш паспорт внесены изменения"] remoteExec ["hint", _receiver];
 };
 
@@ -29,4 +32,16 @@ cacheTarget = {
 loadCachedTarget = {
 	_cachedTarget = player getVariable ["cachedTarget", objNull];
 	_cachedTarget
+};
+
+fn_hintLocalized = {
+	params ["_key", ["_formatArgs", []]];
+	private _value = localize _key;
+	
+	if (count _formatArgs > 0) then {
+		_formatArgs = [_value] append _formatArgs;
+		_value = format _formatArgs;
+	};
+	
+	hint _value;
 };

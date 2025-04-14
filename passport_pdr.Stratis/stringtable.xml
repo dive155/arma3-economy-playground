@@ -87,5 +87,45 @@
 		<Original>[Notes]</Original>
 		<Russian>[Прочее]</Russian>
 	</Key>
+	<Key ID="STR_editPlayerDataHeader">
+		<Original>Edit Passport Data</Original>
+		<Russian>Редактировать паспортные данные</Russian>
+	</Key>
+	<Key ID="STR_editDescGovtJob">
+		<Original>Official government role of the player</Original>
+		<Russian>Официальная государственная должность игрока</Russian>
+	</Key>
+	<Key ID="STR_editDescGovtSalary">
+		<Original>Daily salary as a number</Original>
+		<Russian>Ежедневная зарплата (число)</Russian>
+	</Key>
+	<Key ID="STR_editDescDailyBills">
+		<Original>How much the player pays in bills daily</Original>
+		<Russian>Сколько игрок платит по счетам в день</Russian>
+	</Key>
+	<Key ID="STR_editDescRegAddress">
+		<Original>The official address of registration</Original>
+		<Russian>Официальный адрес регистрации</Russian>
+	</Key>
+	<Key ID="STR_editDescOwnedProps">
+		<Original>List of owned properties (one per line)</Original>
+		<Russian>Список недвижимости в собственности (по одному в строке)</Russian>
+	</Key>
+	<Key ID="STR_editDescRegVehicles">
+		<Original>List of registered vehicle plates (one per line)</Original>
+		<Russian>Список номеров зарегистрированных ТС (по одному в строке)</Russian>
+	</Key>
+	<Key ID="STR_editDescPassportNotes">
+		<Original>Special notes stored in the passport</Original>
+		<Russian>Особые заметки, хранящиеся в паспорте</Russian>
+	</Key>
+	<Key ID="STR_editErrorInvalidNumbers">
+		<Original>Error: Salary and Daily Bills must be valid numbers.</Original>
+		<Russian>Ошибка: зарплата и ежедневные счета должны быть числами.</Russian>
+	</Key>
+	<Key ID="STR_editSuccess">
+		<Original>Player data updated successfully.</Original>
+		<Russian>Данные игрока успешно обновлены.</Russian>
+	</Key>
   </Package>
 </Project>

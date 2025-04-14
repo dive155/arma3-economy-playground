@@ -10,8 +10,7 @@ fn_setVisaStatusLocal = {
 	_visas pushBack [_countryName, _visaStatus];
 	_player setVariable ["rp_visas", _visas];
 	
-	_passportText = [_player] call fn_compileVisaInfoForPassport;
-	_player setVariable ["grad_passport_misc1", _passportText, true];
+	[_player] call fn_updateVisaInfo;
 };
 
 fn_addBorderCrossingLocal = {
@@ -19,8 +18,8 @@ fn_addBorderCrossingLocal = {
 	_crossings = _player getVariable ["rp_borderCrossings", []];
 	_crossings pushBack [(call getDateText) + (call getTimeText), _countryName, _crossingIsEntry];
 	_player setVariable ["rp_borderCrossings", _crossings];
-	_passportText = [_player] call fn_compileVisaInfoForPassport;
-	_player setVariable ["grad_passport_misc1", _passportText, true];
+	
+	[_player] call fn_updateVisaInfo;
 };
 
 fn_applyVisaGiverPermissions = {
@@ -61,14 +60,6 @@ fn_applyVisaGiverPermissionsLocal = {
 	};
 	
 	_putExit = {
-		params ["_target", "_player", "_actionParams"];
-		_countryName = _actionParams select 0;
-		
-		[_target, _countryName, false] remoteExec ["fn_addBorderCrossingLocal", _target];
-		[_target] call notifyPassportChanged;
-	};
-	
-	_checkAllCrossingStamps = {
 		params ["_target", "_player", "_actionParams"];
 		_countryName = _actionParams select 0;
 		
