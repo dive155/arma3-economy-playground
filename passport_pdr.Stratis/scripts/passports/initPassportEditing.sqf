@@ -36,12 +36,8 @@ fn_showPlayerEditDialog = {
 			params ["_values", "_args"];
 			private _player = _args select 0;
 			private _invoker = _args select 1;
-			
-			private _isNumber = {
-				(_this) regexMatch "^-?[0-9]+(\.[0-9]+)?$"
-			};
 
-			if (!((_values select 1) call _isNumber) || !((_values select 2) call _isNumber)) exitWith {
+			if (!((_values select 1) call fn_rpIsNumber) || !((_values select 2) call fn_rpIsNumber)) exitWith {
 				["STR_editErrorInvalidNumbers"] remoteExec ["fn_hintLocalized", _invoker];
 			};
 
@@ -85,28 +81,9 @@ fn_applyPassportEditorPermissionLocal = {
 
 	// Add permission to caller
 	private _perm = "passportEditing" + _countryName;
-
-	if (isNil {player getVariable "rp_permissions"}) then {
-		player setVariable ["rp_permissions", [], true];
-	};
-	private _perms = player getVariable "rp_permissions";
-	if (!(_perm in _perms)) then {
-		_perms pushBack _perm;
-		player setVariable ["rp_permissions", _perms, true];
-	};
-
-	// Add the root menu if not already created
-	if (isNil "passport_edit_root_action") then {
-		passport_edit_root_action = [
-			"PassportEditRoot",
-			localize "STR_passportEditCategory",
-			"",
-			{nil},
-			{ true }
-		] call ace_interact_menu_fnc_createAction;
-
-		["CAManBase", 0, ["ACE_MainActions"], passport_edit_root_action, true] call ace_interact_menu_fnc_addActionToClass;
-	};
+	[_perm] call fn_addPlayerPermLocal;
+	
+	call fn_createPassportEditingRootAction;
 
 	// Add the single universal edit action if not already created
 	if (isNil "passport_edit_action") then {

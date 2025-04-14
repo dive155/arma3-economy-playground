@@ -54,7 +54,7 @@
 		<Russian>Молдова</Russian>
 	</Key>
   </Package>
-  <Package name="characterInfo">
+  <Package name="civilianInfo">
 	<Key ID="STR_govtJobFormat">
 		<Original>Government Job: %1</Original>
 		<Russian>Гос. Должность: %1</Russian>
@@ -131,15 +131,33 @@
 		<Original>Edit Passport</Original>
 		<Russian>Редактировать паспорт</Russian>
 	</Key>
-
 	<Key ID="STR_editErrorWrongCountry">
-    <Original>You do not have permission to edit the passport of this country: %1</Original>
-    <Russian>У вас нет прав на редактирование паспорта этой страны: %1</Russian>
-</Key>
-
+		<Original>You do not have permission to edit the passport of this country: %1</Original>
+		<Russian>У вас нет прав на редактирование паспорта этой страны: %1</Russian>
+	</Key>
 	<Key ID="STR_passportEditCategory">
 		<Original>Passport Editing</Original>
 		<Russian>Редактирование паспорта</Russian>
+	</Key>
+	<Key ID="STR_debtEditDialogTitle">
+		<Original>Debt for %1</Original>
+		<Russian>Долг (%1)</Russian>
+	</Key>
+	<Key ID="STR_debtEditDialogDesc">
+		<Original>Enter the updated debt amount for %1.</Original>
+		<Russian>Введите сумму долга (%1)</Russian>
+	</Key>
+	<Key ID="STR_debtEditErrorInvalid">
+		<Original>Invalid amount: %1. Only numeric values allowed.</Original>
+		<Russian>Недопустимая сумма: %1. Разрешены только числа.</Russian>
+	</Key>
+	<Key ID="STR_debtEditSuccess">
+		<Original>Successfully updated debt for %1 to %2.</Original>
+		<Russian>%1: Долг обновлён: %2</Russian>
+	</Key>
+	<Key ID="STR_editDebtActionFormat">
+		<Original>Edit Debt (%1)</Original>
+		<Russian>Изменить долг (%1)</Russian>
 	</Key>
   </Package>
 </Project>

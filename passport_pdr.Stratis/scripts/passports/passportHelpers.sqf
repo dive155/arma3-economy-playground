@@ -45,3 +45,38 @@ fn_hintLocalized = {
 	
 	hint _value;
 };
+
+fn_rpIsNumber = {
+	(_this) regexMatch "^-?[0-9]+(\.[0-9]+)?$"
+};
+
+fn_createPassportEditingRootAction = {
+	// Add the root menu if not already created
+	if (isNil "passport_edit_root_action") then {
+		passport_edit_root_action = [
+			"PassportEditRoot",
+			localize "STR_passportEditCategory",
+			"",
+			{nil},
+			{ true }
+		] call ace_interact_menu_fnc_createAction;
+
+		["CAManBase", 0, ["ACE_MainActions"], passport_edit_root_action, true] call ace_interact_menu_fnc_addActionToClass;
+	};
+};
+
+fn_addPlayerPermLocal = {
+	params ["_perm"];
+	
+	// Add permission to caller
+	private _perm = "passportEditing" + _countryName;
+
+	if (isNil {player getVariable "rp_permissions"}) then {
+		player setVariable ["rp_permissions", [], true];
+	};
+	private _perms = player getVariable "rp_permissions";
+	if (!(_perm in _perms)) then {
+		_perms pushBack _perm;
+		player setVariable ["rp_permissions", _perms, true];
+	};
+};
