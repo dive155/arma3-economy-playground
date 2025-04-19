@@ -9,3 +9,9 @@ fn_hintLocalized = {
 	
 	hint _value;
 };
+
+fnc_db_setVarName = {
+params ["_vehicle", "_varName"];
+	_vehicle setVehicleVarName _varName;
+	missionNamespace setVariable [_varName, _vehicle];
+};

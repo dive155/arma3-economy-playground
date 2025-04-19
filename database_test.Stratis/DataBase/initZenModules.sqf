@@ -37,3 +37,25 @@
 	[objNull, localize "STR_DMP_successRemoved"] call BIS_fnc_showCuratorFeedbackMessage;
 
 }] call zen_custom_modules_fnc_register;
+
+[localize "STR_DMP_moduleCategory", localize "STR_DMP_copyID", {
+	_target = _this select 1;
+
+	// If placed on nothing or a man
+	if (isNull _target || {_target isKindOf "Man"}) exitWith {
+		[objNull, localize "STR_DMP_errorNotVehicleOrObject"] call BIS_fnc_showCuratorFeedbackMessage;
+	};
+
+	// If object is not tracked
+	if (isNil "dbVehiclesToTrack" || {!(_target in dbVehiclesToTrack)}) exitWith {
+		[objNull, localize "STR_DMP_errorNotTracked"] call BIS_fnc_showCuratorFeedbackMessage;
+	};
+
+	// Get variable name (database ID)
+	private _id = vehicleVarName _target;
+
+	// Copy to clipboard and show feedback
+	copyToClipboard _id;
+	[objNull, format [localize "STR_DMP_feedbackCopied", _id]] call BIS_fnc_showCuratorFeedbackMessage;
+
+}] call zen_custom_modules_fnc_register;

@@ -29,12 +29,6 @@ fnc_assignRandomVarName = {
 	_varName;
 };
 
-fnc_db_setVarName = {
-params ["_vehicle", "_varName"];
-	_vehicle setVehicleVarName _varName;
-	missionNamespace setVariable [_varName, _vehicle];
-};
-
 fnc_getVehicleData = {
 	params ["_vehicle"];
 	_varName = vehicleVarName _vehicle;

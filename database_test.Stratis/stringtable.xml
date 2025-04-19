@@ -45,5 +45,13 @@
 		<Original>Object successfully removed from the database.</Original>
 		<Russian>Объект успешно удалён из базы данных.</Russian>
 	</Key>
+	<Key ID="STR_DMP_copyID">
+		<Original>Copy Object Database ID</Original>
+		<Russian>Скопировать ID Объекта в Базе Данных</Russian>
+	</Key>
+	<Key ID="STR_DMP_feedbackCopied">
+		<Original>Object Database ID is %1 (Copied to Clipboard)</Original>
+		<Russian>ID объекта в базе данных: %1 (Скопировано в буфер обмена)</Russian>
+	</Key>
   </Package>
 </Project>

@@ -38,6 +38,7 @@ dbNameJournals = _dbNameRootFull + "_journals";
 
 dbPlayerVarNames = _playerVarNames;
 dbVehiclesToTrack = _vehicles;
+publicVariable "dbVehiclesToTrack";
 dbSaveInterval = _saveInterval;
 
 call fnc_db_initHandlePlayerDisconnecting;

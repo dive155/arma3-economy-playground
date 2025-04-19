@@ -8,6 +8,7 @@ fn_db_saveVehicleData = {
 	};
 	
 	dbVehiclesToTrack pushBackUnique _vehicle;
+	publicVariable "dbVehiclesToTrack";
 	
 	if (speed _vehicle > 1) exitWith {};
 	
@@ -63,6 +64,7 @@ fn_db_loadAllVehicles = {
 		
 		dbVehiclesToTrack pushBackUnique (missionNamespace getVariable _varName);
 	} forEach _sections;
+	publicVariable "dbVehiclesToTrack";
 };
 
 fn_db_loadVehicleData = {
@@ -122,4 +124,5 @@ fn_db_removeVehicleFromData = {
 	_varName = vehicleVarName _vehicle;
 	["deleteSection", vehicleVarName _vehicle] call _dbHandle;
 	dbVehiclesToTrack = dbVehiclesToTrack  - [_vehicle];
+	publicVariable "dbVehiclesToTrack";
 };
