@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="pdr">
+  <Package name="DMP">
+	<Key ID="STR_DMP_initializing">
+		<Original>Dive's Minimal Persistence:\nLoading Environment...</Original>
+		<Russian>Dive's Minimal Persistence:\nЗагрузка Окружающей Среды...</Russian>
+	</Key>
+	<Key ID="STR_DMP_loadingObjects">
+		<Original>Dive's Minimal Persistence:\nLoading Objects...</Original>
+		<Russian>Dive's Minimal Persistence:\nЗагрузка Объектов...</Russian>
+	</Key>
+	<Key ID="STR_DMP_loadingDone">
+		<Original>Dive's Minimal Persistence:\nMission Loaded!</Original>
+		<Russian>Dive's Minimal Persistence:\nМиссия Загружена!</Russian>
+	</Key>
+  </Package>
+</Project>

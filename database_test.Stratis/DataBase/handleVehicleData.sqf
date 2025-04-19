@@ -111,7 +111,7 @@ fn_db_handleVehicleDeleted = {
 	params ["_entity"];
 	
 	if (isServer) then {
-		systemChat ("Removing from db: " + str(_entity));
+		//systemChat ("Removing from db: " + str(_entity));
 		_entity call fn_db_removeVehicleFromData;
 	};
 };

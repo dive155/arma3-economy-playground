@@ -21,9 +21,9 @@ fnc_db_addToJournal = {
 	
 	_dbHandle = ["new", dbNameJournals] call OO_INIDBI;
 	_sections = "getSections" call _dbHandle;
-	systemChat ("sc " + str(_sections));
+	//systemChat ("sc " + str(_sections));
 	if not (_journalName in _sections) exitWith {
-		systemChat ("jn " + str(_journalName));
+		//systemChat ("jn " + str(_journalName));
 		["write", [_journalName, (dbJournalEntryPrefix + "0"), _entry]] call _dbHandle;
 	};
 	

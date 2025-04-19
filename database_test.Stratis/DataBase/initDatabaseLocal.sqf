@@ -1,3 +1,4 @@
+call compile preprocessFileLineNumbers "dataBase\miscHelpers.sqf";
 player setVariable ["DB_SteamID",getPlayerUID player, true];
 sleep 0.5;
 

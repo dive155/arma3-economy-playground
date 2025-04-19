@@ -50,10 +50,10 @@ fnc_db_loadAceCargoFromData = {
 			[_cargo, _fuelCargoData] call fnc_db_setAceFuelCargo;
 			
 			if (_persistentVarName != "") then {
-				systemChat ("found persistent cargo varname " + _persistentVarName);
+				//systemChat ("found persistent cargo varname " + _persistentVarName);
 				_exsistingVehicle = missionNamespace getVariable [_persistentVarName, objNull];
 				if not isNull _exsistingVehicle then {
-					systemChat ("removing existing from the world " + _persistentVarName);
+					//systemChat ("removing existing from the world " + _persistentVarName);
 					deleteVehicle _exsistingVehicle;
 				};
 				
@@ -94,12 +94,12 @@ fnc_db_setAceFuelCargo = {
 fnc_db_addAceCargoHandlers = {
 	["ace_cargoLoaded", {
 		params ["_item", "_vehicle"];
-		systemChat ("loaded cargo");
+		//systemChat ("loaded cargo");
 		if (_item in dbVehiclesToTrack) then {
 			_varName = vehicleVarName _item;
 			_item setVariable ["dbCargoPersistentVarname", _varName, true];
 			[_item] call fn_db_removeVehicleFromData;
-			systemChat ("cargo persistent, removing from db varname " + _varName);
+			//systemChat ("cargo persistent, removing from db varname " + _varName);
 			[_vehicle] spawn fn_db_saveVehicleData;
 		};
 		
@@ -108,10 +108,10 @@ fnc_db_addAceCargoHandlers = {
 	["ace_cargoUnloaded", {
 		params ["_item", "_vehicle", "_unloadType"];
 		
-		systemChat ("unloaded cargo");
+		//systemChat ("unloaded cargo");
 		_persistentVarName = _item getVariable ["dbCargoPersistentVarname", ""];
 		if (_persistentVarName != "") then {
-			systemChat ("cargo persistent, saving to db varname " + _varName);
+			//systemChat ("cargo persistent, saving to db varname " + _varName);
 			[_item] spawn fn_db_saveVehicleData;
 		};
 		

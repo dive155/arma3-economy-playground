@@ -2,14 +2,14 @@ fnc_db_saveVehicles = {
 	{
 		_handle = [_x] spawn fn_db_saveVehicleData;
 		waitUntil { scriptDone _handle };
-		systemChat ("saved" + str(_x));
+		//systemChat ("saved" + str(_x));
 	} forEach dbVehiclesToTrack;
-	systemChat ("saved vics");
+	//systemChat ("saved vics");
 	sleep 1;
 };
 
 fnc_db_savePlayers = {
-	systemChat ("saved players");
+	//systemChat ("saved players");
 	_allPlayersToSave = call BIS_fnc_listPlayers;
 	{
 		// Making sure the player has not left the game since we started the loop

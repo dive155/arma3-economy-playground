@@ -17,6 +17,7 @@ call compile preprocessFileLineNumbers "dataBase\aceCargoHelpers.sqf";
 [_saveDate, _saveWeather] call compile preprocessFileLineNumbers "dataBase\handleWorldData.sqf";
 call compile preprocessFileLineNumbers "dataBase\handlePersistentVars.sqf";
 call compile preprocessFileLineNumbers "dataBase\handleJournals.sqf";
+call compile preprocessFileLineNumbers "dataBase\miscHelpers.sqf";
 
 _is3DEN = is3DENPreview;
 shouldUseDB = not _is3DEN or (_is3DEN and _useIn3DEN);
@@ -41,10 +42,12 @@ dbSaveInterval = _saveInterval;
 
 call fnc_db_initHandlePlayerDisconnecting;
 
+["STR_DMP_initializing"] remoteExec["fn_hintLocalized"];
 sleep 3;
 
 // Load world data
 call fnc_db_loadWorldData;
+["STR_DMP_loadingObjects"] remoteExec["fn_hintLocalized"];
 sleep 3;
 
 // Load all vehicles
@@ -52,6 +55,7 @@ sleep 3;
 0 call fnc_db_addAceCargoHandlers;
 sleep 10;
 
+["STR_DMP_loadingDone"] remoteExec["fn_hintLocalized"];
 while { true } do {
 	call fnc_db_saveVehicles;
 	call fnc_db_savePlayers;
