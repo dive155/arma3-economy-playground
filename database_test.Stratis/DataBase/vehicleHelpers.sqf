@@ -25,7 +25,7 @@ fnc_assignRandomVarName = {
 		if (isNull _existingVar) exitWith {};
 	};
 	
-	[_vehicle, _varName] remoteExec ["fnc_db_setVarName", 0];
+	[_vehicle, _varName] remoteExec ["DMP_fnc_setVarName", 0];
 	_varName;
 };
 
@@ -36,7 +36,7 @@ fnc_getVehicleData = {
     _rotation = vectorDir _vehicle;
 	_className = typeOf _vehicle;
 	
-	_category = call fnc_db_getPersistenObjectCategory;
+	_category = call DMP_fnc_getPersistenObjectCategory;
 	
 	_cargo = [];
 	_damageStructural = damage _vehicle;
@@ -44,7 +44,7 @@ fnc_getVehicleData = {
 	// If not a Prop
 	if (_category != 2) then {
 		if (_damageStructural < 1) then {
-			_cargo = _vehicle call fnc_db_getCargoData;
+			_cargo = _vehicle call DMP_fnc_getCargoData;
 		};
 	};
 		
@@ -85,8 +85,8 @@ fnc_getVehicleData = {
 			_pylons = getAllPylonsInfo _vehicle;
 		};
 		
-		_aceCargo = [_vehicle] call fnc_db_getAceCargoData;
-		_aceFuelCargo = [_vehicle] call fnc_db_getAceFuelCargoData;
+		_aceCargo = [_vehicle] call DMP_fnc_getAceCargoData;
+		_aceFuelCargo = [_vehicle] call DMP_fnc_getAceFuelCargoData;
 	};
 	
     _vehicleData = [
@@ -132,10 +132,10 @@ fnc_createVehicleFromData = {
 	_veh = _existingVehicle;
 	if (isNull _veh) then { 
 		_veh = createVehicle [_className, _position];
-		[_veh, _varName] remoteExec ["fnc_db_setVarName", 0];
+		[_veh, _varName] remoteExec ["DMP_fnc_setVarName", 0];
 	};
 	
-	[_veh, _varName] remoteExec ["fnc_db_setVarName", 0];
+	[_veh, _varName] remoteExec ["DMP_fnc_setVarName", 0];
 	[_veh, _vehicleData] remoteExec ["fnc_initializeExistingVehicleLocally", _veh];
 };
 
@@ -172,13 +172,13 @@ fnc_initializeExistingVehicleLocally = {
 	// TODO this bunch could be called without remoteExec but it crashes, fix later
 	[_veh, _damageStructural, _damageHitPoints] remoteExec ["fnc_applyDamageLocal", _veh];
 	
-	_veh addEventHandler ["Deleted", fn_db_handleVehicleDeleted];
+	_veh addEventHandler ["Deleted", DMP_fnc_handleVehicleDeleted];
 	
 	if (_damageStructural < 1) then {
-		[_veh, _cargo] spawn fnc_db_loadCargoFromData;
+		[_veh, _cargo] spawn DMP_fnc_loadCargoFromData;
 		[_veh, _turretMagazines] call fnc_addTurretMagazines;
-		[_veh, _aceCargo] call fnc_db_loadAceCargoFromData;
-		[_veh, _aceFuelCargo] call fnc_db_setAceFuelCargo;
+		[_veh, _aceCargo] call DMP_fnc_loadAceCargoFromData;
+		[_veh, _aceFuelCargo] call DMP_fnc_setAceFuelCargo;
 		
 		sleep 1.5;
 		

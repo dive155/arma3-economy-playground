@@ -7,7 +7,7 @@ dbWorldSaveDateTime = _saveDateTime;
 dbWorldSaveWeather = _saveWeather;
 dbWorldSectionName = "World";
 
-fnc_db_saveWorldData = {
+DMP_fnc_saveWorldData = {
 	_dbHandle = ["new", dbNameWorld] call OO_INIDBI;
 
 	if (dbWorldSaveDateTime) then {
@@ -29,11 +29,11 @@ fnc_db_saveWorldData = {
 	};
 };
 
-fnc_db_loadWorldData = {
+DMP_fnc_loadWorldData = {
 	_dbHandle = ["new", dbNameWorld] call OO_INIDBI;
 
 	_sections = "getSections" call _dbHandle;
-	if not (dbWorldSectionName in _sections) exitWith { call fnc_db_saveWorldData; };
+	if not (dbWorldSectionName in _sections) exitWith { call DMP_fnc_saveWorldData; };
 
 	if (dbWorldSaveDateTime) then {
 		_dateTime = ["read", [dbWorldSectionName, "dateTime", date]] call _dbHandle;
@@ -56,7 +56,7 @@ fnc_db_loadWorldData = {
 		_humidity = ["read", [dbWorldSectionName, "humidity", humidity]] call _dbHandle;
 		
 		_values = [_overcast, _rain, _rainParams, _lightnings, _rainbow, _waves, _wind, _gusts, _fogParams, _humidity];
-		[_values] remoteExec ["fnc_db_setWeatherLocal", 0];
+		[_values] remoteExec ["DMP_fnc_setWeatherLocal", 0];
 		
 		0 setOvercast _overcast;
 		0 setLightnings _lightnings;
@@ -74,7 +74,7 @@ fnc_db_loadWorldData = {
 	};
 };
 
-fnc_db_setWeatherLocal = {
+DMP_fnc_setWeatherLocal = {
 	params ["_values"];
 	_values params [
 		"_overcast", 

@@ -12,7 +12,7 @@
 	};
 
 	// Proceed to remoteExec the save function
-	[_target] remoteExec ["fn_db_saveVehicleData", 2];
+	[_target] remoteExec ["DMP_fnc_saveVehicleData", 2];
 	[objNull, localize "STR_DMP_saveSuccessfull"] call BIS_fnc_showCuratorFeedbackMessage;
 
 }] call zen_custom_modules_fnc_register;
@@ -31,7 +31,7 @@
 	};
 
 	// Proceed to remove from database
-	[_target] remoteExec ["fn_db_removeVehicleFromData", 2];
+	[_target] remoteExec ["DMP_fnc_removeVehicleFromData", 2];
 
 	// Show success message
 	[objNull, localize "STR_DMP_successRemoved"] call BIS_fnc_showCuratorFeedbackMessage;

@@ -1,7 +1,7 @@
 // Thanks to the glorious Larrow, it is based on his solution
 // https://forums.bohemia.net/forums/topic/226662-sqf-arma-3-how-to-get-backpack-contents-out-of-backpacks-stored-inside-a-vehicle/?do=findComment&comment=3387750
 
-fnc_db_getCargoData = {
+DMP_fnc_getCargoData = {
 	params[ "_crate" ];
 	
 	// Uniforms, vest and backpacks as containers
@@ -36,7 +36,7 @@ fnc_db_getCargoData = {
 	[ _cargoData, _containersData ];
 };
 
-fnc_db_loadCargoFromData = {
+DMP_fnc_loadCargoFromData = {
 	params["_crate", "_data"];
 	
 	clearItemCargoGlobal _crate;
@@ -50,7 +50,7 @@ fnc_db_loadCargoFromData = {
 	_containersData = _data select 1;
 		
 	{
-		[ _forEachIndex, _x,  _crate ] call fnc_db_addContainerContents;
+		[ _forEachIndex, _x,  _crate ] call DMP_fnc_addContainerContents;
 	}forEach _cargoData;
 	
 	{
@@ -69,12 +69,12 @@ fnc_db_loadCargoFromData = {
 		clearBackpackCargoGlobal _container;
 		
 		{
-			[ _forEachIndex, _x, _container ] call fnc_db_addContainerContents;
+			[ _forEachIndex, _x, _container ] call DMP_fnc_addContainerContents;
 		}forEach _containerContents;		
 	}forEach _containersData;
 };
 
-fnc_db_addContainerContents = {
+DMP_fnc_addContainerContents = {
 	params[ "_index", "_contents", "_container" ];
 		
 	{

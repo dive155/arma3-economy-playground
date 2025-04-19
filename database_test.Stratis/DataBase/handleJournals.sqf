@@ -1,4 +1,4 @@
-fnc_db_getJournalEntries = {
+DMP_fnc_getJournalEntries = {
 	params ["_journalName"];
 	
 	_dbHandle = ["new", dbNameJournals] call OO_INIDBI;
@@ -16,7 +16,7 @@ fnc_db_getJournalEntries = {
 };
 
 dbJournalEntryPrefix = "entry_";
-fnc_db_addToJournal = {
+DMP_fnc_addToJournal = {
 	params ["_journalName", "_entry"];
 	
 	_dbHandle = ["new", dbNameJournals] call OO_INIDBI;
@@ -36,13 +36,13 @@ fnc_db_addToJournal = {
 	["write", [_journalName, _key, _entry]] call _dbHandle;
 };
 
-fnc_db_deleteJournal = {
+DMP_fnc_deleteJournal = {
 	params ["_journalName"];
 	_dbHandle = ["new", dbNameJournals] call OO_INIDBI;
 	["deleteSection", _journalName] call _dbHandle;
 };
 
-fnc_db_editJournalEntry = {
+DMP_fnc_editJournalEntry = {
 	params ["_journalName", "_entryIndex", "_newValue"];
 	_dbHandle = ["new", dbNameJournals] call OO_INIDBI;
 	

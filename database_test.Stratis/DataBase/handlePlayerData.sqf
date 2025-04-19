@@ -1,27 +1,27 @@
 // Give players their stuff when they connect
-fnc_db_handlePlayerConnected = {
+DMP_fnc_handlePlayerConnected = {
 	params ["_unit"];
 	
 	if not shouldUseDB exitWith { };
 	
-	if (_unit call fnc_db_checkIfHasDataForPlayer) then {
-		_unit call fnc_db_loadPlayerData;
+	if (_unit call DMP_fnc_checkIfHasDataForPlayer) then {
+		_unit call DMP_fnc_loadPlayerData;
 	} else {
 		// Player joining for the first time - save his data instead of loading
-		[_unit, false, dbPlayerVarNames] call fnc_db_savePlayerData;
+		[_unit, false, dbPlayerVarNames] call DMP_fnc_savePlayerData;
 	};
 };
 
-fnc_db_initHandlePlayerDisconnecting = {
+DMP_fnc_initHandlePlayerDisconnecting = {
 	addMissionEventHandler ['HandleDisconnect',{
 		_un = _this select 0;
 		_un enableSimulationGlobal false;
 		_un setDamage 0;
-		[_un, true, dbPlayerVarNames] call fnc_db_savePlayerData;
+		[_un, true, dbPlayerVarNames] call DMP_fnc_savePlayerData;
 	}];
 };
 
-fnc_db_checkIfHasDataForPlayer = {
+DMP_fnc_checkIfHasDataForPlayer = {
 	params [ "_unit" ];
 	
 	if not (_unit isKindOf "MAN") exitWith { false };
@@ -32,7 +32,7 @@ fnc_db_checkIfHasDataForPlayer = {
 	_steamId in _sections
 };
 
-fnc_db_loadPlayerData = {
+DMP_fnc_loadPlayerData = {
 	params [ "_unit" ];
 
 	if (_unit isKindOf "MAN") then {
@@ -50,7 +50,7 @@ fnc_db_loadPlayerData = {
 			_value = ["read",[_steamId, _varName,[]]] call _dbHandle;
 			
 			if (typeName _value == "STRING") then {
-				_value = [_value] call fnc_db_restoreLineFeeds;
+				_value = [_value] call DMP_fnc_restoreLineFeeds;
 			};
 			
 			_unit setVariable [_varName, _value, true];
@@ -75,7 +75,7 @@ fnc_db_loadPlayerData = {
 	};
 };
 
-fnc_db_savePlayerData = {
+DMP_fnc_savePlayerData = {
 	params [
 		"_unit", 							// The unit we're saving
 		"_isDisconnecting",					// Whether the unit is disconnecting vs regular autosave
@@ -97,7 +97,7 @@ fnc_db_savePlayerData = {
 			_value = _unit getVariable [_varName, ""];
 			
 			if (typeName _value == "STRING") then {
-				_value = [_value] call fnc_db_replaceLineFeeds;
+				_value = [_value] call DMP_fnc_replaceLineFeeds;
 			};
 			
 			["write", [_steamId, _varName, _value]] call _dbHandle;

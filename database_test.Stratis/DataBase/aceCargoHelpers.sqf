@@ -1,4 +1,4 @@
-fnc_db_getAceCargoData = {
+DMP_fnc_getAceCargoData = {
 	params ["_crate"];
 	private _cargoRaw = _crate getVariable ["ace_cargo_loaded",[]];
 	private _cargoSerialized = [];
@@ -6,9 +6,9 @@ fnc_db_getAceCargoData = {
 		if (typeName _x == "STRING") then {
 			_cargoSerialized pushBack _x;
 		} else {
-			_cargo = [_x] call fnc_db_getCargoData;
+			_cargo = [_x] call DMP_fnc_getCargoData;
 			
-			_fuelCargoData = [_x] call fnc_db_getAceFuelCargoData;
+			_fuelCargoData = [_x] call DMP_fnc_getAceFuelCargoData;
 			
 			_cargoSerialized pushBack [
 				typeOf _x, 
@@ -23,7 +23,7 @@ fnc_db_getAceCargoData = {
 	_cargoSerialized
 };
 
-fnc_db_loadAceCargoFromData = {
+DMP_fnc_loadAceCargoFromData = {
 	params ["_crate", "_serializedCargo"];
 	_crate setVariable ["ace_cargo_loaded", []];
 	_crate setVariable ["ace_cargo_space", [_crate] call ace_cargo_fnc_getCargoSpaceLeft,true];
@@ -41,13 +41,13 @@ fnc_db_loadAceCargoFromData = {
 				_cargo setVariable ["ace_cargo_customName",_customName,true];
 			};
 			
-			[_cargo,_objInventory] call fnc_db_loadCargoFromData;
+			[_cargo,_objInventory] call DMP_fnc_loadCargoFromData;
 			{
 				_crate setHitPointDamage [_x,(_damage#2)#(_damage#0 find _x)];
 			} forEach _damage#0;
 			[_cargo, _crate, true] call ace_cargo_fnc_loadItem;
 			
-			[_cargo, _fuelCargoData] call fnc_db_setAceFuelCargo;
+			[_cargo, _fuelCargoData] call DMP_fnc_setAceFuelCargo;
 			
 			if (_persistentVarName != "") then {
 				//systemChat ("found persistent cargo varname " + _persistentVarName);
@@ -65,7 +65,7 @@ fnc_db_loadAceCargoFromData = {
 	} forEach _serializedCargo;
 };
 
-fnc_db_getAceFuelCargoData = {
+DMP_fnc_getAceFuelCargoData = {
 	params ["_veh"];
 	_fuelCargoData = [];
 	_currentFuelCargo = _veh getVariable "ace_refuel_currentfuelcargo";
@@ -78,7 +78,7 @@ fnc_db_getAceFuelCargoData = {
 	_fuelCargoData
 };
 
-fnc_db_setAceFuelCargo = {
+DMP_fnc_setAceFuelCargo = {
 	params["_veh", "_fuelCargoData"];
 
 	if (count _fuelCargoData > 0) then {
@@ -91,16 +91,16 @@ fnc_db_setAceFuelCargo = {
 	};
 };
 
-fnc_db_addAceCargoHandlers = {
+DMP_fnc_addAceCargoHandlers = {
 	["ace_cargoLoaded", {
 		params ["_item", "_vehicle"];
 		//systemChat ("loaded cargo");
 		if (_item in dbVehiclesToTrack) then {
 			_varName = vehicleVarName _item;
 			_item setVariable ["dbCargoPersistentVarname", _varName, true];
-			[_item] call fn_db_removeVehicleFromData;
+			[_item] call DMP_fnc_removeVehicleFromData;
 			//systemChat ("cargo persistent, removing from db varname " + _varName);
-			[_vehicle] spawn fn_db_saveVehicleData;
+			[_vehicle] spawn DMP_fnc_saveVehicleData;
 		};
 		
 	}] call CBA_fnc_addEventHandler;
@@ -112,7 +112,7 @@ fnc_db_addAceCargoHandlers = {
 		_persistentVarName = _item getVariable ["dbCargoPersistentVarname", ""];
 		if (_persistentVarName != "") then {
 			//systemChat ("cargo persistent, saving to db varname " + _varName);
-			[_item] spawn fn_db_saveVehicleData;
+			[_item] spawn DMP_fnc_saveVehicleData;
 		};
 		
 	}] call CBA_fnc_addEventHandler;

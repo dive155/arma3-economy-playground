@@ -41,26 +41,26 @@ dbVehiclesToTrack = _vehicles;
 publicVariable "dbVehiclesToTrack";
 dbSaveInterval = _saveInterval;
 
-call fnc_db_initHandlePlayerDisconnecting;
+call DMP_fnc_initHandlePlayerDisconnecting;
 
 ["STR_DMP_initializing"] remoteExec["fn_hintLocalized"];
 sleep 3;
 
 // Load world data
-call fnc_db_loadWorldData;
+call DMP_fnc_loadWorldData;
 ["STR_DMP_loadingObjects"] remoteExec["fn_hintLocalized"];
 sleep 3;
 
 // Load all vehicles
-0 call fn_db_loadAllVehicles;
-0 call fnc_db_addAceCargoHandlers;
+0 call DMP_fnc_loadAllVehicles;
+0 call DMP_fnc_addAceCargoHandlers;
 sleep 10;
 
 ["STR_DMP_loadingDone"] remoteExec["fn_hintLocalized"];
 while { true } do {
-	call fnc_db_saveVehicles;
-	call fnc_db_savePlayers;
-	call fnc_db_saveWorldData;
+	call DMP_fnc_saveVehicles;
+	call DMP_fnc_savePlayers;
+	call DMP_fnc_saveWorldData;
 	
 	sleep dbSaveInterval;
 };

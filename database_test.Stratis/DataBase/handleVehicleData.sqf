@@ -1,4 +1,4 @@
-fn_db_saveVehicleData = {
+DMP_fnc_saveVehicleData = {
 	params ["_vehicle", ["_addDeleteEventHandler", true]];
 	
 	_varName = vehicleVarName _vehicle;
@@ -38,25 +38,25 @@ fn_db_saveVehicleData = {
 	["write", [_section, "aceFuelCargo", _vehicleData select 14]] call _dbHandle;
 	
 	if (_addDeleteEventHandler) then {
-		_vehicle addEventHandler ["Deleted", fn_db_handleVehicleDeleted];
+		_vehicle addEventHandler ["Deleted", DMP_fnc_handleVehicleDeleted];
 	};
 };
 
-fn_db_loadAllVehicles = {
+DMP_fnc_loadAllVehicles = {
 	_dbHandle = ["new", dbNameVehicles] call OO_INIDBI;
 	_sections = "getSections" call _dbHandle;
 	
 	// Vehicles that we need to track but are not in the db
 	{
 		if not ((vehicleVarName _x) in _sections) then {
-			[_x, false] call fn_db_saveVehicleData;
+			[_x, false] call DMP_fnc_saveVehicleData;
 		};
 	} forEach dbVehiclesToTrack;
 	
 	// Load the DB, add new elements to dbVehiclesToTrack
 	{
 		_exsistingVehicle = missionNamespace getVariable [_x, objNull];
-		_vehicleData = [_x] call fn_db_loadVehicleData;
+		_vehicleData = [_x] call DMP_fnc_loadVehicleData;
 		[_vehicleData, _exsistingVehicle] call fnc_createVehicleFromData;
 		
 		_varName = _vehicleData select 0;
@@ -67,7 +67,7 @@ fn_db_loadAllVehicles = {
 	publicVariable "dbVehiclesToTrack";
 };
 
-fn_db_loadVehicleData = {
+DMP_fnc_loadVehicleData = {
 	params["_varName"];
 	_dbHandle = ["new", dbNameVehicles] call OO_INIDBI;
 	
@@ -109,16 +109,16 @@ fn_db_loadVehicleData = {
     _vehicleData
 };
 
-fn_db_handleVehicleDeleted = {
+DMP_fnc_handleVehicleDeleted = {
 	params ["_entity"];
 	
 	if (isServer) then {
 		//systemChat ("Removing from db: " + str(_entity));
-		_entity call fn_db_removeVehicleFromData;
+		_entity call DMP_fnc_removeVehicleFromData;
 	};
 };
 
-fn_db_removeVehicleFromData = {
+DMP_fnc_removeVehicleFromData = {
 	params ["_vehicle"];
 	_dbHandle = ["new", dbNameVehicles] call OO_INIDBI;
 	_varName = vehicleVarName _vehicle;
