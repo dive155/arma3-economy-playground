@@ -3,7 +3,7 @@ dbVariablesSection = "Variables";
 DMP_fnc_getPersistentVariable = {
 	params ["_varName", ["_defaultValue", ""]];
 	
-	_dbHandle = ["new", dbNameVariables] call OO_INIDBI;
+	_dbHandle = ["new", DMP_dbNameVariables] call OO_INIDBI;
 	
 	_value = ["read", [dbVariablesSection, _varName, _defaultValue]] call _dbHandle;
 	
@@ -17,7 +17,7 @@ DMP_fnc_getPersistentVariable = {
 DMP_fnc_setPersistentVariable = {
 	params ["_varName", "_value"];
 	
-	_dbHandle = ["new", dbNameVariables] call OO_INIDBI;
+	_dbHandle = ["new", DMP_dbNameVariables] call OO_INIDBI;
 	
 	if (typeName _value == "STRING") then {
 		_value = [_value] call DMP_fnc_replaceLineFeeds;

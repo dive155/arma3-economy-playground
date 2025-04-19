@@ -95,7 +95,7 @@ DMP_fnc_addAceCargoHandlers = {
 	["ace_cargoLoaded", {
 		params ["_item", "_vehicle"];
 		//systemChat ("loaded cargo");
-		if (_item in dbVehiclesToTrack) then {
+		if (_item in DMP_dbVehiclesToTrack) then {
 			_varName = vehicleVarName _item;
 			_item setVariable ["dbCargoPersistentVarname", _varName, true];
 			[_item] call DMP_fnc_removeVehicleFromData;

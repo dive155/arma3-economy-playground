@@ -7,7 +7,7 @@
 	};
 
 	// Check if vehicle is already tracked
-	if (!isNil "dbVehiclesToTrack" && {_target in dbVehiclesToTrack}) exitWith {
+	if (!isNil "DMP_dbVehiclesToTrack" && {_target in DMP_dbVehiclesToTrack}) exitWith {
 		[objNull, localize "STR_DMP_errorAlreadyTracked"] call BIS_fnc_showCuratorFeedbackMessage;
 	};
 
@@ -26,7 +26,7 @@
 	};
 
 	// If vehicle is not being tracked
-	if (isNil "dbVehiclesToTrack" || {!(_target in dbVehiclesToTrack)}) exitWith {
+	if (isNil "DMP_dbVehiclesToTrack" || {!(_target in DMP_dbVehiclesToTrack)}) exitWith {
 		[objNull, localize "STR_DMP_errorNotTracked"] call BIS_fnc_showCuratorFeedbackMessage;
 	};
 
@@ -47,7 +47,7 @@
 	};
 
 	// If object is not tracked
-	if (isNil "dbVehiclesToTrack" || {!(_target in dbVehiclesToTrack)}) exitWith {
+	if (isNil "DMP_dbVehiclesToTrack" || {!(_target in DMP_dbVehiclesToTrack)}) exitWith {
 		[objNull, localize "STR_DMP_errorNotTracked"] call BIS_fnc_showCuratorFeedbackMessage;
 	};
 

@@ -8,7 +8,7 @@ dbWorldSaveWeather = _saveWeather;
 dbWorldSectionName = "World";
 
 DMP_fnc_saveWorldData = {
-	_dbHandle = ["new", dbNameWorld] call OO_INIDBI;
+	_dbHandle = ["new", DMP_dbNameWorld] call OO_INIDBI;
 
 	if (dbWorldSaveDateTime) then {
 		["write", [dbWorldSectionName, "dateTime", date]] call _dbHandle;
@@ -30,7 +30,7 @@ DMP_fnc_saveWorldData = {
 };
 
 DMP_fnc_loadWorldData = {
-	_dbHandle = ["new", dbNameWorld] call OO_INIDBI;
+	_dbHandle = ["new", DMP_dbNameWorld] call OO_INIDBI;
 
 	_sections = "getSections" call _dbHandle;
 	if not (dbWorldSectionName in _sections) exitWith { call DMP_fnc_saveWorldData; };

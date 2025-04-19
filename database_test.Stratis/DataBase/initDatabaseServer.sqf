@@ -20,9 +20,9 @@ call compile preprocessFileLineNumbers "dataBase\handleJournals.sqf";
 call compile preprocessFileLineNumbers "dataBase\miscHelpers.sqf";
 
 _is3DEN = is3DENPreview;
-shouldUseDB = not _is3DEN or (_is3DEN and _useIn3DEN);
+DMP_shouldUseDB = not _is3DEN or (_is3DEN and _useIn3DEN);
 
-if not shouldUseDB exitWith { 
+if not DMP_shouldUseDB exitWith { 
 	systemChat "Skipping persistent inventory initServer because 3Den preview mode detected"; 
 };
 
@@ -30,16 +30,16 @@ if not shouldUseDB exitWith {
 // Split development database and production database for safety
 _environmentPrefix = if (_is3DEN) then { "DEV_" } else { "PROD_" };
 _dbNameRootFull = _environmentPrefix + _dbNameRoot;
-dbNamePlayers = _dbNameRootFull + "_players";
-dbNameWorld = _dbNameRootFull + "_world";
-dbNameVehicles = _dbNameRootFull + "_vehicles";
-dbNameVariables = _dbNameRootFull + "_variables";
-dbNameJournals = _dbNameRootFull + "_journals";
+DMP_dbNamePlayers = _dbNameRootFull + "_players";
+DMP_dbNameWorld = _dbNameRootFull + "_world";
+DMP_dbNameVehicles = _dbNameRootFull + "_vehicles";
+DMP_dbNameVariables = _dbNameRootFull + "_variables";
+DMP_dbNameJournals = _dbNameRootFull + "_journals";
 
-dbPlayerVarNames = _playerVarNames;
-dbVehiclesToTrack = _vehicles;
-publicVariable "dbVehiclesToTrack";
-dbSaveInterval = _saveInterval;
+DMP_dbPlayerVarNames = _playerVarNames;
+DMP_dbVehiclesToTrack = _vehicles;
+publicVariable "DMP_dbVehiclesToTrack";
+DMP_dbSaveInterval = _saveInterval;
 
 call DMP_fnc_initHandlePlayerDisconnecting;
 
@@ -62,5 +62,5 @@ while { true } do {
 	call DMP_fnc_savePlayers;
 	call DMP_fnc_saveWorldData;
 	
-	sleep dbSaveInterval;
+	sleep DMP_dbSaveInterval;
 };

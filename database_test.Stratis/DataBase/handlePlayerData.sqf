@@ -2,13 +2,13 @@
 DMP_fnc_handlePlayerConnected = {
 	params ["_unit"];
 	
-	if not shouldUseDB exitWith { };
+	if not DMP_shouldUseDB exitWith { };
 	
 	if (_unit call DMP_fnc_checkIfHasDataForPlayer) then {
 		_unit call DMP_fnc_loadPlayerData;
 	} else {
 		// Player joining for the first time - save his data instead of loading
-		[_unit, false, dbPlayerVarNames] call DMP_fnc_savePlayerData;
+		[_unit, false, DMP_dbPlayerVarNames] call DMP_fnc_savePlayerData;
 	};
 };
 
@@ -17,7 +17,7 @@ DMP_fnc_initHandlePlayerDisconnecting = {
 		_un = _this select 0;
 		_un enableSimulationGlobal false;
 		_un setDamage 0;
-		[_un, true, dbPlayerVarNames] call DMP_fnc_savePlayerData;
+		[_un, true, DMP_dbPlayerVarNames] call DMP_fnc_savePlayerData;
 	}];
 };
 
@@ -26,8 +26,8 @@ DMP_fnc_checkIfHasDataForPlayer = {
 	
 	if not (_unit isKindOf "MAN") exitWith { false };
 	
-	_steamId = _unit getVariable "DB_SteamID";
-	_dbHandle = ["new", dbNamePlayers] call OO_INIDBI;
+	_steamId = _unit getVariable "DMP_SteamID";
+	_dbHandle = ["new", DMP_dbNamePlayers] call OO_INIDBI;
 	_sections = "getSections" call _dbHandle;
 	_steamId in _sections
 };
@@ -36,8 +36,8 @@ DMP_fnc_loadPlayerData = {
 	params [ "_unit" ];
 
 	if (_unit isKindOf "MAN") then {
-		_steamId = _unit getVariable "DB_SteamID";
-		_dbHandle = ["new", dbNamePlayers] call OO_INIDBI;
+		_steamId = _unit getVariable "DMP_SteamID";
+		_dbHandle = ["new", DMP_dbNamePlayers] call OO_INIDBI;
 		
 		_inv = ["read",[_steamId, "inventory",[]]] call _dbHandle;
 		_pos = ["read",[_steamId, "position",[]]] call _dbHandle;
@@ -54,7 +54,7 @@ DMP_fnc_loadPlayerData = {
 			};
 			
 			_unit setVariable [_varName, _value, true];
-		} forEach dbPlayerVarNames;
+		} forEach DMP_dbPlayerVarNames;
 		
 		_varsSecondWeapon = ["read",[_steamId, "secondWeapon",[]]] call _dbHandle;
 		
@@ -83,9 +83,9 @@ DMP_fnc_savePlayerData = {
 	];
 
 	if (_unit isKindOf "MAN") then {
-		_steamId = _unit getVariable "DB_SteamID";
+		_steamId = _unit getVariable "DMP_SteamID";
 		
-		_dbHandle = ["new", dbNamePlayers] call OO_INIDBI;
+		_dbHandle = ["new", DMP_dbNamePlayers] call OO_INIDBI;
 		_loadout = ["write", [_steamId, "inventory", getUnitLoadout _unit]] call _dbHandle;
 		_pos = ["write", [_steamId, "position", getPosATL _unit]] call _dbHandle;
 		_dir = ["write", [_steamId, "dir", getDir _unit]] call _dbHandle;
@@ -101,7 +101,7 @@ DMP_fnc_savePlayerData = {
 			};
 			
 			["write", [_steamId, _varName, _value]] call _dbHandle;
-		} forEach dbPlayerVarNames;
+		} forEach DMP_dbPlayerVarNames;
 		
 		// Handle WBK second weapon mod
 		if (!(isNil {_unit getVariable "WBK_SecondWeapon"})) then {

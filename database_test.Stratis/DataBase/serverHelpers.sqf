@@ -3,7 +3,7 @@ DMP_fnc_saveVehicles = {
 		_handle = [_x] spawn DMP_fnc_saveVehicleData;
 		waitUntil { scriptDone _handle };
 		//systemChat ("saved" + str(_x));
-	} forEach dbVehiclesToTrack;
+	} forEach DMP_dbVehiclesToTrack;
 	//systemChat ("saved vics");
 	sleep 1;
 };
@@ -16,7 +16,7 @@ DMP_fnc_savePlayers = {
 		_currentPlayers = call BIS_fnc_listPlayers;
 		
 		if (_x in _currentPlayers) then {;
-			[_x, false, dbPlayerVarNames] call DMP_fnc_savePlayerData;
+			[_x, false, DMP_dbPlayerVarNames] call DMP_fnc_savePlayerData;
 			
 			// Saving is spaced out to avoid overloading server with save requests
 			sleep 0.3;

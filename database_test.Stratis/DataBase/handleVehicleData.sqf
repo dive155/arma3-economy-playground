@@ -7,8 +7,8 @@ DMP_fnc_saveVehicleData = {
 		waitUntil { (vehicleVarName _vehicle) != "" };
 	};
 	
-	dbVehiclesToTrack pushBackUnique _vehicle;
-	publicVariable "dbVehiclesToTrack";
+	DMP_dbVehiclesToTrack pushBackUnique _vehicle;
+	publicVariable "DMP_dbVehiclesToTrack";
 	
 	if (speed _vehicle > 1) exitWith {};
 	
@@ -17,7 +17,7 @@ DMP_fnc_saveVehicleData = {
 	if (_varName == "") exitWith {diag_log "Can't save vehicle with empty varname"; };
 	
 	_section = _varName;
-	_dbHandle = ["new", dbNameVehicles] call OO_INIDBI;
+	_dbHandle = ["new", DMP_dbNameVehicles] call OO_INIDBI;
 	
 	["write", [_section, "varName", _vehicleData select 0]] call _dbHandle;
 	["write", [_section, "className", _vehicleData select 1]] call _dbHandle;
@@ -43,7 +43,7 @@ DMP_fnc_saveVehicleData = {
 };
 
 DMP_fnc_loadAllVehicles = {
-	_dbHandle = ["new", dbNameVehicles] call OO_INIDBI;
+	_dbHandle = ["new", DMP_dbNameVehicles] call OO_INIDBI;
 	_sections = "getSections" call _dbHandle;
 	
 	// Vehicles that we need to track but are not in the db
@@ -51,9 +51,9 @@ DMP_fnc_loadAllVehicles = {
 		if not ((vehicleVarName _x) in _sections) then {
 			[_x, false] call DMP_fnc_saveVehicleData;
 		};
-	} forEach dbVehiclesToTrack;
+	} forEach DMP_dbVehiclesToTrack;
 	
-	// Load the DB, add new elements to dbVehiclesToTrack
+	// Load the DB, add new elements to DMP_dbVehiclesToTrack
 	{
 		_exsistingVehicle = missionNamespace getVariable [_x, objNull];
 		_vehicleData = [_x] call DMP_fnc_loadVehicleData;
@@ -62,14 +62,14 @@ DMP_fnc_loadAllVehicles = {
 		_varName = _vehicleData select 0;
 		waitUntil { not isNull (missionNamespace getVariable [_varName, objNull]) };
 		
-		dbVehiclesToTrack pushBackUnique (missionNamespace getVariable _varName);
+		DMP_dbVehiclesToTrack pushBackUnique (missionNamespace getVariable _varName);
 	} forEach _sections;
-	publicVariable "dbVehiclesToTrack";
+	publicVariable "DMP_dbVehiclesToTrack";
 };
 
 DMP_fnc_loadVehicleData = {
 	params["_varName"];
-	_dbHandle = ["new", dbNameVehicles] call OO_INIDBI;
+	_dbHandle = ["new", DMP_dbNameVehicles] call OO_INIDBI;
 	
 	_varName = ["read", [_varName, "varName", ""]] call _dbHandle;
 	_className = ["read", [_varName, "className", ""]] call _dbHandle;
@@ -120,9 +120,9 @@ DMP_fnc_handleVehicleDeleted = {
 
 DMP_fnc_removeVehicleFromData = {
 	params ["_vehicle"];
-	_dbHandle = ["new", dbNameVehicles] call OO_INIDBI;
+	_dbHandle = ["new", DMP_dbNameVehicles] call OO_INIDBI;
 	_varName = vehicleVarName _vehicle;
 	["deleteSection", vehicleVarName _vehicle] call _dbHandle;
-	dbVehiclesToTrack = dbVehiclesToTrack  - [_vehicle];
-	publicVariable "dbVehiclesToTrack";
+	DMP_dbVehiclesToTrack = DMP_dbVehiclesToTrack  - [_vehicle];
+	publicVariable "DMP_dbVehiclesToTrack";
 };

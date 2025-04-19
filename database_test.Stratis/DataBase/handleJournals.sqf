@@ -1,7 +1,7 @@
 DMP_fnc_getJournalEntries = {
 	params ["_journalName"];
 	
-	_dbHandle = ["new", dbNameJournals] call OO_INIDBI;
+	_dbHandle = ["new", DMP_dbNameJournals] call OO_INIDBI;
 	_sections = "getSections" call _dbHandle;
 	
 	if not (_journalName in _sections) exitWith {[]};
@@ -19,7 +19,7 @@ dbJournalEntryPrefix = "entry_";
 DMP_fnc_addToJournal = {
 	params ["_journalName", "_entry"];
 	
-	_dbHandle = ["new", dbNameJournals] call OO_INIDBI;
+	_dbHandle = ["new", DMP_dbNameJournals] call OO_INIDBI;
 	_sections = "getSections" call _dbHandle;
 	//systemChat ("sc " + str(_sections));
 	if not (_journalName in _sections) exitWith {
@@ -38,13 +38,13 @@ DMP_fnc_addToJournal = {
 
 DMP_fnc_deleteJournal = {
 	params ["_journalName"];
-	_dbHandle = ["new", dbNameJournals] call OO_INIDBI;
+	_dbHandle = ["new", DMP_dbNameJournals] call OO_INIDBI;
 	["deleteSection", _journalName] call _dbHandle;
 };
 
 DMP_fnc_editJournalEntry = {
 	params ["_journalName", "_entryIndex", "_newValue"];
-	_dbHandle = ["new", dbNameJournals] call OO_INIDBI;
+	_dbHandle = ["new", DMP_dbNameJournals] call OO_INIDBI;
 	
 	_key = (dbJournalEntryPrefix + str(_entryIndex));
 	["write", [_journalName, _key, _newValue]] call _dbHandle;
