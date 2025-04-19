@@ -3,7 +3,7 @@ DMP_fnc_saveVehicleData = {
 	
 	_varName = vehicleVarName _vehicle;
 	if (_varName == "") then {
-		_varName = [_vehicle] call fnc_assignRandomVarName;
+		_varName = [_vehicle] call DMP_fnc_assignRandomVarName;
 		waitUntil { (vehicleVarName _vehicle) != "" };
 	};
 	
@@ -12,7 +12,7 @@ DMP_fnc_saveVehicleData = {
 	
 	if (speed _vehicle > 1) exitWith {};
 	
-	_vehicleData = _vehicle call fnc_getVehicleData;
+	_vehicleData = _vehicle call DMP_fnc_getVehicleData;
 	
 	if (_varName == "") exitWith {diag_log "Can't save vehicle with empty varname"; };
 	
@@ -57,7 +57,7 @@ DMP_fnc_loadAllVehicles = {
 	{
 		_exsistingVehicle = missionNamespace getVariable [_x, objNull];
 		_vehicleData = [_x] call DMP_fnc_loadVehicleData;
-		[_vehicleData, _exsistingVehicle] call fnc_createVehicleFromData;
+		[_vehicleData, _exsistingVehicle] call DMP_fnc_createVehicleFromData;
 		
 		_varName = _vehicleData select 0;
 		waitUntil { not isNull (missionNamespace getVariable [_varName, objNull]) };

@@ -15,7 +15,7 @@ DMP_fnc_getJournalEntries = {
 	_entries
 };
 
-dbJournalEntryPrefix = "entry_";
+DMP_dbJournalEntryPrefix = "entry_";
 DMP_fnc_addToJournal = {
 	params ["_journalName", "_entry"];
 	
@@ -24,7 +24,7 @@ DMP_fnc_addToJournal = {
 	//systemChat ("sc " + str(_sections));
 	if not (_journalName in _sections) exitWith {
 		//systemChat ("jn " + str(_journalName));
-		["write", [_journalName, (dbJournalEntryPrefix + "0"), _entry]] call _dbHandle;
+		["write", [_journalName, (DMP_dbJournalEntryPrefix + "0"), _entry]] call _dbHandle;
 	};
 	
 	_keys = ["getKeys", _journalName] call _dbHandle;
@@ -32,7 +32,7 @@ DMP_fnc_addToJournal = {
 	_index = parseNumber ((_lastKey splitString "_") select 1);
 	_index = _index + 1;
 	
-	_key = (dbJournalEntryPrefix + str(_index));
+	_key = (DMP_dbJournalEntryPrefix + str(_index));
 	["write", [_journalName, _key, _entry]] call _dbHandle;
 };
 
@@ -46,6 +46,6 @@ DMP_fnc_editJournalEntry = {
 	params ["_journalName", "_entryIndex", "_newValue"];
 	_dbHandle = ["new", DMP_dbNameJournals] call OO_INIDBI;
 	
-	_key = (dbJournalEntryPrefix + str(_entryIndex));
+	_key = (DMP_dbJournalEntryPrefix + str(_entryIndex));
 	["write", [_journalName, _key, _newValue]] call _dbHandle;
 };

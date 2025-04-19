@@ -1,4 +1,4 @@
-fn_hintLocalized = {
+DMP_fnc_hintLocalized = {
 	params ["_key", ["_formatArgs", []]];
 	private _value = localize _key;
 	

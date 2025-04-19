@@ -43,12 +43,12 @@ DMP_dbSaveInterval = _saveInterval;
 
 call DMP_fnc_initHandlePlayerDisconnecting;
 
-["STR_DMP_initializing"] remoteExec["fn_hintLocalized"];
+["STR_DMP_initializing"] remoteExec["DMP_fnc_hintLocalized"];
 sleep 3;
 
 // Load world data
 call DMP_fnc_loadWorldData;
-["STR_DMP_loadingObjects"] remoteExec["fn_hintLocalized"];
+["STR_DMP_loadingObjects"] remoteExec["DMP_fnc_hintLocalized"];
 sleep 3;
 
 // Load all vehicles
@@ -56,7 +56,7 @@ sleep 3;
 0 call DMP_fnc_addAceCargoHandlers;
 sleep 10;
 
-["STR_DMP_loadingDone"] remoteExec["fn_hintLocalized"];
+["STR_DMP_loadingDone"] remoteExec["DMP_fnc_hintLocalized"];
 while { true } do {
 	call DMP_fnc_saveVehicles;
 	call DMP_fnc_savePlayers;

@@ -1,23 +1,23 @@
-db_lastUniqueId = 0;
-fnc_generateUniqueID = {
+DMP_dbLastUniqueId = 0;
+DMP_fnc_generateUniqueID = {
     // Use time as the seed for the random number generator
-    private _seed = time + db_lastUniqueId;
+    private _seed = time + DMP_dbLastUniqueId;
 
     // Generate a random number between 0 and a large value (e.g., 1 million)
     private _uniqueID = floor (_seed random 1000000);
 	
-	db_lastUniqueId = _uniqueID;
+	DMP_dbLastUniqueId = _uniqueID;
 	
     _uniqueID
 };
 
-fnc_assignRandomVarName = {
+DMP_fnc_assignRandomVarName = {
 	params ["_vehicle"];
 	
 	_prefix = typeOf _vehicle;
 	_varName = "";
 	while { true } do {
-		_suffix = call fnc_generateUniqueID;
+		_suffix = call DMP_fnc_generateUniqueID;
 		_varName = _prefix + "_" + str(_suffix);
 		
 		// Make sure the name is unique
@@ -29,7 +29,7 @@ fnc_assignRandomVarName = {
 	_varName;
 };
 
-fnc_getVehicleData = {
+DMP_fnc_getVehicleData = {
 	params ["_vehicle"];
 	_varName = vehicleVarName _vehicle;
 	_position = getPosATL _vehicle;
@@ -109,7 +109,7 @@ fnc_getVehicleData = {
     _vehicleData
 };
 
-fnc_createVehicleFromData = {
+DMP_fnc_createVehicleFromData = {
 	params ["_vehicleData", ["_existingVehicle", objNull]];
 	_vehicleData params [
 		"_varName",
@@ -136,10 +136,10 @@ fnc_createVehicleFromData = {
 	};
 	
 	[_veh, _varName] remoteExec ["DMP_fnc_setVarName", 0];
-	[_veh, _vehicleData] remoteExec ["fnc_initializeExistingVehicleLocally", _veh];
+	[_veh, _vehicleData] remoteExec ["DMP_fnc_initializeExistingVehicleLocally", _veh];
 };
 
-fnc_initializeExistingVehicleLocally = {
+DMP_fnc_initializeExistingVehicleLocally = {
 	params ["_veh", "_vehicleData"];
 	_vehicleData params [
 		"_varName",
@@ -170,23 +170,23 @@ fnc_initializeExistingVehicleLocally = {
 	} forEach _textures;
 	
 	// TODO this bunch could be called without remoteExec but it crashes, fix later
-	[_veh, _damageStructural, _damageHitPoints] remoteExec ["fnc_applyDamageLocal", _veh];
+	[_veh, _damageStructural, _damageHitPoints] remoteExec ["DMP_fnc_applyDamageLocal", _veh];
 	
 	_veh addEventHandler ["Deleted", DMP_fnc_handleVehicleDeleted];
 	
 	if (_damageStructural < 1) then {
 		[_veh, _cargo] spawn DMP_fnc_loadCargoFromData;
-		[_veh, _turretMagazines] call fnc_addTurretMagazines;
+		[_veh, _turretMagazines] call DMP_fnc_addTurretMagazines;
 		[_veh, _aceCargo] call DMP_fnc_loadAceCargoFromData;
 		[_veh, _aceFuelCargo] call DMP_fnc_setAceFuelCargo;
 		
 		sleep 1.5;
 		
-		[_veh, _pylons] spawn fnc_addVehiclePylons;
+		[_veh, _pylons] spawn DMP_fnc_addVehiclePylons;
 	};
 };
 
-fnc_applyDamageLocal = {
+DMP_fnc_applyDamageLocal = {
 	params ["_vehicle", "_damageStructural", "_damageHitPoints"];
 	
 	_vehicle setDamage [_damageStructural, false];
@@ -202,7 +202,7 @@ fnc_applyDamageLocal = {
 	} forEach _hitPointNames;
 };
 
-fnc_addTurretMagazines = {
+DMP_fnc_addTurretMagazines = {
 	params ["_vehicle", "_turretMagazines"];
 	_vehicle setVehicleAmmo 0;
 	
@@ -254,7 +254,7 @@ fnc_addTurretMagazines = {
 	} forEach _allWeapons;
 };
 
-fnc_addVehiclePylons = {
+DMP_fnc_addVehiclePylons = {
 	params ["_vehicle", "_pylonsData"];
 	
 	if (count _pylonsData == 0) exitWith {};
