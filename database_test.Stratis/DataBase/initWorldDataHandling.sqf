@@ -1,11 +1,13 @@
-params[
-	["_saveDateTime", true],
-	["_saveWeather", true]
-];
+DMP_fnc_initWorldDataSaving = {
+	params[
+		["_saveDateTime", true],
+		["_saveWeather", true]
+	];
 
-DMP_dbWorldSaveDateTime = _saveDateTime;
-DMP_dbWorldSaveWeather = _saveWeather;
-DMP_dbWorldSectionName = "World";
+	DMP_dbWorldSaveDateTime = _saveDateTime;
+	DMP_dbWorldSaveWeather = _saveWeather;
+	DMP_dbWorldSectionName = "World";
+};
 
 DMP_fnc_saveWorldData = {
 	_dbHandle = ["new", DMP_dbNameWorld] call OO_INIDBI;

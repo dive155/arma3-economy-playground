@@ -8,16 +8,18 @@ params [
 	["_playerVarNames", []]
 ];
 
-call compile preprocessFileLineNumbers "dataBase\serverHelpers.sqf";
-call compile preprocessFileLineNumbers "dataBase\cargoHelpers.sqf";
-call compile preprocessFileLineNumbers "dataBase\vehicleHelpers.sqf";
-call compile preprocessFileLineNumbers "dataBase\handleVehicleData.sqf";
-call compile preprocessFileLineNumbers "dataBase\handlePlayerData.sqf";
-call compile preprocessFileLineNumbers "dataBase\aceCargoHelpers.sqf";
-[_saveDate, _saveWeather] call compile preprocessFileLineNumbers "dataBase\handleWorldData.sqf";
-call compile preprocessFileLineNumbers "dataBase\handlePersistentVars.sqf";
-call compile preprocessFileLineNumbers "dataBase\handleJournals.sqf";
-call compile preprocessFileLineNumbers "dataBase\miscHelpers.sqf";
+call compile preprocessFileLineNumbers "dataBase\initServerHelpers.sqf";
+call compile preprocessFileLineNumbers "dataBase\initCargoHelpers.sqf";
+call compile preprocessFileLineNumbers "dataBase\initVehicleHelpers.sqf";
+call compile preprocessFileLineNumbers "dataBase\initVehicleDataHandling.sqf";
+call compile preprocessFileLineNumbers "dataBase\initPlayerDataHandling.sqf";
+call compile preprocessFileLineNumbers "dataBase\initAceCargoHelpers.sqf";
+call compile preprocessFileLineNumbers "dataBase\initWorldDataHandling.sqf";
+call compile preprocessFileLineNumbers "dataBase\initPersistentVarsHandling.sqf";
+call compile preprocessFileLineNumbers "dataBase\initJournalsHandling.sqf";
+call compile preprocessFileLineNumbers "dataBase\initMiscHelpers.sqf";
+
+[_saveDate, _saveWeather] call DMP_fnc_initWorldDataSaving;
 
 _is3DEN = is3DENPreview;
 DMP_shouldUseDB = not _is3DEN or (_is3DEN and _useIn3DEN);
