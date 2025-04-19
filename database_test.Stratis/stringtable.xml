@@ -13,5 +13,37 @@
 		<Original>Dive's Minimal Persistence:\nMission Loaded!</Original>
 		<Russian>Dive's Minimal Persistence:\nМиссия Загружена!</Russian>
 	</Key>
+	<Key ID="STR_DMP_moduleCategory">
+		<Original>Dive's Minimal Persistence</Original>
+		<Russian>Dive's Minimal Persistence</Russian>
+	</Key>
+	<Key ID="STR_DMP_saveVehicle">
+		<Original>Save Object to Database</Original>
+		<Russian>Сохранить Объект в Базу Данных</Russian>
+	</Key>
+	<Key ID="STR_DMP_removeVehicle">
+		<Original>Remove Object from Database</Original>
+		<Russian>Удалить Объект из Базы Данных</Russian>
+	</Key>
+	<Key ID="STR_DMP_errorNotVehicleOrObject">
+		<Original>Only vehicles and static objects can be saved.</Original>
+		<Russian>Только транспортные средства и объекты могут быть сохранены.</Russian>
+	</Key>
+	<Key ID="STR_DMP_errorAlreadyTracked">
+		<Original>This object is already tracked in the database.</Original>
+		<Russian>Этот объект уже отслеживается в базе данных.</Russian>
+	</Key>
+	<Key ID="STR_DMP_saveSuccessfull">
+		<Original>Object Saved</Original>
+		<Russian>Объект сохранен</Russian>
+	</Key>
+	<Key ID="STR_DMP_errorNotTracked">
+		<Original>This object is not currently tracked in the database.</Original>
+		<Russian>Этот объект не отслеживается в базе данных.</Russian>
+	</Key>
+	<Key ID="STR_DMP_successRemoved">
+		<Original>Object successfully removed from the database.</Original>
+		<Russian>Объект успешно удалён из базы данных.</Russian>
+	</Key>
   </Package>
 </Project>
