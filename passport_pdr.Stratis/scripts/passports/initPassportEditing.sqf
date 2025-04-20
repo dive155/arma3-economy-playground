@@ -19,7 +19,7 @@ fn_showPlayerEditDialog = {
 	private _regAddress = _player getVariable ["rp_registrationaddress", ""];
 	private _ownedProps = (_player getVariable ["rp_ownedproperties", []]) joinString toString [10];
 	private _regVehicles = (_player getVariable ["rp_registeredvehicles", []]) joinString toString [10];
-	private _passportNotes = _player getVariable ["rp_passportnotes", ""];
+	private _passportNotes = (_player getVariable ["rp_passportnotes", []]) joinString toString [10];
 
 	[
 		localize "STR_editPlayerDataHeader",
@@ -51,6 +51,7 @@ fn_showPlayerEditDialog = {
 
 			private _ownedPropsArr = (_values select 4) call _parseArray;
 			private _regVehiclesArr = (_values select 5) call _parseArray;
+			private _notesArr = (_values select 6) call _parseArray;
 
 			// Save all variables
 			_player setVariable ["rp_govtjob", _values select 0, true];
@@ -59,7 +60,7 @@ fn_showPlayerEditDialog = {
 			_player setVariable ["rp_registrationaddress", _values select 3, true];
 			_player setVariable ["rp_ownedproperties", _ownedPropsArr, true];
 			_player setVariable ["rp_registeredvehicles", _regVehiclesArr, true];
-			_player setVariable ["rp_passportnotes", _values select 6, true];
+			_player setVariable ["rp_passportnotes", _notesArr, true];
 			
 			[_player] call fn_updateCivilianInfo; 
 			

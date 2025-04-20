@@ -121,13 +121,13 @@ fn_compileCivilianDataText = {
 	{
 		_text = _text + "<t shadow='2'>" + _x + "</t><br/>";
 	} forEach _vehicles;
-
-	// Passport Notes
-	private _notes = _player getVariable ["rp_passportnotes", ""];
+	
+	// Passport Notes (as array)
+	private _notes = _player getVariable ["rp_passportnotes", []];
 	_text = _text + localize "STR_passportNotes" + "<br/>";
-	if (_notes != "") then {
-		_text = _text + "<t shadow='2'>" + _notes + "</t><br/>";
-	};
+	{
+		_text = _text + "<t shadow='2'>" + _x + "</t><br/>";
+	} forEach _notes;
 
 	_text
 };
