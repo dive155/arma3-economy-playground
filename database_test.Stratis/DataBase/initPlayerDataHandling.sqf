@@ -4,7 +4,7 @@ DMP_fnc_handlePlayerConnected = {
 	
 	if not DMP_shouldUseDB exitWith { };
 	
-	if (_unit call DMP_fnc_checkIfHasDataForPlayer) then {
+	if (_unit call DMP_fnc_hasDataForPlayer) then {
 		_unit call DMP_fnc_loadPlayerData;
 	} else {
 		// Player joining for the first time - save his data instead of loading
@@ -21,12 +21,17 @@ DMP_fnc_initHandlePlayerDisconnecting = {
 	}];
 };
 
-DMP_fnc_checkIfHasDataForPlayer = {
+DMP_fnc_hasDataForPlayer = {
 	params [ "_unit" ];
 	
 	if not (_unit isKindOf "MAN") exitWith { false };
 	
 	_steamId = _unit getVariable "DMP_SteamID";
+	[_steamId] call DMP_fnc_hasDataForPlayerSteamId;
+};
+
+DMP_fnc_hasDataForPlayerSteamId = {
+	params ["_steamId"];
 	_dbHandle = ["new", DMP_dbNamePlayers] call OO_INIDBI;
 	_sections = "getSections" call _dbHandle;
 	_steamId in _sections
@@ -123,4 +128,42 @@ DMP_fnc_savePlayerData = {
 			};
 		};
 	};
+};
+
+DMP_fnc_getPlayerVariableSteamId = {
+	params ["_steamId", "_varName", ["_defaultValue", ""]];
+	_dbHandle = ["new", DMP_dbNamePlayers] call OO_INIDBI;
+	private _value = ["read",[_steamId, _varName,_defaultValue]] call _dbHandle;
+	_value
+};
+
+DMP_fnc_setPlayerVariableSteamId = {
+	params ["_steamId", "_varName", "_value", ["_applyToOnlinePlayer", false]];
+	_dbHandle = ["new", DMP_dbNamePlayers] call OO_INIDBI;
+	["write", [_steamId, _varName, _value]] call _dbHandle;
+	
+	if not _applyToOnlinePlayer exitWith {};
+	
+	private _player = [_steamId] call DMP_fnc_lookupPlayerOnlineSteamId;
+	if (not isNull _player) then {
+		_player setVariable [_varName, _value, true];
+	};
+};
+
+DMP_fnc_lookupPlayerOnlineSteamId = {
+	params ["_steamId"];
+	
+	private _result = objNull;
+	{
+		private _unitSteamId = _x getVariable ["DMP_SteamID", ""];
+		if (_unitSteamId isEqualTo _steamId) exitWith { _result = _x };
+	} forEach allPlayers;
+
+	_result
+};
+
+DMP_fnc_getAllPersistentSteamIds = {
+	_dbHandle = ["new", DMP_dbNamePlayers] call OO_INIDBI;
+	_ids = "getSections" call _dbHandle;
+	_ids
 };

@@ -48,3 +48,9 @@ DMP_fnc_restoreLineFeeds = {
     private _output = _input splitString "%";
     _output joinString (toString [10])
 };
+
+DMP_fnc_allPersistentVariables = {
+	_dbHandle = ["new", DMP_dbNameVariables] call OO_INIDBI;
+	_keys = ["getKeys", DMP_dbVariablesSection] call _dbHandle;
+	_keys
+};

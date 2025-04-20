@@ -49,3 +49,9 @@ DMP_fnc_editJournalEntry = {
 	_key = (DMP_dbJournalEntryPrefix + str(_entryIndex));
 	["write", [_journalName, _key, _newValue]] call _dbHandle;
 };
+
+DMP_fnc_getAllPersistentJournals = {
+	_dbHandle = ["new", DMP_dbNameJournals] call OO_INIDBI;
+	_ids = "getSections" call _dbHandle;
+	_ids
+};
