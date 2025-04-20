@@ -7,7 +7,9 @@ allWorldVariablesKey = "allWorldVariables";
 // Public method for CLIENT and SERVER
 fnc_getWorldVariable = {
 	params ["_varName"];
- 	[_varName] call DMP_fnc_getPersistentVariable; 
+	
+	// All persistent variables are mirrored to missionNamespace to make them available for clients
+	missionNamespace getVariable [_varName, ""];
 };
 
 // fnc_setWorldVariable asks server to change variable in missionNamespace
@@ -22,12 +24,8 @@ fnc_setWorldVariable = {
 // Private method, meant to be called on SERVER
 fnc_setWorldVariableServer = {
 	params ["_varName", "_value"];
-	//missionNamespace setVariable [_varName, _value, true];
-	
-	// _allVars = missionNamespace getVariable allWorldVariablesKey;
-	// _allVars pushBackUnique [_varName];
-	 // missionNamespace setVariable [allWorldVariablesKey, _allVars, true];
-	
+	missionNamespace setVariable [_varName, _value, true];
+		
 	[_varName, _value] call DMP_fnc_setPersistentVariable; 
 	["worldVariableChanged", [_varName, _value]] call CBA_fnc_globalEvent;
 };
@@ -42,6 +40,15 @@ fnc_increaseWorldVariable = {
 
 if isServer then {
 	//missionNamespace setVariable [allWorldVariablesKey, [], true];
-	missionNamespace call _initialize;
+	sleep 1;
+	_allVars = call DMP_fnc_allPersistentVariables;
+	{
+		// Mirroring all vars to missionNamespace to make them available for clients
+		private _value = [_x] call DMP_fnc_getPersistentVariable;
+		missionNamespace setVariable [_x, _value, true];
+		
+	} forEach _allVars;
+	
+	call _initialize;
 };
 

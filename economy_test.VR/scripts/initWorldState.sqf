@@ -1,6 +1,6 @@
 // This whole script runs on SERVER
 fnc_createDefaultWorldState = {
-	private _noData = (["cityMoney"] call fnc_getWorldVariable) == "";
+	private _noData = ((["cityMoney"] call fnc_getWorldVariable) isEqualTo  "");
 	
 	if (_noData) then {
 		["cityMoney", 1000] call fnc_setWorldVariable;
