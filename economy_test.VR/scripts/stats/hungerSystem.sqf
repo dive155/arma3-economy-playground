@@ -13,3 +13,16 @@ fnc_incrementDaysSinceLastMeal = {
 	_player setVariable [daysSinceLastMealVarName, _days];
 	_days
 };
+
+fnc_satiateHunger = {
+	params ["_player"];
+	_player setVariable [daysSinceLastMealVarName, 0];
+};
+
+["KSS_usedItem", {
+	private _foodType = _this select 0;
+	if (_foodType isEqualTo "pdr_lunch_full") then {
+		[player] call fnc_satiateHunger;
+	};
+	systemChat ("AA used " + str(_this select 0))
+}] call CBA_fnc_addEventHandler;

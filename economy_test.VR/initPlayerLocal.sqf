@@ -1,2 +1,1 @@
 execVM "scripts\passports\initPassportsLocal.sqf";
-["KSS_usedItem", {systemChat ("AA used " + str(_this select 0))}] call CBA_fnc_addEventHandler;
