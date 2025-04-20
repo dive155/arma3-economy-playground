@@ -86,8 +86,9 @@ DMP_fnc_getVehicleData = {
 		};
 		
 		_aceCargo = [_vehicle] call DMP_fnc_getAceCargoData;
-		_aceFuelCargo = [_vehicle] call DMP_fnc_getAceFuelCargoData;
+		//_aceFuelCargo = [_vehicle] call DMP_fnc_getAceFuelCargoData;
 	};
+	_aceFuelCargo = [_vehicle] call DMP_fnc_getAceFuelCargoData;
 	
     _vehicleData = [
 		_varName,

@@ -4,7 +4,6 @@ params [
 	"_gasPump",
 	"_soundsConfig",                // Format: [soundAction, soundSuccess, soundFailure]
 	
-	["_getStartingFuelInPump", { 0 }],
 	["_getFuelInStorage", {99999}],
 	["_getPrice", {[currencyCodePdrLeu, 100]}],
 	["_onFuelSentToPump", { params ["_litersSent", "_moneyCurrency", "_moneyAmount"];}]
@@ -27,7 +26,6 @@ if (isServer) then {
 	_buttonObject setVariable ["soundsMap", _soundsMap, true];
 	
 	_gasPump setVariable ["ace_refuel_capacity", gas_station_pump_capacity, true];
-	_gasPump setVariable ["ace_refuel_currentfuelcargo", call _getStartingFuelInPump, true];
 };
 
 fnc_handleFuelPaymentRequested = {

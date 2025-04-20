@@ -16,7 +16,6 @@ fnc_handleFuelSentToPump = {
 	gas_station_money_box,
 	gas_station_pump,
 	_gasStationSoundsConfig,
-	{0},
 	{"fuelInStorage" call fnc_getWorldVariable},
 	{[currencyCodePdrLeu, "fuelPricePDR" call fnc_getWorldVariable]},
 	fnc_handleFuelSentToPump
