@@ -38,9 +38,7 @@ fnc_increaseWorldVariable = {
 	[_varName, _value] call fnc_setWorldVariable;
 };
 
-if isServer then {
-	//missionNamespace setVariable [allWorldVariablesKey, [], true];
-	sleep 1;
+fnc_reloadAllWorldVars = {
 	_allVars = call DMP_fnc_allPersistentVariables;
 	{
 		// Mirroring all vars to missionNamespace to make them available for clients
@@ -48,6 +46,11 @@ if isServer then {
 		missionNamespace setVariable [_x, _value, true];
 		
 	} forEach _allVars;
+};
+
+if isServer then {
+	sleep 1;
+	call fnc_reloadAllWorldVars;
 	
 	call _initialize;
 };

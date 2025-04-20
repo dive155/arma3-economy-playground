@@ -142,6 +142,26 @@
 		<English>Not enough money in the box for exchange.</English>
 		<Russian>Недостаточно денег в ящике для обмена.</Russian>
 	</Key>
+	<Key ID="STR_pay_debt">
+		<Original>Pay Debt to %1</Original>
+		<Russian>Оплатить долг (%1)</Russian>
+	</Key>
+	<Key ID="STR_payment_no_debt">
+		<Original>You don't owe anything to %1.</Original>
+		<Russian>Вы не должны ничего (%1).</Russian>
+	</Key>
+	<Key ID="STR_payment_no_money">
+		<Original>No money of the right currency in the payment box.</Original>
+		<Russian>В коробке нет денег подходящей валюты.</Russian>
+	</Key>
+	<Key ID="STR_payment_success">
+		<Original>You paid %1 %2 towards your debt to %3. Remaining debt: %4</Original>
+		<Russian>Вы оплатили %1 %2 долга (%3). Осталось: %4</Russian>
+	</Key>
+	<Key ID="STR_payment_change">
+		<Original>Returned change: %1 %2</Original>
+		<Russian>Сдача: %1 %2</Russian>
+	</Key>
    </Package>
    <Package name="perms">
 	<Key ID="STR_permissionMissing">
