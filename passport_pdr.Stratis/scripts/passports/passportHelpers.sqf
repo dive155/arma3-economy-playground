@@ -1,5 +1,3 @@
-call compile preprocessFileLineNumbers "scripts\passports\compilePassportNotes.sqf";
-
 getDateText = {
 	_curDate = date;
 	_ddMMyyyy = format ["%2.%1",

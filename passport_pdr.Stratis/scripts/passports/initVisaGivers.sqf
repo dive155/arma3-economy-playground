@@ -1,5 +1,3 @@
-call compile preprocessFileLineNumbers "scripts\passports\passportHelpers.sqf";
-
 fn_setVisaStatusLocal = {
 	params ["_player", "_countryName", "_visaStatus"];
 	

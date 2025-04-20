@@ -1,2 +1,0 @@
-passport notes editing bugged multiline
-changes notification localized
