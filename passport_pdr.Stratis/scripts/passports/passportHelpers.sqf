@@ -78,3 +78,17 @@ fn_addPlayerPermLocal = {
 		player setVariable ["rp_permissions", _perms, true];
 	};
 };
+
+fnc_setPassportVariablesBulk = {
+    params ["_unit", "_variables"];
+
+    if ( not (_unit getVariable ["defaultPassportInitialized", false] )) then {
+        {
+            private _varName = _x select 0;
+            private _value = _x select 1;
+            _unit setVariable [_varName, _value, true];
+        } forEach _variables;
+
+        _unit setVariable ["defaultPassportInitialized", true, true];
+    };
+};
