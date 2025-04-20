@@ -9,6 +9,6 @@ _exchangeSoundsConfig = [
 	currencyCodePdrLeu,
 	currencyCodeMoldovaLeu,
 	_exchangeSoundsConfig,
-	{ 12 },
-	{ 1 }
+	{ ["exchangeRate"] call fnc_getWorldVariable },
+	{ ["exchangeSpread"] call fnc_getWorldVariable }
 ]execVM "scripts\economy\createMoneyExchange.sqf";
