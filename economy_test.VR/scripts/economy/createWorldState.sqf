@@ -1,16 +1,8 @@
 params [  
-	["_initialize", { params["_missionNamespace"]; }],
-	["_onVariableChanged", { params ["_varName", "_newValue"];}]
+	["_initialize", { params["_missionNamespace"]; }]
 ];
 
-missionNamespaceVariableChangedCallbacks = [_onVariableChanged];
 allWorldVariablesKey = "allWorldVariables";
-
-// Public method for CLIENT and SERVER
-fnc_subscribeToVariableChange = {
-	params ["_callback"];
-	missionNamespaceVariableChangedCallbacks pushBack _callback;
-};
 
 // Public method for CLIENT and SERVER
 fnc_getWorldVariable = {
@@ -36,15 +28,7 @@ fnc_setWorldVariableServer = {
 	_allVars pushBackUnique [_varName];
 	 missionNamespace setVariable [allWorldVariablesKey, _allVars, true];
 	
-	[_varName, _value] remoteExec ["fnc_handleWorldVariableChanged", 0];
-};
-
-// Private method, meant to be called on CLIENT
-fnc_handleWorldVariableChanged = {
-	params ["_varName", "_value"];
-	{
-		[_varName, _value] call _x;
-	} forEach missionNamespaceVariableChangedCallbacks;
+	["worldVariableChanged", [_varName, _value]] call CBA_fnc_globalEvent;
 };
 
 fnc_increaseWorldVariable = {

@@ -15,9 +15,6 @@ fnc_createDefaultWorldState = {
 	["fuelPricePDR", 50] call fnc_setWorldVariable;
 };
 
-_handle = [
-	fnc_createDefaultWorldState,
-	{ params ["_varName", "_newValue"]; systemChat format ["%1 set to %2", _varName, _newValue]; } 
-]execVM "scripts\economy\createWorldState.sqf";
+_handle = [fnc_createDefaultWorldState] execVM "scripts\economy\createWorldState.sqf";
 
 waitUntil { scriptDone _handle };
