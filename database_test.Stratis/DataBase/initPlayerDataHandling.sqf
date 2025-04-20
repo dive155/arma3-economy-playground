@@ -137,6 +137,12 @@ DMP_fnc_getPlayerVariableSteamId = {
 	_value
 };
 
+DMP_fnc_setPlayerVariable = {
+	params ["_player", "_varName", "_value"];
+	_steamId = _player getVariable "DMP_SteamID";
+	[_steamId, _varName, _value] call DMP_fnc_setPlayerVariableSteamId;
+};
+
 DMP_fnc_setPlayerVariableSteamId = {
 	params ["_steamId", "_varName", "_value", ["_applyToOnlinePlayer", false]];
 	_dbHandle = ["new", DMP_dbNamePlayers] call OO_INIDBI;
