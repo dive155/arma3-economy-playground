@@ -25,7 +25,7 @@ fnc_checkIfNotTooFatigued = {
 	params ["_player", "_fatigueIncrement"];
 	
 	_potentialFatigue = (call fnc_getPlayerFatigue) + _fatigueIncrement;
-	if (_potentialFatigue <= [_player] call fnc_getFatigueCapacity) then { true } else {
+	if (_potentialFatigue <= [_player] call fnc_getFatigueCapacity) then { true } else{
 		hint(localize "STR_fatigue_cant_work");
 		false
 	}

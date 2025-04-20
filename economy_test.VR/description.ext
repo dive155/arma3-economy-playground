@@ -1,0 +1,6 @@
+class CfgFunctions {
+    #include "node_modules\grad-passport\cfgFunctions.hpp"
+	#include "cau\userinputmenus\CfgFunctions.cpp"
+};
+
+#include "descriptionPassports.hpp"

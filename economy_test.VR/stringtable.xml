@@ -171,4 +171,206 @@
 		<Russian>Осталось Топлива в Бензобаке (Литры):\n %1/%2</Russian>
 	</Key>
   </Package>
+  <Package name="visas">
+	<Key ID="STR_visaAction">
+		<Original>Visas</Original>
+		<Russian>Визы</Russian>
+	</Key>
+	<Key ID="STR_issueVisaActionFormat">
+		<Original>Issue Visa (%1)</Original>
+		<Russian>Выдать Визу (%1)</Russian>
+	</Key>
+	<Key ID="STR_revokeVisaActionFormat">
+		<Original>Revoke Visa (%1)</Original>
+		<Russian>Аннулировать Визу (%1)</Russian>
+	</Key>
+	<Key ID="STR_putEntryActionFormat">
+		<Original>Put Entry Stamp (%1)</Original>
+		<Russian>Поставить Штамп о Въезде (%1)</Russian>
+	</Key>
+	<Key ID="STR_putExitActionFormat">
+		<Original>Put Exit Stamp (%1)</Original>
+		<Russian>Поставить Штамп о Выезде (%1)</Russian>
+	</Key>
+	<Key ID="STR_visaFormat">
+		<Original>%1 Visa: %2</Original>
+		<Russian>%1 Виза: %2</Russian>
+	</Key>
+	<Key ID="STR_visaStatusValid">
+		<Original>Valid</Original>
+		<Russian>Валидна</Russian>
+	</Key>
+	<Key ID="STR_visaStatusRevoked">
+		<Original>Revoked</Original>
+		<Russian>Аннулирована</Russian>
+	</Key>
+	<Key ID="STR_borderCrossings">
+		<Original>Latest Border Crossings</Original>
+		<Russian>Последние пересечения границ</Russian>
+	</Key>
+	<Key ID="STR_borderEntry">
+		<Original>Entry</Original>
+		<Russian>Въезд</Russian>
+	</Key>
+	<Key ID="STR_borderExit">
+		<Original>Exit</Original>
+		<Russian>Выезд</Russian>
+	</Key>
+	<Key ID="STR_countryPDR">
+		<Original>PDR</Original>
+		<Russian>ПДР</Russian>
+	</Key>
+	<Key ID="STR_countryMoldova">
+		<Original>Moldova</Original>
+		<Russian>Молдова</Russian>
+	</Key>
+  </Package>
+  <Package name="passportActions">
+	<Key ID="STR_checkPassport">
+		<Original>Check Passport</Original>
+		<Russian>Посмотреть Паспорт</Russian>
+	</Key>
+	<Key ID="STR_showPassport">
+		<Original>Show Passport</Original>
+		<Russian>Показать Паспорт</Russian>
+	</Key>
+	<Key ID="STR_showingPassport">
+		<Original>Showing Passport</Original>
+		<Russian>Показывается Паспорт</Russian>
+	</Key>
+	<Key ID="STR_stopShowingPassport">
+		<Original>Stop Showing</Original>
+		<Russian>Перестать Показывать</Russian>
+	</Key>
+	<Key ID="STR_passportAlreadyShown">
+		<Original>%1 tried to show you their Passport.</Original>
+		<Russian>%1 попытался показать вам своё Паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportShowing">
+		<Original>%1 is showing you their Passport.</Original>
+		<Russian>%1 показывает вам своё Паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportHiding">
+		<Original>%1 is no longer showing you their Passport.</Original>
+		<Russian>%1 больше не показывает вам своё Паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportStateLooking">
+		<Original>%1 is looking at your passport.</Original>
+		<Russian>%1 смотрит ваш паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportStateNotLooking">
+		<Original>%1 is no longer looking at your passport.</Original>
+		<Russian>%1 больше не смотрит ваш паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportStateBusy">
+		<Original>%1 is busy right now and can't look at your passport.</Original>
+		<Russian>%1 сейчас занят и не может посмотреть ваш паспорт.</Russian>
+	</Key>
+	</Package>
+	<Package name="civilianInfo">
+	<Key ID="STR_govtJobFormat">
+		<Original>Government Job: %1</Original>
+		<Russian>Гос. Должность: %1</Russian>
+	</Key>
+	<Key ID="STR_govtSalaryFormat">
+		<Original>Government Salary: %1</Original>
+		<Russian>Гос. Оклад: %1</Russian>
+	</Key>
+	<Key ID="STR_dailyBills">
+		<Original>Daily Bills: %1</Original>
+		<Russian>Ежедневные Налоги: %1</Russian>
+	</Key>
+	<Key ID="STR_debtInfo">
+		<Original>[Debt Information]</Original>
+		<Russian>[Информация о Долгах]</Russian>
+	</Key>
+	<Key ID="STR_registrationAddress">
+		<Original>[Registration address]</Original>
+		<Russian>[Адрес Прописки]</Russian>
+	</Key>
+	<Key ID="STR_ownedProperty">
+		<Original>[Owned Property]</Original>
+		<Russian>[Недвижимость в собственности]</Russian>
+	</Key>
+	<Key ID="STR_registeredVehicles">
+		<Original>[Registered Vehicles]</Original>
+		<Russian>[Зарегистрированные Т.С.]</Russian>
+	</Key>
+	<Key ID="STR_passportNotes">
+		<Original>[Notes]</Original>
+		<Russian>[Прочее]</Russian>
+	</Key>
+	<Key ID="STR_editPlayerDataHeader">
+		<Original>Edit Passport Data</Original>
+		<Russian>Редактировать паспортные данные</Russian>
+	</Key>
+	<Key ID="STR_editDescGovtJob">
+		<Original>Official government role of the player</Original>
+		<Russian>Официальная государственная должность игрока</Russian>
+	</Key>
+	<Key ID="STR_editDescGovtSalary">
+		<Original>Daily salary as a number</Original>
+		<Russian>Ежедневная зарплата (число)</Russian>
+	</Key>
+	<Key ID="STR_editDescDailyBills">
+		<Original>How much the player pays in bills daily</Original>
+		<Russian>Сколько игрок платит по счетам в день</Russian>
+	</Key>
+	<Key ID="STR_editDescRegAddress">
+		<Original>The official address of registration</Original>
+		<Russian>Официальный адрес регистрации</Russian>
+	</Key>
+	<Key ID="STR_editDescOwnedProps">
+		<Original>List of owned properties (one per line)</Original>
+		<Russian>Список недвижимости в собственности (по одному в строке)</Russian>
+	</Key>
+	<Key ID="STR_editDescRegVehicles">
+		<Original>List of registered vehicle plates (one per line)</Original>
+		<Russian>Список номеров зарегистрированных ТС (по одному в строке)</Russian>
+	</Key>
+	<Key ID="STR_editDescPassportNotes">
+		<Original>Special notes stored in the passport</Original>
+		<Russian>Особые заметки, хранящиеся в паспорте</Russian>
+	</Key>
+	<Key ID="STR_editErrorInvalidNumbers">
+		<Original>Error: Salary and Daily Bills must be valid numbers.</Original>
+		<Russian>Ошибка: зарплата и ежедневные счета должны быть числами.</Russian>
+	</Key>
+	<Key ID="STR_editSuccess">
+		<Original>Player data updated successfully.</Original>
+		<Russian>Данные игрока успешно обновлены.</Russian>
+	</Key>
+	<Key ID="STR_editAnyPassportAction">
+		<Original>Edit Passport</Original>
+		<Russian>Редактировать паспорт</Russian>
+	</Key>
+	<Key ID="STR_editErrorWrongCountry">
+		<Original>You do not have permission to edit the passport of this country: %1</Original>
+		<Russian>У вас нет прав на редактирование паспорта этой страны: %1</Russian>
+	</Key>
+	<Key ID="STR_passportEditCategory">
+		<Original>Passport Editing</Original>
+		<Russian>Редактирование паспорта</Russian>
+	</Key>
+	<Key ID="STR_debtEditDialogTitle">
+		<Original>Debt for %1</Original>
+		<Russian>Долг (%1)</Russian>
+	</Key>
+	<Key ID="STR_debtEditDialogDesc">
+		<Original>Enter the updated debt amount for %1.</Original>
+		<Russian>Введите сумму долга (%1)</Russian>
+	</Key>
+	<Key ID="STR_debtEditErrorInvalid">
+		<Original>Invalid amount: %1. Only numeric values allowed.</Original>
+		<Russian>Недопустимая сумма: %1. Разрешены только числа.</Russian>
+	</Key>
+	<Key ID="STR_debtEditSuccess">
+		<Original>Successfully updated debt for %1 to %2.</Original>
+		<Russian>%1: Долг обновлён: %2</Russian>
+	</Key>
+	<Key ID="STR_editDebtActionFormat">
+		<Original>Edit Debt (%1)</Original>
+		<Russian>Изменить долг (%1)</Russian>
+	</Key>
+  </Package>
 </Project>
