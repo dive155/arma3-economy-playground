@@ -6,7 +6,8 @@ params [
 	["_accountMoneyGetter", {100}],   // Delegate to check account balance
 	["_accountMoneySetter", {params ["_moneyAmount"];}], // Delegate to set account balance
 	["_extraCondition", {true}], // Check if player has access
-	["_handleJournaling", {params ["_playerName", "_operationType", "_playersNote"]}]
+	["_handleJournaling", {params ["_playerName", "_operationType", "_amount", "_playersNote"]}]
+	
 ];
 
 if (isServer) then {
@@ -104,10 +105,9 @@ if (isNil "fnc_launchAccountDialog") then {
 					
 					private _newBalance = _accountMoney - _validAmount;
 					[_newBalance] call _accountSetter;
-					systemChat ("aa" + str([_moneyBox, _currencyCode, _validAmount]));
 					[_moneyBox, _currencyCode, _validAmount] call fnc_putMoneyIntoContainer;
 					
-					[name _player, "deposit", _comment] call _journalHandler;
+					[name _player, "Withdrawal", _validAmount, _comment] call _journalHandler;
 					hint format [localize "STR_accountDialogSuccess", _validAmount, localize format ["STR_%1", _currencyCode]];
 				} else {
 					if (_useFullAmount) then {
@@ -127,7 +127,7 @@ if (isNil "fnc_launchAccountDialog") then {
 					[_newBalance] call _accountSetter;
 					[_moneyBox, _currencyCode, _validAmount] call fnc_takeMoneyFromContainer;
 					
-					[name _player, "withdraw", _comment] call _journalHandler;
+					[name _player, "Deposit", _validAmount, _comment] call _journalHandler;
 					hint format [localize "STR_accountDialogSuccess", _validAmount, localize format ["STR_%1", _currencyCode]];
 				};
 			},

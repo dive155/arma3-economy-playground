@@ -466,8 +466,8 @@
 		<Russian>Средства завода</Russian>
 	</Key>
 	<Key ID="STR_accountActionRoot">
-	<Original>Account operations</Original>
-	<Russian>Операции со счётом</Russian>
-</Key>
+		<Original>Account operations</Original>
+		<Russian>Операции со счётом</Russian>
+	</Key>
   </Package>
 </Project>
