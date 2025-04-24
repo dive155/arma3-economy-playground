@@ -1,6 +1,7 @@
 params [
 	"_buttonObject",            // Button to press
 	"_moneyBox",                // Put money here
+	"_accountID",
 	"_currencyCode",            // Only this currency is accepted
 	["_accountMoneyGetter", {100}],   // Delegate to check account balance
 	["_accountMoneySetter", {params ["_moneyAmount"];}], // Delegate to set account balance
@@ -14,6 +15,7 @@ if (isServer) then {
 	_buttonObject setVariable ["accountMoneySetter", _accountMoneySetter, true];
 	_buttonObject setVariable ["accountJournalHandler", _handleJournaling, true];
 	_buttonObject setVariable ["moneyBox", _moneyBox, true];
+	_buttonObject setVariable ["accountID", _accountID, true];
 };
 
 if (isNil "fnc_isNumeric") then {
@@ -62,7 +64,7 @@ if (isNil "fnc_launchAccountDialog") then {
 		[
 			_dialogTitle,
 			[
-				["EDIT", [_dialogTitle, _desc], [""]],
+				["EDIT", [localize "STR_accountAmount", _desc], ["0"]],
 				["CHECKBOX", [_checkboxLabel, ""], false],
 				["EDIT:MULTI", [localize "STR_accountDialogReason", localize "STR_accountDialogReasonDesc"], [""]]
 			],

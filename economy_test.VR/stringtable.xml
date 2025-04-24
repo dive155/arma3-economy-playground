@@ -392,9 +392,7 @@
 		<Original>Edit Debt (%1)</Original>
 		<Russian>Изменить долг (%1)</Russian>
 	</Key>
-	
-	
-	
+		
 	<Key ID="STR_accountActionWithdraw">
 		<Original>Withdraw from account</Original>
 		<Russian>Снять со счёта</Russian>
@@ -411,6 +409,10 @@
 		<Original>Deposit to %1 (Balance: %2)</Original>
 		<Russian>Пополнение %1 (Баланс: %2)</Russian>
 	</Key>
+	<Key ID="STR_accountAmount">
+		<Original>Amount</Original>
+		<Russian>Сумма</Russian>
+	</Key>
 	<Key ID="STR_accountDialogWithdrawDesc">
 		<Original>Choose amount of money to withdraw from this account.</Original>
 		<Russian>Выберите сумму для снятия со счёта.</Russian>
@@ -420,12 +422,12 @@
 		<Russian>Выберите сумму для пополнения счёта.</Russian>
 	</Key>
 	<Key ID="STR_accountDialogWithdrawAll">
-		<Original>Withdraw entire account balance</Original>
-		<Russian>Снять весь остаток со счёта</Russian>
+		<Original>Withdraw all</Original>
+		<Russian>Снять всё</Russian>
 	</Key>
 	<Key ID="STR_accountDialogDepositAll">
-		<Original>Deposit everything from money box</Original>
-		<Russian>Положить всё из ящика</Russian>
+		<Original>Deposit everything from box</Original>
+		<Russian>Внести всё из ящика</Russian>
 	</Key>
 	<Key ID="STR_accountDialogReason">
 		<Original>Operation Reason</Original>
