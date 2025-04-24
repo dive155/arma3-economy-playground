@@ -12,7 +12,8 @@ DMP_fnc_getAceCargoData = {
 			
 			_cargoSerialized pushBack [
 				typeOf _x, 
-				getAllHitPointsDamage _x, 
+				getAllHitPointsDamage _x,
+				damage _x,				
 				_cargo,_fuelCargoData, 
 				_x getVariable ["ace_cargo_customName",""],
 				_x getVariable ["dbCargoPersistentVarname", ""]
@@ -34,7 +35,7 @@ DMP_fnc_loadAceCargoFromData = {
 			_cargo = _x;
 			[_cargo, _crate, true] call ace_cargo_fnc_loadItem;
 		} else {
-			_x params ["_class","_damage","_objInventory","_fuelCargoData", "_customName", "_persistentVarName"];
+			_x params ["_class","_damage", "_damageFull", "_objInventory","_fuelCargoData", "_customName", "_persistentVarName"];
 			private _cargo = _class createVehicle [0,0,0];
 			
 			if (_customName != "") then {
@@ -42,6 +43,8 @@ DMP_fnc_loadAceCargoFromData = {
 			};
 			
 			[_cargo,_objInventory] call DMP_fnc_loadCargoFromData;
+
+			_cargo setDamage _damageFull;
 			{
 				_crate setHitPointDamage [_x,(_damage#2)#(_damage#0 find _x)];
 			} forEach _damage#0;

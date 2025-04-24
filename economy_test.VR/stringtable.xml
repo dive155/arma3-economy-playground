@@ -392,5 +392,80 @@
 		<Original>Edit Debt (%1)</Original>
 		<Russian>Изменить долг (%1)</Russian>
 	</Key>
+	
+	
+	
+	<Key ID="STR_accountActionWithdraw">
+		<Original>Withdraw from account</Original>
+		<Russian>Снять со счёта</Russian>
+	</Key>
+	<Key ID="STR_accountActionDeposit">
+		<Original>Deposit to account</Original>
+		<Russian>Положить на счёт</Russian>
+	</Key>
+	<Key ID="STR_accountDialogWithdrawTitle">
+		<Original>Withdraw from %1 (Balance: %2)</Original>
+		<Russian>Снятие с %1 (Баланс: %2)</Russian>
+	</Key>
+	<Key ID="STR_accountDialogDepositTitle">
+		<Original>Deposit to %1 (Balance: %2)</Original>
+		<Russian>Пополнение %1 (Баланс: %2)</Russian>
+	</Key>
+	<Key ID="STR_accountDialogWithdrawDesc">
+		<Original>Choose amount of money to withdraw from this account.</Original>
+		<Russian>Выберите сумму для снятия со счёта.</Russian>
+	</Key>
+	<Key ID="STR_accountDialogDepositDesc">
+		<Original>Choose amount of money to deposit into this account.</Original>
+		<Russian>Выберите сумму для пополнения счёта.</Russian>
+	</Key>
+	<Key ID="STR_accountDialogWithdrawAll">
+		<Original>Withdraw entire account balance</Original>
+		<Russian>Снять весь остаток со счёта</Russian>
+	</Key>
+	<Key ID="STR_accountDialogDepositAll">
+		<Original>Deposit everything from money box</Original>
+		<Russian>Положить всё из ящика</Russian>
+	</Key>
+	<Key ID="STR_accountDialogReason">
+		<Original>Operation Reason</Original>
+		<Russian>Причина операции</Russian>
+	</Key>
+	<Key ID="STR_accountDialogReasonDesc">
+		<Original>Explain the purpose of this transaction.</Original>
+		<Russian>Укажите причину данной операции.</Russian>
+	</Key>
+	<Key ID="STR_accountDialogError">
+		<Original>"%1" is not a valid number.</Original>
+		<Russian>«%1» не является числом.</Russian>
+	</Key>
+	<Key ID="STR_accountDialogNotEnoughInAccount">
+		<Original>Not enough money in the account!</Original>
+		<Russian>Недостаточно средств на счёте!</Russian>
+	</Key>
+	<Key ID="STR_accountDialogNotEnoughInBox">
+		<Original>Not enough money in the box!</Original>
+		<Russian>Недостаточно денег в ящике!</Russian>
+	</Key>
+	<Key ID="STR_accountDialogNoAccess">
+		<Original>You are not authorized to access this account.</Original>
+		<Russian>У вас нет доступа к этому счёту.</Russian>
+	</Key>
+	<Key ID="STR_accountDialogSuccess">
+		<Original>Transaction completed: %1 %2</Original>
+		<Russian>Операция завершена: %1 %2</Russian>
+	</Key>
+	<Key ID="STR_account_cityMoney">
+		<Original>City Treasury</Original>
+		<Russian>Городская казна</Russian>
+	</Key>
+	<Key ID="STR_account_factoryMoney">
+		<Original>Factory Funds</Original>
+		<Russian>Средства завода</Russian>
+	</Key>
+	<Key ID="STR_accountActionRoot">
+	<Original>Account operations</Original>
+	<Russian>Операции со счётом</Russian>
+</Key>
   </Package>
 </Project>

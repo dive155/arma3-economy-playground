@@ -28,6 +28,8 @@ waitUntil { scriptDone _scriptHandle };
 _scriptHandle = execVM "scripts\initPaymentCashboxes.sqf";
 waitUntil { scriptDone _scriptHandle };
 
+_scriptHandle = execVM "scripts\initAccountCashboxes.sqf";
+waitUntil { scriptDone _scriptHandle };
 
 _scriptHandle = execVM "scripts\initExtraInteractions.sqf";
 waitUntil { scriptDone _scriptHandle };
