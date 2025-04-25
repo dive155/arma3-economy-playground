@@ -69,7 +69,7 @@ if (isNil "fnc_launchAccountDialog") then {
 			[
 				["EDIT", [localize "STR_accountAmount", _desc], ["0"]],
 				["CHECKBOX", [_checkboxLabel, ""], false],
-				["EDIT:MULTI", [localize "STR_accountDialogReason", localize "STR_accountDialogReasonDesc"], [""]]
+				["EDIT", [localize "STR_accountDialogReason", localize "STR_accountDialogReasonDesc"], [""]]
 			],
 			{
 				params ["_values", "_args"];
