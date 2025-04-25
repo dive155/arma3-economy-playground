@@ -8,7 +8,7 @@ fnc_composeAccountRecord = {
 	// Construct formatted string
 	private _dateString = format ["%1.%2.%3 %4:%5", _day, _month, _year, _hours, _minutes];
 	
-	private _result = format ["%1, %2, %3. Amount: %4. Note: %5 ", _dateString, _playerName, _operationType, _amount, _playersNote];
+	private _result = format ["%1,%2,%3,%4,%5", _dateString, _playerName, _operationType, _amount, _playersNote];
 	_result
 };
 
@@ -17,13 +17,13 @@ fnc_composeAccountRecord = {
 	account_box_cityMoney,
 	"cityMoney",
 	currencyCodePdrLeu,
-	{ ["cityMoney", 100] call DMP_fnc_getPersistentVariable },
-	{ ["cityMoney", _this select 0] call DMP_fnc_setPersistentVariable },
+	{ ["cityMoney", 100] call fnc_getWorldVariable },
+	{ ["cityMoney", _this select 0] call fnc_setWorldVariable },
+	
+	// TODO real condition
 	{true},
 	{  
 		private _record = ["cityMoney", _this] call fnc_composeAccountRecord;
-		
-		// Run on SERVER???
-		["accountJournal_cityMoney", _record] call DMP_fnc_addToJournal;
+		["accountJournal_cityMoney", _record] remoteExec ["DMP_fnc_addToJournal", 2];
 	}
 ] execVM "scripts\economy\createAccountCashbox.sqf";
