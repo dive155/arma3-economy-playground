@@ -72,6 +72,6 @@ fnc_updatePermissionsBasedActions = {
     } forEach _permActions;
 };
 
-//sleep 10;
-sleep 3;
+sleep 10;
+//sleep 3;
 call fnc_updatePermissionsBasedActions;
