@@ -37,7 +37,7 @@ if (isNil "fnc_launchAccountDialog") then {
 		private _moneyBox = _buttonObject getVariable ["moneyBox", objNull];
 		
 		if (!([_player] call _extraCondition)) exitWith {
-			hint localize "STR_accountDialogNoAccess";
+			//hint localize "STR_accountDialogNoAccess";
 		};
 
 		private _accountBalance = call _accountGetter;

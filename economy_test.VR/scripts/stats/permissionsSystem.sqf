@@ -19,7 +19,7 @@ fnc_checkHasPermission = {
 	_hasPerm = _permName in _perms;
 	
 	if ((not _hasPerm) and _showHintOnFailure) then {
-		hint((localize "STR_permissionMissing") + (localize (format ["STR_permission_%1", _permName])));
+		hint((localize "STR_permissionMissing") + " " + (localize (format ["STR_permission_%1", _permName])));
 	};
 	
 	_hasPerm

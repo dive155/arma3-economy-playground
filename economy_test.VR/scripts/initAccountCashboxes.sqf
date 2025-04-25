@@ -19,11 +19,23 @@ fnc_composeAccountRecord = {
 	currencyCodePdrLeu,
 	{ ["cityMoney", 100] call fnc_getWorldVariable },
 	{ ["cityMoney", _this select 0] call fnc_setWorldVariable },
-	
-	// TODO real condition
-	{true},
+	{ [player, "accountFull_cityMoney", true] call fnc_checkHasPermission },
 	{  
 		private _record = ["cityMoney", _this] call fnc_composeAccountRecord;
 		["accountJournal_cityMoney", _record] remoteExec ["DMP_fnc_addToJournal", 2];
+	}
+] execVM "scripts\economy\createAccountCashbox.sqf";
+
+[
+	account_button_factoryMoney,
+	account_box_factoryMoney,
+	"factoryMoney",
+	currencyCodePdrLeu,
+	{ ["factoryMoney", 100] call fnc_getWorldVariable },
+	{ ["factoryMoney", _this select 0] call fnc_setWorldVariable },
+	{ [player, "accountFull_factoryMoney", true] call fnc_checkHasPermission },
+	{  
+		private _record = ["factoryMoney", _this] call fnc_composeAccountRecord;
+		["accountJournal_factoryMoney", _record] remoteExec ["DMP_fnc_addToJournal", 2];
 	}
 ] execVM "scripts\economy\createAccountCashbox.sqf";

@@ -172,6 +172,14 @@
 		<Original>Cooking</Original>
 		<Russian>Готовка</Russian>
 	</Key>
+	<Key ID="STR_permission_accountFull_cityMoney">
+		<Original>City Treasury Access</Original>
+		<Russian>Доступ к Городской Казне</Russian>
+	</Key>
+	<Key ID="STR_permission_accountFull_factoryMoney">
+		<Original>Factory Funds Access</Original>
+		<Russian>Доступ к Средствам Завода</Russian>
+	</Key>
   </Package>
   <Package name="misc">
 	<Key ID="STR_checkNumberPlate">
