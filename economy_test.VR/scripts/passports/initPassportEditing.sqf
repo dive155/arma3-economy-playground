@@ -81,8 +81,8 @@ fn_applyPassportEditorPermissionLocal = {
 	params ["_countryName"];
 
 	// Add permission to caller
-	private _perm = "passportEditing" + _countryName;
-	[_perm] call fn_addPlayerPermLocal;
+	private _perm = "passportEditing_" + _countryName;
+	//[_perm] call fn_addPlayerPermLocal;
 	
 	call fn_createPassportEditingRootAction;
 

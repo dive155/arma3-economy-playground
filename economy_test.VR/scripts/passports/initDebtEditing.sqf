@@ -56,8 +56,8 @@ fn_applyDebtEditorPermissionLocal = {
 	params ["_countryName"];
 
 	// Add permission to player
-	private _perm = "debtEditing" + _countryName;
-	[_perm] call fn_addPlayerPermLocal;
+	private _perm = "debtEditing_" + _countryName;
+	//[_perm] call fn_addPlayerPermLocal;
 
 	call fn_createPassportEditingRootAction;
 

@@ -29,16 +29,16 @@ fn_applyVisaGiverPermissionsLocal = {
 	params ["_countryName"];
 	
 	// Add permission to player
-	private _perm = "visaGiving" + _countryName;
+	private _perm = "visaGiving_" + _countryName;
 
-	if (isNil {player getVariable "rp_permissions"}) then {
-		player setVariable ["rp_permissions", [], true];
-	};
-	private _perms = player getVariable "rp_permissions";
-	if (!(_perm in _perms)) then {
-		_perms pushBack _perm;
-		player setVariable ["rp_permissions", _perms, true];
-	};
+	// if (isNil {player getVariable "rp_permissions"}) then {
+		// player setVariable ["rp_permissions", [], true];
+	// };
+	// private _perms = player getVariable "rp_permissions";
+	// if (!(_perm in _perms)) then {
+		// _perms pushBack _perm;
+		// player setVariable ["rp_permissions", _perms, true];
+	// };
 	
 	if (isNil "visa_root_action") then {
 		visa_root_action = ["VisaRoot",localize "STR_visaAction","",{nil},{true}] call ace_interact_menu_fnc_createAction;

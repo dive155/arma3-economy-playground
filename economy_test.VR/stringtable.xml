@@ -188,6 +188,22 @@
 		<Original>Factory Payment Logs Access</Original>
 		<Russian>Чтение истории транзакций завода</Russian>
 	</Key>
+	<Key ID="STR_permission_debtEditing_PDR">
+		<Original>Debt Editing (PDR)</Original>
+		<Russian>Редактирование Долга (ПДР)</Russian>
+	</Key>
+	<Key ID="STR_permission_debtEditing_Moldova">
+		<Original>Debt Editing (Moldova)</Original>
+		<Russian>Редактирование Долга (Молдова)</Russian>
+	</Key>
+	<Key ID="STR_permission_visaGiving_PDR">
+		<Original>Visa Issuing (PDR)</Original>
+		<Russian>Выдача Виз (ПДР)</Russian>
+	</Key>
+	<Key ID="STR_permission_visaGiving_Moldova">
+		<Original>Visa Issuing (Moldova)</Original>
+		<Russian>Выдача Виз (Молдова)</Russian>
+	</Key>
   </Package>
   <Package name="misc">
 	<Key ID="STR_checkNumberPlate">
