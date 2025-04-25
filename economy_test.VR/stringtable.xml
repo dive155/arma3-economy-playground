@@ -470,4 +470,10 @@
 		<Russian>Операции со счётом</Russian>
 	</Key>
   </Package>
+  <Package name="hud">
+	<Key ID="STR_hudClose">
+		<Original>Closer</Original>
+		<Russian>Закрыть</Russian>
+	</Key>
+  </Package>
 </Project>

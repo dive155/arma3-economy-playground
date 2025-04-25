@@ -1,4 +1,4 @@
-// ==== BASE CLASSES ====
+// === BASE CLASSES ===
 class RscText {
     access = 0;
     type = 0;
@@ -63,16 +63,6 @@ class RscButton {
 };
 
 class RscControlsGroup {
-    class VScrollbar {
-        color[] = {1,1,1,1};
-        width = 0.021;
-        autoScrollEnabled = 1;
-    };
-    class HScrollbar {
-        color[] = {1,1,1,1};
-        height = 0.028;
-    };
-
     type = 15;
     idc = -1;
     style = 0;
@@ -82,12 +72,23 @@ class RscControlsGroup {
     h = 1;
 
     shadow = 0;
+
+    class VScrollbar {
+        color[] = {1, 1, 1, 1};
+        width = 0.021;
+        autoScrollEnabled = 0;
+    };
+    class HScrollbar {
+        color[] = {1, 1, 1, 1};
+        height = 0.028;
+    };
+
     class Controls {};
 };
 
-// ==== DIALOG ====
+// === DIALOG ===
 class LongTextDialog {
-    idd = 12345;
+    idd = 13786;
     movingEnable = false;
     enableSimulation = true;
 
@@ -116,7 +117,7 @@ class LongTextDialog {
                     x = 0;
                     y = 0;
                     w = 0.74;
-                    h = 10; // Large height to ensure scrollbar activates
+                    h = 1; // Temporary — dynamically resized
                     text = "";
                     size = 0.04;
                 };
@@ -125,7 +126,7 @@ class LongTextDialog {
 
         class CloseButton: RscButton {
             idc = 2002;
-            text = "Close";
+            text = "$STR_hudClose";
             x = 0.4;
             y = 0.82;
             w = 0.2;
