@@ -24,8 +24,10 @@ fnc_formatAccountRecord = {
         private _dateTime = if (count _entryParts > 0) then {_entryParts select 0} else {""};
 		_dateTime = "<t color='#caf5c4'>" + _dateTime + "</t>";
         private _playerName = if (count _entryParts > 1) then {"<t color='#00d2ff'>" + (_entryParts select 1) + "</t>"} else {"Unknown"};
-		// TODO localize operation
-        private _operationType = if (count _entryParts > 2) then {"<t color='#00d2ff'>" + (_entryParts select 2) + "</t>"} else {"Unknown"};
+			
+		private _operationType = (_entryParts select 2);
+		_operationType = localize ("STR_transaction_type_" + _operationType);
+        _operationType = "<t color='#00d2ff'>" + _operationType + "</t>";
         private _operationAmount = if (count _entryParts > 3) then {"<t color='#ffc61c'>" + (_entryParts select 3) + "</t>"} else {"0"};
 		private _remainder = if (count _entryParts > 4) then {"<t color='#b8a548'>" + (_entryParts select 4) + "</t>"} else {"0"};
         private _note = if (count _entryParts > 5) then {
