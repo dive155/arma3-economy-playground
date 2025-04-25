@@ -6,7 +6,8 @@ params [
 	["_accountMoneyGetter", {100}],   // Delegate to check account balance
 	["_accountMoneySetter", {params ["_moneyAmount"];}], // Delegate to set account balance
 	["_extraCondition", {true}], // Check if player has access
-	["_handleJournaling", {params ["_playerName", "_operationType", "_amount", "_playersNote"]}]
+	["_handleJournaling", {params ["_playerName", "_operationType", "_amount", "_playersNote"]}],
+	["_logsAccessCondition", { true }]
 	
 ];
 
@@ -17,6 +18,7 @@ if (isServer) then {
 	_buttonObject setVariable ["accountJournalHandler", _handleJournaling, true];
 	_buttonObject setVariable ["moneyBox", _moneyBox, true];
 	_buttonObject setVariable ["accountID", _accountID, true];
+	_buttonObject setVariable ["logsAccessCondition", _logsAccessCondition, true];
 };
 
 if (isNil "fnc_isNumeric") then {
@@ -107,7 +109,7 @@ if (isNil "fnc_launchAccountDialog") then {
 					[_newBalance] call _accountSetter;
 					[_moneyBox, _currencyCode, _validAmount] call fnc_putMoneyIntoContainer;
 					
-					[name _player, "Withdrawal", _validAmount, _comment] call _journalHandler;
+					[name _player, "Withdrawal", _validAmount, _newBalance, _comment] call _journalHandler;
 					hint format [localize "STR_accountDialogSuccess", _validAmount, localize format ["STR_%1", _currencyCode]];
 				} else {
 					if (_useFullAmount) then {
@@ -127,7 +129,7 @@ if (isNil "fnc_launchAccountDialog") then {
 					[_newBalance] call _accountSetter;
 					[_moneyBox, _currencyCode, _validAmount] call fnc_takeMoneyFromContainer;
 					
-					[name _player, "Deposit", _validAmount, _comment] call _journalHandler;
+					[name _player, "Deposit", _validAmount, _newBalance, _comment] call _journalHandler;
 					hint format [localize "STR_accountDialogSuccess", _validAmount, localize format ["STR_%1", _currencyCode]];
 				};
 			},
@@ -135,6 +137,18 @@ if (isNil "fnc_launchAccountDialog") then {
 			[_player, _isWithdrawal, _moneyBox, _currencyCode, _accountGetter, _accountSetter, _journalHandler]
 		] call zen_dialog_fnc_create;
 	};
+};
+
+if (isNil "fnc_launchAccountJournalDialog") then {
+	fnc_launchAccountJournalDialog = {
+		params ["_buttonObject"];
+		private _accountID = _buttonObject getVariable ["accountID", "unknown"];
+		private _accessCondition = _buttonObject getVariable ["logsAccessCondition", {true}];
+		
+		if (call _accessCondition) then {
+			["accountJournal_" + _accountID] call fnc_requestAndShowJournal;
+		};
+	}
 };
 
 if (hasInterface) then {
@@ -158,8 +172,14 @@ if (hasInterface) then {
 			(_this select 2) params ["_isWithdrawal", "_buttonObject", "_currencyCode"];
 			[player, _isWithdrawal, _buttonObject, _currencyCode] call fnc_launchAccountDialog;
 	}, {true}, {}, [false, _buttonObject, _currencyCode]] call ace_interact_menu_fnc_createAction;
+	
+	private _journalAction = ["AccountJournal", localize "STR_accountActionJournal", "", {
+			(_this select 2) params ["_buttonObject"];
+			[_buttonObject] spawn fnc_launchAccountJournalDialog;
+	}, {true}, {}, [_buttonObject]] call ace_interact_menu_fnc_createAction;
 
 	[_buttonObject, 0, [], _accountRootAction] call ace_interact_menu_fnc_addActionToObject;
 	[_buttonObject, 0, ["AccountRoot"], _withdrawAction] call ace_interact_menu_fnc_addActionToObject;
 	[_buttonObject, 0, ["AccountRoot"], _depositAction] call ace_interact_menu_fnc_addActionToObject;
+	[_buttonObject, 0, ["AccountRoot"], _journalAction] call ace_interact_menu_fnc_addActionToObject;
 };

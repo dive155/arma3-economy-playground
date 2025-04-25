@@ -1,6 +1,6 @@
 fnc_composeAccountRecord = {
 	params ["_accountID", "_operationRecord"];
-	_operationRecord params ["_playerName", "_operationType", "_amount", "_playersNote"];
+	_operationRecord params ["_playerName", "_operationType", "_amount", "_newBalance", "_playersNote"];
 	
 	private _date = date;
 	_date params ["_year", "_month", "_day", "_hours", "_minutes"];
@@ -8,15 +8,13 @@ fnc_composeAccountRecord = {
 	// Construct formatted string
 	private _dateString = format ["%1.%2.%3 %4:%5", _day, _month, _year, _hours, _minutes];
 	
-	private _result = format ["%1,%2,%3,%4,%5", _dateString, _playerName, _operationType, _amount, _playersNote];
+	private _result = format ["%1,%2,%3,%4,%5,%6", _dateString, _playerName, _operationType, _amount, _newBalance, _playersNote];
 	_result
 };
 
 fnc_formatAccountRecord = {
 	params ["_rawArray"];
     private _result = "";
-	
-	systemChat str(_rawArray);
 	
     {
         private _index = _forEachIndex + 1;
@@ -26,10 +24,12 @@ fnc_formatAccountRecord = {
         private _dateTime = if (count _entryParts > 0) then {_entryParts select 0} else {""};
 		_dateTime = "<t color='#caf5c4'>" + _dateTime + "</t>";
         private _playerName = if (count _entryParts > 1) then {"<t color='#00d2ff'>" + (_entryParts select 1) + "</t>"} else {"Unknown"};
+		// TODO localize operation
         private _operationType = if (count _entryParts > 2) then {"<t color='#00d2ff'>" + (_entryParts select 2) + "</t>"} else {"Unknown"};
         private _operationAmount = if (count _entryParts > 3) then {"<t color='#ffc61c'>" + (_entryParts select 3) + "</t>"} else {"0"};
-        private _note = if (count _entryParts > 4) then {
-            (_entryParts select [4, count _entryParts - 4]) joinString ","
+		private _remainder = if (count _entryParts > 4) then {"<t color='#b8a548'>" + (_entryParts select 4) + "</t>"} else {"0"};
+        private _note = if (count _entryParts > 5) then {
+            (_entryParts select [5, count _entryParts - 5]) joinString ","
         } else {
             ""
         };
@@ -42,11 +42,11 @@ fnc_formatAccountRecord = {
             _operationType,
             _playerName,
             _operationAmount,
+			_remainder,
             _note
         ];
 
         _result = _result + _line + "<br/>";
-		systemChat str(_result);
     } forEach _rawArray;
 
     _result = _result;

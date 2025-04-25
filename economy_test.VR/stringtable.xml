@@ -176,9 +176,17 @@
 		<Original>City Treasury Access</Original>
 		<Russian>Доступ к Городской Казне</Russian>
 	</Key>
+	<Key ID="STR_permission_accountRead_cityMoney">
+		<Original>City Money Transaction History Access</Original>
+		<Russian>Чтение истории транзакций Городской Казны</Russian>
+	</Key>
 	<Key ID="STR_permission_accountFull_factoryMoney">
 		<Original>Factory Funds Access</Original>
 		<Russian>Доступ к Средствам Завода</Russian>
+	</Key>
+	<Key ID="STR_permission_accountRead_factoryMoney">
+		<Original>Factory Payment Logs Access</Original>
+		<Russian>Чтение истории транзакций завода</Russian>
 	</Key>
   </Package>
   <Package name="misc">
@@ -201,8 +209,8 @@
   </Package>
   <Package name="journals">
 	<Key ID="STR_transaction_log_entry">
-		<Original>%1. %2. Operation: %3. User: %4. Amount: %5. Note: %6</Original>
-		<Russian>%1. %2. Операция: %3. Пользователь: %4. Сумма: %5. Примечание: %6</Russian>
+		<Original>%1. %2. Operation: %3. User: %4. Amount: %5. Balance: %6. Note: %7</Original>
+		<Russian>%1. %2. Операция: %3. Пользователь: %4. Сумма: %5. Остаток: %6. Примечание: %7</Russian>
 	</Key>
   </Package>
   <Package name="visas">
@@ -415,6 +423,10 @@
 		<Original>Deposit to account</Original>
 		<Russian>Положить на счёт</Russian>
 	</Key>
+	<Key ID="STR_accountActionJournal">
+		<Original>Show Transaction History</Original>
+		<Russian>Посмотреть историю транзакций</Russian>
+	</Key>
 	<Key ID="STR_accountDialogWithdrawTitle">
 		<Original>Withdraw from %1 (Balance: %2)</Original>
 		<Russian>Снятие с %1 (Баланс: %2)</Russian>
@@ -486,7 +498,7 @@
   </Package>
   <Package name="hud">
 	<Key ID="STR_hudClose">
-		<Original>Closer</Original>
+		<Original>Close</Original>
 		<Russian>Закрыть</Russian>
 	</Key>
   </Package>

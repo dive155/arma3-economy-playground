@@ -9,6 +9,11 @@
 	{  
 		private _record = ["cityMoney", _this] call fnc_composeAccountRecord;
 		["accountJournal_cityMoney", _record] remoteExec ["DMP_fnc_addToJournal", 2];
+	},
+	{
+		[player, "accountFull_cityMoney"] call fnc_checkHasPermission or {
+			[player, "accountRead_cityMoney", true] call fnc_checkHasPermission
+		}
 	}
 ] execVM "scripts\economy\createAccountCashbox.sqf";
 
@@ -23,5 +28,10 @@
 	{  
 		private _record = ["factoryMoney", _this] call fnc_composeAccountRecord;
 		["accountJournal_factoryMoney", _record] remoteExec ["DMP_fnc_addToJournal", 2];
+	},
+	{
+		[player, "accountFull_factoryMoney"] call fnc_checkHasPermission or {
+			[player, "accountRead_factoryMoney", true] call fnc_checkHasPermission
+		}
 	}
 ] execVM "scripts\economy\createAccountCashbox.sqf";
