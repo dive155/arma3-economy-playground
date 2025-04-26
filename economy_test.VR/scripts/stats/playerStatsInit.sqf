@@ -31,3 +31,4 @@ _checkStatsAction = ["CheckOwnStats", localize "STR_check_stats_action", "", {ca
 
 _scriptHandle = execVM "scripts\stats\permissionsSystem.sqf";
 _scriptHandle = execVM "scripts\stats\hungerSystem.sqf";
+_scriptHandle = execVM "scripts\stats\debtJournal.sqf";

@@ -39,5 +39,10 @@ _cashboxSounds = [
     payment_box_moldova,
     "Moldova",
     "moldovaLeu",
-    _cashboxSounds
+    _cashboxSounds,
+	{  	
+		private _steamId = player getVariable "DMP_SteamID";
+		private _record = [_this] call fnc_composeAccountRecord;
+		["debt_" + _steamId + "_Moldova", _record] remoteExec ["DMP_fnc_addToJournal", 2];
+	}
 ] execVM "scripts\economy\createPaymentCashbox.sqf";

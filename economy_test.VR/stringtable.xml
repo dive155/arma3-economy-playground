@@ -118,6 +118,11 @@
 		<English>Check own Stats</English>
 		<Russian>Посмотреть свои Статы</Russian>
 	</Key>
+	<Key ID="STR_check_debt_action">
+		<Original>Check own Debt</Original>
+		<English>Check own Debt</English>
+		<Russian>Посмотреть свои Долги</Russian>
+	</Key>
 	<Key ID="STR_stats_text_format">
 		<Original>Days since last Lunch: %1\nWork Fatigue: %2/%3\nDebt (PDR): %4\nDebt (Moldova): %5</Original>
 		<Russian>Дней с последнего обеда: %1\nУсталость от Работы: %2/%3\nДолг (ПДР): %4\nДолг (Молдова): %5</Russian>
@@ -538,6 +543,10 @@
 	<Key ID="STR_accountDialogSuccess">
 		<Original>Transaction completed: %1 %2</Original>
 		<Russian>Операция завершена: %1 %2</Russian>
+	</Key>
+	<Key ID="STR_account_debt">
+		<Original>Debt of %1 %2 to %3</Original>
+		<Russian>Долг %1 %2 стране %3</Russian>
 	</Key>
 	<Key ID="STR_account_cityMoney">
 		<Original>City Treasury</Original>

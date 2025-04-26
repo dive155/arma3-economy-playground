@@ -27,7 +27,6 @@ fnc_formatAccountRecord = {
 			
 		private _operationType = (_entryParts select 2);
 		_operationType = localize ("STR_transaction_type_" + _operationType);
-        //_operationType = "<t color='#00d2ff'>" + _operationType + "</t>";
         private _operationAmount = if (count _entryParts > 3) then {"<t color='#ffc61c'>" + (_entryParts select 3) + "</t>"} else {"0"};
 		private _remainder = if (count _entryParts > 4) then {"<t color='#b8a548'>" + (_entryParts select 4) + "</t>"} else {"0"};
         private _note = if (count _entryParts > 5) then {
