@@ -3,7 +3,9 @@ params [
     "_moneyBox",                // Box where player puts the money
     "_countryCode",            // For checking debts
     "_currencyCode",           // Currency type used
-    "_soundsConfig"            // Format: [soundAction, soundSuccess, soundFailure]
+    "_soundsConfig",           // Format: [soundAction, soundSuccess, soundFailure]
+	["_handleJournalingPlayer", {params ["_playerName", "_operationType", "_amount", "_remaining", "_playersNote"]}],
+	["_sendPayment", {params ["_playerName", "_operationType", "_amount", "_playersNote"]}]
 ];
 
 // Store config on the server
@@ -11,6 +13,8 @@ if (isServer) then {
     _buttonObject setVariable ["moneyBox", _moneyBox, true];
     _buttonObject setVariable ["countryCode", _countryCode, true];
     _buttonObject setVariable ["currencyCode", _currencyCode, true];
+	_buttonObject setVariable ["handleJournalingPlayer", _handleJournalingPlayer, true];
+	_buttonObject setVariable ["sendPayment", _sendPayment, true];
 
     _soundsMap = createHashMap;
     _soundsMap set ["action", _soundsConfig select 0];
@@ -27,6 +31,8 @@ fnc_handleCashboxPayment = {
     private _countryCode = _buttonObject getVariable ["countryCode", ""];
     private _currencyCode = _buttonObject getVariable ["currencyCode", ""];
     private _soundsMap = _buttonObject getVariable ["soundsMap", createHashMap];
+	private _handleJournalingPlayer = _buttonObject getVariable ["handleJournalingPlayer", {}];
+	private _sendPayment = _buttonObject getVariable ["sendPayment", {}];
 
     [_buttonObject, _buttonObject, "action", 3] call fnc_playStoreSound;
 
@@ -70,6 +76,8 @@ fnc_handleCashboxPayment = {
         if (_code == _countryCode) then {
             private _remaining = _amount - _paidAmount;
 			_newDebts pushBack [_code, _remaining];
+			[name player, "DebtPayment", _paidAmount, _remaining, localize "STR_transactions_automatedSystem"] call _handleJournalingPlayer;
+			[name player, "DebtPayment", _paidAmount, localize "STR_transactions_automatedSystem"] call _sendPayment;
         } else {
             _newDebts pushBack _x;
         };

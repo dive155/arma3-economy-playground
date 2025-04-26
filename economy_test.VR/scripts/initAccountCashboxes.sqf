@@ -7,7 +7,7 @@
 	{ ["cityMoney", _this select 0] call fnc_setWorldVariable },
 	{ [player, "accountFull_cityMoney", true] call fnc_checkHasPermission },
 	{  
-		private _record = ["cityMoney", _this] call fnc_composeAccountRecord;
+		private _record = [_this] call fnc_composeAccountRecord;
 		["accountJournal_cityMoney", _record] remoteExec ["DMP_fnc_addToJournal", 2];
 	},
 	{
@@ -26,7 +26,7 @@
 	{ ["factoryMoney", _this select 0] call fnc_setWorldVariable },
 	{ [player, "accountFull_factoryMoney", true] call fnc_checkHasPermission },
 	{  
-		private _record = ["factoryMoney", _this] call fnc_composeAccountRecord;
+		private _record = [_this] call fnc_composeAccountRecord;
 		["accountJournal_factoryMoney", _record] remoteExec ["DMP_fnc_addToJournal", 2];
 	},
 	{

@@ -6,7 +6,7 @@ params [
 	["_accountMoneyGetter", {100}],   // Delegate to check account balance
 	["_accountMoneySetter", {params ["_moneyAmount"];}], // Delegate to set account balance
 	["_extraCondition", {true}], // Check if player has access
-	["_handleJournaling", {params ["_playerName", "_operationType", "_amount", "_playersNote"]}],
+	["_handleJournaling", {params ["_playerName", "_operationType", "_amount", "_remaining", "_playersNote"]}],
 	["_logsAccessCondition", { true }]
 	
 ];
