@@ -18,6 +18,7 @@ fnc_createDefaultWorldState = {
 		["fuelPricePDR", 50] call fnc_setWorldVariable;
 		["exchangeRate", 13] call fnc_setWorldVariable;
 		["exchangeSpread", 1] call fnc_setWorldVariable;
+		["rpDay", 0] call fnc_setWorldVariable;
 	};
 };
 

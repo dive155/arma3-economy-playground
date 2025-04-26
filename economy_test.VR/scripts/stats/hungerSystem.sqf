@@ -24,5 +24,5 @@ fnc_satiateHunger = {
 	if (_foodType isEqualTo "pdr_lunch_full") then {
 		[player] call fnc_satiateHunger;
 	};
-	systemChat ("AA used " + str(_this select 0))
+	//systemChat ("AA used " + str(_this select 0))
 }] call CBA_fnc_addEventHandler;

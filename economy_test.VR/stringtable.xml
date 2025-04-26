@@ -222,6 +222,26 @@
 		<Original>Remaining Fuel in own Gas Tank (Liters):\n %1/%2</Original>
 		<Russian>Осталось Топлива в Бензобаке (Литры):\n %1/%2</Russian>
 	</Key>
+	<Key ID="STR_NewRPDayStarting">
+		<Original>A new RP day is starting:</Original>
+		<Russian>Начинается новый день RP:</Russian>
+	</Key>
+	<Key ID="STR_rpDay">
+		<Original>Day</Original>
+		<Russian>День</Russian>
+	</Key>
+	<Key ID="STR_WorkFatigueReset">
+		<Original>Your work fatigue has been reset.</Original>
+		<Russian>Ваша усталость от работы была сброшена.</Russian>
+	</Key>
+	<Key ID="STR_HungerIncreased">
+		<Original>Your hunger has been increased.</Original>
+		<Russian>Ваш голод увеличился.</Russian>
+	</Key>
+	<Key ID="STR_DailyBillsAdded">
+		<Original>Your daily bills have been added to your debt along with interest.</Original>
+		<Russian>Ваши ежедневные счета были добавлены к вашему долгу вместе с процентами.</Russian>
+	</Key>
   </Package>
   <Package name="journals">
 	<Key ID="STR_transaction_log_entry">

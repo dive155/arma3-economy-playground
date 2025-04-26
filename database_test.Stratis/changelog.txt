@@ -3,7 +3,9 @@
 	+ Damage state
 	+ Ammo in turrets
 	+ Ammo on pylons
-	+ Fuel
+	+ Fuel and fuel cargo
+	+ Cargo
+	+ Ace cargo including inventories
 + Added saving of date and time
 + Added saving of weather
 + Added proper support for singleplayer and 3Den testing
@@ -13,9 +15,11 @@
 + Added database splitting into two environments (DEV and PROD), DEV to be used in 3Den and PROD to be used in live missions
 + Added ability to pass a list of names of custom persistent player variables to be used with getVariable
 + Added storing preset player data when joining the game for the first time
-+ Added handling of situations when persistent objects are deleted
++ Added handling of situations when persistent objects are deleted by zeus
 + Added persistent variables system
 + Added persistent journals system
++ Added zeus modules
++ Added eden module and settings
 + Fixed playerData script crashing when no data is present for the player when joining the game
 + Fixed bug with items disappearing from crates when they are stored inside backpacks or other containers
 + Refactored initServer.sqf and initPlayerLocal.sqf

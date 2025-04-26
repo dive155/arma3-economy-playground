@@ -33,3 +33,6 @@ waitUntil { scriptDone _scriptHandle };
 
 _scriptHandle = execVM "scripts\initExtraInteractions.sqf";
 waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "scripts\initAdvanceDaySystem.sqf";
+waitUntil { scriptDone _scriptHandle };
