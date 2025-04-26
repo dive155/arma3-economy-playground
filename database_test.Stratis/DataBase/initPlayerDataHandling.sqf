@@ -9,6 +9,7 @@ DMP_fnc_handlePlayerConnected = {
 	} else {
 		// Player joining for the first time - save his data instead of loading
 		[_unit, false, DMP_dbPlayerVarNames] call DMP_fnc_savePlayerData;
+		["DMP_playerDataLoaded", []] remoteExec ["CBA_fnc_localEvent", _unit];
 	};
 };
 
@@ -75,15 +76,18 @@ DMP_fnc_loadPlayerData = {
 		};
 		
 		sleep 0.1;
-		if (count _varsSecondWeapon == 0) exitWith {};
-		[[_unit,_varsSecondWeapon],WBK_CreateWeaponSecond_scripted] remoteExec ["spawn",_unit];
+		if (count _varsSecondWeapon > 0) then {
+			[[_unit,_varsSecondWeapon],WBK_CreateWeaponSecond_scripted] remoteExec ["spawn",_unit];
+		};
+		
+		["DMP_playerDataLoaded", []] remoteExec ["CBA_fnc_localEvent", _unit];
 	};
 };
 
 DMP_fnc_savePlayerData = {
 	params [
 		"_unit", 							// The unit we're saving
-		"_isDisconnecting",					// Whether the unit is disconnecting vs regular autosave
+		["_isDisconnecting", false],		// Whether the unit is disconnecting vs regular autosave
 		["_plrVarNames", []]                // Custom vars names to be obtained via getVariable
 	];
 

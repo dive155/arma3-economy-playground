@@ -58,11 +58,14 @@ sleep 3;
 0 call DMP_fnc_addAceCargoHandlers;
 sleep 10;
 
-["STR_DMP_loadingDone"] remoteExec["DMP_fnc_hintLocalized"];
-while { true } do {
+DMP_fnc_saveAll = {
 	call DMP_fnc_saveVehicles;
 	call DMP_fnc_savePlayers;
 	call DMP_fnc_saveWorldData;
-	
+};
+
+["STR_DMP_loadingDone"] remoteExec["DMP_fnc_hintLocalized"];
+while { true } do {
+	call DMP_fnc_saveAll;
 	sleep DMP_dbSaveInterval;
 };
