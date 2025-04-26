@@ -17,7 +17,7 @@ fnc_showPlayerDebtHistory = {
 
 _checkOwnDebtAction = [
 	"CheckOwnDebtPDR", 
-	(localize "STR_check_debt_action") + "(" + (localize "STR_countryPDR") +")", 
+	(localize "STR_check_debt_action") + " (" + (localize "STR_countryPDR") +")", 
 	"", 
 	{
 		["PDR"] spawn fnc_showOwnDebtHistory;
@@ -25,7 +25,7 @@ _checkOwnDebtAction = [
 	{true}
 ] call ace_interact_menu_fnc_createAction;
 	
-[player, 1, ["ACE_SelfActions"], _checkOwnDebtAction] call ace_interact_menu_fnc_addActionToObject;
+[player, 1, ["ACE_SelfActions", "RpSelfRoot"], _checkOwnDebtAction] call ace_interact_menu_fnc_addActionToObject;
 
 _checkOwnDebtAction = [
 	"CheckOwnDebtMoldova", 
@@ -37,4 +37,4 @@ _checkOwnDebtAction = [
 	{true}
 ] call ace_interact_menu_fnc_createAction;
 	
-[player, 1, ["ACE_SelfActions"], _checkOwnDebtAction] call ace_interact_menu_fnc_addActionToObject;
+[player, 1, ["ACE_SelfActions", "RpSelfRoot"], _checkOwnDebtAction] call ace_interact_menu_fnc_addActionToObject;

@@ -113,6 +113,11 @@
 		<English>No</English>
 		<Russian>Нет</Russian>
 	</Key>
+	<Key ID="STR_rp_root_self_action">
+		<Original>PDR RP Actions</Original>
+		<English>PDR RP Actions</English>
+		<Russian>ПДР РП Действия</Russian>
+	</Key>
 	<Key ID="STR_check_stats_action">
 		<Original>Check own Stats</Original>
 		<English>Check own Stats</English>
@@ -168,7 +173,7 @@
 		<Russian>Сдача: %1 %2</Russian>
 	</Key>
    </Package>
-   <Package name="perms">
+  <Package name="perms">
 	<Key ID="STR_permissionMissing">
 		<Original>The Ability is missing: </Original>
 		<Russian>Отсутствует способность: </Russian>
