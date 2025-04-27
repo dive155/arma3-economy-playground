@@ -11,10 +11,7 @@ _cashboxSounds = [
     "pdrLeu",
     _cashboxSounds,
 	{  	
-		//private _steamId = player getVariable "DMP_SteamID";
-		//private _record = [_this] call fnc_composeAccountRecord;
-		//["debt_" + _steamId + "_PDR", _record] remoteExec ["DMP_fnc_addToJournal", 2];
-		_this call fnc_handlePlayerDebtTransactionSteamId;
+		_this call fnc_handlePlayerDebtTransaction;
 	},
 	{
 		 private _args = ["cityMoney"] + _this;
@@ -29,9 +26,6 @@ _cashboxSounds = [
     "moldovaLeu",
     _cashboxSounds,
 	{  	
-		// private _steamId = player getVariable "DMP_SteamID";
-		// private _record = [_this] call fnc_composeAccountRecord;
-		// ["debt_" + _steamId + "_Moldova", _record] remoteExec ["DMP_fnc_addToJournal", 2];
-		_this call fnc_handlePlayerDebtTransactionSteamId;
+		_this call fnc_handlePlayerDebtTransaction;
 	}
 ] execVM "scripts\economy\createPaymentCashbox.sqf";

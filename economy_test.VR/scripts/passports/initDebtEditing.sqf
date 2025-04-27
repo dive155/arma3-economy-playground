@@ -37,6 +37,7 @@ fn_showDebtEditDialog = {
 		private _operation = _values select 0;
 		private _valueStr = _values select 1;
 		private _parsed = parseNumber _valueStr;
+		if (_operation == "DebtWriteOff") then {_parsed = -1 * _parsed;};
 		private _note = _values select 2;
 
 		// Validate input
@@ -44,18 +45,25 @@ fn_showDebtEditDialog = {
 			private _msg = format [localize "STR_debtEditErrorInvalid", _valueStr];
 			hint _msg;
 		};
-
-		// Remove any existing entry for this country
-		private _debts = _player getVariable ["rp_debts", []];
-		_debts = _debts select {(_x select 0) != _countryName};
-		_debts pushBack [_countryName, _parsed];
-		_player setVariable ["rp_debts", _debts, true];
+		
+		[
+			_player getVariable "DMP_SteamID",
+			name player,
+			_countryName,
+			_operation,
+			_parsed,
+			_note
+		] spawn fnc_handlePlayerDebtTransaction;
 
 		private _msg = format [localize "STR_debtEditSuccess", localize ("STR_country" + _countryName), _parsed];
 		hint _msg;
 		
-		[_player] call fn_updateCivilianInfo; 
-		[_player] call notifyPassportChanged;
+		_player spawn {
+			params ["_player"];
+			sleep 0.5;
+			[_player] call fn_updateCivilianInfo; 
+			[_player] call notifyPassportChanged;
+		};
 
 	}, {}, [_player, _countryName, _invoker]] call zen_dialog_fnc_create;
 };

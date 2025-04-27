@@ -282,6 +282,18 @@
 		<Original>&lt;t color='#f1f514'&gt;Payment For Work&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#f1f514'&gt;Плата за Работу&lt;/t&gt;</Russian>
 	</Key>
+	<Key ID="STR_transaction_type_FineIssuing">
+		<Original>&lt;t color='#db0804'&gt;Fine&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#db0804'&gt;Начисление Штрафа&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_ManualAccrualOfDebt">
+		<Original>&lt;t color='#ff6a3d'&gt;Manual Debt Accrual&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#ff6a3d'&gt;Начисление Долга Вручную&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_DebtWriteOff">
+		<Original>&lt;t color='#8336ff'&gt;Manual Debt Write-Off&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#8336ff'&gt;Списание Долга&lt;/t&gt;</Russian>
+	</Key>
 	<Key ID="STR_transactions_title">
 		<Original>Transaction History:</Original>
 		<Russian>История Транзакций:</Russian>
@@ -539,6 +551,10 @@
 	<Key ID="STR_accountAmount">
 		<Original>Amount</Original>
 		<Russian>Сумма</Russian>
+	</Key>
+	<Key ID="STR_accountBalance">
+		<Original>Balance: (%1)</Original>
+		<Russian>Баланс: (%1)</Russian>
 	</Key>
 	<Key ID="STR_accountDialogWithdrawDesc">
 		<Original>Choose amount of money to withdraw from this account.</Original>
