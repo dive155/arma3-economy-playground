@@ -39,8 +39,8 @@ _allPermissions = [
 	"accountRead_factoryMoney",
 	"debtEditing_PDR",
 	"debtEditing_Moldova",
-	"passportEditing_PDR",
-	"passportEditing_Moldova",
+	"passportEditingPdr",
+	"passportEditingMoldova",
 	"visaGiving_PDR",
 	"visaGiving_Moldova"
 ];
@@ -48,8 +48,8 @@ _allPermissions = [
 _permActions = [
 	["debtEditing_PDR", {["PDR"] call fn_applyDebtEditorPermissionLocal}],
 	["debtEditing_Moldova", {["Moldova"] call fn_applyDebtEditorPermissionLocal}],
-	["passportEditing_PDR", {["PDR"] call fn_applyPassportEditorPermissionLocal}],
-	["passportEditing_Moldova", {["Moldova"] call fn_applyPassportEditorPermissionLocal}],
+	["passportEditingPdr", {["PDR"] call fn_applyPassportEditorPermissionLocal}],
+	["passportEditingPdr", {["Moldova"] call fn_applyPassportEditorPermissionLocal}],
 	["visaGiving_PDR", {["PDR"] call fn_applyVisaGiverPermissionsLocal}],
 	["visaGiving_Moldova", {["Moldova"] call fn_applyVisaGiverPermissionsLocal}]
 ];

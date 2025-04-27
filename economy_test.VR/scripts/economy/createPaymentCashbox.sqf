@@ -76,7 +76,7 @@ fnc_handleCashboxPayment = {
         if (_code == _countryCode) then {
             private _remaining = _amount - _paidAmount;
 			_newDebts pushBack [_code, _remaining];
-			[name player, "DebtPayment", _paidAmount, _remaining, localize "STR_transactions_automatedSystem"] call _handleJournalingPlayer;
+			[name player, "DebtPayment", -1 * _paidAmount, _remaining, localize "STR_transactions_automatedSystem"] call _handleJournalingPlayer;
 			[name player, "DebtPayment", _paidAmount, localize "STR_transactions_automatedSystem"] call _sendPayment;
         } else {
             _newDebts pushBack _x;

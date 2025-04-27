@@ -109,7 +109,7 @@ if (isNil "fnc_launchAccountDialog") then {
 					[_newBalance] call _accountSetter;
 					[_moneyBox, _currencyCode, _validAmount] call fnc_putMoneyIntoContainer;
 					
-					[name _player, "Withdrawal", _validAmount, _newBalance, _comment] call _journalHandler;
+					[name _player, "Withdrawal", -1 * _validAmount, _newBalance, _comment] call _journalHandler;
 					hint format [localize "STR_accountDialogSuccess", _validAmount, localize format ["STR_%1", _currencyCode]];
 				} else {
 					if (_useFullAmount) then {

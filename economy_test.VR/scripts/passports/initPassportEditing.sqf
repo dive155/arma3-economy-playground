@@ -99,7 +99,7 @@ fn_applyPassportEditorPermissionLocal = {
 				private _country = _passportRsc select [8]; // strips "passport" prefix
 				private _perm = "passportEditing" + _country;
 				private _callerPerms = _caller getVariable ["rp_permissions", []];
-
+				
 				if (_perm in _callerPerms) then {
 					[_target, _caller] call fn_showPlayerEditDialog;
 				} else {
