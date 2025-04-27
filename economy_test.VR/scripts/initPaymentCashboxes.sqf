@@ -16,21 +16,8 @@ _cashboxSounds = [
 		["debt_" + _steamId + "_PDR", _record] remoteExec ["DMP_fnc_addToJournal", 2];
 	},
 	{
-		params ["_playerName", "_operationType", "_amount", "_playersNote"];
-		
-		private _cityMoney = ["cityMoney"] call fnc_getWorldVariable;
-		_cityMoney = _cityMoney + _amount;
-		["cityMoney", _cityMoney] call fnc_setWorldVariable;
-		
-		private _recordData = [
-			_playerName,
-			_operationType,
-			_amount,
-			_cityMoney,
-			_playersNote
-		];
-		private _record = [_recordData] call fnc_composeAccountRecord;
-		["accountJournal_cityMoney", _record] remoteExec ["DMP_fnc_addToJournal", 2];
+		 private _args = ["cityMoney"] + _this;
+		_args call fnc_handleAutomatedAccountTransaction;
  	}
 ] execVM "scripts\economy\createPaymentCashbox.sqf";
 

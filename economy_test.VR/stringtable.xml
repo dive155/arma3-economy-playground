@@ -270,6 +270,14 @@
 		<Original>&lt;t color='#9eff66'&gt;Debt Payment&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#9eff66'&gt;Оплата Долга&lt;/t&gt;</Russian>
 	</Key>
+	<Key ID="STR_transaction_type_FactoryTax">
+		<Original>&lt;t color='#10a137'&gt;Factory Tax&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#10a137'&gt;Налог от Фабрики&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_SaleOfProducts">
+		<Original>&lt;t color='#8336ff'&gt;Sale of Products&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#8336ff'&gt;Продажа Продукции&lt;/t&gt;</Russian>
+	</Key>
 	<Key ID="STR_transactions_title">
 		<Original>Transaction History:</Original>
 		<Russian>История Транзакций:</Russian>

@@ -57,6 +57,20 @@ fnc_sellProducedFactoryGoods = {
 	[factory_commission_box, currencyCodePdrLeu, _commission] call fnc_putMoneyIntoContainer;
 	
 	_final = _final - _commission;
-	_final call fnc_addMoneyToFactory;
-	_tax call fnc_addMoneyToCity;
+	//_final call fnc_addMoneyToFactory;
+	//_tax call fnc_addMoneyToCity;
+	
+	[
+		"factoryMoney",
+		name player,
+		"SaleOfProducts",
+		_final
+	] call fnc_handleAutomatedAccountTransaction;
+	
+	[
+		"cityMoney",
+		name player,
+		"FactoryTax",
+		_tax
+	] call fnc_handleAutomatedAccountTransaction;
 };
