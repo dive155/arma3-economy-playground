@@ -8,7 +8,13 @@ fnc_handleFuelSentToPump = {
 	params ["_litersSent", "_moneyCurrency", "_moneyAmount"];
 	
 	["fuelInStorage", -1 * _litersSent] call fnc_increaseWorldVariable;
-	["cityMoney", _moneyAmount] call fnc_increaseWorldVariable;
+	
+	[
+		"cityMoney",
+		name player,
+		"FuelTrade",
+		_moneyAmount
+	] call fnc_handleAutomatedAccountTransaction;
 };
 
 [
