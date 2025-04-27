@@ -4,7 +4,7 @@ params [
     "_countryCode",            // For checking debts
     "_currencyCode",           // Currency type used
     "_soundsConfig",           // Format: [soundAction, soundSuccess, soundFailure]
-	["_handleJournalingPlayer", {params ["_playerName", "_operationType", "_amount", "_remaining", "_playersNote"]}],
+	["_handleJournalingPlayer", {params ["_steamId", "_instigatorName", "_countryCode", "_operationType", "_amount", "_playersNote"];}],
 	["_sendPayment", {params ["_playerName", "_operationType", "_amount", "_playersNote"]}]
 ];
 
@@ -68,21 +68,16 @@ fnc_handleCashboxPayment = {
     [_moneyBox, _currencyCode, _paidAmount] call fnc_takeMoneyFromContainer;
 
     // Update player debt
-    private _debts = player getVariable ["rp_debts", []];
-    private _newDebts = [];
-    {
-        private _code = _x select 0;
-        private _amount = _x select 1;
-        if (_code == _countryCode) then {
-            private _remaining = _amount - _paidAmount;
-			_newDebts pushBack [_code, _remaining];
-			[name player, "DebtPayment", -1 * _paidAmount, _remaining, localize "STR_transactions_automatedSystem"] call _handleJournalingPlayer;
-			[name player, "DebtPayment", _paidAmount, localize "STR_transactions_automatedSystem"] call _sendPayment;
-        } else {
-            _newDebts pushBack _x;
-        };
-    } forEach _debts;
-    player setVariable ["rp_debts", _newDebts, true];
+	[
+		player getVariable "DMP_SteamID",
+		name player,
+		_countryCode,
+		"DebtPayment",
+		-1 * _paidAmount,
+		localize "STR_transactions_automatedSystem"
+	] call _handleJournalingPlayer;
+	
+	[name player, "DebtPayment", _paidAmount, localize "STR_transactions_automatedSystem"] call _sendPayment;
 	player call fn_updateCivilianInfo;
 
     sleep 1;
@@ -95,7 +90,6 @@ fnc_handleCashboxPayment = {
 		localize format ["STR_country%1", _countryCode],
 		_debt - _paidAmount
 	];
-
 
     if (_change > 0) then {
         _message = _message + "\n\n" + format[localize "STR_payment_change", _change, _currencyName];
@@ -110,7 +104,7 @@ if (hasInterface) then {
     private _interact = {
         [_this select 0] spawn {
             params ["_target"];
-            [_target] call fnc_handleCashboxPayment;
+            [_target] spawn fnc_handleCashboxPayment;
         };
     };
 	private _actionName = format [localize "STR_pay_debt", localize format ["STR_country%1", _countryCode]];

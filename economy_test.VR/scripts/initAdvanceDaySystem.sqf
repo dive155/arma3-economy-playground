@@ -19,7 +19,7 @@ fnc_advanceDayServer = {
 fnc_handleFatigue = {
 	params ["_knownSteamIds"];
 	{
-		[_x, "rp_fatigue_current", 0, true] call DMP_fnc_setPlayerVariableSteamId
+		[_x, "rp_fatigue_current", 0, true] call DMP_fnc_setPlayerVariableSteamId;
 	} forEach _knownSteamIds;
 };
 

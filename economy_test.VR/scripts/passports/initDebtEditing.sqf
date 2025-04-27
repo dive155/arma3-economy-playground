@@ -33,9 +33,11 @@ fn_showDebtEditDialog = {
 		_player = _args select 0;
 		_countryName = _args select 1;
 		_invoker = _args select 2;
-
+		
+		private _operation = _values select 0;
 		private _valueStr = _values select 1;
 		private _parsed = parseNumber _valueStr;
+		private _note = _values select 2;
 
 		// Validate input
 		if (!(_valueStr regexMatch "^[0-9]+$")) exitWith {

@@ -492,37 +492,30 @@
 		<Original>Edit Debt (%1)</Original>
 		<Russian>Изменить долг (%1)</Russian>
 	</Key>
-	
 	<Key ID="STR_operation_pretty_issue_fine">
 		<Original>Issue a Fine</Original>
 		<Russian>Выписать Штраф</Russian>
 	</Key>
-
 	<Key ID="STR_operation_pretty_add_debt">
 		<Original>Add Debt</Original>
 		<Russian>Добавить Долг</Russian>
 	</Key>
-
 	<Key ID="STR_operation_pretty_write_off_debt">
 		<Original>Write-Off Debt</Original>
 		<Russian>Списать Долг</Russian>
 	</Key>
-
 	<Key ID="STR_edit_title_amount">
 		<Original>Amount</Original>
 		<Russian>Сумма</Russian>
 	</Key>
-
 	<Key ID="STR_edit_desc_amount">
 		<Original>Amount to Add or Write-Off</Original>
 		<Russian>Сумма для Добавления или Списания</Russian>
 	</Key>
-
 	<Key ID="STR_list_choose_operation">
 		<Original>Choose Operation:</Original>
 		<Russian>Выберите Операцию:</Russian>
 	</Key>
-		
 	<Key ID="STR_accountActionWithdraw">
 		<Original>Withdraw from account</Original>
 		<Russian>Снять со счёта</Russian>
