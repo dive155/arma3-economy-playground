@@ -473,8 +473,8 @@
 		<Russian>Редактирование паспорта</Russian>
 	</Key>
 	<Key ID="STR_debtEditDialogTitle">
-		<Original>Debt for %1</Original>
-		<Russian>Долг (%1)</Russian>
+		<Original>Debt for %1 (Current: %2)</Original>
+		<Russian>Долг (%1) (Текущий: %2)</Russian>
 	</Key>
 	<Key ID="STR_debtEditDialogDesc">
 		<Original>Enter the updated debt amount for %1.</Original>
@@ -491,6 +491,36 @@
 	<Key ID="STR_editDebtActionFormat">
 		<Original>Edit Debt (%1)</Original>
 		<Russian>Изменить долг (%1)</Russian>
+	</Key>
+	
+	<Key ID="STR_operation_pretty_issue_fine">
+		<Original>Issue a Fine</Original>
+		<Russian>Выписать Штраф</Russian>
+	</Key>
+
+	<Key ID="STR_operation_pretty_add_debt">
+		<Original>Add Debt</Original>
+		<Russian>Добавить Долг</Russian>
+	</Key>
+
+	<Key ID="STR_operation_pretty_write_off_debt">
+		<Original>Write-Off Debt</Original>
+		<Russian>Списать Долг</Russian>
+	</Key>
+
+	<Key ID="STR_edit_title_amount">
+		<Original>Amount</Original>
+		<Russian>Сумма</Russian>
+	</Key>
+
+	<Key ID="STR_edit_desc_amount">
+		<Original>Amount to Add or Write-Off</Original>
+		<Russian>Сумма для Добавления или Списания</Russian>
+	</Key>
+
+	<Key ID="STR_list_choose_operation">
+		<Original>Choose Operation:</Original>
+		<Russian>Выберите Операцию:</Russian>
 	</Key>
 		
 	<Key ID="STR_accountActionWithdraw">

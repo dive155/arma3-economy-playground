@@ -10,12 +10,23 @@ fn_showDebtEditDialog = {
 	} forEach _debts;
 
 	private _countryLabel = localize ("STR_country" + _countryName);
-	private _dialogTitle = format [localize "STR_debtEditDialogTitle", _countryLabel];
-	private _title = format [localize "STR_debtEditDialogTitle", localize ("STR_country" + _countryName)];
+	//private _dialogTitle = format [localize "STR_debtEditDialogTitle", _countryLabel, _existingDebt];
+	private _dialogTitle = format [localize "STR_debtEditDialogTitle", localize ("STR_country" + _countryName), _existingDebt];
 	private _desc = format [localize "STR_debtEditDialogDesc", localize ("STR_country" + _countryName)];
 
+	private _operationOptions = ["FineIssuing", "ManualAccrualOfDebt" ,"DebtWriteOff"];
+	private _operationPrettyNames = [
+		localize "STR_operation_pretty_issue_fine",
+		localize "STR_operation_pretty_add_debt",
+		localize "STR_operation_pretty_write_off_debt"
+	];
+	private _editTitle = localize "STR_edit_title_amount";
+	private _editDesc = localize "STR_edit_desc_amount";
+	
 	[_dialogTitle, [
-		["EDIT", [_title, _desc], [str _existingDebt]]
+		["LIST", [localize "STR_list_choose_operation", ""], [_operationOptions, _operationPrettyNames]],
+		["EDIT", [_editTitle, _editDesc], ["0"]],
+		["EDIT", [localize "STR_accountDialogReason", "STR_accountDialogReasonDesc"], [""]]
 	], {
 		params ["_values", "_args"];
 		private ["_player", "_countryName", "_invoker"];
@@ -23,7 +34,7 @@ fn_showDebtEditDialog = {
 		_countryName = _args select 1;
 		_invoker = _args select 2;
 
-		private _valueStr = _values select 0;
+		private _valueStr = _values select 1;
 		private _parsed = parseNumber _valueStr;
 
 		// Validate input
