@@ -37,7 +37,6 @@ fn_showDebtEditDialog = {
 		private _operation = _values select 0;
 		private _valueStr = _values select 1;
 		private _parsed = parseNumber _valueStr;
-		if (_operation == "DebtWriteOff") then {_parsed = -1 * _parsed;};
 		private _note = _values select 2;
 
 		// Validate input
@@ -46,6 +45,7 @@ fn_showDebtEditDialog = {
 			hint _msg;
 		};
 		
+		if (_operation == "DebtWriteOff") then {_parsed = -1 * _parsed;};
 		[
 			_player getVariable "DMP_SteamID",
 			name player,
@@ -60,7 +60,7 @@ fn_showDebtEditDialog = {
 		
 		_player spawn {
 			params ["_player"];
-			sleep 0.5;
+			sleep 1;
 			[_player] call fn_updateCivilianInfo; 
 			[_player] call notifyPassportChanged;
 		};

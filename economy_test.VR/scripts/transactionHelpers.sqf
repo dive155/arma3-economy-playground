@@ -36,7 +36,7 @@ fnc_handlePlayerDebtTransaction = {
         };
     } forEach _debts;
 	
-	[_steamId, "rp_debts", _debts, true] call DMP_fnc_setPlayerVariableSteamId;
+	[_steamId, "rp_debts", _newDebts, true] remoteExec ["DMP_fnc_setPlayerVariableSteamId", 2];
 	
 	private _record = [[
 		_instigatorName,

@@ -78,10 +78,10 @@ fnc_handleCashboxPayment = {
 	] call _handleJournalingPlayer;
 	
 	[name player, "DebtPayment", _paidAmount, localize "STR_transactions_automatedSystem"] call _sendPayment;
-	player call fn_updateCivilianInfo;
 
     sleep 1;
 
+	[player] call fn_updateCivilianInfo;
     private _currencyName = localize format ["STR_%1", _currencyCode];
     private _message = format [
 		localize "STR_payment_success",
