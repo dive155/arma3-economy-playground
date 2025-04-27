@@ -17,11 +17,6 @@ fnc_checkIfFactoryCanPay = {
 	};
 };
 
-fnc_addMoneyToFactory = {
-	params["_moneyToAdd"];
-	["factoryMoney", _moneyToAdd] call fnc_increaseWorldVariable
-};
-
 fnc_checkFactoryWorkConditions = {
 	params["_payConfig", "_fatigueKey"];
 	
@@ -36,7 +31,14 @@ fnc_handleConverterWorkCompleted = {
 	_fatigueIncrease = _fatigueKey call fnc_getWorldVariable;
 	
 	_moneyToTake = _payConfig select 1;
-	(-1 * _moneyToTake) call fnc_addMoneyToFactory;
+	
+	[
+		"factoryMoney",
+		name player,
+		"PaymentForWork",
+		-1 * _moneyToTake
+	] call fnc_handleAutomatedAccountTransaction;
+	
 	[player, _fatigueIncrease] call fnc_increasePlayerFatigue;
 };
 
@@ -57,8 +59,6 @@ fnc_sellProducedFactoryGoods = {
 	[factory_commission_box, currencyCodePdrLeu, _commission] call fnc_putMoneyIntoContainer;
 	
 	_final = _final - _commission;
-	//_final call fnc_addMoneyToFactory;
-	//_tax call fnc_addMoneyToCity;
 	
 	[
 		"factoryMoney",

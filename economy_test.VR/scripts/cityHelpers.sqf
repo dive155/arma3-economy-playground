@@ -10,12 +10,6 @@ fnc_checkIfCityCanPay = {
 	};
 };
 
-fnc_addMoneyToCity = {
-	params["_moneyToAdd"];
-	
-	["cityMoney", _moneyToAdd] call fnc_increaseWorldVariable
-};
-
 fnc_getCityMoney = {
 	["cityMoney"] call fnc_getWorldVariable;
 };

@@ -278,6 +278,10 @@
 		<Original>&lt;t color='#8336ff'&gt;Sale of Products&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#8336ff'&gt;Продажа Продукции&lt;/t&gt;</Russian>
 	</Key>
+	<Key ID="STR_transaction_type_PaymentForWork">
+		<Original>&lt;t color='#f1f514'&gt;Payment For Work&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#f1f514'&gt;Плата за Работу&lt;/t&gt;</Russian>
+	</Key>
 	<Key ID="STR_transactions_title">
 		<Original>Transaction History:</Original>
 		<Russian>История Транзакций:</Russian>
