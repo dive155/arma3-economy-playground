@@ -298,6 +298,14 @@
 		<Original>&lt;t color='#8336ff'&gt;Manual Debt Write-Off&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#8336ff'&gt;Списание Долга&lt;/t&gt;</Russian>
 	</Key>
+	<Key ID="STR_transaction_type_DailyBills">
+		<Original>&lt;t color='#ffeb36'&gt;Daily Bills&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#ffeb36'&gt;Ежедневные Налоги&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_DailyInterest">
+		<Original>&lt;t color='#f08b1f'&gt;Daily Interest&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#f08b1f'&gt;Ежедневные Проценты на Долг&lt;/t&gt;</Russian>
+	</Key>
 	<Key ID="STR_transactions_title">
 		<Original>Transaction History:</Original>
 		<Russian>История Транзакций:</Russian>

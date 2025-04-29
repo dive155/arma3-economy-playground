@@ -11,7 +11,10 @@ fnc_advanceDayServer = {
 	[_knownSteamIds] call fnc_handleFatigue;
 	[_steamIdPlayerPairs] call fnc_handleHunger;
 	
-	sleep 3;
+	[_steamIdPlayerPairs] call fnc_handleDailyInterest;
+	sleep 2;
+	[_steamIdPlayerPairs] call fnc_handleDailyTaxes;
+	sleep 2;
 	call DMP_fnc_saveAll;
  	[_newDay] remoteExec ["fnc_showNextDayMessage"];
 };
@@ -32,6 +35,64 @@ fnc_handleHunger = {
 			[_player] call fnc_incrementDaysSinceLastMeal;
 		};
 	} forEach _steamIdPlayerPairs;
+};
+
+fnc_handleDailyInterest = {
+	params ["_steamIdPlayerPairs"];
+	{
+		_x  spawn {
+			params ["_steamId", "_player"];
+					
+			private _debts = ["DMP_fnc_getPlayerVariableSteamId", [_steamId, "rp_debts", []]] call DMP_fnc_requestServerResult;
+			{
+				_x params ["_countryCode", "_currentDebt"];
+				
+				private _interestVarName = "interestRate_" + _countryCode;
+				private _interestRate = [_interestVarName] call fnc_getWorldVariable;
+				
+	
+				private _interest = round (_currentDebt * _interestRate);
+				_interest = _interest max 0;
+						
+				[
+					_steamId,
+					"[Automatic]",
+					_countryCode,
+					"DailyInterest",
+					_interest,
+					localize "STR_transactions_automatedSystem"
+				] spawn fnc_handlePlayerDebtTransaction;
+				
+				sleep 1;
+			} forEach _debts;
+		};
+	} forEach _steamIdPlayerPairs;
+};
+
+fnc_handleDailyTaxes = {
+	params ["_steamIdPlayerPairs"];
+	{
+		_x params ["_steamId", "_player"];
+		
+		(["DMP_fnc_getManyPlayerVariablesSteamId", [_steamId, ["grad_passport_passportRsc", "rp_dailybills"], ""]] call DMP_fnc_requestServerResult)
+		params ["_passportRsc", "_dailyBills"];
+		
+		// TODO - can't pay bills to multiple countries
+		private _countryCode = [_passportRsc] call fnc_getCitizenship;
+		
+		[
+			_steamId,
+			"[Automatic]",
+			_countryCode,
+			"DailyBills",
+			_dailyBills,
+			localize "STR_transactions_automatedSystem"
+		] spawn fnc_handlePlayerDebtTransaction;
+	} forEach _steamIdPlayerPairs;
+};
+
+fnc_handleDailyInterest = {
+
 };
 
 fnc_showNextDayMessage = {
