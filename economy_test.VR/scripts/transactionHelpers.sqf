@@ -1,5 +1,10 @@
 fnc_handleAutomatedAccountTransaction = {
 	params ["_accountName", "_playerName", "_operationType", "_amount"];
+	_this remoteExec ["fnc_handleAutomatedAccountTransactionServer", 2];
+};
+
+fnc_handleAutomatedAccountTransactionServer = {
+	params ["_accountName", "_playerName", "_operationType", "_amount"];
 		
 	private _accountMoney = [_accountName] call fnc_getWorldVariable;
 	_accountMoney = _accountMoney + _amount;
@@ -13,7 +18,7 @@ fnc_handleAutomatedAccountTransaction = {
 		localize "STR_transactions_automatedSystem"
 	];
 	private _record = [_recordData] call fnc_composeAccountRecord;
-	["accountJournal_" + _accountName, _record] remoteExec ["DMP_fnc_addToJournal", 2];
+	["accountJournal_" + _accountName, _record] call DMP_fnc_addToJournal;
 };
 
 fnc_handlePlayerDebtTransaction = {
@@ -24,7 +29,7 @@ fnc_handlePlayerDebtTransaction = {
 fnc_handlePlayerDebtTransactionServer = {
 	params ["_steamId", "_instigatorName", "_countryCode", "_operationType", "_amount", "_playersNote"];
 	
-	private _debts = ["DMP_fnc_getPlayerVariableSteamId", [_steamId, "rp_debts", []]] call DMP_fnc_requestServerResult;
+	private _debts = [_steamId, "rp_debts", []] call DMP_fnc_getPlayerVariableSteamId;
 	
 	if (count _debts == 0) exitWith {hint "Error: No debts defined"};
 	
@@ -41,7 +46,7 @@ fnc_handlePlayerDebtTransactionServer = {
         };
     } forEach _debts;
 	
-	[_steamId, "rp_debts", _newDebts, true] remoteExec ["DMP_fnc_setPlayerVariableSteamId", 2];
+	[_steamId, "rp_debts", _newDebts, true] call DMP_fnc_setPlayerVariableSteamId;
 	
 	private _record = [[
 		_instigatorName,
@@ -51,5 +56,5 @@ fnc_handlePlayerDebtTransactionServer = {
 		_playersNote
 	]] call fnc_composeAccountRecord;
 	
-	["debt_" + _steamId + "_" + _countryCode, _record] remoteExec ["DMP_fnc_addToJournal", 2];
+	["debt_" + _steamId + "_" + _countryCode, _record] call DMP_fnc_addToJournal;
 };
