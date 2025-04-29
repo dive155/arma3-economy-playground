@@ -18,6 +18,11 @@ fnc_handleAutomatedAccountTransaction = {
 
 fnc_handlePlayerDebtTransaction = {
 	params ["_steamId", "_instigatorName", "_countryCode", "_operationType", "_amount", "_playersNote"];
+	_this remoteExec ["fnc_handlePlayerDebtTransactionServer", 2];
+};
+
+fnc_handlePlayerDebtTransactionServer = {
+	params ["_steamId", "_instigatorName", "_countryCode", "_operationType", "_amount", "_playersNote"];
 	
 	private _debts = ["DMP_fnc_getPlayerVariableSteamId", [_steamId, "rp_debts", []]] call DMP_fnc_requestServerResult;
 	
