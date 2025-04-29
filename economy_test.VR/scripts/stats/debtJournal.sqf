@@ -7,8 +7,8 @@ fnc_showOwnDebtHistory = {
 fnc_showPlayerDebtHistory = {
 	params["_steamId", "_countryCode"];
 	
-	private _playerName = ["request_nameResult", "DMP_fnc_getPlayerVariableSteamId", [_steamId, "grad_passport_firstName", ""]] call fnc_requestServerResult;
-	private _playerLastName = ["request_nameResult", "DMP_fnc_getPlayerVariableSteamId", [_steamId, "grad_passport_lastName", ""]] call fnc_requestServerResult;
+	private _playerName = ["DMP_fnc_getPlayerVariableSteamId", [_steamId, "grad_passport_firstName", ""]] call DMP_fnc_requestServerResult;
+	private _playerLastName = ["DMP_fnc_getPlayerVariableSteamId", [_steamId, "grad_passport_lastName", ""]] call DMP_fnc_requestServerResult;
 	
 	private _header = "<t align='center'><t size='1.5'>" + (localize "STR_transactions_title") + "<br/><t color='#caf5c4'> " + format [localize "STR_account_debt", _playerLastName, _playerName, localize ("STR_country" + _countryCode)] + "</t></t></t><br/><br/>";
 	

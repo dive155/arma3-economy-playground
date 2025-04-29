@@ -57,7 +57,7 @@ fnc_formatAccountRecord = {
 fnc_requestAndShowJournal = {
 	params["_journalName", ["_header", ""]];
 	
-	_journalData = ["servDataJournal", "DMP_fnc_getJournalEntries", [_journalName]] call fnc_requestServerResult;
+	_journalData = ["DMP_fnc_getJournalEntries", [_journalName]] call DMP_fnc_requestServerResult;
 	
 	_journalText = _header + ([_journalData] call fnc_formatAccountRecord);
 	[_journalText] call fnc_showLongTextDialog;

@@ -19,7 +19,7 @@ fnc_handleAutomatedAccountTransaction = {
 fnc_handlePlayerDebtTransaction = {
 	params ["_steamId", "_instigatorName", "_countryCode", "_operationType", "_amount", "_playersNote"];
 	
-	private _debts = ["request_debts", "DMP_fnc_getPlayerVariableSteamId", [_steamId, "rp_debts", []]] call fnc_requestServerResult;
+	private _debts = ["DMP_fnc_getPlayerVariableSteamId", [_steamId, "rp_debts", []]] call DMP_fnc_requestServerResult;
 	
 	if (count _debts == 0) exitWith {hint "Error: No debts defined"};
 	
