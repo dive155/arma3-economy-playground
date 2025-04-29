@@ -15,6 +15,44 @@ DMP_fnc_getJournalEntries = {
 	_entries
 };
 
+DMP_fnc_getJournalEntriesPaged = {
+	params ["_journalName", "_itemsPerPage", ["_pageIndex", -1]];
+
+	_dbHandle = ["new", DMP_dbNameJournals] call OO_INIDBI;
+	_sections = "getSections" call _dbHandle;
+
+	if !(_journalName in _sections) exitWith { [-1, 0, []] };
+
+	private _keys = ["getKeys", _journalName] call _dbHandle;
+	private _totalEntries = count _keys;
+
+	private _entries = [];
+	private _totalPages = 1;
+	private _returnPageIndex = 0;
+
+	if (_itemsPerPage <= 0) then {
+		// No paging — return all entries
+		_entries = _keys apply {
+			["read", [_journalName, _x, ""]] call _dbHandle
+		};
+	} else {
+		_totalPages = ceil (_totalEntries / _itemsPerPage);
+		_returnPageIndex = if (_pageIndex == -1) then { _totalPages - 1 } else { _pageIndex };
+		_returnPageIndex = _returnPageIndex max 0 min (_totalPages - 1);
+
+		private _startIndex = _returnPageIndex * _itemsPerPage;
+		private _endIndex = (_startIndex + _itemsPerPage) min _totalEntries;
+
+		private _pageKeys = _keys select [_startIndex, _endIndex - _startIndex];
+		_entries = _pageKeys apply {
+			["read", [_journalName, _x, ""]] call _dbHandle
+		};
+	};
+
+	[_returnPageIndex, _totalPages, _entries]
+};
+
+
 DMP_dbJournalEntryPrefix = "entry_";
 DMP_fnc_addToJournal = {
 	params ["_journalName", "_entry"];
