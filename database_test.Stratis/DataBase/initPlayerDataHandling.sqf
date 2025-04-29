@@ -141,6 +141,26 @@ DMP_fnc_getPlayerVariableSteamId = {
 	_value
 };
 
+DMP_fnc_getManyPlayerVariablesSteamId = {
+	params ["_steamId", ["_varNames", []], ["_defaultValues", []]];
+
+	private _dbHandle = ["new", DMP_dbNamePlayers] call OO_INIDBI;
+	private _result = [];
+
+	{
+		private _default = if (_forEachIndex < count _defaultValues) then {
+			_defaultValues select _forEachIndex
+		} else {
+			""
+		};
+
+		private _value = ["read", [_steamId, _x, _default]] call _dbHandle;
+		_result pushBack _value;
+	} forEach _varNames;
+
+	_result
+};
+
 DMP_fnc_setPlayerVariable = {
 	params ["_player", "_varName", "_value"];
 	_steamId = _player getVariable "DMP_SteamID";
