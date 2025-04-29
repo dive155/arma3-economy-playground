@@ -23,6 +23,6 @@ fnc_handleFuelSentToPump = {
 	gas_station_pump,
 	_gasStationSoundsConfig,
 	{"fuelInStorage" call fnc_getWorldVariable},
-	{[currencyCodePdrLeu, "fuelPricePDR" call fnc_getWorldVariable]},
+	{[currencyCodePdrLeu, "fuelPrice_PDR" call fnc_getWorldVariable]},
 	fnc_handleFuelSentToPump
 ]execVM "scripts\economy\createGasStation.sqf";

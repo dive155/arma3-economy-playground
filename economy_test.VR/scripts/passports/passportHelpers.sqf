@@ -92,3 +92,10 @@ fnc_setPassportVariablesBulk = {
         _unit setVariable ["defaultPassportInitialized", true, true];
     };
 };
+
+fnc_getCitizenship = {
+	params ["_passportCode"];
+	
+	//remove "passport" prefix
+	_passportCode select [8]
+};
