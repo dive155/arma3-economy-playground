@@ -647,4 +647,49 @@
 		<Russian>Закрыть</Russian>
 	</Key>
   </Package>
+  <Package name="zeusModules">
+	<Key ID="STR_dive_pdr_module_title">
+		<Original>Dive's PDR RP Modules</Original>
+		<Russian>Dive's ПДР РП Модули</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_advance_day">
+		<Original>Advance Day</Original>
+		<Russian>Продвинуть День</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_edit_world">
+		<Original>Edit World Settings</Original>
+		<Russian>Поменять Настройки Мира</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_day_advancing_settings">
+		<Original>Day advancing settings</Original>
+		<Russian>Настройки продвижения дня</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_players_pay_interest_title">
+		<Original>Players pay interest</Original>
+		<Russian>Игроки платят проценты</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_players_pay_interest_desc">
+		<Original>Whether or not the interest should be charged on all players debts, both online and offline</Original>
+		<Russian>Следует ли начислять проценты на долги всех игроков, как в сети, так и офлайн</Russian>
+	</Key>
+
+	<Key ID="STR_dive_pdr_players_pay_taxes_title">
+		<Original>Players pay taxes</Original>
+		<Russian>Игроки платят налоги</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_players_pay_taxes_desc">
+		<Original>Whether or not the taxes should be charged from players, both online and offline</Original>
+		<Russian>Следует ли начислять налоги игрокам, как в сети, так и офлайн</Russian>
+	</Key>
+
+	<Key ID="STR_dive_pdr_offline_players_work_title">
+		<Original>Offline Players Work</Original>
+		<Russian>Офлайн-игроки работают</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_offline_players_work_desc">
+		<Original>Whether or not offline players should be simulated as if working</Original>
+		<Russian>Следует ли моделировать офлайн-игроков как работающих</Russian>
+	</Key>
+
+  </Package>
 </Project>

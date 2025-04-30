@@ -38,3 +38,9 @@ waitUntil { scriptDone _scriptHandle };
 
 _scriptHandle = execVM "scripts\initAdvanceDaySystem.sqf";
 waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "scripts\initVariablesEditing.sqf";
+waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "scripts\initZeusModules.sqf";
+waitUntil { scriptDone _scriptHandle };
