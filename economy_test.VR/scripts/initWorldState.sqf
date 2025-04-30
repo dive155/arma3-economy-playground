@@ -21,6 +21,7 @@ fnc_createDefaultWorldState = {
 		["rpDay", 0] call fnc_setWorldVariable;
 		["interestRate_PDR", 0.2] call fnc_setWorldVariable;
 		["interestRate_Moldova", 0.15] call fnc_setWorldVariable;
+		["lunchPrice", 300] call fnc_setWorldVariable;
 	};
 };
 

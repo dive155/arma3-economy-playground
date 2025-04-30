@@ -10,19 +10,18 @@ fnc_checkIfFactoryCanPay = {
 	_toPay = _payConfig select 1;
 	_factoryMoney = "factoryMoney" call fnc_getWorldVariable;
 	_leftover = _factoryMoney - _toPay;
-	
-	if (_leftover > 0) then { true } else {
-		hint(localize "STR_factory_no_money");
-		false
-	};
+	_leftover > 0
 };
 
 fnc_checkFactoryWorkConditions = {
 	params["_payConfig", "_fatigueKey"];
 	
 	_fatigueIncrease = _fatigueKey call fnc_getWorldVariable;
-	([_payConfig] call fnc_checkIfFactoryCanPay)
-		and ([player, _fatigueIncrease] call fnc_checkIfNotTooFatigued)
+	_canPay = 	if (_leftover > 0) then { true } else {
+		hint(localize "STR_factory_no_money");
+		false
+	};
+	_canPay and ([player, _fatigueIncrease] call fnc_checkIfNotTooFatigued)
 };
 
 fnc_handleConverterWorkCompleted = {

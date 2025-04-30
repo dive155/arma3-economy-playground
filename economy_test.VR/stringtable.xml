@@ -232,6 +232,10 @@
 		<Original>Remaining Fuel in own Gas Tank (Liters):\n %1/%2</Original>
 		<Russian>Осталось Топлива в Бензобаке (Литры):\n %1/%2</Russian>
 	</Key>
+	<Key ID="STR_NewRPDayLoading">
+		<Original>Next RP Day Loading...</Original>
+		<Russian>Загружается новый РП День...</Russian>
+	</Key>
 	<Key ID="STR_NewRPDayStarting">
 		<Original>A new RP day is starting:</Original>
 		<Russian>Начинается новый день RP:</Russian>
@@ -270,6 +274,10 @@
 		<Original>&lt;t color='#9eff66'&gt;Debt Payment&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#9eff66'&gt;Оплата Долга&lt;/t&gt;</Russian>
 	</Key>
+	<Key ID="STR_transaction_type_DebtPaymentOffline">
+		<Original>&lt;t color='#ababab'&gt;Debt Payment (Player Offline)&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#ababab'&gt;Оплата Долга (Игрок Оффлайн)&lt;/t&gt;</Russian>
+	</Key>
 	<Key ID="STR_transaction_type_FactoryTax">
 		<Original>&lt;t color='#10a137'&gt;Factory Tax&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#10a137'&gt;Налог от Фабрики&lt;/t&gt;</Russian>
@@ -285,6 +293,10 @@
 	<Key ID="STR_transaction_type_PaymentForWork">
 		<Original>&lt;t color='#f1f514'&gt;Payment For Work&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#f1f514'&gt;Плата за Работу&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_PaymentForWorkOffline">
+		<Original>&lt;t color='#ababab'&gt;Payment For Work (Player Offline)&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#ababab'&gt;Плата за Работу (Игрок Оффлайн)&lt;/t&gt;</Russian>
 	</Key>
 	<Key ID="STR_transaction_type_FineIssuing">
 		<Original>&lt;t color='#db0804'&gt;Fine&lt;/t&gt;</Original>
