@@ -21,6 +21,8 @@ if (isServer) then {
     _soundsMap set ["success", _soundsConfig select 1];
     _soundsMap set ["failure", _soundsConfig select 2];
     _buttonObject setVariable ["soundsMap", _soundsMap, true];
+} else {
+	waitUntil {sleep 1; not (isNull (_buttonObject getVariable ["moneyBox", objNull]))};
 };
 
 // Function for handling the payment

@@ -17,7 +17,7 @@ fnc_checkFactoryWorkConditions = {
 	params["_payConfig", "_fatigueKey"];
 	
 	_fatigueIncrease = _fatigueKey call fnc_getWorldVariable;
-	_canPay = 	if (_leftover > 0) then { true } else {
+	_canPay = 	if ([_payConfig] call fnc_checkIfFactoryCanPay) then { true } else {
 		hint(localize "STR_factory_no_money");
 		false
 	};

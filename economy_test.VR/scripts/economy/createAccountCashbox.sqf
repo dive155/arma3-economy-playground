@@ -19,6 +19,8 @@ if (isServer) then {
 	_buttonObject setVariable ["moneyBox", _moneyBox, true];
 	_buttonObject setVariable ["accountID", _accountID, true];
 	_buttonObject setVariable ["logsAccessCondition", _logsAccessCondition, true];
+} else {
+	waitUntil {sleep 1; not (isNull (_buttonObject getVariable ["moneyBox", objNull]))};
 };
 
 if (isNil "fnc_isNumeric") then {

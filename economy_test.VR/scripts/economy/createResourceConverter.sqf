@@ -35,6 +35,11 @@ if (isServer) then {
 	if (not isNull _outputMoneyBox) then {
 		_buttonObject setVariable ["outputMoneyBox", _outputMoneyBox, true];
 	};
+} else {
+	waitUntil {
+		sleep 1; 
+		count (_buttonObject getVariable ["rawResources", []]) > 0
+	};
 };
 
 fnc_checkItemsInTrigger = {

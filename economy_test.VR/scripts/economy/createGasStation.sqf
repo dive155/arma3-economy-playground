@@ -26,6 +26,8 @@ if (isServer) then {
 	_buttonObject setVariable ["soundsMap", _soundsMap, true];
 	
 	_gasPump setVariable ["ace_refuel_capacity", gas_station_pump_capacity, true];
+} else {
+	waitUntil {sleep 1; not (isNull (_buttonObject getVariable ["inputMoneyBox", objNull]))};
 };
 
 fnc_handleFuelPaymentRequested = {
