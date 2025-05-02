@@ -1,11 +1,11 @@
 fnc_getVariablesForEditing = {
-	params ["_varNames", "_getter"];
+	params ["_varNames", "_getter", ["_getterArgs", []]];
 	
 	private _lines = [];
 	
 	{
 		private _varName = _x;
-		private _value = [_varName] call _getter;
+		private _value = [_varName, _getterArgs] call _getter;
 		_lines pushBack format ["%1=%2", _varName, _value];
 	} forEach _varNames;
 	
@@ -44,7 +44,7 @@ fnc_parseVariableString = {
 			private _parts = _x splitString "=";
 			private _var = _parts select 0;
 			private _rawValue = (_parts select [1]) joinString "=";  // In case value contains '='
-
+			
 			// Auto-detect value type
 			private _parsedValue = call {
 				if (_rawValue isEqualTo "true") exitWith { true };
@@ -68,7 +68,7 @@ fnc_parseVariableString = {
 };
 
 fnc_setEditedVariables = {
-	params ["_originalString", "_newString", "_setter"];
+	params ["_originalString", "_newString", "_setter", ["_setterArgs", []]];
 
 	private _originalMap = [_originalString] call fnc_parseVariableString;
 	private _newMap = [_newString] call fnc_parseVariableString;
@@ -80,7 +80,7 @@ fnc_setEditedVariables = {
 			private _newValue = _newMap get _varName;
 						
 			if (!(_originalValue isEqualTo _newValue)) then {
-				[_varName, _newValue] call _setter;
+				[_varName, _newValue, _setterArgs] call _setter;
 			};
 		};
 	} forEach keys _originalMap;
