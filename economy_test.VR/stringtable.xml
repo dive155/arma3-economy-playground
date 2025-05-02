@@ -657,8 +657,16 @@
 		<Russian>Продвинуть День</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_world">
-		<Original>Edit World Settings</Original>
+		<Original>Edit World Variables</Original>
 		<Russian>Поменять Настройки Мира</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_edit_player">
+		<Original>Edit Player Variables</Original>
+		<Russian>Поменять Настройки Игрока</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_hint_place_on_player">
+		<Original>Needs to be placed on a Player</Original>
+		<Russian>Надо поместить на Игрока</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_day_advancing_settings">
 		<Original>Day advancing settings</Original>

@@ -68,16 +68,16 @@ worldVariablesForZeusEditing = [
 
 playerVariablesForZeusEditing = [
 	//"rp_permissions",
-	"grad_passport_firstName"
-	// "grad_passport_passportRsc",
-	// "grad_passport_lastName",
-	// "grad_passport_placeOfBirth",
-	// "grad_passport_dateOfBirth",
-	// "grad_passport_serial",
-	// "grad_passport_expires",
-	// "rp_fatigue_current",
-	// "rp_fatigue_capacity",
-	// "rp_daysSinceLastMeal"
+	"grad_passport_firstName",
+	"grad_passport_passportRsc",
+	"grad_passport_lastName",
+	"grad_passport_placeOfBirth",
+	"grad_passport_dateOfBirth",
+	"grad_passport_serial",
+	"grad_passport_expires",
+	"rp_fatigue_current",
+	"rp_fatigue_capacity",
+	"rp_daysSinceLastMeal"
 ];
 
 fnc_getPlayerVariableZeus = {
@@ -91,23 +91,23 @@ fnc_setPlayerVariableZeus = {
 	params ["_varName", "_value", "_playerArgs"];
 	private _player = _playerArgs select 0;
 	
-	_player setVariable [_varName, _value];
+	_player setVariable [_varName, _value, true];
 };
 
 [
 	localize "STR_dive_pdr_module_title",
-	"Edit Player Variables",
+	localize "STR_dive_pdr_module_edit_player",
 	{
 		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
 		
 		if ((isNull _object) or {not isPlayer _object}) exitWith {
-			[objNull, "Needs to be placed on a player"] call BIS_fnc_showCuratorFeedbackMessage;
+			[objNull, localize "STR_dive_pdr_module_hint_place_on_player"] call BIS_fnc_showCuratorFeedbackMessage;
 		};
 		
 		private _initialVariablesText = [playerVariablesForZeusEditing, fnc_getPlayerVariableZeus, [_object]] call fnc_getVariablesForEditing;
 		
 		[
-			localize "STR_dive_pdr_module_edit_world", [
+			localize "STR_dive_pdr_module_edit_player", [
 				["EDIT:MULTI",["Variables",""],[_initialVariablesText,{},25], true]
 			], {
 				params["_values","_arguments"];
@@ -118,6 +118,13 @@ fnc_setPlayerVariableZeus = {
 				_modifiedVariablesText = _values select 0;
 												
 				[_initialVariablesText, _modifiedVariablesText, fnc_setPlayerVariableZeus, [_object]] call fnc_setEditedVariables;
+				
+				[_object] spawn {
+					params ["_object"];
+					sleep 4;
+					[_object] remoteExec ["DMP_fnc_forceSavePlayer", 2];
+				};
+				
 			}, {}, [_pos, _object, _initialVariablesText]
 		] call zen_dialog_fnc_create;
 

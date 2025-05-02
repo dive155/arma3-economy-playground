@@ -43,21 +43,26 @@ fnc_parseVariableString = {
 		if (_x find "=" > -1) then {
 			private _parts = _x splitString "=";
 			private _var = _parts select 0;
-			private _rawValue = (_parts select [1]) joinString "=";  // In case value contains '='
-			
-			// Auto-detect value type
+			private _rawValue = (_parts select [1]) joinString "=";  // Handle "=" inside values
+
 			private _parsedValue = call {
+				// Booleans
 				if (_rawValue isEqualTo "true") exitWith { true };
 				if (_rawValue isEqualTo "false") exitWith { false };
-				if (_rawValue regexMatch "^-?[0-9]+(\.[0-9]+)?$") exitWith { parseNumber _rawValue };
-				if (_rawValue select [0,1] isEqualTo """") then {
-					// It's a string
-					_rawValue select [1, count _rawValue - 2]
-				} else {
-					// Try parsing as array
-					private _res = parseSimpleArray _rawValue;
-					if (typeName _res == "ARRAY") then { _res } else { _rawValue };
-				}
+
+				// Number (int or float)
+				if (_rawValue regexMatch "^-?[0-9]+(\.[0-9]+)?$") exitWith {
+					parseNumber _rawValue
+				};
+
+				// Array (starts with [)
+				if (_rawValue select [0, 1] isEqualTo "[") then {
+					private _arr = parseSimpleArray _rawValue;
+					if (typeName _arr == "ARRAY") exitWith { _arr };
+				};
+
+				// Default fallback: string
+				_rawValue
 			};
 
 			_map set [_var, _parsedValue];
@@ -66,6 +71,7 @@ fnc_parseVariableString = {
 
 	_map
 };
+
 
 fnc_setEditedVariables = {
 	params ["_originalString", "_newString", "_setter", ["_setterArgs", []]];
