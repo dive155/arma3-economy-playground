@@ -196,3 +196,48 @@ allRpPermissions = [
 
 	}, "\DiceRollByDive\ui\d8_small.paa"
 ] call zen_custom_modules_fnc_register;
+
+[
+	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_edit_passport",
+	{
+		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
+
+		if ((isNull _object) or {not isPlayer _object}) exitWith {
+			[objNull, localize "STR_dive_pdr_module_hint_place_on_player"] call BIS_fnc_showCuratorFeedbackMessage;
+		};
+
+		[_object, player] call fn_showPlayerEditDialog;
+
+	}, "\DiceRollByDive\ui\d8_small.paa"
+] call zen_custom_modules_fnc_register;
+
+[
+	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_edit_debt_pdr",
+	{
+		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
+
+		if ((isNull _object) or {not isPlayer _object}) exitWith {
+			[objNull, localize "STR_dive_pdr_module_hint_place_on_player"] call BIS_fnc_showCuratorFeedbackMessage;
+		};
+
+		[_object, "PDR", player] call fn_showDebtEditDialog;
+
+	}, "\DiceRollByDive\ui\d8_small.paa"
+] call zen_custom_modules_fnc_register;
+
+[
+	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_edit_debt_moldova",
+	{
+		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
+
+		if ((isNull _object) or {not isPlayer _object}) exitWith {
+			[objNull, localize "STR_dive_pdr_module_hint_place_on_player"] call BIS_fnc_showCuratorFeedbackMessage;
+		};
+
+		[_object, "Moldova", player] call fn_showDebtEditDialog;
+
+	}, "\DiceRollByDive\ui\d8_small.paa"
+] call zen_custom_modules_fnc_register;

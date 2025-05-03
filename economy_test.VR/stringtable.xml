@@ -720,6 +720,18 @@
 		<Original>Edit Player Permissions</Original>
 		<Russian>Поменять Разрешения Игрока</Russian>
 	</Key>
+	<Key ID="STR_dive_pdr_module_edit_passport">
+		<Original>Edit Player Civilian Data</Original>
+		<Russian>Ред. Гражд. Инф. Игрока</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_edit_debt_pdr">
+		<Original>Edit Player Debt (PDR)</Original>
+		<Russian>Ред. Долг Игрока (ПДР)</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_edit_debt_moldova">
+		<Original>Edit Player Debt (Moldova)</Original>
+		<Russian>Ред. Долг Игрока (Молдова)</Russian>
+	</Key>
 	<Key ID="STR_dive_pdr_module_hint_place_on_player">
 		<Original>Needs to be placed on a Player</Original>
 		<Russian>Надо поместить на Игрока</Russian>
