@@ -31,20 +31,6 @@ fnc_removePermission = {
 
 if not hasInterface exitWith {};
 
-_allPermissions = [
-	"cooking",
-	"accountFull_cityMoney",
-	"accountRead_cityMoney",
-	"accountFull_factoryMoney",
-	"accountRead_factoryMoney",
-	"debtEditing_PDR",
-	"debtEditing_Moldova",
-	"passportEditingPdr",
-	"passportEditingMoldova",
-	"visaGiving_PDR",
-	"visaGiving_Moldova"
-];
-
 _permActions = [
 	["debtEditing_PDR", {["PDR"] call fn_applyDebtEditorPermissionLocal}],
 	["debtEditing_Moldova", {["Moldova"] call fn_applyDebtEditorPermissionLocal}],

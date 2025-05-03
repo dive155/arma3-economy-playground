@@ -130,3 +130,63 @@ fnc_setPlayerVariableZeus = {
 
 	}, "\DiceRollByDive\ui\d8_small.paa"
 ] call zen_custom_modules_fnc_register;
+
+allRpPermissions = [
+	"cooking",
+	"accountFull_cityMoney",
+	"accountRead_cityMoney",
+	"accountFull_factoryMoney",
+	"accountRead_factoryMoney",
+	"debtEditing_PDR",
+	"debtEditing_Moldova",
+	"passportEditing_PDR",
+	"passportEditing_Moldova",
+	"visaGiving_PDR",
+	"visaGiving_Moldova"
+];
+
+[
+	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_edit_perms",
+	{
+		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
+
+		if ((isNull _object) or {not isPlayer _object}) exitWith {
+			[objNull, localize "STR_dive_pdr_module_hint_place_on_player"] call BIS_fnc_showCuratorFeedbackMessage;
+		};
+
+		private _currentPerms = _object getVariable ["rp_permissions", []];
+
+		// Generate checkboxes for each permission
+		private _checkboxes = [];
+		{
+			private _isChecked = _x in _currentPerms;
+			_checkbox = ["CHECKBOX", [_x, _x], [_isChecked]];
+			_checkboxes pushBack _checkbox;
+		} forEach allRpPermissions;
+
+		[
+			localize "STR_dive_pdr_module_edit_perms", _checkboxes, {
+				params ["_values", "_arguments"];
+				private _pos = _arguments select 0;
+				private _object = _arguments select 1;
+
+				private _newPerms = [];
+				{
+					if (_x) then {
+						_newPerms pushBack (allRpPermissions select _forEachIndex);
+					};
+				} forEach _values;
+
+				_object setVariable ["rp_permissions", _newPerms, true];
+				[_object] spawn {
+					params ["_object"];
+					sleep 4;
+					[_object] remoteExec ["DMP_fnc_forceSavePlayer", 2];
+				};
+
+			}, {}, [_pos, _object]
+		] call zen_dialog_fnc_create;
+
+	}, "\DiceRollByDive\ui\d8_small.paa"
+] call zen_custom_modules_fnc_register;

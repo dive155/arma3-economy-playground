@@ -664,6 +664,10 @@
 		<Original>Edit Player Variables</Original>
 		<Russian>Поменять Настройки Игрока</Russian>
 	</Key>
+	<Key ID="STR_dive_pdr_module_edit_perms">
+		<Original>Edit Player Permissions</Original>
+		<Russian>Поменять Разрешения Игрока</Russian>
+	</Key>
 	<Key ID="STR_dive_pdr_module_hint_place_on_player">
 		<Original>Needs to be placed on a Player</Original>
 		<Russian>Надо поместить на Игрока</Russian>
