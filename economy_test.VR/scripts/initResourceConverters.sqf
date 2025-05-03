@@ -41,11 +41,11 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // Extra condition
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueOre"] call  fnc_checkFactoryWorkConditions
+		[_payConfig, "fatigueOre", "quarryOpen"] call  fnc_checkFactoryWorkConditions
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueOre", "quarryOpen"] call  fnc_handleConverterWorkCompleted;
+		[_payConfig, "fatigueOre"] call  fnc_handleConverterWorkCompleted;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
@@ -53,9 +53,9 @@ waitUntil { scriptDone _scriptHandle };
 [
 	factory_button,
 	[[factory_hay_box, "b_dive_grain_bag"], [factory_ore_box, "b_dive_ore_bag"]],
-	objNull,
+	factory_goods_box,
 	factory_money_box,
-	["",0],
+	["b_dive_goods_bag",1],
 	industrialConverterSoundsConfig,
 	["STR_factory_action", "STR_factory_success", "STR_factory_failure"],
 	{ // Get pay config
@@ -63,11 +63,30 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // Extra condition
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueFactory"] call  fnc_checkFactoryWorkConditions
+		[_payConfig, "fatigueFactory", "factoryOpen"] call  fnc_checkFactoryWorkConditions
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueFactory", "factoryOpen"] call  fnc_handleConverterWorkCompleted;
+		[_payConfig, "fatigueFactory"] call  fnc_handleConverterWorkCompleted;
+	}
+]execVM "scripts\economy\createResourceConverter.sqf";
+
+// Selling goods
+[
+	goods_button,
+	[[factory_goods_box, "b_dive_goods_bag"]],
+	objNull,
+	objNull,
+	["",0],
+	industrialConverterSoundsConfig,
+	["STR_goods_action", "STR_goods_success", "STR_goods_failure"],
+	{ // Get pay config
+		["", 0]
+	},
+	{ // Extra condition
+		true
+	},
+	{ // On work completed
 		call fnc_sellProducedFactoryGoods;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";

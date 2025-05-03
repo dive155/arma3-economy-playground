@@ -56,6 +56,18 @@
 		<English>Goods have been produced! You can take your pay from the cash register. Your Work Fatique has increased.</English>
 		<Russian>Товар произведен! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
 	</Key>
+	<Key ID="STR_goods_action">
+		<Original>Sell Industrial Goods</Original>
+		<Russian>Продать Промышленную Продукцию</Russian>
+	</Key>
+	<Key ID="STR_goods_failure">
+		<Original>No Industrual Goods found in the box.</Original>
+		<Russian>Не найдено Промышленной Продукции в ящике.</Russian>
+	</Key>
+	<Key ID="STR_goods_success">
+		<Original>Industrial goods have been sold! City tax has been paid, Industrial Director commission has been paid and the rest added to the Factory Funds.</Original>
+		<Russian>Промышленная Продукция продана! Городской налог уплачен, комиссия промышленного директора уплачена, а остальное добавлено в заводской фонд.</Russian>
+	</Key>
 	<Key ID="STR_factory_no_money">
 		<Original>Factory doesn't have enough money to pay for this work.</Original>
 		<English>Factory doesn't have enough money to pay for this work.</English>
