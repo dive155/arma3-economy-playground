@@ -13,8 +13,8 @@ fnc_createDefaultWorldState = {
 		["payFactory", 140] call fnc_setWorldVariable;
 		["fatigueFactory", 0.5] call fnc_setWorldVariable;
 		["factoryGoodsSellPrice", 2000] call fnc_setWorldVariable;
-		["factoryGoodsTax", 0.45] call fnc_setWorldVariable;
-		["factoryBossCommission", 110] call fnc_setWorldVariable;
+		["factoryGoodsTax", 0.35] call fnc_setWorldVariable;
+		["factoryBossCommission", 0.3] call fnc_setWorldVariable;
 		["fuelPrice_PDR", 50] call fnc_setWorldVariable;
 		["exchangeRate", 13] call fnc_setWorldVariable;
 		["exchangeSpread", 1] call fnc_setWorldVariable;

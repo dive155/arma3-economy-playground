@@ -44,17 +44,17 @@ fnc_handleConverterWorkCompleted = {
 fnc_sellProducedFactoryGoods = {
 	_income = "factoryGoodsSellPrice" call fnc_getWorldVariable;
 	_tax = "factoryGoodsTax" call fnc_getWorldVariable;
-	_productionCost = 
-		("payHay" call fnc_getWorldVariable)
-		+ ("payOre" call fnc_getWorldVariable)
-		+ ("payFactory" call fnc_getWorldVariable);
+	// _productionCost = 
+		// ("payHay" call fnc_getWorldVariable)
+		// + ("payOre" call fnc_getWorldVariable)
+		// + ("payFactory" call fnc_getWorldVariable);
 	
-	_profit = _income - _productionCost;
+	// _profit = _income - _productionCost;
 	
-	_tax = _tax * _profit;
+	_tax = floor (_tax * _income);
 	_final = _income - _tax;
 	
-	_commission = "factoryBossCommission" call fnc_getWorldVariable;
+	_commission = floor (_final * ("factoryBossCommission" call fnc_getWorldVariable));
 	[factory_commission_box, currencyCodePdrLeu, _commission] call fnc_putMoneyIntoContainer;
 	
 	_final = _final - _commission;
