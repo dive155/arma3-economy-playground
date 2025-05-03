@@ -95,7 +95,7 @@ fn_applyDebtEditorPermissionLocal = {
 		_actionName,
 		"",
 		_editDebt,
-		{ true },
+		{ [player, "debtEditing_" + ((_this select 2) select 0), true] call fnc_checkHasPermission },
 		{},
 		[_countryName]
 	] call ace_interact_menu_fnc_createAction;
