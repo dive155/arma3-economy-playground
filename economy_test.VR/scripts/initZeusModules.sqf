@@ -25,6 +25,7 @@ worldVariablesForZeusEditing = [
 	"interestRate_Moldova",
 	"exchangeRate",
 	"exchangeSpread",
+	"gasStationOpen",
 	"fuelPrice_PDR",
 	"fuelInStorage",
 	"factoryMoney",
@@ -71,8 +72,8 @@ worldVariablesForZeusEditing = [
 
 playerVariablesForZeusEditing = [
 	//"rp_permissions",
-	"grad_passport_firstName",
 	"grad_passport_passportRsc",
+	"grad_passport_firstName",
 	"grad_passport_lastName",
 	"grad_passport_placeOfBirth",
 	"grad_passport_dateOfBirth",

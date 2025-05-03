@@ -25,6 +25,7 @@ fnc_createDefaultWorldState = {
 		["factoryOpen", true] call fnc_setWorldVariable;
 		["farmOpen", true] call fnc_setWorldVariable;
 		["quarryOpen", true] call fnc_setWorldVariable;
+		["gasStationOpen", true] call fnc_setWorldVariable;
 	};
 };
 

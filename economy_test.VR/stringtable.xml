@@ -828,5 +828,78 @@
 			&lt;br/&gt;Остаток завода:      %22
 		</Russian>
 	</Key>
+	
+	<Key ID="STR_city_dashboard">
+		<Original>
+		&lt;t size="2" align="center"&gt;Mayor Dashboard&lt;/t&gt;
+		&lt;br/&gt;&lt;br/&gt;City Money:                  %1
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
+		&lt;br/&gt;Daily Interest on Debt:        %2%%
+		&lt;br/&gt;Factory Goods Tax:             %3%% (%4/Item)
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
+		&lt;br/&gt;Gas Station:
+		&lt;br/&gt;%5
+		&lt;br/&gt;Fuel Sell Price:                %6
+		&lt;br/&gt;Fuel in storage (liters):      %7
+		&lt;br/&gt;&lt;br/&gt;Citizens:
+		&lt;br/&gt;%8
+		</Original>
+		<Russian>
+		&lt;t size="2" align="center"&gt;Дашборд Мэра&lt;/t&gt;
+		&lt;br/&gt;&lt;br/&gt;Городские деньги:                  %1
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
+		&lt;br/&gt;Дневной процент по долгу:        %2%%
+		&lt;br/&gt;Налог на продукцию фабрики:      %3%% (%4/единица)
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
+		&lt;br/&gt;Заправочная станция:
+		&lt;br/&gt;%5
+		&lt;br/&gt;Цена за литр топлива:            %6
+		&lt;br/&gt;Топливо в хранилище (литры):     %7
+		&lt;br/&gt;&lt;br/&gt;Граждане:
+		&lt;br/&gt;%8
+		</Russian>
+	</Key>
+
+	<Key ID="STR_city_status_open">
+		<Original>Open</Original>
+		<Russian>Открыто</Russian>
+	</Key>
+
+	<Key ID="STR_city_status_closed">
+		<Original>Closed</Original>
+		<Russian>Закрыто</Russian>
+	</Key>
+
+	<Key ID="STR_citizen_online">
+		<Original>Online</Original>
+		<Russian>Онлайн</Russian>
+	</Key>
+
+	<Key ID="STR_citizen_offline">
+		<Original>Offline</Original>
+		<Russian>Оффлайн</Russian>
+	</Key>
+
+	<Key ID="STR_citizen_debt">
+		<Original>Debt:</Original>
+		<Russian>Долг:</Russian>
+	</Key>
+
+	<Key ID="STR_citizen_dailyBills">
+		<Original>Daily Bills:</Original>
+		<Russian>Ежедневные счета:</Russian>
+	</Key>
+
+	<Key ID="STR_citizen_job">
+		<Original>Government Job:</Original>
+		<Russian>Гос. должность:</Russian>
+	</Key>
+
+	<Key ID="STR_citizen_salary">
+		<Original>Government Salary:</Original>
+		<Russian>Гос. зарплата:</Russian>
+	</Key>
+
+	
   </Package>
 </Project>

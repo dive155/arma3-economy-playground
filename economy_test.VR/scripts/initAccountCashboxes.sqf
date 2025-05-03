@@ -16,7 +16,8 @@
 		}
 	},
 	{
-	
+		_str = call fnc_getCityDashboard;
+		[_str, 0.01, true] call fnc_showLongTextDialog;
 	},
 	true,
 	"STR_accountOperationsCity"
@@ -40,7 +41,8 @@
 		}
 	},
 	{
-	
+		_str = call fnc_getCityDashboard;
+		[_str, 0.01, true] call fnc_showLongTextDialog;
 	},
 	false,
 	"STR_operationsCity"
