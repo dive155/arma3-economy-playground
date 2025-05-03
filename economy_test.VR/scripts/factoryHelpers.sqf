@@ -14,7 +14,12 @@ fnc_checkIfFactoryCanPay = {
 };
 
 fnc_checkFactoryWorkConditions = {
-	params["_payConfig", "_fatigueKey"];
+	params["_payConfig", "_fatigueKey", "_facilityOpenKey"];
+	_facilityOpen = _facilityOpenKey call fnc_getWorldVariable;
+	if not _facilityOpen exitWith {
+		hint(localize "STR_factory_closed");
+		false
+	};
 	
 	_fatigueIncrease = _fatigueKey call fnc_getWorldVariable;
 	_canPay = 	if ([_payConfig] call fnc_checkIfFactoryCanPay) then { true } else {

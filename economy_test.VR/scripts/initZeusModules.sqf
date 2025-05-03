@@ -31,10 +31,13 @@ worldVariablesForZeusEditing = [
 	"factoryGoodsSellPrice",
 	"factoryGoodsTax",
 	"factoryBossCommission",
+	"factoryOpen",
 	"payFactory",
 	"fatigueFactory",
+	"quarryOpen",
 	"payOre",
 	"fatigueOre",
+	"farmOpen",
 	"payHay",
 	"fatigueHay",
 	"lunchPrice"

@@ -19,7 +19,7 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // Extra condition
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueHay"] call  fnc_checkFactoryWorkConditions
+		[_payConfig, "fatigueHay", "farmOpen"] call  fnc_checkFactoryWorkConditions
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 
@@ -45,7 +45,7 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueOre"] call  fnc_handleConverterWorkCompleted;
+		[_payConfig, "fatigueOre", "quarryOpen"] call  fnc_handleConverterWorkCompleted;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
@@ -67,7 +67,7 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueFactory"] call  fnc_handleConverterWorkCompleted;
+		[_payConfig, "fatigueFactory", "factoryOpen"] call  fnc_handleConverterWorkCompleted;
 		call fnc_sellProducedFactoryGoods;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";

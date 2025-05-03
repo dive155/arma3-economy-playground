@@ -61,6 +61,10 @@
 		<English>Factory doesn't have enough money to pay for this work.</English>
 		<Russian>У Завода не хватает денег чтобы оплатить эту работу.</Russian>
 	</Key>
+	<Key ID="STR_factory_closed">
+		<Original>This Facility is currently Closed. Speak to the Director of Industry for information.</Original>
+		<Russian>Данное Предприятие сейчас закрыто. Обращайтесь к Директору Промышленности для информации.</Russian>
+	</Key>
 	<Key ID="STR_city_no_money">
 		<Original>City does not have enough money for this.</Original>
 		<English>City does not have enough money for this.</English>
