@@ -15,7 +15,7 @@
 			}, {}, [_pos, _object]
 		] call zen_dialog_fnc_create;
 
-	}, "\DiceRollByDive\ui\d8_small.paa"
+	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;
 
 worldVariablesForZeusEditing = [
@@ -67,7 +67,7 @@ worldVariablesForZeusEditing = [
 			}, {}, [_pos, _object, _initialVariablesText]
 		] call zen_dialog_fnc_create;
 
-	}, "\DiceRollByDive\ui\d8_small.paa"
+	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;
 
 playerVariablesForZeusEditing = [
@@ -132,7 +132,7 @@ fnc_setPlayerVariableZeus = {
 			}, {}, [_pos, _object, _initialVariablesText]
 		] call zen_dialog_fnc_create;
 
-	}, "\DiceRollByDive\ui\d8_small.paa"
+	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;
 
 allRpPermissions = [
@@ -194,7 +194,7 @@ allRpPermissions = [
 			}, {}, [_pos, _object]
 		] call zen_dialog_fnc_create;
 
-	}, "\DiceRollByDive\ui\d8_small.paa"
+	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;
 
 [
@@ -209,7 +209,7 @@ allRpPermissions = [
 
 		[_object, player] call fn_showPlayerEditDialog;
 
-	}, "\DiceRollByDive\ui\d8_small.paa"
+	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;
 
 [
@@ -224,7 +224,7 @@ allRpPermissions = [
 
 		[_object, "PDR", player] call fn_showDebtEditDialog;
 
-	}, "\DiceRollByDive\ui\d8_small.paa"
+	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;
 
 [
@@ -239,5 +239,5 @@ allRpPermissions = [
 
 		[_object, "Moldova", player] call fn_showDebtEditDialog;
 
-	}, "\DiceRollByDive\ui\d8_small.paa"
+	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;
