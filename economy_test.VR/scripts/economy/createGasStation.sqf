@@ -3,7 +3,7 @@ params [
 	"_inputMoneyBox",
 	"_gasPump",
 	"_soundsConfig",                // Format: [soundAction, soundSuccess, soundFailure]
-	
+	["_extraCondition", {true}],
 	["_getFuelInStorage", {99999}],
 	["_getPrice", {[currencyCodePdrLeu, 100]}],
 	["_onFuelSentToPump", { params ["_litersSent", "_moneyCurrency", "_moneyAmount"];}]
@@ -15,6 +15,7 @@ if (isServer) then {
 	// Save gas pump settings to the master object (button) on the SERVER
 	_buttonObject setVariable ["inputMoneyBox", _inputMoneyBox, true];
 	_buttonObject setVariable ["gasPump", _gasPump, true];
+	_buttonObject setVariable ["extraCondition", _extraCondition, true];
 	_buttonObject setVariable ["getFuelInStorage", _getFuelInStorage, true];
 	_buttonObject setVariable ["getPrice", _getPrice, true];
 	_buttonObject setVariable ["onFuelSentToPump", _onFuelSentToPump, true];
@@ -36,6 +37,9 @@ fnc_handleFuelPaymentRequested = {
 	_inputMoneyBox = _buttonObject getVariable ["inputMoneyBox", objNull];
 	_gasPump = _buttonObject getVariable ["gasPump", objNull];
 	_fuelInPump = _gasPump getVariable ["ace_refuel_currentfuelcargo", 0];
+	
+	_extraCondition = _buttonObject getVariable ["extraCondition", objNull];
+	if not (call _extraCondition) exitWith {};
 	
 	[_target, _target, "action", 3] call fnc_playStoreSound;
 	

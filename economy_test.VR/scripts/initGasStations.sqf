@@ -22,6 +22,11 @@ fnc_handleFuelSentToPump = {
 	gas_station_money_box,
 	gas_station_pump,
 	_gasStationSoundsConfig,
+	{ 
+		private _isOpen = ["gasStationOpen"] call fnc_getWorldVariable;
+		if not _isOpen then { hint localize "STR_gasStationClosed" };
+		_isOpen
+	},
 	{"fuelInStorage" call fnc_getWorldVariable},
 	{[currencyCodePdrLeu, "fuelPrice_PDR" call fnc_getWorldVariable]},
 	fnc_handleFuelSentToPump

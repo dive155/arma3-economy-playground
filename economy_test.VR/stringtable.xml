@@ -115,6 +115,10 @@
 		<English>Put appropriate money into the box to pay for Fuel.</English>
 		<Russian>Положите подходящие деньги в ящик чтобы оплатить Топливо.</Russian>
 	</Key>
+		<Key ID="STR_gasStationClosed">
+		<Original>The Gas Station is currently closed. Speak to the Mayor for information.</Original>
+		<Russian>АЗС сейчас Закрыта. Обращайтесь к Мэру за информацией.</Russian>
+	</Key>
 	<Key ID="STR_fuel_payment_description">
 		<Original>Paid:%1 %2\nFuel added to the Pump:%3 liters</Original>
 		<English>Paid:%1 %2\nFuel added to the Pump:%3 liters</English>
