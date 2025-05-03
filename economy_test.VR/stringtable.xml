@@ -288,6 +288,10 @@
 		<Original>Your daily bills have been added to your debt along with interest.</Original>
 		<Russian>Ваши ежедневные счета были добавлены к вашему долгу вместе с процентами.</Russian>
 	</Key>
+	<Key ID="STR_NoMoviesFound">
+		<Original>No movies found in the inventory!</Original>
+		<Russian>Не найдено фильмов в инвентаре!</Russian>
+	</Key>
   </Package>
   <Package name="journals">
 	<Key ID="STR_transaction_log_entry">
