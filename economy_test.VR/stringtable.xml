@@ -22,8 +22,8 @@
 		<Russian>Не найдено руды в зоне погрузки.</Russian>
 	</Key>
 	<Key ID="STR_ore_converter_success">
-		<Original>Ore has been processed! You can take your pay from the cash register. Your Work Fatique has increased.</Original>
-		<English>Ore has been processed! You can take your pay from the cash register. Your Work Fatique has increased.</English>
+		<Original>Ore has been processed! You can take your pay from the cash register. Your Work Fatigue has increased.</Original>
+		<English>Ore has been processed! You can take your pay from the cash register. Your Work Fatigue has increased.</English>
 		<Russian>Руда переработана! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
 	</Key>
 	<Key ID="STR_hay_converter_action">
@@ -37,8 +37,8 @@
 		<Russian>Не найдено сена в зоне погрузки.</Russian>
 	</Key>
 	<Key ID="STR_hay_converter_success">
-		<Original>Hay has been processed! You can take your pay from the cash register. Your Work Fatique has increased.</Original>
-		<English>Hay has been processed! You can take your pay from the cash register. Your Work Fatique has increased.</English>
+		<Original>Hay has been processed! You can take your pay from the cash register. Your Work Fatigque has increased.</Original>
+		<English>Hay has been processed! You can take your pay from the cash register. Your Work Fatigue has increased.</English>
 		<Russian>Сено переработано! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
 	</Key>
 	<Key ID="STR_factory_action">
@@ -52,8 +52,8 @@
 		<Russian>Не найдено Сельхоз Продукции или Руды в соответствующих им ящиках.</Russian>
 	</Key>
 	<Key ID="STR_factory_success">
-		<Original>Goods have been produced! You can take your pay from the cash register. Your Work Fatique has increased.</Original>
-		<English>Goods have been produced! You can take your pay from the cash register. Your Work Fatique has increased.</English>
+		<Original>Goods have been produced! You can take your pay from the cash register. Your Work Fatigue has increased.</Original>
+		<English>Goods have been produced! You can take your pay from the cash register. Your Work Fatigue has increased.</English>
 		<Russian>Товар произведен! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
 	</Key>
 	<Key ID="STR_factory_sale_summary">
@@ -63,6 +63,10 @@
 	<Key ID="STR_goods_action">
 		<Original>Sell Industrial Goods</Original>
 		<Russian>Продать Промышленную Продукцию</Russian>
+	</Key>
+	<Key ID="STR_factory_take_money">
+		<Original>You have to take money for previous work from the cash box first.</Original>
+		<Russian>Сначала заберите из кассы деньги за прошлую работу</Russian>
 	</Key>
 	<Key ID="STR_goods_failure">
 		<Original>No Industrual Goods found in the box.</Original>
@@ -153,8 +157,8 @@
 		<Russian>Дней с последнего обеда: %1\nУсталость от Работы: %2/%3\nДолг (ПДР): %4\nДолг (Молдова): %5</Russian>
 	</Key>
 	<Key ID="STR_fatigue_cant_work">
-		<Original>You have accumulated too much Work Fatique for the day and can't do this action.</Original>
-		<English>You have accumulated too much Work Fatique for the day and can't do this action.</English>
+		<Original>You have accumulated too much Work Fatigue for the day and can't do this action.</Original>
+		<English>You have accumulated too much Work Fatigue for the day and can't do this action.</English>
 		<Russian>Вы накопили слишком много Усталости от Работы за день и не можете совершить это действие.</Russian>
 	</Key>
 	<Key ID="STR_buyThing">
@@ -233,6 +237,10 @@
 	<Key ID="STR_permission_visaGiving_Moldova">
 		<Original>Visa Issuing (Moldova)</Original>
 		<Russian>Выдача Виз (Молдова)</Russian>
+	</Key>
+	<Key ID="STR_permission_sellingIndustrialGoods">
+		<Original>Selling Industrial Goods</Original>
+		<Russian>Продажа Промышленных Товаров</Russian>
 	</Key>
   </Package>
   <Package name="misc">

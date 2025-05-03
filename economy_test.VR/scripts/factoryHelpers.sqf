@@ -14,10 +14,16 @@ fnc_checkIfFactoryCanPay = {
 };
 
 fnc_checkFactoryWorkConditions = {
-	params["_payConfig", "_fatigueKey", "_facilityOpenKey"];
+	params["_payConfig", "_fatigueKey", "_facilityOpenKey", "_moneyBox"];
 	_facilityOpen = _facilityOpenKey call fnc_getWorldVariable;
 	if not _facilityOpen exitWith {
 		hint(localize "STR_factory_closed");
+		false
+	};
+	
+	private _moneyInBox = [_moneyBox, _payConfig select 0] call fnc_getMoneyAmountInContainer;
+	if (_moneyInBox > 0) exitWith {
+		hint(localize "STR_factory_take_money");
 		false
 	};
 	

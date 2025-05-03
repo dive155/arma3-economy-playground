@@ -145,7 +145,8 @@ allRpPermissions = [
 	"passportEditing_PDR",
 	"passportEditing_Moldova",
 	"visaGiving_PDR",
-	"visaGiving_Moldova"
+	"visaGiving_Moldova",
+	"sellingIndustrialGoods"
 ];
 
 [
