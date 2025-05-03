@@ -31,7 +31,7 @@ fnc_removePermission = {
 
 if not hasInterface exitWith {};
 
-_permActions = [
+permissionBasedActions = [
 	["debtEditing_PDR", {["PDR"] call fn_applyDebtEditorPermissionLocal}],
 	["debtEditing_Moldova", {["Moldova"] call fn_applyDebtEditorPermissionLocal}],
 	["passportEditingPdr", {["PDR"] call fn_applyPassportEditorPermissionLocal}],
@@ -55,7 +55,7 @@ fnc_updatePermissionsBasedActions = {
             // Add to the list of added permissions to avoid duplicate execution
             addedPermissionsActions pushBackUnique _permKey;
         };
-    } forEach _permActions;
+    } forEach permissionBasedActions;
 };
 
 //sleep 10;

@@ -183,6 +183,7 @@ allRpPermissions = [
 					params ["_object"];
 					sleep 4;
 					[_object] remoteExec ["DMP_fnc_forceSavePlayer", 2];
+					[] remoteExec ["fnc_updatePermissionsBasedActions", _object];
 				};
 
 			}, {}, [_pos, _object]
