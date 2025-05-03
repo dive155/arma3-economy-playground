@@ -34,8 +34,8 @@ if not hasInterface exitWith {};
 permissionBasedActions = [
 	["debtEditing_PDR", {["PDR"] call fn_applyDebtEditorPermissionLocal}],
 	["debtEditing_Moldova", {["Moldova"] call fn_applyDebtEditorPermissionLocal}],
-	["passportEditingPdr", {["PDR"] call fn_applyPassportEditorPermissionLocal}],
-	["passportEditingPdr", {["Moldova"] call fn_applyPassportEditorPermissionLocal}],
+	["passportEditing_PDR", {["PDR"] call fn_applyPassportEditorPermissionLocal}],
+	["passportEditing_Moldova", {["Moldova"] call fn_applyPassportEditorPermissionLocal}],
 	["visaGiving_PDR", {["PDR"] call fn_applyVisaGiverPermissionsLocal}],
 	["visaGiving_Moldova", {["Moldova"] call fn_applyVisaGiverPermissionsLocal}]
 ];

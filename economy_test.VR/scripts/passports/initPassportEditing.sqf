@@ -97,7 +97,7 @@ fn_applyPassportEditorPermissionLocal = {
 
 				private _passportRsc = _target getVariable ["grad_passport_passportRsc", ""];
 				private _country = _passportRsc select [8]; // strips "passport" prefix
-				private _perm = "passportEditing" + _country;
+				private _perm = "passportEditing_" + _country;
 				private _callerPerms = _caller getVariable ["rp_permissions", []];
 				
 				if (_perm in _callerPerms) then {
