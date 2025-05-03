@@ -94,3 +94,20 @@ fnc_sellProducedFactoryGoods = {
 		_netIncome
 	];
 };
+
+fnc_checkHowManyBackpacksInBox = {
+    params ["_box", "_backpackClass"];
+    
+    if (isNull _box) exitWith {0};
+    
+    private _count = 0;
+    private _allItems = backpackCargo _box;
+
+    {
+        if (_x == _backpackClass) then {
+            _count = _count + 1;
+        };
+    } forEach _allItems;
+
+    _count
+};

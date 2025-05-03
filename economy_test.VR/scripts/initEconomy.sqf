@@ -44,3 +44,6 @@ waitUntil { scriptDone _scriptHandle };
 
 _scriptHandle = execVM "scripts\initZeusModules.sqf";
 waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "scripts\initDashboards.sqf";
+waitUntil { scriptDone _scriptHandle };
