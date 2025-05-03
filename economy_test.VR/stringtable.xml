@@ -56,6 +56,10 @@
 		<English>Goods have been produced! You can take your pay from the cash register. Your Work Fatique has increased.</English>
 		<Russian>Товар произведен! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
 	</Key>
+	<Key ID="STR_factory_sale_summary">
+		<Original>Factory goods sold for %1!\n%2 has been paid to the City as Tax (%3%%)\n%4 has been paid as a commission to Industrial Director (%5%%)\n%6 has been added to Factory Funds.</Original>
+		<Russian>Товары фабрики проданы за %1!\n%2 уплачено в городскую казну в качестве налога (%3%%)\n%4 выплачено директору завода в качестве комиссии (%5%%)\n%6 добавлено в фонд фабрики.</Russian>
+	</Key>
 	<Key ID="STR_goods_action">
 		<Original>Sell Industrial Goods</Original>
 		<Russian>Продать Промышленную Продукцию</Russian>

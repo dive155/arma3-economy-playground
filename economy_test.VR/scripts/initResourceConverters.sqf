@@ -79,7 +79,7 @@ waitUntil { scriptDone _scriptHandle };
 	objNull,
 	["",0],
 	industrialConverterSoundsConfig,
-	["STR_goods_action", "STR_goods_success", "STR_goods_failure"],
+	["STR_goods_action", "", "STR_goods_failure"],
 	{ // Get pay config
 		["", 0]
 	},

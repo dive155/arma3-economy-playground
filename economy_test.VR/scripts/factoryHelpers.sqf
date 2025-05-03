@@ -47,34 +47,44 @@ fnc_handleConverterWorkCompleted = {
 };
 
 fnc_sellProducedFactoryGoods = {
+	private [
+		"_income", "_taxRate", "_tax", "_final", "_commissionRate",
+		"_commission", "_netIncome"
+	];
+
 	_income = "factoryGoodsSellPrice" call fnc_getWorldVariable;
-	_tax = "factoryGoodsTax" call fnc_getWorldVariable;
-	// _productionCost = 
-		// ("payHay" call fnc_getWorldVariable)
-		// + ("payOre" call fnc_getWorldVariable)
-		// + ("payFactory" call fnc_getWorldVariable);
-	
-	// _profit = _income - _productionCost;
-	
-	_tax = floor (_tax * _income);
+	_taxRate = "factoryGoodsTax" call fnc_getWorldVariable;
+
+	_tax = floor (_taxRate * _income);
 	_final = _income - _tax;
-	
-	_commission = floor (_final * ("factoryBossCommission" call fnc_getWorldVariable));
+
+	_commissionRate = "factoryBossCommission" call fnc_getWorldVariable;
+	_commission = floor (_final * _commissionRate);
 	[factory_commission_box, currencyCodePdrLeu, _commission] call fnc_putMoneyIntoContainer;
-	
-	_final = _final - _commission;
-	
+
+	_netIncome = _final - _commission;
+
 	[
 		"factoryMoney",
 		name player,
 		"SaleOfProducts",
-		_final
+		_netIncome
 	] call fnc_handleAutomatedAccountTransaction;
-	
+
 	[
 		"cityMoney",
 		name player,
 		"FactoryTax",
 		_tax
 	] call fnc_handleAutomatedAccountTransaction;
+
+	hint format [
+		localize "STR_factory_sale_summary",
+		_income,
+		_tax,
+		round (_taxRate * 100),
+		_commission,
+		round (_commissionRate * 100),
+		_netIncome
+	];
 };

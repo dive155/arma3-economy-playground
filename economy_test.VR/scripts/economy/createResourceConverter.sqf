@@ -168,7 +168,10 @@ if (hasInterface) then {
 			sleep 1.6;
 			
 			if (_hasResourceToConvert) then {
-				hint localize (_localizationConfig select 1);
+				private _locKey = _localizationConfig select 1;
+				if not (_locKey isEqualTo "") then {
+					hint localize _locKey;
+				};
 				[_target, _target, "success", 3] call fnc_playStoreSound;
 			} else {
 				hint localize (_localizationConfig select 2);
