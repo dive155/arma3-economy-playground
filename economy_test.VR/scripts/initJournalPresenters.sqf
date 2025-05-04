@@ -13,11 +13,11 @@ fnc_composeAccountRecord = {
 };
 
 fnc_formatAccountRecord = {
-	params ["_rawArray"];
+	params ["_rawArray", ["_indexOffset", 0]];
     private _result = "";
 	
     {
-        private _index = _forEachIndex + 1;
+        private _index = _indexOffset + _forEachIndex + 1;
         private _entryParts = _x splitString ",";
 
         // First 4 elements are fixed, rest is the note (rejoin with commas if needed)

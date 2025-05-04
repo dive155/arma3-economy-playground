@@ -718,6 +718,26 @@
 		<Original>Rng: %1km</Original>
 		<Russian>Запас: %1км</Russian>
 	</Key>
+	<Key ID="STR_JournalPrev">
+		<Original>Previous</Original>
+		<Russian>Предыдущая</Russian>
+	</Key>
+
+	<Key ID="STR_JournalNext">
+		<Original>Next</Original>
+		<Russian>Следующая</Russian>
+	</Key>
+
+	<Key ID="STR_JournalEmpty">
+		<Original>No entries in this journal.</Original>
+		<Russian>Нет записей в этом журнале.</Russian>
+	</Key>
+
+	<Key ID="STR_hudClose">
+		<Original>Close</Original>
+		<Russian>Закрыть</Russian>
+	</Key>
+
   </Package>
   <Package name="zeusModules">
 	<Key ID="STR_dive_pdr_module_title">

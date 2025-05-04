@@ -7,3 +7,4 @@ class CfgFunctions {
 
 #include "descriptionPassports.hpp"
 #include "hud\longTextDialog.hpp"
+#include "hud\PagedJournalDialog.hpp"

@@ -24,4 +24,4 @@ fnc_showLongTextDialog = {
 	// Set dynamic height (max to ensure we don’t overflow vertically)
 	_ctrl ctrlSetPositionH _estimatedHeight max 0.68;  // Clamp height
 	_ctrl ctrlCommit 0;
-}
+};
