@@ -719,13 +719,13 @@
 		<Russian>Запас: %1км</Russian>
 	</Key>
 	<Key ID="STR_JournalPrev">
-		<Original>Previous</Original>
-		<Russian>Предыдущая</Russian>
+		<Original>&lt; Previous</Original>
+		<Russian>&lt; Предыдущая</Russian>
 	</Key>
 
 	<Key ID="STR_JournalNext">
-		<Original>Next</Original>
-		<Russian>Следующая</Russian>
+		<Original>Next &gt;</Original>
+		<Russian>Следующая &gt;</Russian>
 	</Key>
 
 	<Key ID="STR_JournalEmpty">
