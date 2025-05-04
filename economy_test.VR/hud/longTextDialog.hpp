@@ -1,18 +1,18 @@
 // === BASE CLASSES ===
-class RscText {
-    access = 0;
-    type = 0;
-    idc = -1;
-    style = 0;
-    linespacing = 1;
-    colorBackground[] = {0,0,0,0};
-    colorText[] = {1,1,1,1};
-    text = "";
-    fixedWidth = 0;
-    shadow = 1;
-    font = "PuristaMedium";
-    SizeEx = 0.04;
-};
+// class RscText {
+    // access = 0;
+    // type = 0;
+    // idc = -1;
+    // style = 0;
+    // linespacing = 1;
+    // colorBackground[] = {0,0,0,0};
+    // colorText[] = {1,1,1,1};
+    // text = "";
+    // fixedWidth = 0;
+    // shadow = 1;
+    // font = "PuristaMedium";
+    // SizeEx = 0.04;
+// };
 
 class RscStructuredText {
     access = 0;
