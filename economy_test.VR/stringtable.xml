@@ -738,6 +738,57 @@
 		<Original>&lt;t size='1.5' align='center'&gt;Loading...&lt;/t&gt;</Original>
 		<Russian>&lt;t size='1.5' align='center'&gt;Загрузка&lt;/t&gt;</Russian>
 	</Key>
+	<Key ID="STR_rpdialog_header_pdr_rp">
+		<Original>PDR RP</Original>
+		<Russian>ПДР РП</Russian>
+	</Key>
+
+	<Key ID="STR_rpdialog_current_day">
+		<Original>Current Day</Original>
+		<Russian>Текущий день</Russian>
+	</Key>
+
+	<Key ID="STR_rpdialog_days_since_meal">
+		<Original>Days Since Last Meal</Original>
+		<Russian>Дней с последнего приёма пищи</Russian>
+	</Key>
+
+	<Key ID="STR_rpdialog_work_fatigue">
+		<Original>Work Fatigue</Original>
+		<Russian>Усталость от работы</Russian>
+	</Key>
+
+	<Key ID="STR_rpdialog_citizenship">
+		<Original>Citizenship</Original>
+		<Russian>Гражданство</Russian>
+	</Key>
+
+	<Key ID="STR_rpdialog_permissions">
+		<Original>Permissions / Abilities</Original>
+		<Russian>Права / Умения</Russian>
+	</Key>
+
+	<Key ID="STR_rpdialog_debts">
+		<Original>Debts</Original>
+		<Russian>Долги</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_countryPDR">
+		<Original>PDR</Original>
+		<Russian>ПДР</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_countryMoldova">
+		<Original>Moldova</Original>
+		<Russian>Молдова</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_history">
+		<Original>History</Original>
+		<Russian>История</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_openpassport">
+		<Original>Open Passport</Original>
+		<Russian>Открыть Паспорт</Russian>
+	</Key>
+
   </Package>
   <Package name="zeusModules">
 	<Key ID="STR_dive_pdr_module_title">
