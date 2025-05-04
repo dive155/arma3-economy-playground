@@ -43,7 +43,7 @@ fnc_requestAndShowJournalPaged = {
     // Dynamic height estimate
     private _lineCount = count (_entries);
     //private _estimatedHeight = _lineCount * 0.003;
-	private _estimatedHeight = _lineCount * 0.1;
+	private _estimatedHeight = _lineCount * 0.17;
     _textCtrl ctrlSetPositionH (_estimatedHeight max 0.64);
     _textCtrl ctrlCommit 0;
 	

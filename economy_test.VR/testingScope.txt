@@ -1,5 +1,6 @@
+0. RP Menu
 1. Advance day system
-2. Own debt
+2. Own debt - no scrollbar in RU
 3. Modifying permissions
 4. Edit Passport
 5. Edit debt
@@ -11,3 +12,11 @@
 11. Fuel Indicators
 12. Videos
 13. Persistence?
+
+Take hose multiple times
+Gas Station bugged
+Number plate editing
+Permissions clipped in RP window
+Russian player Sees English
+
+Зевс модуль текст обрезан
