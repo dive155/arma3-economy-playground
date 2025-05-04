@@ -1,5 +1,5 @@
 fnc_requestAndShowJournalPaged = {
-    params ["_journalName", ["_pageIndex", -1], ["_itemsPerPage", 10], ["_header", ""]];
+    params ["_journalName", ["_header", ""], ["_pageIndex", -1], ["_itemsPerPage", 10]];
 
     private _isFirstOpen = isNull findDisplay 13800;
 
@@ -58,6 +58,7 @@ fnc_switchJournalPage = {
     params ["_direction"]; // "next" or "prev"
 
     private _journalName = uiNamespace getVariable ["JournalCurrentName", ""];
+    private _header = uiNamespace getVariable ["JournalCurrentHeader", ""];
     private _page = uiNamespace getVariable ["JournalCurrentPage", 0];
     private _total = uiNamespace getVariable ["JournalTotalPages", 1];
     private _itemsPerPage = uiNamespace getVariable ["JournalItemsPerPage", 10];
@@ -72,5 +73,6 @@ fnc_switchJournalPage = {
 
     if (_newPage == _page) exitWith {};
 
-    [_journalName, _newPage, _itemsPerPage] call fnc_requestAndShowJournalPaged;
+    // Pass _header along with other arguments
+    [_journalName, _header, _newPage, _itemsPerPage] call fnc_requestAndShowJournalPaged;
 };
