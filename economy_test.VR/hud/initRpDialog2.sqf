@@ -109,5 +109,3 @@ fnc_showOwnRpInfo = {
 		}];
 	}; 
 };
-
-0 spawn fnc_showOwnRpInfo
