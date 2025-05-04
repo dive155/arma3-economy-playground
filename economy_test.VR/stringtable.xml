@@ -561,8 +561,8 @@
 		<Russian>%1: Долг обновлён: %2</Russian>
 	</Key>
 	<Key ID="STR_editDebtActionFormat">
-		<Original>Edit Debt (%1)</Original>
-		<Russian>Изменить долг (%1)</Russian>
+		<Original>Operations with Debt (%1)</Original>
+		<Russian>Операции с Долгом (%1)</Russian>
 	</Key>
 	<Key ID="STR_operation_pretty_issue_fine">
 		<Original>Issue a Fine</Original>
@@ -575,6 +575,10 @@
 	<Key ID="STR_operation_pretty_write_off_debt">
 		<Original>Write-Off Debt</Original>
 		<Russian>Списать Долг</Russian>
+	</Key>
+	<Key ID="STR_viewOthersDebtActionFormat">
+		<Original>View Debt History (%1)</Original>
+		<Russian>Посмотреть историю Долга (%1)</Russian>
 	</Key>
 	<Key ID="STR_edit_title_amount">
 		<Original>Amount</Original>
@@ -744,9 +748,17 @@
 		<Original>Edit Player Debt (PDR)</Original>
 		<Russian>Ред. Долг Игрока (ПДР)</Russian>
 	</Key>
+	<Key ID="STR_dive_pdr_module_view_debt_pdr">
+		<Original>View Player Debt History (PDR)</Original>
+		<Russian>Откр. Журнал Долга Игрока (ПДР)</Russian>
+	</Key>
 	<Key ID="STR_dive_pdr_module_edit_debt_moldova">
 		<Original>Edit Player Debt (Moldova)</Original>
 		<Russian>Ред. Долг Игрока (Молдова)</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_view_debt_moldova">
+		<Original>View Player Debt History (Moldova)</Original>
+		<Russian>Откр. Журнал Долга Игрока (Молдова)</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_hint_place_on_player">
 		<Original>Needs to be placed on a Player</Original>

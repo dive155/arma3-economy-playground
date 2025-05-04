@@ -229,6 +229,22 @@ allRpPermissions = [
 
 [
 	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_view_debt_pdr",
+	{
+		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
+
+		if ((isNull _object) or {not isPlayer _object}) exitWith {
+			[objNull, localize "STR_dive_pdr_module_hint_place_on_player"] call BIS_fnc_showCuratorFeedbackMessage;
+		};
+		
+		private _steamId = (_object getVariable "DMP_SteamID");
+		[_steamId, "PDR"] spawn fnc_showPlayerDebtHistory;
+
+	}, "hud\pdr_module.paa"
+] call zen_custom_modules_fnc_register;
+
+[
+	localize "STR_dive_pdr_module_title",
 	localize "STR_dive_pdr_module_edit_debt_moldova",
 	{
 		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
@@ -238,6 +254,22 @@ allRpPermissions = [
 		};
 
 		[_object, "Moldova", player] call fn_showDebtEditDialog;
+
+	}, "hud\pdr_module.paa"
+] call zen_custom_modules_fnc_register;
+
+[
+	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_view_debt_moldova",
+	{
+		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
+
+		if ((isNull _object) or {not isPlayer _object}) exitWith {
+			[objNull, localize "STR_dive_pdr_module_hint_place_on_player"] call BIS_fnc_showCuratorFeedbackMessage;
+		};
+		
+		private _steamId = (_object getVariable "DMP_SteamID");
+		[_steamId, "Moldova"] spawn fnc_showPlayerDebtHistory;
 
 	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;

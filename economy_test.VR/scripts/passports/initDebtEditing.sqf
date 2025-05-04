@@ -101,4 +101,25 @@ fn_applyDebtEditorPermissionLocal = {
 	] call ace_interact_menu_fnc_createAction;
 
 	["CAManBase", 0, ["ACE_MainActions", "PassportEditRoot"], _debtAction, true] call ace_interact_menu_fnc_addActionToClass;
+	
+	private _viewDebtHistory = {
+		_this spawn {
+			params ["_target", "_player", "_actionParams"];
+			private _countryCode = _actionParams select 0;
+			private _steamId = (_target getVariable "DMP_SteamID");
+			[_steamId, _countryCode] spawn fnc_showPlayerDebtHistory;
+		};
+	};
+	
+	_actionName = format [localize "STR_viewOthersDebtActionFormat", localize ("STR_country" + _countryName)];
+	private _viewDebtAction = [
+		"ViewDebtAction_" + _countryName,
+		_actionName,
+		"",
+		_viewDebtHistory,
+		{ [player, "debtEditing_" + ((_this select 2) select 0), true] call fnc_checkHasPermission },
+		{},
+		[_countryName]
+	] call ace_interact_menu_fnc_createAction;
+	["CAManBase", 0, ["ACE_MainActions", "PassportEditRoot"], _viewDebtAction, true] call ace_interact_menu_fnc_addActionToClass;
 };
