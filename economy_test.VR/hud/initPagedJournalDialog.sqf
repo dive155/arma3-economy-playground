@@ -9,6 +9,15 @@ fnc_requestAndShowJournalPaged = {
         waitUntil { !isNull (findDisplay 13800) };
     };
 
+	if (!_isFirstOpen) then {
+		private _display = findDisplay 13800;
+		private _textCtrl = _display displayCtrl 2101;
+		_textCtrl ctrlSetStructuredText parseText localize "STR_Journal_Loading";
+		
+		private _infoCtrl = _display displayCtrl 2104;
+		_infoCtrl ctrlSetText "-";
+	};
+
     private _result = ["DMP_fnc_getJournalEntriesPaged", [_journalName, _itemsPerPage, _pageIndex]] call DMP_fnc_requestServerResult;
     _result params ["_returnPageIndex", "_totalPages", "_entries"];
 
