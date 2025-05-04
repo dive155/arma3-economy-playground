@@ -702,6 +702,18 @@
 		<Original>Close</Original>
 		<Russian>Закрыть</Russian>
 	</Key>
+	<Key ID="STR_hudCons1">
+		<Original>F.cons: %1L/km</Original>
+		<Russian>Расх.: %1 Л/км</Russian>
+	</Key>
+	<Key ID="STR_hudCons2">
+		<Original>F.left: %1/%2L</Original>
+		<Russian>Бак: %1/%2Л</Russian>
+	</Key>
+	<Key ID="STR_hudCons3">
+		<Original>Rng: %1km</Original>
+		<Russian>Запас: %1км</Russian>
+	</Key>
   </Package>
   <Package name="zeusModules">
 	<Key ID="STR_dive_pdr_module_title">
