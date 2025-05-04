@@ -4,7 +4,7 @@ waitUntil { scriptDone _scriptHandle };
 _scriptHandle = execVM "scripts\initJournalPresenters.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "videoplayer\initVideoPlayers.sqf";
+_scriptHandle = execVM "scripts\initVideoPlayers.sqf";
 waitUntil { scriptDone _scriptHandle };
 
 if (hasInterface) then {
