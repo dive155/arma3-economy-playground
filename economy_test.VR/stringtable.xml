@@ -541,8 +541,8 @@
 		<Russian>У вас нет прав на редактирование паспорта этой страны: %1</Russian>
 	</Key>
 	<Key ID="STR_passportEditCategory">
-		<Original>Passport Editing</Original>
-		<Russian>Редактирование паспорта</Russian>
+		<Original>Passport Actions</Original>
+		<Russian>Действия с Паспортом</Russian>
 	</Key>
 	<Key ID="STR_debtEditDialogTitle">
 		<Original>Debt for %1 (Current: %2)</Original>
@@ -735,8 +735,8 @@
 		<Russian>Закрыть</Russian>
 	</Key>
 	<Key ID="STR_Journal_Loading">
-		<Original>Loading...</Original>
-		<Russian>Загрузка...</Russian>
+		<Original>&lt;t size='1.5' align='center'&gt;Loading...&lt;/t&gt;</Original>
+		<Russian>&lt;t size='1.5' align='center'&gt;Загрузка&lt;/t&gt;</Russian>
 	</Key>
   </Package>
   <Package name="zeusModules">

@@ -152,7 +152,7 @@ if (isNil "fnc_launchAccountJournalDialog") then {
 		
 		if (call _accessCondition) then {
 			private _header = "<t align='center'><t size='1.5'>" + (localize "STR_transactions_title") + "<t color='#caf5c4'> " + (localize ("STR_account_" + _accountID)) + "</t></t></t><br/><br/>";
-			["accountJournal_" + _accountID, _header] call fnc_requestAndShowJournal;
+			["accountJournal_" + _accountID, _header] call fnc_requestAndShowJournalPaged;
 		};
 	}
 };
