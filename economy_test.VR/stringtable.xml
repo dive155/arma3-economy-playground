@@ -254,6 +254,14 @@
 		<Original>Selling Industrial Goods</Original>
 		<Russian>Продажа Промышленных Товаров</Russian>
 	</Key>
+	<Key ID="STR_permission_passportEditing_PDR">
+		<Original>Passport Editing (PDR)</Original>
+		<Russian>Редактирование Паспортов (ПДР)</Russian>
+	</Key>
+	<Key ID="STR_permission_passportEditing_Moldova">
+		<Original>Passport Editing (Moldova)</Original>
+		<Russian>Редактирование Паспортов (Молдова)</Russian>
+	</Key>
   </Package>
   <Package name="misc">
 	<Key ID="STR_checkNumberPlate">

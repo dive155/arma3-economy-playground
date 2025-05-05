@@ -28,7 +28,8 @@ fnc_showOwnRpInfo = {
 	private _perms = player getVariable ["rp_permissions", []]; 
 	private _permTextList = _perms apply { localize ("STR_permission_" + _x) }; 
 	private _permissionsText = _permTextList joinString ", "; 
-	if (_permissionsText isEqualTo "") then { _permissionsText = localize "STR_common_none"; }; 
+	if (_permissionsText isEqualTo "") then { _permissionsText = localize "STR_common_none"; };
+	_permissionsText = "<t size='0.8' color='#fce0ff'>" + _permissionsText + "</t>";
  
 	// Debts 
 	private _debts = player getVariable ["rp_debts", []]; 
