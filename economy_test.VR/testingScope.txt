@@ -17,6 +17,9 @@ Take hose multiple times
 Gas Station bugged
 Number plate editing
 Permissions clipped in RP window
-Russian player Sees English
+Russian player Sees English in passport
 
 Зевс модуль текст обрезан
+
+
+Fuel cons needs to be visible from start.

@@ -41,6 +41,13 @@ fnc_handleFuelPaymentRequested = {
 	_extraCondition = _buttonObject getVariable ["extraCondition", objNull];
 	if not (call _extraCondition) exitWith {};
 	
+	_nozzle = _gasPump getVariable ["ace_refuel_ownednozzle", objNull];
+	if (not isNull _nozzle) exitWith {
+		sleep 1;
+		hint(localize "STR_gasStationReturnNozzle");
+		[_buttonObject, _buttonObject, "failure", 3] call fnc_playStoreSound;
+	};
+	
 	[_target, _target, "action", 3] call fnc_playStoreSound;
 	
 	_priceConfig = call (_buttonObject getVariable ["getPrice", {}]);
