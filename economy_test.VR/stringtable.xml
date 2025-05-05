@@ -815,6 +815,10 @@
 		<Original>Edit Player Variables</Original>
 		<Russian>Поменять Настройки Игрока</Russian>
 	</Key>
+	<Key ID="STR_dive_pdr_module_edit_number_plate">
+		<Original>Edit Car Numberplate</Original>
+		<Russian>Ред. Номер Автомобиля</Russian>
+	</Key>
 	<Key ID="STR_dive_pdr_module_edit_perms">
 		<Original>Edit Player Permissions</Original>
 		<Russian>Поменять Разрешения Игрока</Russian>
@@ -842,6 +846,10 @@
 	<Key ID="STR_dive_pdr_module_hint_place_on_player">
 		<Original>Needs to be placed on a Player</Original>
 		<Russian>Надо поместить на Игрока</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_hint_place_on_vehicle">
+		<Original>Needs to be placed on a Vehicle</Original>
+		<Russian>Надо поместить на Транспортное Средство</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_day_advancing_settings">
 		<Original>Day advancing settings</Original>
@@ -872,6 +880,14 @@
 	<Key ID="STR_dive_pdr_offline_players_work_desc">
 		<Original>Whether or not offline players should be simulated as if working</Original>
 		<Russian>Следует ли моделировать офлайн-игроков как работающих</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_edit_plate_title">
+		<Original>Edit Number Plate</Original>
+		<Russian>Редактировать Номер</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_edit_plate_result">
+		<Original>Number Plate Changed to:\n%1</Original>
+		<Russian>Номер Автомобиля изменен:\n%1</Russian>
 	</Key>
   </Package>
   <Package name="dashboards">

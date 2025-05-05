@@ -276,3 +276,38 @@ allRpPermissions = [
 
 	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;
+
+[
+	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_edit_number_plate",
+	{
+		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
+		
+		if ((isNull _object) or {(_object isKindOf "Man") or {not (_object isKindOf "LandVehicle" or _object isKindOf "Air" or _object isKindOf "Ship")}}) exitWith {
+			[objNull, localize "STR_dive_pdr_module_hint_place_on_vehicle"] call BIS_fnc_showCuratorFeedbackMessage;
+		};
+		
+		private _initialPlate = getPlateNumber _object;
+		
+		systemchat _initialPlate;
+		
+		[
+			localize "STR_dive_pdr_edit_plate_title", [
+				["EDIT", [localize "STR_dive_pdr_edit_plate_title", ""], [_initialPlate], true]
+			], {
+				params["_values","_arguments"];
+				
+				_pos = _arguments select 0;
+				_object = _arguments select 1;
+				
+				_newPlate = _values select 0;
+				
+				[_object, _newPlate] remoteExec ["setPlateNumber", _object];
+				
+				hint format[localize "STR_dive_pdr_edit_plate_result", _newPlate];
+				
+			}, {}, [_pos, _object]
+		] call zen_dialog_fnc_create;
+
+	}, "hud\pdr_module.paa"
+] call zen_custom_modules_fnc_register;
