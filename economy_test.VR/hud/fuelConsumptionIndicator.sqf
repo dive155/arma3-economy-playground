@@ -33,7 +33,16 @@
 					_positions pushBack _startPos;
 					_fuelLevels pushBack 0;
 				};
-
+				
+				private _fuelCap = _aceFuelCap max _vanFuelCap;
+				private _fuelRemainingLiters = fuel _vehicle * _fuelCap;
+				call fnc_showFuelIndicator;
+				[
+					format [(localize "STR_hudCons1"), "---"],
+					format [(localize "STR_hudCons2"), _fuelRemainingLiters toFixed 1, _fuelCap toFixed 1],
+					format [(localize "STR_hudCons3"), "---"]
+				] call fnc_updateFuelIndicator;
+				
                 if (_aceFuelCap < 0.1) then {
                     //hint "Warning: No ACE fuel capacity detected. Results may be inaccurate.";
                 };

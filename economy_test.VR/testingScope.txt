@@ -15,7 +15,7 @@
 
 Take hose multiple times
 Gas Station bugged? v
-Number plate editing
+Number plate editing v
 Permissions clipped in RP window
 Russian player Sees English in passport
 
@@ -23,3 +23,6 @@ Russian player Sees English in passport
 
 
 Fuel cons needs to be visible from start.
+
+
+Mayor to edit car number plates?
