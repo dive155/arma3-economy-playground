@@ -6,6 +6,7 @@ fnc_createDefaultWorldState = {
 		["cityMoney", 1000] call fnc_setWorldVariable;
 		["factoryMoney", 2000] call fnc_setWorldVariable;
 		["fuelInStorage", 100] call fnc_setWorldVariable;
+		["fuelInStorageMoldova", 100] call fnc_setWorldVariable;
 		["payHay", 240] call fnc_setWorldVariable;
 		["fatigueHay", 1] call fnc_setWorldVariable;
 		["payOre", 220] call fnc_setWorldVariable;
@@ -16,6 +17,7 @@ fnc_createDefaultWorldState = {
 		["factoryGoodsTax", 0.35] call fnc_setWorldVariable;
 		["factoryBossCommission", 0.3] call fnc_setWorldVariable;
 		["fuelPrice_PDR", 50] call fnc_setWorldVariable;
+		["fuelPrice_Moldova", 2] call fnc_setWorldVariable;
 		["exchangeRate", 13] call fnc_setWorldVariable;
 		["exchangeSpread", 1] call fnc_setWorldVariable;
 		["rpDay", 0] call fnc_setWorldVariable;
@@ -26,6 +28,7 @@ fnc_createDefaultWorldState = {
 		["farmOpen", true] call fnc_setWorldVariable;
 		["quarryOpen", true] call fnc_setWorldVariable;
 		["gasStationOpen", true] call fnc_setWorldVariable;
+		["gasStationOpenMoldova", true] call fnc_setWorldVariable;
 	};
 };
 

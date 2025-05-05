@@ -41,7 +41,10 @@ worldVariablesForZeusEditing = [
 	"farmOpen",
 	"payHay",
 	"fatigueHay",
-	"lunchPrice"
+	"lunchPrice",
+	"fuelInStorageMoldova",
+	"fuelPrice_Moldova",
+	"gasStationOpenMoldova"
 ];
 
 [
@@ -54,7 +57,7 @@ worldVariablesForZeusEditing = [
 		
 		[
 			localize "STR_dive_pdr_module_edit_world", [
-				["EDIT:MULTI",["Variables",""],[_initialVariablesText,{},25], true]
+				["EDIT:MULTI",["Variables",""],[_initialVariablesText,{},40], true]
 			], {
 				params["_values","_arguments"];
 				

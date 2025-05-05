@@ -31,3 +31,21 @@ fnc_handleFuelSentToPump = {
 	{[currencyCodePdrLeu, "fuelPrice_PDR" call fnc_getWorldVariable]},
 	fnc_handleFuelSentToPump
 ]execVM "scripts\economy\createGasStation.sqf";
+
+[
+	gas_station_button_moldova,
+	gas_station_money_box_moldova,
+	gas_station_pump_moldova,
+	_gasStationSoundsConfig,
+	{ 
+		private _isOpen = ["gasStationOpenMoldova"] call fnc_getWorldVariable;
+		if not _isOpen then { hint localize "STR_gasStationClosedMoldova" };
+		_isOpen
+	},
+	{"fuelInStorageMoldova" call fnc_getWorldVariable},
+	{[currencyCodeMoldovaLeu, "fuelPrice_Moldova" call fnc_getWorldVariable]},
+	{
+		params ["_litersSent", "_moneyCurrency", "_moneyAmount"];
+		["fuelInStorageMoldova", -1 * _litersSent] call fnc_increaseWorldVariable;
+	}
+]execVM "scripts\economy\createGasStation.sqf";

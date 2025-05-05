@@ -119,6 +119,10 @@
 		<Original>The Gas Station is currently closed. Speak to the Mayor for information.</Original>
 		<Russian>АЗС сейчас Закрыта. Обращайтесь к Мэру за информацией.</Russian>
 	</Key>
+	<Key ID="STR_gasStationClosedMoldova">
+		<Original>The Gas Station is currently closed</Original>
+		<Russian>АЗС сейчас Закрыта.</Russian>
+	</Key>
 	<Key ID="STR_gasStationReturnNozzle">
 		<Original>You have to return the nozzle to the pump first.</Original>
 		<Russian>Сначала верните заправочный пистолет в бензоколонку.</Russian>
