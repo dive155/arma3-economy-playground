@@ -288,9 +288,6 @@ allRpPermissions = [
 		};
 		
 		private _initialPlate = getPlateNumber _object;
-		
-		systemchat _initialPlate;
-		
 		[
 			localize "STR_dive_pdr_edit_plate_title", [
 				["EDIT", [localize "STR_dive_pdr_edit_plate_title", ""], [_initialPlate], true]

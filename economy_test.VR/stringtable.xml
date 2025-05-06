@@ -817,15 +817,15 @@
 	</Key>
 	<Key ID="STR_dive_pdr_module_advance_day">
 		<Original>Advance Day</Original>
-		<Russian>Продвинуть День</Russian>
+		<Russian>.Продвинуть День</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_world">
 		<Original>Edit World Variables</Original>
-		<Russian>Поменять Настройки Мира</Russian>
+		<Russian>Ред. Настройки Мира</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_player">
 		<Original>Edit Player Variables</Original>
-		<Russian>Поменять Настройки Игрока</Russian>
+		<Russian>Ред. Настройки Игрока</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_number_plate">
 		<Original>Edit Car Numberplate</Original>
@@ -833,7 +833,7 @@
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_perms">
 		<Original>Edit Player Permissions</Original>
-		<Russian>Поменять Разрешения Игрока</Russian>
+		<Russian>Ред. Разрешения Игрока</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_passport">
 		<Original>Edit Player Civilian Data</Original>
@@ -844,16 +844,16 @@
 		<Russian>Ред. Долг Игрока (ПДР)</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_view_debt_pdr">
-		<Original>View Player Debt History (PDR)</Original>
-		<Russian>Откр. Журнал Долга Игрока (ПДР)</Russian>
+		<Original>View Player Debt Log (PDR)</Original>
+		<Russian>Откр. Лог Долга Игрока (ПДР)</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_debt_moldova">
 		<Original>Edit Player Debt (Moldova)</Original>
 		<Russian>Ред. Долг Игрока (Молдова)</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_view_debt_moldova">
-		<Original>View Player Debt History (Moldova)</Original>
-		<Russian>Откр. Журнал Долга Игрока (Молдова)</Russian>
+		<Original>View Player Debt Log (Moldova)</Original>
+		<Russian>Откр. Лог Долга Игрока (Молдова)</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_hint_place_on_player">
 		<Original>Needs to be placed on a Player</Original>
