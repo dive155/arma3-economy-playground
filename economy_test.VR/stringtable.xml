@@ -235,12 +235,12 @@
 		<Russian>Чтение истории транзакций завода</Russian>
 	</Key>
 	<Key ID="STR_permission_debtEditing_PDR">
-		<Original>Debt Editing (PDR)</Original>
-		<Russian>Редактирование Долга (ПДР)</Russian>
+		<Original>Operations With Players Debt (PDR)</Original>
+		<Russian>Операции с Долгом Игроков (ПДР)</Russian>
 	</Key>
 	<Key ID="STR_permission_debtEditing_Moldova">
-		<Original>Debt Editing (Moldova)</Original>
-		<Russian>Редактирование Долга (Молдова)</Russian>
+		<Original>Operations With Players Debt (Moldova)</Original>
+		<Russian>Операции с Долгом Игроков (Молдова)</Russian>
 	</Key>
 	<Key ID="STR_permission_visaGiving_PDR">
 		<Original>Visa Issuing (PDR)</Original>
@@ -787,6 +787,10 @@
 	<Key ID="STR_rpdialog_debts">
 		<Original>Debts</Original>
 		<Russian>Долги</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_rateday">
+		<Original>(+ %1%%/Day)</Original>
+		<Russian>(+ %1%%/День)</Russian>
 	</Key>
 	<Key ID="STR_rpdialog_countryPDR">
 		<Original>PDR</Original>

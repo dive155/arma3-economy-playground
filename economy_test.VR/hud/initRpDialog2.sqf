@@ -10,26 +10,48 @@ fnc_showOwnRpInfo = {
 	// === GET DATA === 
  
 	// Day 
-	private _currentDay = ["rpDay"] call fnc_getWorldVariable; 
+	private _currentDay = ["rpDay"] call fnc_getWorldVariable;
+	_currentDay = "<t size='1.2' color='#1ade00'>" + str(_currentDay) + "</t>";
  
 	// Meal 
-	private _daysSinceMeal = player getVariable ["rp_daysSinceLastMeal", 0]; 
+	private _daysSinceMeal = player getVariable ["rp_daysSinceLastMeal", 0];
+	private _mealColor = switch (_daysSinceMeal) do {
+		case 0: { "#1ade00" };   // Green
+		case 1: { "#ffff00" };   // Yellow
+		case 2: { "#ffa500" };   // Orange
+		default { "#ff0000" };   // Red (3 or more)
+	};
+	_daysSinceMeal = "<t color='" + _mealColor + "'>" + str(_daysSinceMeal) + "</t>";
+
  
 	// Fatigue 
-	private _fatigueCurrent = player getVariable ["rp_fatigue_current", 0]; 
-	private _fatigueMax = player getVariable ["rp_fatigue_capacity", 4]; 
- 
+	private _fatigueCurrent = player getVariable ["rp_fatigue_current", 0];
+	private _fatigueMax = player getVariable ["rp_fatigue_capacity", 4];
+	private _fatigueColor = switch (true) do {
+		case (_fatigueCurrent == 0): { "#1ade00" };                         // Green
+		case (_fatigueCurrent < _fatigueMax - 1): { "#ffff00" };           // Yellow
+		case (_fatigueCurrent == _fatigueMax - 1): { "#ffa500" };          // Orange
+		default { "#ff0000" };                                             // Red
+	};
+	_fatigueCurrent = "<t color='" + _fatigueColor + "'>" + str(_fatigueCurrent) + "</t>";
+
 	// Citizenship 
-	private _passport = player getVariable ["grad_passport_passportRsc", ""]; 
-	private _countryCode = [_passport] call fnc_getCitizenship; 
-	private _citizenship = localize ("STR_country" + _countryCode); 
+	private _passport = player getVariable ["grad_passport_passportRsc", ""];
+	private _countryCode = [_passport] call fnc_getCitizenship;
+	private _citizenship = localize ("STR_country" + _countryCode);
+	private _citizenshipColor = switch (_countryCode) do {
+		case "PDR": { "#3daeff" };       // Blue
+		case "Moldova": { "#ff0000" };   // Red
+		default { "#ffffff" };           // Default white
+	};
+	_citizenship = "<t color='" + _citizenshipColor + "'>" + _citizenship + "</t>";
  
 	// Permissions 
 	private _perms = player getVariable ["rp_permissions", []]; 
 	private _permTextList = _perms apply { localize ("STR_permission_" + _x) }; 
 	private _permissionsText = _permTextList joinString ", "; 
 	if (_permissionsText isEqualTo "") then { _permissionsText = localize "STR_common_none"; };
-	_permissionsText = "<t size='0.8' color='#fce0ff'>" + _permissionsText + "</t>";
+	_permissionsText = "<t size='0.7' color='#fce0ff'>" + _permissionsText + "</t>";
  
 	// Debts 
 	private _debts = player getVariable ["rp_debts", []]; 
@@ -71,14 +93,19 @@ fnc_showOwnRpInfo = {
 		private _text = format ["%1:<br/>%2", _permLabel, _permissionsText]; 
 		_permCtrl ctrlSetStructuredText parseText _text; 
 	}; 
- 
+	
 	// Debt Info 
+	private _ratePDR = floor ((["interestRate_PDR"] call fnc_getWorldVariable) * 100);
+	_ratePDR = format[localize "STR_rpdialog_rateday" ,_ratePDR];
+	private _rateMoldova = floor ((["interestRate_Moldova"] call fnc_getWorldVariable) * 100);
+	_rateMoldova = format[localize "STR_rpdialog_rateday" ,_rateMoldova];
+	
 	private _debtCtrl = _display displayCtrl 1003; 
 	if (!isNull _debtCtrl) then { 
 		private _debtLabel = localize "STR_rpdialog_debts"; 
 		private _pdr = localize "STR_rpdialog_countryPDR"; 
 		private _mol = localize "STR_rpdialog_countryMoldova"; 
-		private _text = format ["%1:<br/>%2: %3<br/><br/>%4: %5", _debtLabel, _pdr, _debtPDR, _mol, _debtMoldova]; 
+		private _text = format ["<t size='0.95'>%1:<br/><t color='#3daeff'>%2: %3 %6</t><br/><br/><t color='#ff0000'>%4: %5 %7</t><t/>", _debtLabel, _pdr, _debtPDR, _mol, _debtMoldova, _ratePDR, _rateMoldova]; 
 		_debtCtrl ctrlSetStructuredText parseText _text; 
 	};
 	

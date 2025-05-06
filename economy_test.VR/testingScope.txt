@@ -26,3 +26,5 @@ Fuel cons needs to be visible from start. v
 
 
 Mayor to edit car number plates?
+
+Handle percentages in passport notes
