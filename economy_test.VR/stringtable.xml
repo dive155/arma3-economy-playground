@@ -137,6 +137,36 @@
 		<English>WARNING! Could not fully fulfill order. Maybe fuel storage is empty or the pump is overflowing.\n%1 %2 of change have been added back to the money box.</English>
 		<Russian>ВНИМАНИЕ! Не удалось полностью выполнить заказ. Возможно хранилище топлива опустело или колонка переполнена.\n%1 %2 сдачи положены обратно в кейс с деньгами.</Russian>
 	</Key>
+	<Key ID="STR_store_interact_buy">
+		<Original>Buy From Store</Original>
+		<Russian>Купить в магазине</Russian>
+	</Key>
+
+	<Key ID="STR_store_select_item">
+		<Original>Store - Select item to purchase</Original>
+		<Russian>Магазин - Выберите товар</Russian>
+	</Key>
+
+	<Key ID="STR_store_not_enough_money">
+		<Original>You do not have enough money.</Original>
+		<Russian>У вас недостаточно денег.</Russian>
+	</Key>
+
+	<Key ID="STR_store_purchase_success">
+		<Original>You spent %1 %2 and bought %3.</Original>
+		<Russian>Вы потратили %1 %2 и купили %3.</Russian>
+	</Key>
+
+	<Key ID="STR_store_confirm">
+		<Original>Buy</Original>
+		<Russian>Купить</Russian>
+	</Key>
+
+	<Key ID="STR_store_cancel">
+		<Original>Cancel</Original>
+		<Russian>Отмена</Russian>
+	</Key>
+
   </Package>
   <Package name="stats">
 	<Key ID="STR_misc_yes">
@@ -1053,4 +1083,4 @@
 
 	
   </Package>
-</Project>
+</Project>☻☻
