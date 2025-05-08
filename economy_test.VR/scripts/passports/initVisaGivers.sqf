@@ -41,7 +41,7 @@ fn_applyVisaGiverPermissionsLocal = {
 	// };
 	
 	if (isNil "visa_root_action") then {
-		visa_root_action = ["VisaRoot",localize "STR_visaAction","",{nil},{true}] call ace_interact_menu_fnc_createAction;
+		visa_root_action = ["VisaRoot",localize "STR_visaAction","",{nil},{ isPlayer _target or is3DENPreview}] call ace_interact_menu_fnc_createAction;
 		["CAManBase", 0, ["ACE_MainActions"], visa_root_action, true] call ace_interact_menu_fnc_addActionToClass;
 	};
 	

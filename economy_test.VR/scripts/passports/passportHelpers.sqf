@@ -56,7 +56,7 @@ fn_createPassportEditingRootAction = {
 			localize "STR_passportEditCategory",
 			"",
 			{nil},
-			{ true }
+			{ isPlayer _target or is3DENPreview }
 		] call ace_interact_menu_fnc_createAction;
 
 		["CAManBase", 0, ["ACE_MainActions"], passport_edit_root_action, true] call ace_interact_menu_fnc_addActionToClass;
