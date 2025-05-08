@@ -44,7 +44,8 @@ worldVariablesForZeusEditing = [
 	"lunchPrice",
 	"fuelInStorageMoldova",
 	"fuelPrice_Moldova",
-	"gasStationOpenMoldova"
+	"gasStationOpenMoldova",
+	"salesTaxPdr"
 ];
 
 [

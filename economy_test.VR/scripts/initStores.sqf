@@ -4,6 +4,17 @@ _storeSoundsConfig = [
 	"pdrstuff\sounds\machine_error.ogg"
 ];
 
+fnc_giveSalesTaxToCity = {
+	params ["_itemClass", "_moneyCurrency", "_moneyAmount", "_taxAmount"];
+	
+	[
+		"cityMoney",
+		name player,
+		"SalesTax",
+		_taxAmount
+	] call fnc_handleAutomatedAccountTransaction;
+};
+
 private _storeItems = [
 	["kss_bread", 30],
 	["cigs_Kosmos_cigpack", 50],
@@ -22,5 +33,8 @@ private _storeItems = [
 	store_1_object_area,      // Where to spawn world objects
 	currencyCodePdrLeu,       // Your game's currency code
 	_storeItems,              // Items with prices
-	_storeSoundsConfig        // Sounds
+	_storeSoundsConfig,       // Sounds
+	{true},
+	{["salesTaxPdr"] call fnc_getWorldVariable},
+	fnc_giveSalesTaxToCity
 ] execVM "scripts\economy\createStore.sqf";

@@ -141,32 +141,30 @@
 		<Original>Buy From Store</Original>
 		<Russian>Купить в магазине</Russian>
 	</Key>
-
 	<Key ID="STR_store_select_item">
-		<Original>Store - Select item to purchase</Original>
-		<Russian>Магазин - Выберите товар</Russian>
+		<Original>Store - Select item to purchase. Currency: %1</Original>
+		<Russian>Магазин - Выберите товар. Валюта: %1</Russian>
 	</Key>
-
 	<Key ID="STR_store_not_enough_money">
 		<Original>You do not have enough money.</Original>
 		<Russian>У вас недостаточно денег.</Russian>
 	</Key>
-
 	<Key ID="STR_store_purchase_success">
 		<Original>You spent %1 %2 and bought %3.</Original>
 		<Russian>Вы потратили %1 %2 и купили %3.</Russian>
 	</Key>
-
 	<Key ID="STR_store_confirm">
 		<Original>Buy</Original>
 		<Russian>Купить</Russian>
 	</Key>
-
 	<Key ID="STR_store_cancel">
 		<Original>Cancel</Original>
 		<Russian>Отмена</Russian>
 	</Key>
-
+	<Key ID="STR_store_tax">
+		<Original>Tax</Original>
+		<Russian>Налог</Russian>
+	</Key>
   </Package>
   <Package name="stats">
 	<Key ID="STR_misc_yes">
@@ -399,6 +397,10 @@
 	<Key ID="STR_transaction_type_DailyInterest">
 		<Original>&lt;t color='#f08b1f'&gt;Daily Interest&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#f08b1f'&gt;Ежедневные Проценты на Долг&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_SalesTax">
+		<Original>&lt;t color='#b184fa'&gt;Sales Tax&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#b184fa'&gt;Налог на Продажи&lt;/t&gt;</Russian>
 	</Key>
 	<Key ID="STR_transactions_title">
 		<Original>Transaction History:</Original>
@@ -1016,6 +1018,7 @@
 		&lt;br/&gt;&lt;br/&gt;City Money:                  %1
 		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
 		&lt;br/&gt;Daily Interest on Debt:        %2%%
+		&lt;br/&gt;Sales Tax on Goods/Services:   %9%%
 		&lt;br/&gt;Factory Goods Tax:             %3%% (%4/Item)
 		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
 		&lt;br/&gt;Gas Station:
@@ -1030,6 +1033,7 @@
 		&lt;br/&gt;&lt;br/&gt;Городские деньги:                  %1
 		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
 		&lt;br/&gt;Дневной процент по долгу:        %2%%
+		&lt;br/&gt;SНалог на продажи товаров/услуг: %9%%
 		&lt;br/&gt;Налог на продукцию фабрики:      %3%% (%4/единица)
 		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
 		&lt;br/&gt;Заправочная станция:

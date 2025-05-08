@@ -76,6 +76,7 @@ fnc_getCityDashboard = {
 	// Retrieve world variable values
 	private _cityMoney	  = ["cityMoney"] call fnc_getWorldVariable;
 	private _factoryTax	 = ["factoryGoodsTax"] call fnc_getWorldVariable;	  // 0..1
+	private _salesTax	 = ["salesTaxPdr"] call fnc_getWorldVariable;	  // 0..1
 	private _goodsSellPrice = ["factoryGoodsSellPrice"] call fnc_getWorldVariable;
 	private _interestRate   = ["interestRate_PDR"] call fnc_getWorldVariable;	   // 0..1
 	private _fuelPrice	  = ["fuelPrice_PDR"] call fnc_getWorldVariable;
@@ -85,6 +86,7 @@ fnc_getCityDashboard = {
 	// Derived values
 	private _dailyInterestPercent = round(_interestRate * 100);
 	private _factoryTaxPercent	= round(_factoryTax * 100);
+	private _salesTaxPercent	= round(_salesTax * 100);
 	private _taxPerItem		   = round(_goodsSellPrice * _factoryTax);
 
 	// Helper functions for coloring
@@ -189,7 +191,8 @@ fnc_getCityDashboard = {
 		_gasStationOpen call _gasStationStatus,
 		_fuelPrice call _colorNumber,
 		_fuelInStorage call _colorNumber,
-		_citizensText
+		_citizensText,
+		_salesTaxPercent call _colorNumber
 	];
 
 	_dashboard

@@ -29,6 +29,7 @@ fnc_createDefaultWorldState = {
 		["quarryOpen", true] call fnc_setWorldVariable;
 		["gasStationOpen", true] call fnc_setWorldVariable;
 		["gasStationOpenMoldova", true] call fnc_setWorldVariable;
+		["salesTaxPdr", 0.15] call fnc_setWorldVariable;
 	};
 };
 

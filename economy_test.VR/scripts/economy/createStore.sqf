@@ -5,7 +5,10 @@ params [
     "_objectArea",
     "_currencyCode",
     "_storeItemsConfig",
-    "_soundsConfig"
+    "_soundsConfig",
+	["_extraCondition", {true}],
+	["_taxGetter", {0}],
+	["_onItemSold", { params ["itemClass", "_moneyCurrency", "_moneyAmount", "_taxAmount"];}]
 ];
 
 if (isServer) then {
@@ -14,6 +17,9 @@ if (isServer) then {
     _buttonObject setVariable ["store_objectArea", _objectArea, true];
     _buttonObject setVariable ["store_currencyCode", _currencyCode, true];
     _buttonObject setVariable ["store_config", _storeItemsConfig, true];
+	_buttonObject setVariable ["extraCondition", _extraCondition, true];
+	_buttonObject setVariable ["taxGetter", _taxGetter, true];
+	_buttonObject setVariable ["onItemSold", _onItemSold, true];
 
     _soundsMap = createHashMap;
     _soundsMap set ["action", _soundsConfig select 0];
@@ -32,12 +38,15 @@ if (hasInterface) then {
         private _objectArea = _target getVariable ["store_objectArea", objNull];
         private _currency = _target getVariable ["store_currencyCode", "UNKNOWN"];
         private _soundsMap = _target getVariable ["soundsMap", createHashMap];
+		private _extraCondition = _target getVariable ["extraCondition", {true}];
+		private _taxGetter = _target getVariable ["taxGetter", {0}];
+		private _onItemSold = _target getVariable ["onItemSold", {}];
+		if not (call _extraCondition) exitWith {};
 
         private _itemList = [];
 		{
 			private _class = _x select 0;
 			private _price = _x select 1;
-
 			private _cfg = configFile >> "CfgWeapons" >> _class;
 			if (!isClass _cfg) then { _cfg = configFile >> "CfgMagazines" >> _class };
 			if (!isClass _cfg) then { _cfg = configFile >> "CfgVehicles" >> _class };
@@ -46,9 +55,12 @@ if (hasInterface) then {
 			private _name = getText (_cfg >> "displayName");
 			private _icon = getText (_cfg >> "picture");
 
+			private _tax = floor (_price *  (call _taxGetter));
+			private _priceText = if (_tax > 0) then { format ["%1 (+%2 %3)", _price, localize "STR_store_tax", _tax] } else {format ["%1", _price]};
+
 			_itemList pushBack [
 				[_name],
-				[format ["%1", _price]],
+				[_priceText],
 				[_icon],
 				[],
 				_name,
@@ -63,7 +75,7 @@ if (hasInterface) then {
                 0,
                 false
             ],
-            localize "STR_store_select_item",
+            format [localize "STR_store_select_item", localize ("STR_" + _currency)],
             [
 				{				
 					//params ["_confirmed", "_index", "_data", "_value", "_args"];
@@ -77,21 +89,24 @@ if (hasInterface) then {
 					private _objectArea = _target getVariable ["store_objectArea", objNull];
 					private _currency = _target getVariable ["store_currencyCode", "UNKNOWN"];
 					private _soundsMap = _target getVariable ["soundsMap", createHashMap];
+					private _extraCondition = _target getVariable ["extraCondition", {true}];
+					private _taxGetter = _target getVariable ["taxGetter", {0}];
+					private _onItemSold = _target getVariable ["onItemSold", {}];
 					
 					private _class = _data;
 					private _price = _value;
-
+					private _tax = floor (_price *  (call _taxGetter));
+					private _priceWithTax = _price + _tax;
+					
 					private _hasMoney = [_moneyBox, _currency] call fnc_getMoneyAmountInContainer;
-					
-					systemChat str([_moneyBox, _currency]);
-					
-					if (_hasMoney < _price) exitWith {
+					if (_hasMoney < _priceWithTax) exitWith {
 						hint localize "STR_store_not_enough_money";
 						[_target, _target, "failure", 3] call fnc_playStoreSound;
 					};
 					
-					[_moneyBox, _currency, _price] call fnc_takeMoneyFromContainer;
-
+					[_moneyBox, _currency, _priceWithTax] call fnc_takeMoneyFromContainer;
+					[_class, _currency, _price, _tax] call _onItemSold;
+					
 					_cfg = configFile >> "CfgVehicles" >> _class;
 					if (isClass _cfg) exitWith {
 						private _pos = getPosATL _objectArea;
@@ -127,10 +142,9 @@ if (hasInterface) then {
 					// Fallback
 					_itemBox addItemCargoGlobal [_class, 1];
 
-
 					private _message = format [
 						(localize "STR_store_purchase_success"),
-						_price,
+						_priceWithTax,
 						(localize ("STR_" + _currency)),
 						_class
 					];
