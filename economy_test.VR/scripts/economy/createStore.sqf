@@ -34,32 +34,28 @@ if (hasInterface) then {
         private _soundsMap = _target getVariable ["soundsMap", createHashMap];
 
         private _itemList = [];
+		{
+			private _class = _x select 0;
+			private _price = _x select 1;
 
-        {
-            private _categoryItems = _x;
-            {
-                private _class = _x select 0;
-                private _price = _x select 1;
+			private _cfg = configFile >> "CfgWeapons" >> _class;
+			if (!isClass _cfg) then { _cfg = configFile >> "CfgMagazines" >> _class };
+			if (!isClass _cfg) then { _cfg = configFile >> "CfgVehicles" >> _class };
+			if (!isClass _cfg) then { continue };
 
-                private _cfg = configFile >> "CfgWeapons" >> _class;
-                if (!isClass _cfg) then { _cfg = configFile >> "CfgMagazines" >> _class };
-                if (!isClass _cfg) then { _cfg = configFile >> "CfgVehicles" >> _class };
-                if (!isClass _cfg) then { continue };
+			private _name = getText (_cfg >> "displayName");
+			private _icon = getText (_cfg >> "picture");
 
-                private _name = getText (_cfg >> "displayName");
-                private _icon = getText (_cfg >> "picture");
-
-                _itemList pushBack [
-                    [_name],
-                    [format ["%1", _price]],
-                    [_icon],
-                    [],
-                    _name,
-                    _class,
-                    _price
-                ];
-            } forEach _categoryItems;
-        } forEach _storeConfig;
+			_itemList pushBack [
+				[_name],
+				[format ["%1", _price]],
+				[_icon],
+				[],
+				_name,
+				_class,
+				_price
+			];
+		} forEach _storeConfig;
 
         [
             [
