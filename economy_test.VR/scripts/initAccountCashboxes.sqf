@@ -97,3 +97,28 @@
 	false,
 	"STR_operationsFactory"
 ] execVM "scripts\economy\createAccountCashbox.sqf";
+
+[
+	account_button_moldovaMoney,
+	account_box_moldovaMoney,
+	"moldovaMoney",
+	currencyCodeMoldovaLeu,
+	{ ["moldovaMoney", 100] call fnc_getWorldVariable },
+	{ ["moldovaMoney", _this select 0] call fnc_setWorldVariable },
+	{ [player, "accountFull_moldovaMoney", true] call fnc_checkHasPermission },
+	{  
+		private _record = [_this] call fnc_composeAccountRecord;
+		["accountJournal_moldovaMoney", _record] remoteExec ["DMP_fnc_addToJournal", 2];
+	},
+	{
+		[player, "accountFull_moldovaMoney"] call fnc_checkHasPermission or {
+			[player, "accountRead_moldovaMoney", true] call fnc_checkHasPermission
+		}
+	},
+	{
+		// private _str = call fnc_getIndustryDashboard;
+		// [_str, 0.02, true] call fnc_showLongTextDialog;
+	},
+	true,
+	"STR_accountOperationsMoldova"
+] execVM "scripts\economy\createAccountCashbox.sqf";

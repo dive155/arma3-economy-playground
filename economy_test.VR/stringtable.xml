@@ -262,6 +262,14 @@
 		<Original>Factory Payment Logs Access</Original>
 		<Russian>Чтение истории транзакций завода</Russian>
 	</Key>
+	<Key ID="STR_permission_accountFull_moldovaMoney">
+		<Original>Moldova Funds Access</Original>
+		<Russian>Доступ к Средствам Молдовы</Russian>
+	</Key>
+	<Key ID="STR_permission_accountRead_moldovaMoney">
+		<Original>Moldova Money Transaction History Access</Original>
+		<Russian>Чтение истории транзакций Молдовы</Russian>
+	</Key>
 	<Key ID="STR_permission_debtEditing_PDR">
 		<Original>Operations With Players Debt (PDR)</Original>
 		<Russian>Операции с Долгом Игроков (ПДР)</Russian>
@@ -751,6 +759,10 @@
 	<Key ID="STR_accountOperationsFactory">
 		<Original>Factory Funds Operations</Original>
 		<Russian>Операции со Средствами Завода</Russian>
+	</Key>
+	<Key ID="STR_accountOperationsMoldova">
+		<Original>Moldova Money Operations</Original>
+		<Russian>Операции со Средствами Молдовы</Russian>
 	</Key>
   </Package>
   <Package name="hud">

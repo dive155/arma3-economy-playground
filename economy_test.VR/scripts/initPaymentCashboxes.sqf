@@ -27,5 +27,9 @@ _cashboxSounds = [
     _cashboxSounds,
 	{  	
 		_this call fnc_handlePlayerDebtTransaction;
-	}
+	},
+	{
+		 private _args = ["moldovaMoney"] + _this;
+		_args call fnc_handleAutomatedAccountTransaction;
+ 	}
 ] execVM "scripts\economy\createPaymentCashbox.sqf";

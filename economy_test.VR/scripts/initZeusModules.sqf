@@ -149,6 +149,8 @@ allRpPermissions = [
 	"accountRead_cityMoney",
 	"accountFull_factoryMoney",
 	"accountRead_factoryMoney",
+	"accountFull_moldovaMoney",
+	"accountRead_moldovaMoney",
 	"debtEditing_PDR",
 	"debtEditing_Moldova",
 	"passportEditing_PDR",
