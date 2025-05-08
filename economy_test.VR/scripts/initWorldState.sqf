@@ -31,7 +31,7 @@ fnc_createDefaultWorldState = {
 		["gasStationOpen", true] call fnc_setWorldVariable;
 		["gasStationOpenMoldova", true] call fnc_setWorldVariable;
 		["salesTaxPdr", 0.15] call fnc_setWorldVariable;
-		["salesTaxMoldova", 0.15] call fnc_setWorldVariable;
+		["salesTaxMoldova", 0.2] call fnc_setWorldVariable;
 		["inflationCoef_PDR", 1] call fnc_setWorldVariable;
 		["inflationCoef_Moldova", 1] call fnc_setWorldVariable;
 	};

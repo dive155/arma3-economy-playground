@@ -740,6 +740,10 @@
 		<Original>Factory Funds</Original>
 		<Russian>Средства завода</Russian>
 	</Key>
+	<Key ID="STR_account_moldovaMoney">
+		<Original>Moldova Money</Original>
+		<Russian>Средства Молдовы</Russian>
+	</Key>
 	<Key ID="STR_accountActionRoot">
 		<Original>Account operations</Original>
 		<Russian>Операции со счётом</Russian>

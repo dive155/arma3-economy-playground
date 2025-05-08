@@ -38,3 +38,38 @@ private _storeItems = [
 	{["salesTaxPdr"] call fnc_getWorldVariable},
 	fnc_giveSalesTaxToCity
 ] execVM "scripts\economy\createStore.sqf";
+
+fnc_giveSalesTaxToMoldova = {
+	params ["_itemClass", "_moneyCurrency", "_moneyAmount", "_taxAmount"];
+	
+	[
+		"moldovaMoney",
+		name player,
+		"SalesTax",
+		_taxAmount
+	] call fnc_handleAutomatedAccountTransaction;
+};
+
+private _storeItems2 = [
+	["kss_bread", 1],
+	["cigs_Kosmos_cigpack", 7],
+	["MMM_BomberJacket_black", 30],
+	["V_Chestrig_oli", 15],
+	["B_Carryall_blk", 40],
+	["hgun_P07_F", 200],
+	["16Rnd_9x21_Mag", 2],
+	["FL_parts_enginepistonsmall", 70]
+];
+
+[
+	store_2_button,           // The interaction button
+	store_2_money_box,        // Where to put money
+	store_2_item_box,         // Where to spawn inventory items
+	store_2_object_area,      // Where to spawn world objects
+	currencyCodeMoldovaLeu,       // Your game's currency code
+	_storeItems2,              // Items with prices
+	_storeSoundsConfig,       // Sounds
+	{true},
+	{["salesTaxMoldova"] call fnc_getWorldVariable},
+	fnc_giveSalesTaxToMoldova
+] execVM "scripts\economy\createStore.sqf";
