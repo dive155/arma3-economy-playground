@@ -116,8 +116,8 @@
 		}
 	},
 	{
-		// private _str = call fnc_getIndustryDashboard;
-		// [_str, 0.02, true] call fnc_showLongTextDialog;
+		private _str = call fnc_getMoldovaDashboard;
+		[_str, 0.02, true] call fnc_showLongTextDialog;
 	},
 	true,
 	"STR_accountOperationsMoldova"

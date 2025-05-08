@@ -198,7 +198,129 @@ fnc_getCityDashboard = {
 	_dashboard
 };
 
+fnc_getMoldovaDashboard = {
+	// _civiliansDatabase is an array of arrays, each element is:
+	// [_passport, _name, _surname, _job, _salary, _bills, _debt, _isOnline]
+	private _civiliansDatabase = ["fnc_getCiviliansInfoServer", ["Moldova"]] call DMP_fnc_requestServerResult;
 
+	// Retrieve world variable values
+	private _cityMoney	  = ["moldovaMoney"] call fnc_getWorldVariable;
+	private _salesTax	 = ["salesTaxMoldova"] call fnc_getWorldVariable;	  // 0..1
+	private _interestRate   = ["interestRate_Moldova"] call fnc_getWorldVariable;	   // 0..1
+	private _fuelPrice	  = ["fuelPrice_Moldova"] call fnc_getWorldVariable;
+	private _fuelInStorage  = ["fuelInStorageMoldova"] call fnc_getWorldVariable;
+	private _gasStationOpen = ["gasStationOpenMoldova"] call fnc_getWorldVariable;
+
+	// Derived values
+	private _dailyInterestPercent = round(_interestRate * 100);
+	private _salesTaxPercent	= round(_salesTax * 100);
+
+	// Helper functions for coloring
+	private _colorNumber = {
+		params ["_num"];
+		// Numbers in general are colored green.
+		format ["<t color='#00ff00'>%1</t>", _num]
+	};
+
+	private _colorDebt = {
+		params ["_num"];
+		// Debt values are colored red.
+		format ["<t color='#ff0000'>%1</t>", _num]
+	};
+
+	private _colorBills = {
+		params ["_num"];
+		// Daily bills are colored yellow.
+		format ["<t color='#ffff00'>%1</t>", _num]
+	};
+
+	private _colorGovSal = {
+		params ["_num"];
+		// Government salary is colored light green.
+		format ["<t color='#90EE90'>%1</t>", _num]
+	};
+
+	private _colorGovJob = {
+		params ["_job"];
+		// Government job text is colored dark blue.
+		if (_job isEqualTo "") then {_job = "--"};
+		format ["<t color='#73a6ff'>%1</t>", _job]
+	};
+
+	private _colorName = {
+		params ["_name"];
+		// Citizen names are colored blue.
+		format ["<t color='#b8fffd'>%1</t>", _name]
+	};
+
+	private _onlineText = {
+		params ["_value"];
+		if (_value) then {
+			format ["<t color='#00ff00'>%1</t>", localize "STR_citizen_online"]
+		} else {
+			format ["<t color='#ffa500'>%1</t>", localize "STR_citizen_offline"]
+		}
+	};
+
+	private _gasStationStatus = {
+		if (_this) then {
+			format ["<t color='#00ff00'>%1</t>", localize "STR_city_status_open"]
+		} else {
+			format ["<t color='#ff0000'>%1</t>", localize "STR_city_status_closed"]
+		}
+	};
+
+	// Process the citizens database:
+	// Sort citizens alphabetically by their first name (index 1).
+	// Correct — using BIS_fnc_sortBy
+	private _sortedCivilians = [_civiliansDatabase, [], { _x select 1 }, "ASCEND"] call BIS_fnc_sortBy;
+
+	// Build a multi-line string of citizen data
+	private _citizensText = "";
+	{
+		private _index = _forEachIndex;  // using forEach index
+		private _entry   = _x;
+		private _name	= _entry select 1;
+		private _surname = _entry select 2;
+		private _job	 = _entry select 3;
+		private _salary  = _entry select 4;
+		private _bills   = _entry select 5;
+		private _debt	= _entry select 6;
+		private _isOnline= _entry select 7;
+		
+		private _citizenLine = format [
+			"%1. %2 %3: <br/>%4 %5. %6 %7. %8 %9. %10 %11. %12.",
+			_index + 1,
+			_name call _colorName,
+			_surname call _colorName,
+			localize "STR_citizen_debt",		 // "Debt:"
+			_debt call _colorDebt,
+			localize "STR_citizen_dailyBills",	// "Daily Bills:"
+			_bills call _colorBills,
+			localize "STR_citizen_job",		   // "Government Job:"
+			_job call _colorGovJob,
+			localize "STR_citizen_salary",		// "Government Salary:"
+			_salary call _colorGovSal,
+			_isOnline call _onlineText		   // Online/Offline status
+		];
+
+		_citizensText = _citizensText + _citizenLine + "<br/>";
+	} forEach _sortedCivilians;
+
+	// Compose the final dashboard using a localization string:
+	private _dashboard = format [
+		localize "STR_moldova_dashboard",
+		_cityMoney call _colorNumber,
+		_dailyInterestPercent call _colorNumber,
+		_gasStationOpen call _gasStationStatus,
+		_fuelPrice call _colorNumber,
+		_fuelInStorage call _colorNumber,
+		_citizensText,
+		_salesTaxPercent call _colorNumber
+	];
+
+	_dashboard
+};
 
 // Director of Industry Dashboard
 // <br/>Factory Funds:       5000

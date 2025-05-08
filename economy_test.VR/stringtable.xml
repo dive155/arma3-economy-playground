@@ -1049,7 +1049,7 @@
 		&lt;br/&gt;%8
 		</Original>
 		<Russian>
-		&lt;t size="2" align="center"&gt;Дашборд Мэра&lt;/t&gt;
+		&lt;t size="2" align="center"&gt;Контрольная Панель Мэра&lt;/t&gt;
 		&lt;br/&gt;&lt;br/&gt;Городские деньги:                  %1
 		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
 		&lt;br/&gt;Дневной процент по долгу:        %2%%
@@ -1062,6 +1062,37 @@
 		&lt;br/&gt;Топливо в хранилище (литры):     %7
 		&lt;br/&gt;&lt;br/&gt;Граждане:
 		&lt;br/&gt;%8
+		</Russian>
+	</Key>
+
+	<Key ID="STR_moldova_dashboard">
+		<Original>
+		&lt;t size="2" align="center"&gt;Moldova Dashboard&lt;/t&gt;
+		&lt;br/&gt;&lt;br/&gt;Money:                  %1
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
+		&lt;br/&gt;Daily Interest on Debt:        %2%%
+		&lt;br/&gt;Sales Tax on Goods/Services:   %7%%
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
+		&lt;br/&gt;Gas Station:
+		&lt;br/&gt;%3
+		&lt;br/&gt;Fuel Sell Price:                %4
+		&lt;br/&gt;Fuel in storage (liters):      %5
+		&lt;br/&gt;&lt;br/&gt;Citizens:
+		&lt;br/&gt;%6
+		</Original>
+		<Russian>
+		&lt;t size="2" align="center"&gt;Контрольна Панель Молдовии&lt;/t&gt;
+		&lt;br/&gt;&lt;br/&gt;Казна:                 %1
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
+		&lt;br/&gt;Дневной процент по долгу:        %2%%
+		&lt;br/&gt;SНалог на продажи товаров/услуг: %7%%
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
+		&lt;br/&gt;Заправочная станция:
+		&lt;br/&gt;%3
+		&lt;br/&gt;Цена за литр топлива:            %4
+		&lt;br/&gt;Топливо в хранилище (литры):     %5
+		&lt;br/&gt;&lt;br/&gt;Граждане:
+		&lt;br/&gt;%6
 		</Russian>
 	</Key>
 
