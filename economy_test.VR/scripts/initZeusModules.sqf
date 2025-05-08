@@ -21,8 +21,13 @@
 worldVariablesForZeusEditing = [
 	"rpDay",
 	"cityMoney",
+	"moldovaMoney",
 	"interestRate_PDR",
 	"interestRate_Moldova",
+	"inflationCoef_PDR",
+	"inflationCoef_Moldova",
+	"salesTaxPdr",
+	"salesTaxMoldova",
 	"exchangeRate",
 	"exchangeSpread",
 	"gasStationOpen",
@@ -44,8 +49,7 @@ worldVariablesForZeusEditing = [
 	"lunchPrice",
 	"fuelInStorageMoldova",
 	"fuelPrice_Moldova",
-	"gasStationOpenMoldova",
-	"salesTaxPdr"
+	"gasStationOpenMoldova"
 ];
 
 [
