@@ -19,3 +19,6 @@ if (hasInterface) then {
 
 _scriptHandle = execVM "scripts\initEconomy.sqf";
 waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "scripts\tramController.sqf";
+waitUntil { scriptDone _scriptHandle };

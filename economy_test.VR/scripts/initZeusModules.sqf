@@ -298,3 +298,22 @@ allRpPermissions = [
 		[_object] call fnc_modifyNumberPlate;
 	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;
+
+[
+	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_toggle_tram",
+	{
+		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
+		
+		private _isOn = missionNamespace getVariable ["PDR_tram_enabled", false];
+		
+		if (_isOn) then {
+			[] remoteExec ["fnc_stopTram", 2];
+		} else {
+			[] remoteExec ["fnc_startTram", 2];
+		};
+		
+		hint (format [localize "STR_dive_pdr_tram_status", not _isOn]);
+		
+	}, "hud\pdr_module.paa"
+] call zen_custom_modules_fnc_register;

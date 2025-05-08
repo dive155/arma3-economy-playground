@@ -883,6 +883,14 @@
 		<Original>Edit Car Numberplate</Original>
 		<Russian>Ред. Номер Автомобиля</Russian>
 	</Key>
+	<Key ID="STR_dive_pdr_module_toggle_tram">
+		<Original>Toggle Tram</Original>
+		<Russian>Вкл/Выкл Трамвай</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_tram_status">
+		<Original>Tram enabled: %1</Original>
+		<Russian>Трамвай включен: %1</Russian>
+	</Key>
 	<Key ID="STR_dive_pdr_module_edit_perms">
 		<Original>Edit Player Permissions</Original>
 		<Russian>Ред. Разрешения Игрока</Russian>
