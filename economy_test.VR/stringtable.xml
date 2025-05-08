@@ -290,6 +290,10 @@
 		<Original>Passport Editing (Moldova)</Original>
 		<Russian>Редактирование Паспортов (Молдова)</Russian>
 	</Key>
+	<Key ID="STR_permission_numberplateEditing">
+		<Original>Vehicle Numberplate Editing</Original>
+		<Russian>Редактирование Номеров ТС</Russian>
+	</Key>
   </Package>
   <Package name="misc">
 	<Key ID="STR_checkNumberPlate">

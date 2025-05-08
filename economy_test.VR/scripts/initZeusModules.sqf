@@ -151,7 +151,8 @@ allRpPermissions = [
 	"passportEditing_Moldova",
 	"visaGiving_PDR",
 	"visaGiving_Moldova",
-	"sellingIndustrialGoods"
+	"sellingIndustrialGoods",
+	"numberplateEditing"
 ];
 
 [
@@ -288,24 +289,6 @@ allRpPermissions = [
 			[objNull, localize "STR_dive_pdr_module_hint_place_on_vehicle"] call BIS_fnc_showCuratorFeedbackMessage;
 		};
 		
-		private _initialPlate = getPlateNumber _object;
-		[
-			localize "STR_dive_pdr_edit_plate_title", [
-				["EDIT", [localize "STR_dive_pdr_edit_plate_title", ""], [_initialPlate], true]
-			], {
-				params["_values","_arguments"];
-				
-				_pos = _arguments select 0;
-				_object = _arguments select 1;
-				
-				_newPlate = _values select 0;
-				
-				[_object, _newPlate] remoteExec ["setPlateNumber", _object];
-				
-				hint format[localize "STR_dive_pdr_edit_plate_result", _newPlate];
-				
-			}, {}, [_pos, _object]
-		] call zen_dialog_fnc_create;
-
+		[_object] call fnc_modifyNumberPlate;
 	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;
