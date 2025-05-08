@@ -96,29 +96,41 @@ if (hasInterface) then {
 					
 					[_moneyBox, _currency, _price] call fnc_takeMoneyFromContainer;
 
-					private _cfg = configFile >> "CfgVehicles" >> _class;
-					if (isClass _cfg) then {
+					_cfg = configFile >> "CfgVehicles" >> _class;
+					if (isClass _cfg) exitWith {
 						private _pos = getPosATL _objectArea;
 						_pos set [2, (_pos select 2) + 0.5];
-						createVehicle [_class, _pos, [], 0, "NONE"];
-					} else {
-						private _itemCfg = configFile >> "CfgWeapons" >> _class;
-						if (isClass _itemCfg) then {
-							_itemBox addWeaponCargoGlobal [_class, 1];
-						} else {
-							_itemCfg = configFile >> "CfgMagazines" >> _class;
-							if (isClass _itemCfg) then {
-								_itemBox addMagazineCargoGlobal [_class, 1];
-							} else {
-								_itemCfg = configFile >> "CfgGlasses" >> _class;
-								if (isClass _itemCfg) then {
-									_itemBox addItemCargoGlobal [_class, 1];
-								} else {
-									_itemBox addItemCargoGlobal [_class, 1]; // fallback
-								};
-							};
+
+						private _obj = createVehicle [_class, _pos, [], 0, "NONE"];
+
+						// Force exact position to avoid collision offset
+						_obj setPosATL _pos;
+
+						// Ensure object is fully repaired after spawn
+						[_obj] spawn {
+							sleep 0.5;
+							(_this select 0) setDamage 0;
 						};
 					};
+
+					_cfg = configFile >> "CfgWeapons" >> _class;
+					if (isClass _cfg) exitWith {
+						_itemBox addWeaponCargoGlobal [_class, 1];
+					};
+
+					_cfg = configFile >> "CfgMagazines" >> _class;
+					if (isClass _cfg) exitWith {
+						_itemBox addMagazineCargoGlobal [_class, 1];
+					};
+
+					_cfg = configFile >> "CfgGlasses" >> _class;
+					if (isClass _cfg) exitWith {
+						_itemBox addItemCargoGlobal [_class, 1];
+					};
+
+					// Fallback
+					_itemBox addItemCargoGlobal [_class, 1];
+
 
 					private _message = format [
 						(localize "STR_store_purchase_success"),

@@ -10,7 +10,7 @@ private _vestsPrices = [["V_Chestrig_oli", 150]];
 private _backpackPrices = [["B_Carryall_blk", 400]];
 private _weaponPrices = [["hgun_P07_F", 2000]];
 private _magazinePrices = [["16Rnd_9x21_Mag", 25]];  // Added price for the magazine
-private _objectPrices = [["FL_parts_pistonenginesmall", 600]];
+private _objectPrices = [["FL_parts_enginepistonsmall", 600]];
 
 private _storeItemsConfig = [
 	_itemPrices,
