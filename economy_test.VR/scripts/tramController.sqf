@@ -79,4 +79,6 @@ fnc_changeTramSpeed = {
 };
 
 sleep 5;
-call fnc_createTram;
+if (isServer) then {
+	call fnc_createTram;
+};
