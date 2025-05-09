@@ -1053,6 +1053,11 @@
 		&lt;br/&gt;%5
 		&lt;br/&gt;Fuel Sell Price:                %6
 		&lt;br/&gt;Fuel in storage (liters):      %7
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#ffa500"&gt;Potential Expenses:&lt;/t&gt;
+		&lt;br/&gt;Total salaries to pay: %10
+		&lt;br/&gt;Street Lights: %11, %12, %13
+		&lt;br/&gt;Tram Service: %14, %15, %16
+		&lt;br/&gt;------------&lt;br/&gt;Total: %17
 		&lt;br/&gt;&lt;br/&gt;Citizens:
 		&lt;br/&gt;%8
 		</Original>
@@ -1061,17 +1066,23 @@
 		&lt;br/&gt;&lt;br/&gt;Городские деньги:                  %1
 		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
 		&lt;br/&gt;Дневной процент по долгу:        %2%%
-		&lt;br/&gt;SНалог на продажи товаров/услуг: %9%%
+		&lt;br/&gt;Налог на продажи товаров/услуг: %9%%
 		&lt;br/&gt;Налог на продукцию фабрики:      %3%% (%4/единица)
 		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
 		&lt;br/&gt;Заправочная станция:
 		&lt;br/&gt;%5
 		&lt;br/&gt;Цена за литр топлива:            %6
 		&lt;br/&gt;Топливо в хранилище (литры):     %7
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#ffa500"&gt;Потенциальные расходы:&lt;/t&gt;
+		&lt;br/&gt;Общие зарплаты к выплате: %10
+		&lt;br/&gt;Уличное освещение: %11, %12, %13
+		&lt;br/&gt;Трамвай: %14, %15, %16
+		&lt;br/&gt;------------&lt;br/&gt;Итого: %17
 		&lt;br/&gt;&lt;br/&gt;Граждане:
 		&lt;br/&gt;%8
 		</Russian>
 	</Key>
+
 
 	<Key ID="STR_moldova_dashboard">
 		<Original>
@@ -1143,7 +1154,27 @@
 		<Original>Government Salary:</Original>
 		<Russian>Гос. зарплата:</Russian>
 	</Key>
+	
+	<Key ID="STR_city_paid">
+		<Original>Paid</Original>
+		<Russian>Оплачено</Russian>
+	</Key>
+
+	<Key ID="STR_city_notPaid">
+		<Original>Not Paid</Original>
+		<Russian>Не оплачено</Russian>
+	</Key>
+
+	<Key ID="STR_city_enabled">
+		<Original>Enabled</Original>
+		<Russian>Включено</Russian>
+	</Key>
+
+	<Key ID="STR_city_disabled">
+		<Original>Disabled</Original>
+		<Russian>Выключено</Russian>
+	</Key>
 
 	
   </Package>
-</Project>☻☻
+</Project>

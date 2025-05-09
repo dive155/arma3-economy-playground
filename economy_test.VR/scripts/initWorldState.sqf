@@ -34,6 +34,10 @@ fnc_createDefaultWorldState = {
 		["salesTaxMoldova", 0.2] call fnc_setWorldVariable;
 		["inflationCoef_PDR", 1] call fnc_setWorldVariable;
 		["inflationCoef_Moldova", 1] call fnc_setWorldVariable;
+		["services_priceTram", 800] call fnc_setWorldVariable;
+		["services_paidTram", false] call fnc_setWorldVariable;
+		["services_priceStreetlights", 300] call fnc_setWorldVariable;
+		["services_paidStreetlights", false] call fnc_setWorldVariable;
 	};
 };
 

@@ -38,7 +38,6 @@ fnc_tramTravelLoop = {
 		private _pos = getPosATL _local;
 
 		{
-			
 			if (_pos inArea _x) then {
 				_inStation = true;
 			};
