@@ -143,7 +143,13 @@ if (hasInterface) then {
 					_cfg = configFile >> "CfgWeapons" >> _class;
 					if (isClass _cfg) exitWith {
 						call _reportSuccess;
-						_itemBox addWeaponCargoGlobal [_class, 1];
+						
+						private _type = (_class call BIS_fnc_itemType) select 1;
+						if (_type isEqualTo "Uniform" or _type isEqualTo "Vest") then {
+							_itemBox addItemCargoGlobal [_class, 1];
+						} else {
+							_itemBox addWeaponCargoGlobal [_class, 1];
+						};
 					};
 
 					_cfg = configFile >> "CfgMagazines" >> _class;

@@ -15,6 +15,7 @@ fnc_createTram = {
 
 fnc_startTram = {
 	missionNamespace setVariable ["PDR_tram_enabled", true, true];
+	PDR_tram setVariable ["ATRAIN_Remote_Cruise_Control_Enabled", true, true];
 	[10] spawn fnc_changeTramSpeed;
 	PDR_tram_velocityChangeHandle = 0 spawn fnc_tramTravelLoop;
 };
@@ -46,7 +47,7 @@ fnc_tramTravelLoop = {
 		if ((not _wasInStation) and _inStation) then {
 			PDR_tram_velocityChangeHandle = [0] spawn fnc_changeTramSpeed;
 			["stop"] remoteExec ["hint"];
-			sleep 15;
+			sleep 20;
 			PDR_tram_velocityChangeHandle = [10] spawn fnc_changeTramSpeed;
 		};
 		

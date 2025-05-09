@@ -120,7 +120,6 @@ if (hasInterface) then {
 					
 					_cfg = configFile >> "CfgVehicles" >> _class;
 					if (isClass _cfg) exitWith {
-						systemchat "1";
 						// Check if it's a backpack
 						if (getNumber (_cfg >> "isBackpack") == 1) exitWith {
 							_itemBox addBackpackCargoGlobal [_class, 1];
@@ -143,8 +142,6 @@ if (hasInterface) then {
 
 					_cfg = configFile >> "CfgWeapons" >> _class;
 					if (isClass _cfg) exitWith {
-					systemchat "2";
-					systemchat str(_class call BIS_fnc_itemType);
 						call _reportSuccess;
 						
 						private _type = (_class call BIS_fnc_itemType) select 1;
@@ -157,20 +154,17 @@ if (hasInterface) then {
 
 					_cfg = configFile >> "CfgMagazines" >> _class;
 					if (isClass _cfg) exitWith {
-					systemchat "3";
 						call _reportSuccess;
 						_itemBox addMagazineCargoGlobal [_class, 1];
 					};
 					
 					_cfg = configFile >> "CfgGlasses" >> _class;
 					if (isClass _cfg) exitWith {
-					systemchat "4";
 						call _reportSuccess;
 						_itemBox addItemCargoGlobal [_class, 1];
 					};
 					
 					// Fallback
-					systemchat "5";
 					_itemBox addItemCargoGlobal [_class, 1];
 					call _reportSuccess;
 				},
