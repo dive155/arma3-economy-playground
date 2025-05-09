@@ -884,9 +884,38 @@
 		<Russian>Ред. Номер Автомобиля</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_toggle_tram">
-		<Original>Toggle Tram</Original>
-		<Russian>Вкл/Выкл Трамвай</Russian>
+		<Original>Toggle Tram/Lights</Original>
+		<Russian>Вкл/Выкл Трамвай/Свет</Russian>
 	</Key>
+	<Key ID="STR_dive_pdr_tram_enabled">
+		<Original>Tram Enabled</Original>
+		<Russian>Трамвай включен</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_tram_enabled_desc">
+		<Original>Enable or disable the tram system</Original>
+		<Russian>Включить или выключить трамвайную систему</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_lights_enabled_pdr">
+		<Original>Lights Enabled (PDR)</Original>
+		<Russian>Освещение включено (PDR)</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_lights_enabled_pdr_desc">
+		<Original>Toggle PDR city lights</Original>
+		<Russian>Включить или выключить освещение в PDR</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_lights_enabled_moldova">
+		<Original>Lights Enabled (Moldova)</Original>
+		<Russian>Освещение включено (Молдова)</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_lights_enabled_moldova_desc">
+		<Original>Toggle Moldova city lights</Original>
+		<Russian>Включить или выключить освещение в Молдове</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_tram_lights_settings">
+		<Original>Tram and Lights Settings</Original>
+		<Russian>Настройки трамвая и освещения</Russian>
+	</Key>
+
 	<Key ID="STR_dive_pdr_tram_status">
 		<Original>Tram enabled: %1</Original>
 		<Russian>Трамвай включен: %1</Russian>

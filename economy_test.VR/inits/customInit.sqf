@@ -22,3 +22,6 @@ waitUntil { scriptDone _scriptHandle };
 
 _scriptHandle = execVM "scripts\tramController.sqf";
 waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "scripts\initStreetLights.sqf";
+waitUntil { scriptDone _scriptHandle };

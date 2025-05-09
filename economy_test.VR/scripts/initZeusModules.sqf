@@ -307,17 +307,43 @@ allRpPermissions = [
 	localize "STR_dive_pdr_module_title",
 	localize "STR_dive_pdr_module_toggle_tram",
 	{
-		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
-		
-		private _isOn = missionNamespace getVariable ["PDR_tram_enabled", false];
-		
-		if (_isOn) then {
-			[] remoteExec ["fnc_stopTram", 2];
-		} else {
-			[] remoteExec ["fnc_startTram", 2];
-		};
-		
-		hint (format [localize "STR_dive_pdr_tram_status", not _isOn]);
-		
+		params [["_pos", [0,0,0], [[]], 3], ["_object", objNull, [objNull]]];
+
+		private _tramEnabled = missionNamespace getVariable ["PDR_tram_enabled", false];
+		private _lightsPDR = ["PDR"] call fnc_areLightsOn;
+		private _lightsMoldova = ["Moldova"] call fnc_areLightsOn;
+
+		[
+			localize "STR_dive_pdr_tram_lights_settings", [
+				["CHECKBOX", [localize "STR_dive_pdr_tram_enabled", localize "STR_dive_pdr_tram_enabled_desc"], [_tramEnabled], true],
+				["CHECKBOX", [localize "STR_dive_pdr_lights_enabled_pdr", localize "STR_dive_pdr_lights_enabled_pdr_desc"], [_lightsPDR], true],
+				["CHECKBOX", [localize "STR_dive_pdr_lights_enabled_moldova", localize "STR_dive_pdr_lights_enabled_moldova_desc"], [_lightsMoldova], true]
+			], {
+				params ["_values", "_arguments"];
+
+				private _tramNew = _values select 0;
+				private _pdrLightsNew = _values select 1;
+				private _moldovaLightsNew = _values select 2;
+
+				private _tramOld = missionNamespace getVariable ["PDR_tram_enabled", false];
+				if (_tramNew != _tramOld) then {
+					if (_tramNew) then {
+						[] remoteExec ["fnc_startTram", 2];
+					} else {
+						[] remoteExec ["fnc_stopTram", 2];
+					};
+				};
+
+				if (_pdrLightsNew != (["PDR"] call fnc_areLightsOn)) then {
+					["PDR", _pdrLightsNew] remoteExec ["fnc_setLightsServer", 2];
+				};
+
+				if (_moldovaLightsNew != (["Moldova"] call fnc_areLightsOn)) then {
+					["Moldova", _moldovaLightsNew] remoteExec ["fnc_setLightsServer", 2];
+				};
+
+			}, {}, [_pos, _object]
+		] call zen_dialog_fnc_create;
+
 	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;

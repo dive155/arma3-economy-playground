@@ -87,7 +87,7 @@ fnc_getCityDashboard = {
 	private _tramRunning	  = missionNamespace getVariable ["PDR_tram_enabled", false];
 	private _priceStreetlights= ["services_priceStreetlights"] call fnc_getWorldVariable;
 	private _paidStreetlights = ["services_paidStreetlights"] call fnc_getWorldVariable;
-	private _streetlightsEnabled = missionNamespace getVariable ["PDR_streetlights_enabled", false];
+	private _streetlightsEnabled = ["PDR"] call fnc_areLightsOn;
 
 	// Derived values
 	private _dailyInterestPercent = round(_interestRate * 100);
