@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="pdr">
+  <Package name="items">
+	<Key ID="STR_pdrLeu">
+		<Original>Leu (PDR)</Original>
+		<English>Leu (PDR)</English>
+		<Russian>Лей (ПДР)</Russian>
+	</Key>
+	<Key ID="STR_moldovaLeu">
+		<Original>Leu (Moldova)</Original>
+		<English>Leu (Moldova)</English>
+		<Russian>Лей (Молдова)</Russian>
+	</Key>
+	<Key ID="STR_ore_converter_action">
+		<Original>Process Ore</Original>
+		<English>Process Ore</English>
+		<Russian>Переработать Руду</Russian>
+	</Key>
+	<Key ID="STR_ore_converter_failure">
+		<Original>No ore found in the loading zone</Original>
+		<English>No ore found in the loading zone</English>
+		<Russian>Не найдено руды в зоне погрузки.</Russian>
+	</Key>
+	<Key ID="STR_ore_converter_success">
+		<Original>Ore has been processed! You can take your pay from the cash register. Your Work Fatigue has increased.</Original>
+		<English>Ore has been processed! You can take your pay from the cash register. Your Work Fatigue has increased.</English>
+		<Russian>Руда переработана! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
+	</Key>
+	<Key ID="STR_hay_converter_action">
+		<Original>Process Hay</Original>
+		<English>Process Hay</English>
+		<Russian>Переработать Сено</Russian>
+	</Key>
+	<Key ID="STR_hay_converter_failure">
+		<Original>No hay found in the loading zone</Original>
+		<English>No hay found in the loading zone</English>
+		<Russian>Не найдено сена в зоне погрузки.</Russian>
+	</Key>
+	<Key ID="STR_hay_converter_success">
+		<Original>Hay has been processed! You can take your pay from the cash register. Your Work Fatigque has increased.</Original>
+		<English>Hay has been processed! You can take your pay from the cash register. Your Work Fatigue has increased.</English>
+		<Russian>Сено переработано! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
+	</Key>
+	<Key ID="STR_factory_action">
+		<Original>Produce Goods</Original>
+		<English>Produce Goods</English>
+		<Russian>Произвести Товар</Russian>
+	</Key>
+	<Key ID="STR_factory_failure">
+		<Original>No Agricultural Products found or no Ore found in their corresponding boxes.</Original>
+		<English>No Agricultural Products found or no Ore found in their corresponding boxes.</English>
+		<Russian>Не найдено Сельхоз Продукции или Руды в соответствующих им ящиках.</Russian>
+	</Key>
+	<Key ID="STR_factory_success">
+		<Original>Goods have been produced! You can take your pay from the cash register. Your Work Fatigue has increased.</Original>
+		<English>Goods have been produced! You can take your pay from the cash register. Your Work Fatigue has increased.</English>
+		<Russian>Товар произведен! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
+	</Key>
+	<Key ID="STR_factory_sale_summary">
+		<Original>Factory goods sold for %1!\n%2 has been paid to the City as Tax (%3%%)\n%4 has been paid as a commission to Industrial Director (%5%%)\n%6 has been added to Factory Funds.</Original>
+		<Russian>Товары фабрики проданы за %1!\n%2 уплачено в городскую казну в качестве налога (%3%%)\n%4 выплачено директору завода в качестве комиссии (%5%%)\n%6 добавлено в фонд фабрики.</Russian>
+	</Key>
+	<Key ID="STR_goods_action">
+		<Original>Sell Industrial Goods</Original>
+		<Russian>Продать Промышленную Продукцию</Russian>
+	</Key>
+	<Key ID="STR_factory_take_money">
+		<Original>You have to take money for previous work from the cash box first.</Original>
+		<Russian>Сначала заберите из кассы деньги за прошлую работу</Russian>
+	</Key>
+	<Key ID="STR_goods_failure">
+		<Original>No Industrual Goods found in the box.</Original>
+		<Russian>Не найдено Промышленной Продукции в ящике.</Russian>
+	</Key>
+	<Key ID="STR_goods_success">
+		<Original>Industrial goods have been sold! City tax has been paid, Industrial Director commission has been paid and the rest added to the Factory Funds.</Original>
+		<Russian>Промышленная Продукция продана! Городской налог уплачен, комиссия промышленного директора уплачена, а остальное добавлено в заводской фонд.</Russian>
+	</Key>
+	<Key ID="STR_factory_no_money">
+		<Original>Factory doesn't have enough money to pay for this work.</Original>
+		<English>Factory doesn't have enough money to pay for this work.</English>
+		<Russian>У Завода не хватает денег чтобы оплатить эту работу.</Russian>
+	</Key>
+	<Key ID="STR_factory_closed">
+		<Original>This Facility is currently Closed. Speak to the Director of Industry for information.</Original>
+		<Russian>Данное Предприятие сейчас закрыто. Обращайтесь к Директору Промышленности для информации.</Russian>
+	</Key>
+	<Key ID="STR_city_no_money">
+		<Original>City does not have enough money for this.</Original>
+		<English>City does not have enough money for this.</English>
+		<Russian>У Города не хватает денег для этого.</Russian>
+	</Key>
+	<Key ID="STR_stove_action">
+		<Original>Cook Lunch</Original>
+		<English>Cook Lunch</English>
+		<Russian>Приготовить Обед</Russian>
+	</Key>
+	<Key ID="STR_stove_failure">
+		<Original>No agricultural products found in the box</Original>
+		<English>No agricultural products found in the box</English>
+		<Russian>Не найдено сельхоз продукции в ящике.</Russian>
+	</Key>
+	<Key ID="STR_stove_success">
+		<Original>Lunch has been cooked and put into the case.</Original>
+		<English>Lunch has been cooked and put into the case.</English>
+		<Russian>Обед приготовлен и добавлен в кейс.</Russian>
+	</Key>
+	<Key ID="STR_pay_for_fuel">
+		<Original>Pay for Fuel.</Original>
+		<English>Pay for Fuel.</English>
+		<Russian>Оплатить топливо.</Russian>
+	</Key>
+	<Key ID="STR_fuel_payment_no_money">
+		<Original>Put appropriate money into the box to pay for Fuel.</Original>
+		<English>Put appropriate money into the box to pay for Fuel.</English>
+		<Russian>Положите подходящие деньги в ящик чтобы оплатить Топливо.</Russian>
+	</Key>
+	<Key ID="STR_gasStationClosed">
+		<Original>The Gas Station is currently closed. Speak to the Mayor for information.</Original>
+		<Russian>АЗС сейчас Закрыта. Обращайтесь к Мэру за информацией.</Russian>
+	</Key>
+	<Key ID="STR_gasStationClosedMoldova">
+		<Original>The Gas Station is currently closed</Original>
+		<Russian>АЗС сейчас Закрыта.</Russian>
+	</Key>
+	<Key ID="STR_gasStationReturnNozzle">
+		<Original>You have to return the nozzle to the pump first.</Original>
+		<Russian>Сначала верните заправочный пистолет в бензоколонку.</Russian>
+	</Key>
+	<Key ID="STR_fuel_payment_description">
+		<Original>Paid:%1 %2\nFuel added to the Pump:%3 liters</Original>
+		<English>Paid:%1 %2\nFuel added to the Pump:%3 liters</English>
+		<Russian>Оплачено:%1 %2\nТоплива добавлено в Колонку:%3 литра</Russian>
+	</Key>
+	<Key ID="STR_fuel_payment_change">
+		<Original>WARNING! Could not fully fulfill order. Maybe fuel storage is empty or the pump is overflowing.\n%1 %2 of change have been added back to the money box.</Original>
+		<English>WARNING! Could not fully fulfill order. Maybe fuel storage is empty or the pump is overflowing.\n%1 %2 of change have been added back to the money box.</English>
+		<Russian>ВНИМАНИЕ! Не удалось полностью выполнить заказ. Возможно хранилище топлива опустело или колонка переполнена.\n%1 %2 сдачи положены обратно в кейс с деньгами.</Russian>
+	</Key>
+	<Key ID="STR_store_interact_buy">
+		<Original>Buy From Store</Original>
+		<Russian>Купить в магазине</Russian>
+	</Key>
+	<Key ID="STR_store_select_item">
+		<Original>Store - Select item to purchase. Currency: %1</Original>
+		<Russian>Магазин - Выберите товар. Валюта: %1</Russian>
+	</Key>
+	<Key ID="STR_store_not_enough_money">
+		<Original>You do not have enough money.</Original>
+		<Russian>У вас недостаточно денег.</Russian>
+	</Key>
+	<Key ID="STR_store_purchase_success">
+		<Original>You spent %1 %2 and bought %3.</Original>
+		<Russian>Вы потратили %1 %2 и купили %3.</Russian>
+	</Key>
+	<Key ID="STR_store_confirm">
+		<Original>Buy</Original>
+		<Russian>Купить</Russian>
+	</Key>
+	<Key ID="STR_store_cancel">
+		<Original>Cancel</Original>
+		<Russian>Отмена</Russian>
+	</Key>
+	<Key ID="STR_store_tax">
+		<Original>Tax</Original>
+		<Russian>Налог</Russian>
+	</Key>
+  </Package>
+  <Package name="stats">
+	<Key ID="STR_misc_yes">
+		<Original>Yes</Original>
+		<English>Yes</English>
+		<Russian>Да</Russian>
+	</Key>
+	<Key ID="STR_misc_no">
+		<Original>No</Original>
+		<English>No</English>
+		<Russian>Нет</Russian>
+	</Key>
+	<Key ID="STR_rp_root_self_action">
+		<Original>PDR RP Actions</Original>
+		<English>PDR RP Actions</English>
+		<Russian>ПДР РП Действия</Russian>
+	</Key>
+	<Key ID="STR_check_stats_action">
+		<Original>Check own Stats</Original>
+		<English>Check own Stats</English>
+		<Russian>Посмотреть свои Статы</Russian>
+	</Key>
+	<Key ID="STR_check_debt_action">
+		<Original>Check own Debt</Original>
+		<English>Check own Debt</English>
+		<Russian>Посмотреть свои Долги</Russian>
+	</Key>
+	<Key ID="STR_stats_text_format">
+		<Original>Days since last Lunch: %1\nWork Fatigue: %2/%3\nDebt (PDR): %4\nDebt (Moldova): %5</Original>
+		<Russian>Дней с последнего обеда: %1\nУсталость от Работы: %2/%3\nДолг (ПДР): %4\nДолг (Молдова): %5</Russian>
+	</Key>
+	<Key ID="STR_fatigue_cant_work">
+		<Original>You have accumulated too much Work Fatigue for the day and can't do this action.</Original>
+		<English>You have accumulated too much Work Fatigue for the day and can't do this action.</English>
+		<Russian>Вы накопили слишком много Усталости от Работы за день и не можете совершить это действие.</Russian>
+	</Key>
+	<Key ID="STR_buyThing">
+		<Original>Buy %1</Original>
+		<English>Buy %1</English>
+		<Russian>Купить %1.</Russian>
+	</Key>
+	<Key ID="STR_moneyExchangeReport">
+		<Original>Exchanged %1 %2\nTo %3 %4\nExchange Rate: %5\nChange: %6</Original>
+		<English>Exchanged %1 %2\nTo %3 %4\nExchange Rate: %5\nChange: %6</English>
+		<Russian>Обменял %1 %2\nНа %3 %4\nКурс Обмена: %5\nСдача: %6</Russian>
+	</Key>
+	<Key ID="STR_moneyExchangeNoMoney">
+		<Original>Not enough money in the box for exchange.</Original>
+		<English>Not enough money in the box for exchange.</English>
+		<Russian>Недостаточно денег в ящике для обмена.</Russian>
+	</Key>
+	<Key ID="STR_pay_debt">
+		<Original>Pay Debt to %1</Original>
+		<Russian>Оплатить долг (%1)</Russian>
+	</Key>
+	<Key ID="STR_payment_no_debt">
+		<Original>You don't owe anything to %1.</Original>
+		<Russian>Вы не должны ничего (%1).</Russian>
+	</Key>
+	<Key ID="STR_payment_no_money">
+		<Original>No money of the right currency in the payment box.</Original>
+		<Russian>В коробке нет денег подходящей валюты.</Russian>
+	</Key>
+	<Key ID="STR_payment_success">
+		<Original>You paid %1 %2 towards your debt to %3. Remaining debt: %4</Original>
+		<Russian>Вы оплатили %1 %2 долга (%3). Осталось: %4</Russian>
+	</Key>
+	<Key ID="STR_payment_change">
+		<Original>Returned change: %1 %2</Original>
+		<Russian>Сдача: %1 %2</Russian>
+	</Key>
+   </Package>
+  <Package name="perms">
+	<Key ID="STR_permissionMissing">
+		<Original>The Ability is missing: </Original>
+		<Russian>Отсутствует способность: </Russian>
+	</Key>
+	<Key ID="STR_permission_cooking">
+		<Original>Cooking</Original>
+		<Russian>Готовка</Russian>
+	</Key>
+	<Key ID="STR_permission_accountFull_cityMoney">
+		<Original>City Treasury Access</Original>
+		<Russian>Доступ к Городской Казне</Russian>
+	</Key>
+	<Key ID="STR_permission_accountRead_cityMoney">
+		<Original>City Money Transaction History Access</Original>
+		<Russian>Чтение истории транзакций Городской Казны</Russian>
+	</Key>
+	<Key ID="STR_permission_accountFull_factoryMoney">
+		<Original>Factory Funds Access</Original>
+		<Russian>Доступ к Средствам Завода</Russian>
+	</Key>
+	<Key ID="STR_permission_accountRead_factoryMoney">
+		<Original>Factory Payment Logs Access</Original>
+		<Russian>Чтение истории транзакций завода</Russian>
+	</Key>
+	<Key ID="STR_permission_accountFull_moldovaMoney">
+		<Original>Moldova Funds Access</Original>
+		<Russian>Доступ к Средствам Молдовы</Russian>
+	</Key>
+	<Key ID="STR_permission_accountRead_moldovaMoney">
+		<Original>Moldova Money Transaction History Access</Original>
+		<Russian>Чтение истории транзакций Молдовы</Russian>
+	</Key>
+	<Key ID="STR_permission_debtEditing_PDR">
+		<Original>Operations With Players Debt (PDR)</Original>
+		<Russian>Операции с Долгом Игроков (ПДР)</Russian>
+	</Key>
+	<Key ID="STR_permission_debtEditing_Moldova">
+		<Original>Operations With Players Debt (Moldova)</Original>
+		<Russian>Операции с Долгом Игроков (Молдова)</Russian>
+	</Key>
+	<Key ID="STR_permission_visaGiving_PDR">
+		<Original>Visa Issuing (PDR)</Original>
+		<Russian>Выдача Виз (ПДР)</Russian>
+	</Key>
+	<Key ID="STR_permission_visaGiving_Moldova">
+		<Original>Visa Issuing (Moldova)</Original>
+		<Russian>Выдача Виз (Молдова)</Russian>
+	</Key>
+	<Key ID="STR_permission_sellingIndustrialGoods">
+		<Original>Selling Industrial Goods</Original>
+		<Russian>Продажа Промышленных Товаров</Russian>
+	</Key>
+	<Key ID="STR_permission_passportEditing_PDR">
+		<Original>Passport Editing (PDR)</Original>
+		<Russian>Редактирование Паспортов (ПДР)</Russian>
+	</Key>
+	<Key ID="STR_permission_passportEditing_Moldova">
+		<Original>Passport Editing (Moldova)</Original>
+		<Russian>Редактирование Паспортов (Молдова)</Russian>
+	</Key>
+	<Key ID="STR_permission_numberplateEditing">
+		<Original>Vehicle Numberplate Editing</Original>
+		<Russian>Редактирование Номеров ТС</Russian>
+	</Key>
+  </Package>
+  <Package name="misc">
+	<Key ID="STR_checkNumberPlate">
+		<Original>Check Number Plate</Original>
+		<Russian>Посмотреть Номерной Знак</Russian>
+	</Key>
+	<Key ID="STR_checkRemainingFuel">
+		<Original>Check Fuel in own Gas Tank</Original>
+		<Russian>Проверить Уровень Топлива в Бензобаке</Russian>
+	</Key>
+	<Key ID="STR_checkingRemainingFuel">
+		<Original>Checking Remaining Fuel</Original>
+		<Russian>Проверка Уровня Топлива</Russian>
+	</Key>
+	<Key ID="STR_remainingFuel">
+		<Original>Remaining Fuel in own Gas Tank (Liters):\n %1/%2</Original>
+		<Russian>Осталось Топлива в Бензобаке (Литры):\n %1/%2</Russian>
+	</Key>
+	<Key ID="STR_NewRPDayLoading">
+		<Original>Next RP Day Loading...</Original>
+		<Russian>Загружается новый РП День...</Russian>
+	</Key>
+	<Key ID="STR_NewRPDayStarting">
+		<Original>A new RP day is starting:</Original>
+		<Russian>Начинается новый день RP:</Russian>
+	</Key>
+	<Key ID="STR_rpDay">
+		<Original>Day</Original>
+		<Russian>День</Russian>
+	</Key>
+	<Key ID="STR_WorkFatigueReset">
+		<Original>Your work fatigue has been reset.</Original>
+		<Russian>Ваша усталость от работы была сброшена.</Russian>
+	</Key>
+	<Key ID="STR_HungerIncreased">
+		<Original>Your hunger has been increased.</Original>
+		<Russian>Ваш голод увеличился.</Russian>
+	</Key>
+	<Key ID="STR_DailyBillsAdded">
+		<Original>Your daily bills have been added to your debt along with interest.</Original>
+		<Russian>Ваши ежедневные счета были добавлены к вашему долгу вместе с процентами.</Russian>
+	</Key>
+	<Key ID="STR_NoMoviesFound">
+		<Original>No movies found in the inventory!</Original>
+		<Russian>Не найдено фильмов в инвентаре!</Russian>
+	</Key>
+  </Package>
+  <Package name="journals">
+	<Key ID="STR_transaction_log_entry">
+		<Original>%1) %2. Operation: %3. User: %4. Amount: %5. Balance: %6. Note: %7</Original>
+		<Russian>%1) %2. Операция: %3. Пользователь: %4. Сумма Операции: %5. Баланс после Операции: %6. Примечание: %7</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_Deposit">
+		<Original>&lt;t color='#5454ff'&gt;Deposit&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#5454ff'&gt;Внесение Средств&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_Withdrawal">
+		<Original>&lt;t color='#ff6a3d'&gt;Withdrawal&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#ff6a3d'&gt;Снятие Средств&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_DebtPayment">
+		<Original>&lt;t color='#9eff66'&gt;Debt Payment&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#9eff66'&gt;Оплата Долга&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_DebtPaymentOffline">
+		<Original>&lt;t color='#ababab'&gt;Debt Payment (Player Offline)&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#ababab'&gt;Оплата Долга (Игрок Оффлайн)&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_FactoryTax">
+		<Original>&lt;t color='#10a137'&gt;Factory Tax&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#10a137'&gt;Налог от Фабрики&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_SaleOfProducts">
+		<Original>&lt;t color='#8336ff'&gt;Sale of Products&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#8336ff'&gt;Продажа Продукции&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_FuelTrade">
+		<Original>&lt;t color='#8336ff'&gt;Sale of Fuel&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#8336ff'&gt;Продажа Топлива&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_PaymentForWork">
+		<Original>&lt;t color='#f1f514'&gt;Payment For Work&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#f1f514'&gt;Плата за Работу&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_PaymentForWorkOffline">
+		<Original>&lt;t color='#ababab'&gt;Payment For Work (Player Offline)&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#ababab'&gt;Плата за Работу (Игрок Оффлайн)&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_FineIssuing">
+		<Original>&lt;t color='#db0804'&gt;Fine&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#db0804'&gt;Начисление Штрафа&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_ManualAccrualOfDebt">
+		<Original>&lt;t color='#ff6a3d'&gt;Manual Debt Accrual&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#ff6a3d'&gt;Начисление Долга Вручную&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_DebtWriteOff">
+		<Original>&lt;t color='#8336ff'&gt;Manual Debt Write-Off&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#8336ff'&gt;Списание Долга&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_DailyBills">
+		<Original>&lt;t color='#ffeb36'&gt;Daily Bills&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#ffeb36'&gt;Ежедневные Налоги&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_DailyInterest">
+		<Original>&lt;t color='#f08b1f'&gt;Daily Interest&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#f08b1f'&gt;Ежедневные Проценты на Долг&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_SalesTax">
+		<Original>&lt;t color='#b184fa'&gt;Sales Tax&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#b184fa'&gt;Налог на Продажи&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transactions_title">
+		<Original>Transaction History:</Original>
+		<Russian>История Транзакций:</Russian>
+	</Key>
+	<Key ID="STR_transactions_automatedSystem">
+		<Original>Automated System</Original>
+		<Russian>Automated System</Russian>
+	</Key>
+  </Package>
+  <Package name="visas">
+	<Key ID="STR_visaAction">
+		<Original>Visas</Original>
+		<Russian>Визы</Russian>
+	</Key>
+	<Key ID="STR_issueVisaActionFormat">
+		<Original>Issue Visa (%1)</Original>
+		<Russian>Выдать Визу (%1)</Russian>
+	</Key>
+	<Key ID="STR_revokeVisaActionFormat">
+		<Original>Revoke Visa (%1)</Original>
+		<Russian>Аннулировать Визу (%1)</Russian>
+	</Key>
+	<Key ID="STR_putEntryActionFormat">
+		<Original>Put Entry Stamp (%1)</Original>
+		<Russian>Поставить Штамп о Въезде (%1)</Russian>
+	</Key>
+	<Key ID="STR_putExitActionFormat">
+		<Original>Put Exit Stamp (%1)</Original>
+		<Russian>Поставить Штамп о Выезде (%1)</Russian>
+	</Key>
+	<Key ID="STR_visaFormat">
+		<Original>%1 Visa: %2</Original>
+		<Russian>%1 Виза: %2</Russian>
+	</Key>
+	<Key ID="STR_visaStatusValid">
+		<Original>Valid</Original>
+		<Russian>Валидна</Russian>
+	</Key>
+	<Key ID="STR_visaStatusRevoked">
+		<Original>Revoked</Original>
+		<Russian>Аннулирована</Russian>
+	</Key>
+	<Key ID="STR_borderCrossings">
+		<Original>Latest Border Crossings</Original>
+		<Russian>Последние пересечения границ</Russian>
+	</Key>
+	<Key ID="STR_borderEntry">
+		<Original>Entry</Original>
+		<Russian>Въезд</Russian>
+	</Key>
+	<Key ID="STR_borderExit">
+		<Original>Exit</Original>
+		<Russian>Выезд</Russian>
+	</Key>
+	<Key ID="STR_countryPDR">
+		<Original>PDR</Original>
+		<Russian>ПДР</Russian>
+	</Key>
+	<Key ID="STR_countryMoldova">
+		<Original>Moldova</Original>
+		<Russian>Молдова</Russian>
+	</Key>
+  </Package>
+  <Package name="passportActions">
+	<Key ID="STR_checkPassport">
+		<Original>Check Passport</Original>
+		<Russian>Посмотреть Паспорт</Russian>
+	</Key>
+	<Key ID="STR_showPassport">
+		<Original>Show Passport</Original>
+		<Russian>Показать Паспорт</Russian>
+	</Key>
+	<Key ID="STR_showingPassport">
+		<Original>Showing Passport</Original>
+		<Russian>Показывается Паспорт</Russian>
+	</Key>
+	<Key ID="STR_stopShowingPassport">
+		<Original>Stop Showing</Original>
+		<Russian>Перестать Показывать</Russian>
+	</Key>
+	<Key ID="STR_passportAlreadyShown">
+		<Original>%1 tried to show you their Passport.</Original>
+		<Russian>%1 попытался показать вам своё Паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportShowing">
+		<Original>%1 is showing you their Passport.</Original>
+		<Russian>%1 показывает вам своё Паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportHiding">
+		<Original>%1 is no longer showing you their Passport.</Original>
+		<Russian>%1 больше не показывает вам своё Паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportStateLooking">
+		<Original>%1 is looking at your passport.</Original>
+		<Russian>%1 смотрит ваш паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportStateNotLooking">
+		<Original>%1 is no longer looking at your passport.</Original>
+		<Russian>%1 больше не смотрит ваш паспорт.</Russian>
+	</Key>
+	<Key ID="STR_passportStateBusy">
+		<Original>%1 is busy right now and can't look at your passport.</Original>
+		<Russian>%1 сейчас занят и не может посмотреть ваш паспорт.</Russian>
+	</Key>
+	</Package>
+	<Package name="civilianInfo">
+	<Key ID="STR_govtJobFormat">
+		<Original>Government Job: %1</Original>
+		<Russian>Гос. Должность: %1</Russian>
+	</Key>
+	<Key ID="STR_govtSalaryFormat">
+		<Original>Government Salary: %1</Original>
+		<Russian>Гос. Оклад: %1</Russian>
+	</Key>
+	<Key ID="STR_dailyBills">
+		<Original>Daily Bills: %1</Original>
+		<Russian>Ежедневные Налоги: %1</Russian>
+	</Key>
+	<Key ID="STR_debtInfo">
+		<Original>[Debt Information]</Original>
+		<Russian>[Информация о Долгах]</Russian>
+	</Key>
+	<Key ID="STR_registrationAddress">
+		<Original>[Registration address]</Original>
+		<Russian>[Адрес Прописки]</Russian>
+	</Key>
+	<Key ID="STR_ownedProperty">
+		<Original>[Owned Property]</Original>
+		<Russian>[Недвижимость в собственности]</Russian>
+	</Key>
+	<Key ID="STR_registeredVehicles">
+		<Original>[Registered Vehicles]</Original>
+		<Russian>[Зарегистрированные Т.С.]</Russian>
+	</Key>
+	<Key ID="STR_passportNotes">
+		<Original>[Notes]</Original>
+		<Russian>[Прочее]</Russian>
+	</Key>
+	<Key ID="STR_editPlayerDataHeader">
+		<Original>Edit Passport Data</Original>
+		<Russian>Редактировать паспортные данные</Russian>
+	</Key>
+	<Key ID="STR_editDescGovtJob">
+		<Original>Official government role of the player</Original>
+		<Russian>Официальная государственная должность игрока</Russian>
+	</Key>
+	<Key ID="STR_editDescGovtSalary">
+		<Original>Daily salary as a number</Original>
+		<Russian>Ежедневная зарплата (число)</Russian>
+	</Key>
+	<Key ID="STR_editDescDailyBills">
+		<Original>How much the player pays in bills daily</Original>
+		<Russian>Сколько игрок платит по счетам в день</Russian>
+	</Key>
+	<Key ID="STR_editDescRegAddress">
+		<Original>The official address of registration</Original>
+		<Russian>Официальный адрес регистрации</Russian>
+	</Key>
+	<Key ID="STR_editDescOwnedProps">
+		<Original>List of owned properties (one per line)</Original>
+		<Russian>Список недвижимости в собственности (по одному в строке)</Russian>
+	</Key>
+	<Key ID="STR_editDescRegVehicles">
+		<Original>List of registered vehicle plates (one per line)</Original>
+		<Russian>Список номеров зарегистрированных ТС (по одному в строке)</Russian>
+	</Key>
+	<Key ID="STR_editDescPassportNotes">
+		<Original>Special notes stored in the passport</Original>
+		<Russian>Особые заметки, хранящиеся в паспорте</Russian>
+	</Key>
+	<Key ID="STR_editErrorInvalidNumbers">
+		<Original>Error: Salary and Daily Bills must be valid numbers.</Original>
+		<Russian>Ошибка: зарплата и ежедневные счета должны быть числами.</Russian>
+	</Key>
+	<Key ID="STR_editSuccess">
+		<Original>Player data updated successfully.</Original>
+		<Russian>Данные игрока успешно обновлены.</Russian>
+	</Key>
+	<Key ID="STR_editAnyPassportAction">
+		<Original>Edit Passport</Original>
+		<Russian>Редактировать паспорт</Russian>
+	</Key>
+	<Key ID="STR_editErrorWrongCountry">
+		<Original>You do not have permission to edit the passport of this country: %1</Original>
+		<Russian>У вас нет прав на редактирование паспорта этой страны: %1</Russian>
+	</Key>
+	<Key ID="STR_passportEditCategory">
+		<Original>Passport Actions</Original>
+		<Russian>Действия с Паспортом</Russian>
+	</Key>
+	<Key ID="STR_debtEditDialogTitle">
+		<Original>Debt for %1 (Current: %2)</Original>
+		<Russian>Долг (%1) (Текущий: %2)</Russian>
+	</Key>
+	<Key ID="STR_debtEditDialogDesc">
+		<Original>Enter the updated debt amount for %1.</Original>
+		<Russian>Введите сумму долга (%1)</Russian>
+	</Key>
+	<Key ID="STR_debtEditErrorInvalid">
+		<Original>Invalid amount: %1. Only numeric values allowed.</Original>
+		<Russian>Недопустимая сумма: %1. Разрешены только числа.</Russian>
+	</Key>
+	<Key ID="STR_debtEditSuccess">
+		<Original>Successfully updated debt for %1 to %2.</Original>
+		<Russian>%1: Долг обновлён: %2</Russian>
+	</Key>
+	<Key ID="STR_editDebtActionFormat">
+		<Original>Operations with Debt (%1)</Original>
+		<Russian>Операции с Долгом (%1)</Russian>
+	</Key>
+	<Key ID="STR_operation_pretty_issue_fine">
+		<Original>Issue a Fine</Original>
+		<Russian>Выписать Штраф</Russian>
+	</Key>
+	<Key ID="STR_operation_pretty_add_debt">
+		<Original>Add Debt</Original>
+		<Russian>Добавить Долг</Russian>
+	</Key>
+	<Key ID="STR_operation_pretty_write_off_debt">
+		<Original>Write-Off Debt</Original>
+		<Russian>Списать Долг</Russian>
+	</Key>
+	<Key ID="STR_viewOthersDebtActionFormat">
+		<Original>View Debt History (%1)</Original>
+		<Russian>Посмотреть историю Долга (%1)</Russian>
+	</Key>
+	<Key ID="STR_edit_title_amount">
+		<Original>Amount</Original>
+		<Russian>Сумма</Russian>
+	</Key>
+	<Key ID="STR_edit_desc_amount">
+		<Original>Amount to Add or Write-Off</Original>
+		<Russian>Сумма для Добавления или Списания</Russian>
+	</Key>
+	<Key ID="STR_list_choose_operation">
+		<Original>Choose Operation:</Original>
+		<Russian>Выберите Операцию:</Russian>
+	</Key>
+	<Key ID="STR_accountActionDashboard">
+		<Original>Open Dashboard</Original>
+		<Russian>Открыть Контрольную Панель</Russian>
+	</Key>
+	<Key ID="STR_accountActionWithdraw">
+		<Original>Withdraw from account</Original>
+		<Russian>Снять со счёта</Russian>
+	</Key>
+	<Key ID="STR_accountActionDeposit">
+		<Original>Deposit to account</Original>
+		<Russian>Положить на счёт</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal">
+		<Original>Show Transaction History</Original>
+		<Russian>Посмотреть историю транзакций</Russian>
+	</Key>
+	<Key ID="STR_accountDialogWithdrawTitle">
+		<Original>Withdraw from %1 (Balance: %2)</Original>
+		<Russian>Снятие с %1 (Баланс: %2)</Russian>
+	</Key>
+	<Key ID="STR_accountDialogDepositTitle">
+		<Original>Deposit to %1 (Balance: %2)</Original>
+		<Russian>Пополнение %1 (Баланс: %2)</Russian>
+	</Key>
+	<Key ID="STR_accountAmount">
+		<Original>Amount</Original>
+		<Russian>Сумма</Russian>
+	</Key>
+	<Key ID="STR_accountBalance">
+		<Original>Balance: (%1)</Original>
+		<Russian>Баланс: (%1)</Russian>
+	</Key>
+	<Key ID="STR_accountDialogWithdrawDesc">
+		<Original>Choose amount of money to withdraw from this account.</Original>
+		<Russian>Выберите сумму для снятия со счёта.</Russian>
+	</Key>
+	<Key ID="STR_accountDialogDepositDesc">
+		<Original>Choose amount of money to deposit into this account.</Original>
+		<Russian>Выберите сумму для пополнения счёта.</Russian>
+	</Key>
+	<Key ID="STR_accountDialogWithdrawAll">
+		<Original>Withdraw all</Original>
+		<Russian>Снять всё</Russian>
+	</Key>
+	<Key ID="STR_accountDialogDepositAll">
+		<Original>Deposit everything from box</Original>
+		<Russian>Внести всё из ящика</Russian>
+	</Key>
+	<Key ID="STR_accountDialogReason">
+		<Original>Operation Reason</Original>
+		<Russian>Причина операции</Russian>
+	</Key>
+	<Key ID="STR_accountDialogReasonDesc">
+		<Original>Explain the purpose of this transaction.</Original>
+		<Russian>Укажите причину данной операции.</Russian>
+	</Key>
+	<Key ID="STR_accountDialogError">
+		<Original>"%1" is not a valid number.</Original>
+		<Russian>«%1» не является числом.</Russian>
+	</Key>
+	<Key ID="STR_accountDialogNotEnoughInAccount">
+		<Original>Not enough money in the account!</Original>
+		<Russian>Недостаточно средств на счёте!</Russian>
+	</Key>
+	<Key ID="STR_accountDialogNotEnoughInBox">
+		<Original>Not enough money in the box!</Original>
+		<Russian>Недостаточно денег в ящике!</Russian>
+	</Key>
+	<Key ID="STR_accountDialogNoAccess">
+		<Original>You are not authorized to access this account.</Original>
+		<Russian>У вас нет доступа к этому счёту.</Russian>
+	</Key>
+	<Key ID="STR_accountDialogSuccess">
+		<Original>Transaction completed: %1 %2</Original>
+		<Russian>Операция завершена: %1 %2</Russian>
+	</Key>
+	<Key ID="STR_account_debt">
+		<Original>Debt of %1 %2 to %3</Original>
+		<Russian>Долг %1 %2 стране %3</Russian>
+	</Key>
+	<Key ID="STR_account_cityMoney">
+		<Original>City Treasury</Original>
+		<Russian>Городская казна</Russian>
+	</Key>
+	<Key ID="STR_account_factoryMoney">
+		<Original>Factory Funds</Original>
+		<Russian>Средства завода</Russian>
+	</Key>
+	<Key ID="STR_account_moldovaMoney">
+		<Original>Moldova Money</Original>
+		<Russian>Средства Молдовы</Russian>
+	</Key>
+	<Key ID="STR_accountActionRoot">
+		<Original>Account operations</Original>
+		<Russian>Операции со счётом</Russian>
+	</Key>
+	<Key ID="STR_operationsCity">
+		<Original>City Control</Original>
+		<Russian>Управление Городом</Russian>
+	</Key>
+	<Key ID="STR_accountOperationsCity">
+		<Original>City Funds Operations</Original>
+		<Russian>Операции с Городской Казной</Russian>
+	</Key>
+	<Key ID="STR_operationsFactory">
+		<Original>Factory Control</Original>
+		<Russian>Управление Фабрикой</Russian>
+	</Key>
+	<Key ID="STR_accountOperationsFactory">
+		<Original>Factory Funds Operations</Original>
+		<Russian>Операции со Средствами Завода</Russian>
+	</Key>
+	<Key ID="STR_accountOperationsMoldova">
+		<Original>Moldova Money Operations</Original>
+		<Russian>Операции со Средствами Молдовы</Russian>
+	</Key>
+  </Package>
+  <Package name="hud">
+	<Key ID="STR_hudClose">
+		<Original>Close</Original>
+		<Russian>Закрыть</Russian>
+	</Key>
+	<Key ID="STR_hudCons1">
+		<Original>F.cons: %1L/km</Original>
+		<Russian>Расх.: %1 Л/км</Russian>
+	</Key>
+	<Key ID="STR_hudCons2">
+		<Original>F.left: %1/%2L</Original>
+		<Russian>Бак: %1/%2Л</Russian>
+	</Key>
+	<Key ID="STR_hudCons3">
+		<Original>Rng: %1km</Original>
+		<Russian>Запас: %1км</Russian>
+	</Key>
+	<Key ID="STR_JournalPrev">
+		<Original>&lt; Previous</Original>
+		<Russian>&lt; Предыдущая</Russian>
+	</Key>
+	<Key ID="STR_JournalNext">
+		<Original>Next &gt;</Original>
+		<Russian>Следующая &gt;</Russian>
+	</Key>
+	<Key ID="STR_JournalEmpty">
+		<Original>No entries in this journal.</Original>
+		<Russian>Нет записей в этом журнале.</Russian>
+	</Key>
+	<Key ID="STR_hudClose">
+		<Original>Close</Original>
+		<Russian>Закрыть</Russian>
+	</Key>
+	<Key ID="STR_Journal_Loading">
+		<Original>&lt;t size='1.5' align='center'&gt;Loading...&lt;/t&gt;</Original>
+		<Russian>&lt;t size='1.5' align='center'&gt;Загрузка&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_header_pdr_rp">
+		<Original>PDR RP</Original>
+		<Russian>ПДР РП</Russian>
+	</Key>
+
+	<Key ID="STR_rpdialog_current_day">
+		<Original>Current Day</Original>
+		<Russian>Текущий день</Russian>
+	</Key>
+
+	<Key ID="STR_rpdialog_days_since_meal">
+		<Original>Days Since Last Meal</Original>
+		<Russian>Дней с последнего приёма пищи</Russian>
+	</Key>
+
+	<Key ID="STR_rpdialog_work_fatigue">
+		<Original>Work Fatigue</Original>
+		<Russian>Усталость от работы</Russian>
+	</Key>
+
+	<Key ID="STR_rpdialog_citizenship">
+		<Original>Citizenship</Original>
+		<Russian>Гражданство</Russian>
+	</Key>
+
+	<Key ID="STR_rpdialog_permissions">
+		<Original>Permissions / Abilities</Original>
+		<Russian>Права / Умения</Russian>
+	</Key>
+
+	<Key ID="STR_rpdialog_debts">
+		<Original>Debts</Original>
+		<Russian>Долги</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_rateday">
+		<Original>(+ %1%%/Day)</Original>
+		<Russian>(+ %1%%/День)</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_countryPDR">
+		<Original>PDR</Original>
+		<Russian>ПДР</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_countryMoldova">
+		<Original>Moldova</Original>
+		<Russian>Молдова</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_history">
+		<Original>History</Original>
+		<Russian>История</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_openpassport">
+		<Original>Open Passport</Original>
+		<Russian>Открыть Паспорт</Russian>
+	</Key>
+
+  </Package>
+  <Package name="zeusModules">
+	<Key ID="STR_dive_pdr_module_title">
+		<Original>Dive's PDR RP Modules</Original>
+		<Russian>Dive's ПДР РП Модули</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_advance_day">
+		<Original>Advance Day</Original>
+		<Russian>.Продвинуть День</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_edit_world">
+		<Original>Edit World Variables</Original>
+		<Russian>Ред. Настройки Мира</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_edit_player">
+		<Original>Edit Player Variables</Original>
+		<Russian>Ред. Настройки Игрока</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_edit_number_plate">
+		<Original>Edit Car Numberplate</Original>
+		<Russian>Ред. Номер Автомобиля</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_toggle_tram">
+		<Original>Toggle Tram</Original>
+		<Russian>Вкл/Выкл Трамвай</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_tram_status">
+		<Original>Tram enabled: %1</Original>
+		<Russian>Трамвай включен: %1</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_edit_perms">
+		<Original>Edit Player Permissions</Original>
+		<Russian>Ред. Разрешения Игрока</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_edit_passport">
+		<Original>Edit Player Civilian Data</Original>
+		<Russian>Ред. Гражд. Инф. Игрока</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_edit_debt_pdr">
+		<Original>Edit Player Debt (PDR)</Original>
+		<Russian>Ред. Долг Игрока (ПДР)</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_view_debt_pdr">
+		<Original>View Player Debt Log (PDR)</Original>
+		<Russian>Откр. Лог Долга Игрока (ПДР)</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_edit_debt_moldova">
+		<Original>Edit Player Debt (Moldova)</Original>
+		<Russian>Ред. Долг Игрока (Молдова)</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_view_debt_moldova">
+		<Original>View Player Debt Log (Moldova)</Original>
+		<Russian>Откр. Лог Долга Игрока (Молдова)</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_hint_place_on_player">
+		<Original>Needs to be placed on a Player</Original>
+		<Russian>Надо поместить на Игрока</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_hint_place_on_vehicle">
+		<Original>Needs to be placed on a Vehicle</Original>
+		<Russian>Надо поместить на Транспортное Средство</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_day_advancing_settings">
+		<Original>Day advancing settings</Original>
+		<Russian>Настройки продвижения дня</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_players_pay_interest_title">
+		<Original>Players pay interest</Original>
+		<Russian>Игроки платят проценты</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_players_pay_interest_desc">
+		<Original>Whether or not the interest should be charged on all players debts, both online and offline</Original>
+		<Russian>Следует ли начислять проценты на долги всех игроков, как в сети, так и офлайн</Russian>
+	</Key>
+
+	<Key ID="STR_dive_pdr_players_pay_taxes_title">
+		<Original>Players pay taxes</Original>
+		<Russian>Игроки платят налоги</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_players_pay_taxes_desc">
+		<Original>Whether or not the taxes should be charged from players, both online and offline</Original>
+		<Russian>Следует ли начислять налоги игрокам, как в сети, так и офлайн</Russian>
+	</Key>
+
+	<Key ID="STR_dive_pdr_offline_players_work_title">
+		<Original>Offline Players Work</Original>
+		<Russian>Офлайн-игроки работают</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_offline_players_work_desc">
+		<Original>Whether or not offline players should be simulated as if working</Original>
+		<Russian>Следует ли моделировать офлайн-игроков как работающих</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_edit_plate_title">
+		<Original>Edit Number Plate</Original>
+		<Russian>Редактировать Номер</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_edit_plate_result">
+		<Original>Number Plate Changed to:\n%1</Original>
+		<Russian>Номер Автомобиля изменен:\n%1</Russian>
+	</Key>
+  </Package>
+  <Package name="dashboards">
+	<Key ID="STR_industry_status_open">
+		<Original>Open</Original>
+		<Russian>Открыто</Russian>
+	</Key>
+	<Key ID="STR_industry_status_closed">
+		<Original>Closed</Original>
+		<Russian>Закрыто</Russian>
+	</Key>
+	<Key ID="STR_industry_dashboard">
+		<Original>
+			&lt;t size='1.5' align='center' color='#ffaa00'&gt;Director of Industry Dashboard&lt;/t&gt;
+			&lt;br/&gt;
+			&lt;br/&gt;Factory Funds:       %1
+			&lt;br/&gt;&lt;br/&gt;Farm Status:
+			&lt;br/&gt;&lt;t color='%2'&gt;%3&lt;/t&gt;
+			&lt;br/&gt;Pay:                  %4
+			&lt;br/&gt;Hay in stockpile:     %5
+			&lt;br/&gt;&lt;br/&gt;Quarry Status:
+			&lt;br/&gt;&lt;t color='%6'&gt;%7&lt;/t&gt;
+			&lt;br/&gt;Pay:                  %8
+			&lt;br/&gt;Ore in stockpile:     %9
+			&lt;br/&gt;&lt;br/&gt;Factory Status:
+			&lt;br/&gt;&lt;t color='%10'&gt;%11&lt;/t&gt;
+			&lt;br/&gt;Pay:                  %12
+			&lt;br/&gt;Goods in stockpile:   %13
+			&lt;br/&gt;&lt;br/&gt;&lt;t size='1.3' color='#ffaa00'&gt;Financial Breakdown per Item Sold&lt;/t&gt;
+			&lt;br/&gt;--------------------------
+			&lt;br/&gt;&lt;t color='#aaaaaa'&gt;(Not Adjustable)&lt;/t&gt;
+			&lt;br/&gt;Goods are sold for:  %14
+			&lt;br/&gt;&lt;br/&gt;&lt;t color='#00ffff'&gt;(Adjustable)&lt;/t&gt;
+			&lt;br/&gt;Production Cost:
+			&lt;br/&gt;--Farm:     %15
+			&lt;br/&gt;--Quarry    %16
+			&lt;br/&gt;--Factory   %17
+			&lt;br/&gt;Total:               %18
+			&lt;br/&gt;&lt;br/&gt;&lt;t color='#aaaaaa'&gt;(Controlled by City Mayor)&lt;/t&gt;
+			&lt;br/&gt;City Tax (%19%%):      %20
+			&lt;br/&gt;&lt;br/&gt;&lt;t color='#00ffff'&gt;(Adjustable)&lt;/t&gt;
+			&lt;br/&gt;Director Commission  %21
+			&lt;br/&gt;--------------------------
+			&lt;br/&gt;Factory Balance      %22
+		</Original>
+		<Russian>
+			&lt;t size='1.5' align='center' color='#ffaa00'&gt;Панель Директора Промышленности&lt;/t&gt;
+			&lt;br/&gt;
+			&lt;br/&gt;Средства Завода:         %1
+			&lt;br/&gt;&lt;br/&gt;Ферма:
+			&lt;br/&gt;&lt;t color='%2'&gt;%3&lt;/t&gt;
+			&lt;br/&gt;Оплата:               %4
+			&lt;br/&gt;Сена на складе:        %5
+			&lt;br/&gt;&lt;br/&gt;Карьер:
+			&lt;br/&gt;&lt;t color='%6'&gt;%7&lt;/t&gt;
+			&lt;br/&gt;Оплата:               %8
+			&lt;br/&gt;Руды на складе:       %9
+			&lt;br/&gt;&lt;br/&gt;Завод:
+			&lt;br/&gt;&lt;t color='%10'&gt;%11&lt;/t&gt;
+			&lt;br/&gt;Оплата:               %12
+			&lt;br/&gt;Продукция на складе:  %13
+			&lt;br/&gt;&lt;br/&gt;&lt;t size='1.3' color='#ffaa00'&gt;Финансовый Отчет за каждую проданную продукцию&lt;/t&gt;
+			&lt;br/&gt;--------------------------
+			&lt;br/&gt;&lt;t color='#aaaaaa'&gt;(Не изменить)&lt;/t&gt;
+			&lt;br/&gt;Продажа товара:       %14
+			&lt;br/&gt;&lt;br/&gt;&lt;t color='#00ffff'&gt;(Можно изменить)&lt;/t&gt;
+			&lt;br/&gt;Стоимость производства:
+			&lt;br/&gt;--Ферма:     %15
+			&lt;br/&gt;--Карьер    %16
+			&lt;br/&gt;--Завод     %17
+			&lt;br/&gt;Всего:               %18
+			&lt;br/&gt;&lt;br/&gt;&lt;t color='#aaaaaa'&gt;(Контролируется Мэром Города)&lt;/t&gt;
+			&lt;br/&gt;Налог (%19%%):        %20
+			&lt;br/&gt;&lt;br/&gt;&lt;t color='#00ffff'&gt;(Можно изменить)&lt;/t&gt;
+			&lt;br/&gt;Комиссия директора:  %21
+			&lt;br/&gt;--------------------------
+			&lt;br/&gt;Остаток завода:      %22
+		</Russian>
+	</Key>
+	
+	<Key ID="STR_city_dashboard">
+		<Original>
+		&lt;t size="2" align="center"&gt;Mayor Dashboard&lt;/t&gt;
+		&lt;br/&gt;&lt;br/&gt;City Money:                  %1
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
+		&lt;br/&gt;Daily Interest on Debt:        %2%%
+		&lt;br/&gt;Sales Tax on Goods/Services:   %9%%
+		&lt;br/&gt;Factory Goods Tax:             %3%% (%4/Item)
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
+		&lt;br/&gt;Gas Station:
+		&lt;br/&gt;%5
+		&lt;br/&gt;Fuel Sell Price:                %6
+		&lt;br/&gt;Fuel in storage (liters):      %7
+		&lt;br/&gt;&lt;br/&gt;Citizens:
+		&lt;br/&gt;%8
+		</Original>
+		<Russian>
+		&lt;t size="2" align="center"&gt;Контрольная Панель Мэра&lt;/t&gt;
+		&lt;br/&gt;&lt;br/&gt;Городские деньги:                  %1
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
+		&lt;br/&gt;Дневной процент по долгу:        %2%%
+		&lt;br/&gt;SНалог на продажи товаров/услуг: %9%%
+		&lt;br/&gt;Налог на продукцию фабрики:      %3%% (%4/единица)
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
+		&lt;br/&gt;Заправочная станция:
+		&lt;br/&gt;%5
+		&lt;br/&gt;Цена за литр топлива:            %6
+		&lt;br/&gt;Топливо в хранилище (литры):     %7
+		&lt;br/&gt;&lt;br/&gt;Граждане:
+		&lt;br/&gt;%8
+		</Russian>
+	</Key>
+
+	<Key ID="STR_moldova_dashboard">
+		<Original>
+		&lt;t size="2" align="center"&gt;Moldova Dashboard&lt;/t&gt;
+		&lt;br/&gt;&lt;br/&gt;Money:                  %1
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
+		&lt;br/&gt;Daily Interest on Debt:        %2%%
+		&lt;br/&gt;Sales Tax on Goods/Services:   %7%%
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
+		&lt;br/&gt;Gas Station:
+		&lt;br/&gt;%3
+		&lt;br/&gt;Fuel Sell Price:                %4
+		&lt;br/&gt;Fuel in storage (liters):      %5
+		&lt;br/&gt;&lt;br/&gt;Citizens:
+		&lt;br/&gt;%6
+		</Original>
+		<Russian>
+		&lt;t size="2" align="center"&gt;Контрольна Панель Молдовии&lt;/t&gt;
+		&lt;br/&gt;&lt;br/&gt;Казна:                 %1
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
+		&lt;br/&gt;Дневной процент по долгу:        %2%%
+		&lt;br/&gt;SНалог на продажи товаров/услуг: %7%%
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
+		&lt;br/&gt;Заправочная станция:
+		&lt;br/&gt;%3
+		&lt;br/&gt;Цена за литр топлива:            %4
+		&lt;br/&gt;Топливо в хранилище (литры):     %5
+		&lt;br/&gt;&lt;br/&gt;Граждане:
+		&lt;br/&gt;%6
+		</Russian>
+	</Key>
+
+	<Key ID="STR_city_status_open">
+		<Original>Open</Original>
+		<Russian>Открыто</Russian>
+	</Key>
+
+	<Key ID="STR_city_status_closed">
+		<Original>Closed</Original>
+		<Russian>Закрыто</Russian>
+	</Key>
+
+	<Key ID="STR_citizen_online">
+		<Original>Online</Original>
+		<Russian>Онлайн</Russian>
+	</Key>
+
+	<Key ID="STR_citizen_offline">
+		<Original>Offline</Original>
+		<Russian>Оффлайн</Russian>
+	</Key>
+
+	<Key ID="STR_citizen_debt">
+		<Original>Debt:</Original>
+		<Russian>Долг:</Russian>
+	</Key>
+
+	<Key ID="STR_citizen_dailyBills">
+		<Original>Daily Bills:</Original>
+		<Russian>Ежедневные счета:</Russian>
+	</Key>
+
+	<Key ID="STR_citizen_job">
+		<Original>Government Job:</Original>
+		<Russian>Гос. должность:</Russian>
+	</Key>
+
+	<Key ID="STR_citizen_salary">
+		<Original>Government Salary:</Original>
+		<Russian>Гос. зарплата:</Russian>
+	</Key>
+
+	
+  </Package>
+</Project>☻☻

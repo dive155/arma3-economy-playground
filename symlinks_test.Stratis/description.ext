@@ -1,0 +1,12 @@
+#include "hud\customHUD.hpp"
+
+class CfgFunctions {
+    #include "node_modules\grad-passport\cfgFunctions.hpp"
+	#include "cau\userinputmenus\CfgFunctions.cpp"
+};
+
+#include "descriptionPassports.hpp"
+#include "hud\longTextDialog.hpp"
+#include "hud\PagedJournalDialog.hpp"
+#include "hud\PDR_RP_Dialog.hpp"
+#include "hud\PDR_RP_Dialog2.hpp"
