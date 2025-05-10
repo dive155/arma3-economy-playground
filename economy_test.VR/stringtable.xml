@@ -216,6 +216,14 @@
 		<English>Not enough money in the box for exchange.</English>
 		<Russian>Недостаточно денег в ящике для обмена.</Russian>
 	</Key>
+	<Key ID="STR_moneyExchangeViewRate">
+		<Original>Exchange Rates for Leu (Moldova):\nBuy: %1\nSell: %2</Original>
+		<Russian>Курс Обмена Лея (Молдова)\nПокупка: %1\nПродажа: %2</Russian>
+	</Key>
+	<Key ID="STR_moneyExchangeViewRateAction">
+		<Original>View Exchange Rates</Original>
+		<Russian>Посмотреть Курсы Валют</Russian>
+	</Key>
 	<Key ID="STR_pay_debt">
 		<Original>Pay Debt to %1</Original>
 		<Russian>Оплатить долг (%1)</Russian>

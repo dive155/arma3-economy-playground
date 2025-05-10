@@ -36,6 +36,7 @@ private _storeItems = [
 	_storeSoundsConfig,       // Sounds
 	{true},
 	{["salesTaxPdr"] call fnc_getWorldVariable},
+	{["inflationCoef_PDR"] call fnc_getWorldVariable},
 	fnc_giveSalesTaxToCity
 ] execVM "scripts\economy\createStore.sqf";
 
@@ -71,5 +72,6 @@ private _storeItems2 = [
 	_storeSoundsConfig,       // Sounds
 	{true},
 	{["salesTaxMoldova"] call fnc_getWorldVariable},
+	{["inflationCoef_Moldova"] call fnc_getWorldVariable},
 	fnc_giveSalesTaxToMoldova
 ] execVM "scripts\economy\createStore.sqf";
