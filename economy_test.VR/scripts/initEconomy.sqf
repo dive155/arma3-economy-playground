@@ -1,4 +1,4 @@
-_scriptHandle = execVM "scripts\transactionHelpers.sqf";
+_scriptHandle = execVM "scripts\helpers\transactionHelpers.sqf";
 waitUntil { scriptDone _scriptHandle };
 
 _scriptHandle = execVM "scripts\initWorldState.sqf";
@@ -15,38 +15,38 @@ waitUntil { scriptDone _scriptHandle };
 _scriptHandle = execVM "scripts\stats\playerStatsInit.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\initCurrencies.sqf";
+_scriptHandle = execVM "scripts\helpers\initCurrencies.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\initMoneyExchanges.sqf";
+_scriptHandle = execVM "scripts\interactables\initMoneyExchanges.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\initResourceConverters.sqf";
+_scriptHandle = execVM "scripts\interactables\initResourceConverters.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\initGasStations.sqf";
+_scriptHandle = execVM "scripts\interactables\initGasStations.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\initStores.sqf";
+_scriptHandle = execVM "scripts\interactables\initStores.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\initPaymentCashboxes.sqf";
+_scriptHandle = execVM "scripts\interactables\initPaymentCashboxes.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\initAccountCashboxes.sqf";
+_scriptHandle = execVM "scripts\interactables\initAccountCashboxes.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\initExtraInteractions.sqf";
+_scriptHandle = execVM "scripts\helpers\initExtraInteractions.sqf";
 waitUntil { scriptDone _scriptHandle };
 
 _scriptHandle = execVM "scripts\initAdvanceDaySystem.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\initVariablesEditing.sqf";
+_scriptHandle = execVM "scripts\helpers\initVariablesEditing.sqf";
 waitUntil { scriptDone _scriptHandle };
 
 _scriptHandle = execVM "scripts\initZeusModules.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\initDashboards.sqf";
+_scriptHandle = execVM "scripts\helpers\initDashboards.sqf";
 waitUntil { scriptDone _scriptHandle };

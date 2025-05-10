@@ -1,8 +1,8 @@
 // TODO this does not belong here?
-_scriptHandle = execVM "scripts\cityHelpers.sqf";
+_scriptHandle = execVM "scripts\helpers\cityHelpers.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\factoryHelpers.sqf";
+_scriptHandle = execVM "scripts\helpers\factoryHelpers.sqf";
 waitUntil { scriptDone _scriptHandle };
 
 // Hay to Agricultural Products Converter
