@@ -8,6 +8,7 @@ params [
     "_soundsConfig",
 	["_extraCondition", {true}],
 	["_taxGetter", {0}],
+	["_inflationGetter", {1}],
 	["_onItemSold", { params ["itemClass", "_moneyCurrency", "_moneyAmount", "_taxAmount"];}]
 ];
 
@@ -19,6 +20,7 @@ if (isServer) then {
     _buttonObject setVariable ["store_config", _storeItemsConfig, true];
 	_buttonObject setVariable ["extraCondition", _extraCondition, true];
 	_buttonObject setVariable ["taxGetter", _taxGetter, true];
+	_buttonObject setVariable ["inflationGetter", _inflationGetter, true];
 	_buttonObject setVariable ["onItemSold", _onItemSold, true];
 
     _soundsMap = createHashMap;
@@ -40,6 +42,7 @@ if (hasInterface) then {
         private _soundsMap = _target getVariable ["soundsMap", createHashMap];
 		private _extraCondition = _target getVariable ["extraCondition", {true}];
 		private _taxGetter = _target getVariable ["taxGetter", {0}];
+		private _inflationGetter = _target getVariable ["inflationGetter", {1}];
 		private _onItemSold = _target getVariable ["onItemSold", {}];
 		if not (call _extraCondition) exitWith {};
 
@@ -47,6 +50,7 @@ if (hasInterface) then {
 		{
 			private _class = _x select 0;
 			private _price = _x select 1;
+			_price = _price * (call _inflationGetter);
 			private _cfg = configFile >> "CfgWeapons" >> _class;
 			if (!isClass _cfg) then { _cfg = configFile >> "CfgMagazines" >> _class };
 			if (!isClass _cfg) then { _cfg = configFile >> "CfgVehicles" >> _class };
@@ -91,10 +95,12 @@ if (hasInterface) then {
 					private _soundsMap = _target getVariable ["soundsMap", createHashMap];
 					private _extraCondition = _target getVariable ["extraCondition", {true}];
 					private _taxGetter = _target getVariable ["taxGetter", {0}];
+					private _inflationGetter = _target getVariable ["inflationGetter", {1}];
 					private _onItemSold = _target getVariable ["onItemSold", {}];
 					
 					private _class = _data;
 					private _price = _value;
+					_price = _price * (call _inflationGetter);
 					private _tax = ceil (_price *  (call _taxGetter));
 					private _priceWithTax = _price + _tax;
 					

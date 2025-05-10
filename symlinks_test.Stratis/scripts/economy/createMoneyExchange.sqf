@@ -5,7 +5,9 @@ params [
 	"_currencyCode2",
 	"_soundsConfig",
 	["_getExchangeRate", {1}], 			// How much of currency 1 to pay to get 1 currency2
-	["_getSpread", {0}]					// How much spread on buying/selling currency2 (in Units)
+	["_getSpread", {0}],					// How much spread on buying/selling currency2 (in Units)
+	["_inflationGetter1", {1}],
+	["_inflationGetter2", {1}]
 ];
 
 
@@ -15,6 +17,8 @@ if (isServer) then {
 	_buttonObject setVariable ["currencyCode2", _currencyCode2, true];
 	_buttonObject setVariable ["getExchangeRate", _getExchangeRate, true];
 	_buttonObject setVariable ["getSpread", _getSpread, true];
+	_buttonObject setVariable ["inflationGetter1", _inflationGetter1, true];
+	_buttonObject setVariable ["inflationGetter2", _inflationGetter2, true];
 	
 	_soundsMap = createHashMap;
 	_soundsMap set ["success", _soundsConfig select 0];
@@ -25,7 +29,7 @@ if (isServer) then {
 };
 
 fnc_handleMoneyExchangeRequested = {
-	params["_buttonObject", "_buyingSecondCurrency"];
+	params["_buttonObject", "_buyingSecondCurrency", ["_onlyShowRates", false]];
 	
 	_moneyBox = _buttonObject getVariable ["moneyBox", objNull];
 	_currencyCode1 = _buttonObject getVariable ["currencyCode1", objNull];
@@ -33,6 +37,20 @@ fnc_handleMoneyExchangeRequested = {
 	_exchangeRate = call (_buttonObject getVariable ["getExchangeRate", objNull]);
 	_spread = call (_buttonObject getVariable ["getSpread", objNull]);
 	_soundsMap = _buttonObject getVariable ["soundsMap", objNull];
+	
+	_inflationGetter1 = _buttonObject getVariable ["inflationGetter1", {1}];
+	_inflationGetter2 = _buttonObject getVariable ["inflationGetter2", {1}];
+	_inflation1 = call _inflationGetter1;
+	_inflation2 = call _inflationGetter2;
+	_exchangeRate = _exchangeRate * (_inflation1 / _inflation2);
+	_spread = _exchangeRate * _spread;
+	_spread = _spread max 1;
+	_spread = ceil _spread;
+	
+	if (_onlyShowRates) exitWith {
+		private _msg = format [localize "STR_moneyExchangeViewRate", _exchangeRate - _spread, _exchangeRate + _spread];
+		hint (_msg);
+	};
 	
 	if (_buyingSecondCurrency) then {
 		_exchangeRate = _exchangeRate + _spread;
@@ -73,6 +91,10 @@ fnc_handleMoneyExchangeRequested = {
 };
 
 if (hasInterface) then {
+	_processViewExchangeRates = {
+		[_target, true, true] spawn fnc_handleMoneyExchangeRequested;
+	};
+	
 	_processExchangeFirstCurrencyRequest = {
 		[_target, true] spawn fnc_handleMoneyExchangeRequested;
 	};
@@ -80,6 +102,9 @@ if (hasInterface) then {
 	_processExchangeSecondCurrencyRequest = {
 		[_target, false] spawn fnc_handleMoneyExchangeRequested;
 	};
+	
+	_viewRatesAction = ["ViewRatesAction", localize "STR_moneyExchangeViewRateAction", "", _processViewExchangeRates, {true}] call ace_interact_menu_fnc_createAction;
+	[_buttonObject, 0, ["ACE_MainActions"], _viewRatesAction] call ace_interact_menu_fnc_addActionToObject;
 	
 	_formatLoc = localize "STR_buyThing";
 	_secondCurrencyLocalized = format[_formatLoc, localize ("STR_" + _currencyCode2)];

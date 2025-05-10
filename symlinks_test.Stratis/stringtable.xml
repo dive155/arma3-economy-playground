@@ -216,6 +216,14 @@
 		<English>Not enough money in the box for exchange.</English>
 		<Russian>Недостаточно денег в ящике для обмена.</Russian>
 	</Key>
+	<Key ID="STR_moneyExchangeViewRate">
+		<Original>Exchange Rates for Leu (Moldova):\nBuy: %1\nSell: %2</Original>
+		<Russian>Курс Обмена Лея (Молдова)\nПокупка: %1\nПродажа: %2</Russian>
+	</Key>
+	<Key ID="STR_moneyExchangeViewRateAction">
+		<Original>View Exchange Rates</Original>
+		<Russian>Посмотреть Курсы Валют</Russian>
+	</Key>
 	<Key ID="STR_pay_debt">
 		<Original>Pay Debt to %1</Original>
 		<Russian>Оплатить долг (%1)</Russian>
@@ -347,6 +355,10 @@
 	<Key ID="STR_NoMoviesFound">
 		<Original>No movies found in the inventory!</Original>
 		<Russian>Не найдено фильмов в инвентаре!</Russian>
+	</Key>
+	<Key ID="STR_NonPlayableVehicle">
+		<Original>This vehicle is not available for players!</Original>
+		<Russian>Это ТС не доступно для игроков!</Russian>
 	</Key>
   </Package>
   <Package name="journals">
@@ -884,9 +896,38 @@
 		<Russian>Ред. Номер Автомобиля</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_toggle_tram">
-		<Original>Toggle Tram</Original>
-		<Russian>Вкл/Выкл Трамвай</Russian>
+		<Original>Toggle Tram/Lights</Original>
+		<Russian>Вкл/Выкл Трамвай/Свет</Russian>
 	</Key>
+	<Key ID="STR_dive_pdr_tram_enabled">
+		<Original>Tram Enabled</Original>
+		<Russian>Трамвай включен</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_tram_enabled_desc">
+		<Original>Enable or disable the tram system</Original>
+		<Russian>Включить или выключить трамвайную систему</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_lights_enabled_pdr">
+		<Original>Lights Enabled (PDR)</Original>
+		<Russian>Освещение включено (PDR)</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_lights_enabled_pdr_desc">
+		<Original>Toggle PDR city lights</Original>
+		<Russian>Включить или выключить освещение в PDR</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_lights_enabled_moldova">
+		<Original>Lights Enabled (Moldova)</Original>
+		<Russian>Освещение включено (Молдова)</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_lights_enabled_moldova_desc">
+		<Original>Toggle Moldova city lights</Original>
+		<Russian>Включить или выключить освещение в Молдове</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_tram_lights_settings">
+		<Original>Tram and Lights Settings</Original>
+		<Russian>Настройки трамвая и освещения</Russian>
+	</Key>
+
 	<Key ID="STR_dive_pdr_tram_status">
 		<Original>Tram enabled: %1</Original>
 		<Russian>Трамвай включен: %1</Russian>
@@ -1053,6 +1094,11 @@
 		&lt;br/&gt;%5
 		&lt;br/&gt;Fuel Sell Price:                %6
 		&lt;br/&gt;Fuel in storage (liters):      %7
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#ffa500"&gt;Potential Expenses:&lt;/t&gt;
+		&lt;br/&gt;Total salaries to pay: %10
+		&lt;br/&gt;Street Lights: %11, %12, %13
+		&lt;br/&gt;Tram Service: %14, %15, %16
+		&lt;br/&gt;------------&lt;br/&gt;Total: %17
 		&lt;br/&gt;&lt;br/&gt;Citizens:
 		&lt;br/&gt;%8
 		</Original>
@@ -1061,17 +1107,23 @@
 		&lt;br/&gt;&lt;br/&gt;Городские деньги:                  %1
 		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
 		&lt;br/&gt;Дневной процент по долгу:        %2%%
-		&lt;br/&gt;SНалог на продажи товаров/услуг: %9%%
+		&lt;br/&gt;Налог на продажи товаров/услуг: %9%%
 		&lt;br/&gt;Налог на продукцию фабрики:      %3%% (%4/единица)
 		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
 		&lt;br/&gt;Заправочная станция:
 		&lt;br/&gt;%5
 		&lt;br/&gt;Цена за литр топлива:            %6
 		&lt;br/&gt;Топливо в хранилище (литры):     %7
+		&lt;br/&gt;&lt;br/&gt;&lt;t color="#ffa500"&gt;Потенциальные расходы:&lt;/t&gt;
+		&lt;br/&gt;Общие зарплаты к выплате: %10
+		&lt;br/&gt;Уличное освещение: %11, %12, %13
+		&lt;br/&gt;Трамвай: %14, %15, %16
+		&lt;br/&gt;------------&lt;br/&gt;Итого: %17
 		&lt;br/&gt;&lt;br/&gt;Граждане:
 		&lt;br/&gt;%8
 		</Russian>
 	</Key>
+
 
 	<Key ID="STR_moldova_dashboard">
 		<Original>
@@ -1143,7 +1195,27 @@
 		<Original>Government Salary:</Original>
 		<Russian>Гос. зарплата:</Russian>
 	</Key>
+	
+	<Key ID="STR_city_paid">
+		<Original>Paid</Original>
+		<Russian>Оплачено</Russian>
+	</Key>
+
+	<Key ID="STR_city_notPaid">
+		<Original>Not Paid</Original>
+		<Russian>Не оплачено</Russian>
+	</Key>
+
+	<Key ID="STR_city_enabled">
+		<Original>Enabled</Original>
+		<Russian>Включено</Russian>
+	</Key>
+
+	<Key ID="STR_city_disabled">
+		<Original>Disabled</Original>
+		<Russian>Выключено</Russian>
+	</Key>
 
 	
   </Package>
-</Project>☻☻
+</Project>

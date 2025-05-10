@@ -1,10 +1,10 @@
 _scriptHandle = execVM "hud\initLongTextDialog.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\initJournalPresenters.sqf";
+_scriptHandle = execVM "scripts\helpers\initJournalPresenters.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\initVideoPlayers.sqf";
+_scriptHandle = execVM "scripts\helpers\initVideoPlayers.sqf";
 waitUntil { scriptDone _scriptHandle };
 
 // if (hasInterface) then {
@@ -20,5 +20,8 @@ if (hasInterface) then {
 _scriptHandle = execVM "scripts\initEconomy.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\tramController.sqf";
+_scriptHandle = execVM "scripts\helpers\tramController.sqf";
+waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "scripts\helpers\initStreetLights.sqf";
 waitUntil { scriptDone _scriptHandle };
