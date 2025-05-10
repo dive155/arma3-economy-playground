@@ -24,7 +24,7 @@ player addEventHandler ["GetInMan", {
 
 0 spawn {
 	sleep 10;
-	
+	systemChat "updating lights";
 	{
 		private _country = _x;
 		private _lightsOn = [_country] call fnc_areLightsOn;

@@ -28,7 +28,7 @@ fnc_setLightsServer = {
 	_isOn = missionNamespace getVariable [_varName, true];
 	
 	if (_isOn != _enable) then {
-		missionNamespace setVariable [_varName, _enable];
+		missionNamespace setVariable [_varName, _enable, true];
 		[_countryCode, _enable] remoteExec ["fnc_updateLightsLocal"];
 	};
 };
