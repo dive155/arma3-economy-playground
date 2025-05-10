@@ -43,6 +43,9 @@ fnc_handleMoneyExchangeRequested = {
 	_inflation1 = call _inflationGetter1;
 	_inflation2 = call _inflationGetter2;
 	_exchangeRate = _exchangeRate * (_inflation1 / _inflation2);
+	_spread = _exchangeRate * _spread;
+	_spread = _spread max 1;
+	_spread = ceil _spread;
 	
 	if (_onlyShowRates) exitWith {
 		private _msg = format [localize "STR_moneyExchangeViewRate", _exchangeRate - _spread, _exchangeRate + _spread];
