@@ -10,7 +10,8 @@ fnc_createTram = {
 	
 	[{
 		PDR_tram setVariable ["ATRAIN_Local_Velocity", 0]; 
-		PDR_tram setVariable ["ATRAIN_Remote_Velocity", 0, true]; 
+		PDR_tram setVariable ["ATRAIN_Remote_Velocity", 0, true];
+		PDR_tram setVariable ["ATRAIN_Remote_Cruise_Control_Enabled", false, true]; 
 	}, [], 10] call CBA_fnc_waitAndExecute;
 };
 
@@ -24,6 +25,7 @@ fnc_startTram = {
 
 fnc_stopTram = {
 	missionNamespace setVariable ["PDR_tram_enabled", false, true];
+	PDR_tram setVariable ["ATRAIN_Remote_Cruise_Control_Enabled", false, true]; 
 	terminate PDR_tram_travelLoopHandle;
 	terminate PDR_tram_velocityChangeHandle;
 	PDR_tram_velocityChangeHandle = [0] spawn fnc_changeTramSpeed;
