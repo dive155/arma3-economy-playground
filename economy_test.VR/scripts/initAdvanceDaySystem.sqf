@@ -29,8 +29,10 @@ fnc_advanceDayServer = {
 		sleep 1;
 	};
 	
-	call DMP_fnc_saveAll;
 	[_steamIdPlayerPairs] call fnc_handleCivilianInfo;
+	call fnc_handleCityServices;
+	
+	call DMP_fnc_saveAll;
  	[_newDay] remoteExec ["fnc_showNextDayMessage"];
 };
 
@@ -108,6 +110,11 @@ fnc_handleDailyTaxes = {
 	} forEach _steamIdPlayerPairs;
 };
 
+fnc_handleCityServices = {
+	["services_paidTram", false] call fnc_setWorldVariable;
+	["services_paidStreetlights", false] call fnc_setWorldVariable;
+};
+
 // Scenario for offline players
 // Can't work in PDR: Just adding taxes, skip player
 // Can work in PDR:
@@ -133,10 +140,14 @@ fnc_handleOfflinePlayers = {
 		params ["_passportRsc", "_firstName", "_lastName", "_visas", "_debts"];
 		
 		private _countryCode = [_passportRsc] call fnc_getCitizenship;
-		
-		private _hasRightToWork =
-			(_countryCode == "PDR") ||
-			({ _x select 0 == "PDR" && { _x select 1 } } count _visas > 0);
+		private _hasRightToWork = false;
+		if (_countryCode == "PDR") then {
+			_hasRightToWork = true;
+		} else {
+			if (typeName _visas == "ARRAY") then {
+				_hasRightToWork = ({ _x select 0 == "PDR" && { _x select 1 } } count _visas) > 0;
+			};
+		};
 		
 		// Dude can't work in PDR :(
 		if not _hasRightToWork then { continue };
