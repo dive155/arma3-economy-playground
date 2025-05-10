@@ -348,6 +348,10 @@
 		<Original>No movies found in the inventory!</Original>
 		<Russian>Не найдено фильмов в инвентаре!</Russian>
 	</Key>
+	<Key ID="STR_NonPlayableVehicle">
+		<Original>This vehicle is not available for players!</Original>
+		<Russian>Это ТС не доступно для игроков!</Russian>
+	</Key>
   </Package>
   <Package name="journals">
 	<Key ID="STR_transaction_log_entry">

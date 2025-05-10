@@ -18,6 +18,9 @@ waitUntil { scriptDone _scriptHandle };
 _scriptHandle = execVM "scripts\helpers\initCurrencies.sqf";
 waitUntil { scriptDone _scriptHandle };
 
+_scriptHandle = execVM "scripts\helpers\fuelConsumptionCalculations.sqf";
+waitUntil { scriptDone _scriptHandle };
+
 _scriptHandle = execVM "scripts\interactables\initMoneyExchanges.sqf";
 waitUntil { scriptDone _scriptHandle };
 

@@ -91,7 +91,7 @@
 					_fuelRemainingLiters / _litersPerKm
 				} else {0};
 				
-				_litersText = if (_litersPerKm != 0) then { _litersPerKm toFixed 2 } else {"---"};
+				_litersText = if (_litersPerKm != 0) then { _litersPerKm toFixed 1 } else {"---"};
 				_rangeText = if (_estimatedRange != 0) then { _estimatedRange toFixed 1 } else {"---"};
 				call fnc_showFuelIndicator;
 				[
