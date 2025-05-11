@@ -25,7 +25,12 @@ PDR_baseFuelCoefficients = [
 	["C_Truck_02_transport_F", 11.45],
 	["rhs_btr70_vdv", 2.61],
 	["rhs_bmd1", 3.73],
-	["rhs_gaz66_vdv", 4.35]
+	["rhs_gaz66_vdv", 4.35],
+	
+	["focus03_civ", 2.16],
+	["focussw1998_civ", 2.13],
+	["ch206_civ", 1.89],
+	["ClioIch_civ", 2.01]
 ];
 
 PDR_classesAliases = [
@@ -55,7 +60,12 @@ PDR_classesAliases = [
 	["C_Truck_02_transport_F","C_Truck_02_fuel_F","C_Truck_02_box_F","C_Truck_02_transport_F","C_Truck_02_covered_F"],
 	["rhs_btr70_vdv"],
 	["rhs_bmd1","rhs_bmd1k","rhs_bmd1p","rhs_bmd1pk","rhs_bmd1r"],
-	["rhs_gaz66_vdv","rhs_gaz66_ammo_vdv","rhs_gaz66_flat_vdv","rhs_gaz66o_vdv","rhs_gaz66o_flat_vdv","rhs_gaz66_r142_vdv","rhs_gaz66_zu23_vdv","rhs_gaz66_ap2_vdv","rhs_gaz66_repair_vdv"]
+	["rhs_gaz66_vdv","rhs_gaz66_ammo_vdv","rhs_gaz66_flat_vdv","rhs_gaz66o_vdv","rhs_gaz66o_flat_vdv","rhs_gaz66_r142_vdv","rhs_gaz66_zu23_vdv","rhs_gaz66_ap2_vdv","rhs_gaz66_repair_vdv"],
+	
+	["focus03_civ","focus03_civ_bleu","focus03_civ_gris","focus03_civ_yellow","focus03_civ_noir","focus03_civ_rouge","Focus03_bac","Focus03_GN"],
+	["focussw1998_civ","focussw1998_GN","focussw1998_civ_bleu","focussw1998_civ_gris","focussw1998_civ_yellow","focussw1998_civ_noir","focussw1998_civ_rouge"],
+	["ch206_civ","206_gn","206_gns","ch206_civ_bleu","ch206_civ_gris","ch206_civ_yellow","ch206_civ_noir","ch206_civ_rouge"],
+	["ClioIch_civ","ClioIch","ClioIch_pn","ClioIch_pdr","ClioIch_civ_bleu","ClioIch_civ_gris","ClioIch_civ_yellow","ClioIch_civ_noir","ClioIch_civ_rouge"]
 ];
 
 PDR_fuelConsumptionMultiplier = 0.65;
