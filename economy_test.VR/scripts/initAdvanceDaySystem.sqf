@@ -113,6 +113,7 @@ fnc_handleDailyTaxes = {
 fnc_handleCityServices = {
 	["services_paidTram", false] call fnc_setWorldVariable;
 	["services_paidStreetlights", false] call fnc_setWorldVariable;
+	["services_paidSpeedtraps", false] call fnc_setWorldVariable;
 };
 
 // Scenario for offline players
@@ -196,6 +197,13 @@ fnc_handleOfflinePlayers = {
 			if (_countryCode == "PDR") then {
 				[
 					"cityMoney",
+					_firstName + " " + _lastName,
+					"DebtPaymentOffline",
+					_totalEarned
+				] call fnc_handleAutomatedAccountTransactionServer;
+			} else {
+				[
+					"moldovaMoney",
 					_firstName + " " + _lastName,
 					"DebtPaymentOffline",
 					_totalEarned

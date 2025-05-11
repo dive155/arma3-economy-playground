@@ -406,6 +406,10 @@
 		<Original>&lt;t color='#db0804'&gt;Fine&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#db0804'&gt;Начисление Штрафа&lt;/t&gt;</Russian>
 	</Key>
+	<Key ID="STR_transaction_type_FineTraffic">
+		<Original>&lt;t color='#fa0000'&gt;Traffic Fine&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#fa0000'&gt;Штраф ПДД&lt;/t&gt;</Russian>
+	</Key>
 	<Key ID="STR_transaction_type_ManualAccrualOfDebt">
 		<Original>&lt;t color='#ff6a3d'&gt;Manual Debt Accrual&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#ff6a3d'&gt;Начисление Долга Вручную&lt;/t&gt;</Russian>
@@ -417,6 +421,10 @@
 	<Key ID="STR_transaction_type_DailyBills">
 		<Original>&lt;t color='#ffeb36'&gt;Daily Bills&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#ffeb36'&gt;Ежедневные Налоги&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_DailyBillsOffline">
+		<Original>&lt;t color='#9c9c9c'&gt;Daily Bills (Player Offline)&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#9c9c9c'&gt;Ежедневные Налоги (Игрок Оффлайн)&lt;/t&gt;</Russian>
 	</Key>
 	<Key ID="STR_transaction_type_DailyInterest">
 		<Original>&lt;t color='#f08b1f'&gt;Daily Interest&lt;/t&gt;</Original>
@@ -871,6 +879,24 @@
 	<Key ID="STR_rpdialog_openpassport">
 		<Original>Open Passport</Original>
 		<Russian>Открыть Паспорт</Russian>
+	</Key>
+	<Key ID="STR_speeding_ticket_message">
+		<Original>
+			&lt;img size='2' image='\pdrstuff\data\ui\ico_speedcamera.paa'/&gt;
+			&lt;br/&gt;
+			&lt;t font='PuristaBold' size='1.2' color='#c70808'&gt;Speeding Ticket!&lt;/t&gt;
+			&lt;br/&gt;
+			&lt;t font='EtelkaMonospaceProBold' size='0.6'&gt;A nearby Radar has detected Speeding.&lt;br/&gt;Speed was &lt;t font='EtelkaMonospaceProBold'  color='#ff9100'&gt;%1 km/h&lt;/t&gt; in a &lt;t font='EtelkaMonospaceProBold'  color='#0091ff'&gt;%2 km/h&lt;/t&gt; Zone!&lt;br/&gt;
+			Fine of &lt;t font='EtelkaMonospaceProBold'  color='#ff9100'&gt;%3 %4&lt;/t&gt; Added to your Debt.&lt;/t&gt;
+		</Original>
+		<Russian>
+			&lt;img size='2' image='\pdrstuff\data\ui\ico_speedcamera.paa'/&gt;
+			&lt;br/&gt;
+			&lt;t font='PuristaBold' size='1.2' color='#c70808'&gt;Штраф!&lt;/t&gt;
+			&lt;br/&gt;
+			&lt;t font='EtelkaMonospaceProBold' size='0.6'&gt;Радар неподалёку зафиксировал превышение скорости.&lt;br/&gt;Скорость была &lt;t font='EtelkaMonospaceProBold' color='#ff9100'&gt;%1 км/ч&lt;/t&gt; в зоне с ограничением &lt;t font='EtelkaMonospaceProBold' color='#0091ff'&gt;%2 км/ч&lt;/t&gt;.&lt;br/&gt;
+			Штраф в размере &lt;t font='EtelkaMonospaceProBold' color='#ff9100'&gt;%3 %4&lt;/t&gt; добавлен к вашему долгу.&lt;/t&gt;
+		</Russian>
 	</Key>
 
   </Package>

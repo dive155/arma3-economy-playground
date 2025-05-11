@@ -53,3 +53,6 @@ waitUntil { scriptDone _scriptHandle };
 
 _scriptHandle = execVM "scripts\helpers\initDashboards.sqf";
 waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "scripts\helpers\initSpeedtraps.sqf";
+waitUntil { scriptDone _scriptHandle };

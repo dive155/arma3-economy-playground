@@ -53,7 +53,12 @@ worldVariablesForZeusEditing = [
 	"services_priceTram",
 	"services_paidTram",
 	"services_priceStreetlights",
-	"services_paidStreetlights"
+	"services_paidStreetlights",
+	"services_priceSpeedtraps",
+	"services_paidSpeedtraps",
+	"speedTrapsEnabled", 
+	"speedingFineLow",
+	"speedingFineHigh"
 ];
 
 [

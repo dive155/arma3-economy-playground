@@ -38,6 +38,11 @@ fnc_createDefaultWorldState = {
 		["services_paidTram", false] call fnc_setWorldVariable;
 		["services_priceStreetlights", 300] call fnc_setWorldVariable;
 		["services_paidStreetlights", false] call fnc_setWorldVariable;
+		["services_priceSpeedtraps", 100] call fnc_setWorldVariable;
+		["services_paidSpeedtraps", false] call fnc_setWorldVariable;
+		["speedTrapsEnabled", true] call fnc_setWorldVariable;
+		["speedingFineLow", 50] call fnc_setWorldVariable;
+		["speedingFineHigh", 200] call fnc_setWorldVariable;
 	};
 };
 

@@ -17,14 +17,14 @@ player addEventHandler ["GetInMan", {
 		};
 	};
 	
-	systemChat ("fuelConsumptionCoefficient " + str(_coef));
+	//systemChat ("fuelConsumptionCoefficient " + str(_coef));
 	//_vehicle setFuelConsumptionCoef _coef;
 	[_vehicle, _coef] remoteExec ["setFuelConsumptionCoef", _vehicle];
 }];
 
 0 spawn {
 	sleep 10;
-	systemChat "updating lights";
+	//systemChat "updating lights";
 	{
 		private _country = _x;
 		private _lightsOn = [_country] call fnc_areLightsOn;
