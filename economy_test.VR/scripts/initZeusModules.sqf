@@ -8,7 +8,8 @@
 			localize "STR_dive_pdr_day_advancing_settings", [
 				["CHECKBOX", [localize "STR_dive_pdr_players_pay_interest_title", localize "STR_dive_pdr_players_pay_interest_desc"], [true]],
 				["CHECKBOX", [localize "STR_dive_pdr_players_pay_taxes_title", localize "STR_dive_pdr_players_pay_taxes_desc"], [true]],
-				["CHECKBOX", [localize "STR_dive_pdr_offline_players_work_title", localize "STR_dive_pdr_offline_players_work_desc"], [true]]
+				["CHECKBOX", [localize "STR_dive_pdr_offline_players_work_title", localize "STR_dive_pdr_offline_players_work_desc"], [true]],
+				["CHECKBOX", [localize "STR_dive_pdr_mark_services_unpaid", ""], [true]]
 			], {
 				params["_values","_arguments"];
 				_values remoteExec ["fnc_advanceDayServer", 2];

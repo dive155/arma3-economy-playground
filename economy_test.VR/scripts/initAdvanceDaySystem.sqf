@@ -1,5 +1,5 @@
 fnc_advanceDayServer = {
-	params ["_chargeInterest", "_chargeTaxes", "_offlinePlayersWork"];
+	params ["_chargeInterest", "_chargeTaxes", "_offlinePlayersWork", "_markServicesUnpaid"];
 	[] remoteExec ["fnc_showLoadingMessage"];
 
 	private _currentDay = ["rpDay"] call fnc_getWorldVariable;
@@ -30,7 +30,10 @@ fnc_advanceDayServer = {
 	};
 	
 	[_steamIdPlayerPairs] call fnc_handleCivilianInfo;
-	call fnc_handleCityServices;
+	
+	if (_markServicesUnpaid) then {
+		call fnc_handleCityServices;
+	};
 	
 	call DMP_fnc_saveAll;
  	[_newDay] remoteExec ["fnc_showNextDayMessage"];
