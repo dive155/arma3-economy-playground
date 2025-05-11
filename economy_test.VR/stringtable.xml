@@ -1113,46 +1113,59 @@
 	
 	<Key ID="STR_city_dashboard">
 		<Original>
-		&lt;t size="2" align="center"&gt;Mayor Dashboard&lt;/t&gt;
-		&lt;br/&gt;&lt;br/&gt;City Money:                  %1
-		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
-		&lt;br/&gt;Daily Interest on Debt:        %2%%
-		&lt;br/&gt;Sales Tax on Goods/Services:   %9%%
-		&lt;br/&gt;Factory Goods Tax:             %3%% (%4/Item)
-		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
-		&lt;br/&gt;Gas Station:
-		&lt;br/&gt;%5
-		&lt;br/&gt;Fuel Sell Price:                %6
-		&lt;br/&gt;Fuel in storage (liters):      %7
-		&lt;br/&gt;&lt;br/&gt;&lt;t color="#ffa500"&gt;Potential Expenses:&lt;/t&gt;
-		&lt;br/&gt;Total salaries to pay: %10
-		&lt;br/&gt;Street Lights: %11, %12, %13
-		&lt;br/&gt;Tram Service: %14, %15, %16
-		&lt;br/&gt;------------&lt;br/&gt;Total: %17
-		&lt;br/&gt;&lt;br/&gt;Citizens:
-		&lt;br/&gt;%8
+			&lt;t size="2" align="center"&gt;Mayor Dashboard&lt;/t&gt;
+			&lt;br/&gt;&lt;br/&gt;City Money:                  %1
+			&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
+			&lt;br/&gt;Daily Interest on Debt:        %2%%
+			&lt;br/&gt;Sales Tax on Goods/Services:   %9%%
+			&lt;br/&gt;Factory Goods Tax:             %3%% (%4/Item)
+			&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
+			&lt;br/&gt;Gas Station:
+			&lt;br/&gt;%5
+			&lt;br/&gt;Fuel Sell Price:                %6
+			&lt;br/&gt;Fuel in storage (liters):      %7
+			&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Adjustable)&lt;/t&gt;
+			&lt;br/&gt;Traffic Oversight:
+			&lt;br/&gt;Speed Radars: %21
+			&lt;br/&gt;Violation Fine (Low): %22
+			&lt;br/&gt;Violation Fine (High): %23
+			&lt;br/&gt;&lt;br/&gt;&lt;t color="#ffa500"&gt;Potential Expenses:&lt;/t&gt;
+			&lt;br/&gt;Total salaries to pay: %10
+			&lt;br/&gt;Street Lights: %11, %12, %13
+			&lt;br/&gt;Tram Service: %14, %15, %16
+			&lt;br/&gt;Speeding Radars Upkeep: %17, %18, %19
+			&lt;br/&gt;------------&lt;br/&gt;Total: %20
+			&lt;br/&gt;&lt;br/&gt;Citizens:
+			&lt;br/&gt;%8
 		</Original>
 		<Russian>
-		&lt;t size="2" align="center"&gt;Контрольная Панель Мэра&lt;/t&gt;
-		&lt;br/&gt;&lt;br/&gt;Городские деньги:                  %1
-		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
-		&lt;br/&gt;Дневной процент по долгу:        %2%%
-		&lt;br/&gt;Налог на продажи товаров/услуг: %9%%
-		&lt;br/&gt;Налог на продукцию фабрики:      %3%% (%4/единица)
-		&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
-		&lt;br/&gt;Заправочная станция:
-		&lt;br/&gt;%5
-		&lt;br/&gt;Цена за литр топлива:            %6
-		&lt;br/&gt;Топливо в хранилище (литры):     %7
-		&lt;br/&gt;&lt;br/&gt;&lt;t color="#ffa500"&gt;Потенциальные расходы:&lt;/t&gt;
-		&lt;br/&gt;Общие зарплаты к выплате: %10
-		&lt;br/&gt;Уличное освещение: %11, %12, %13
-		&lt;br/&gt;Трамвай: %14, %15, %16
-		&lt;br/&gt;------------&lt;br/&gt;Итого: %17
-		&lt;br/&gt;&lt;br/&gt;Граждане:
-		&lt;br/&gt;%8
+			&lt;t size="2" align="center"&gt;Контрольная Панель Мэра&lt;/t&gt;
+			&lt;br/&gt;&lt;br/&gt;Городские деньги:                  %1
+			&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
+			&lt;br/&gt;Дневной процент по долгу:        %2%%
+			&lt;br/&gt;Налог на продажи товаров/услуг: %9%%
+			&lt;br/&gt;Налог на продукцию фабрики:      %3%% (%4/единица)
+			&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
+			&lt;br/&gt;Заправочная станция:
+			&lt;br/&gt;%5
+			&lt;br/&gt;Цена за литр топлива:            %6
+			&lt;br/&gt;Топливо в хранилище (литры):     %7
+			&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
+			&lt;br/&gt;Контроль движения:
+			&lt;br/&gt;Радары скорости: %21
+			&lt;br/&gt;Штраф (низк. превыш.): %22
+			&lt;br/&gt;Штраф (высок. превыш.): %23
+			&lt;br/&gt;&lt;br/&gt;&lt;t color="#ffa500"&gt;Потенциальные расходы:&lt;/t&gt;
+			&lt;br/&gt;Общие зарплаты к выплате: %10
+			&lt;br/&gt;Уличное освещение: %11, %12, %13
+			&lt;br/&gt;Трамвай: %14, %15, %16
+			&lt;br/&gt;Обслуживание радаров: %17, %18, %19
+			&lt;br/&gt;------------&lt;br/&gt;Итого: %20
+			&lt;br/&gt;&lt;br/&gt;Граждане:
+			&lt;br/&gt;%8
 		</Russian>
 	</Key>
+
 
 
 	<Key ID="STR_moldova_dashboard">

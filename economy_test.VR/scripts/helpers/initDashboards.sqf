@@ -73,27 +73,34 @@ fnc_getCityDashboard = {
 	private _civiliansDatabase = ["fnc_getCiviliansInfoServer", ["PDR"]] call DMP_fnc_requestServerResult;
 
 	// Retrieve world variable values
-	private _cityMoney		  = ["cityMoney"] call fnc_getWorldVariable;
-	private _factoryTax		  = ["factoryGoodsTax"] call fnc_getWorldVariable;
-	private _salesTax		  = ["salesTaxPdr"] call fnc_getWorldVariable;
-	private _goodsSellPrice	  = ["factoryGoodsSellPrice"] call fnc_getWorldVariable;
-	private _interestRate	  = ["interestRate_PDR"] call fnc_getWorldVariable;
-	private _fuelPrice		  = ["fuelPrice_PDR"] call fnc_getWorldVariable;
-	private _fuelInStorage	  = ["fuelInStorage"] call fnc_getWorldVariable;
-	private _gasStationOpen   = ["gasStationOpen"] call fnc_getWorldVariable;
+	private _cityMoney			= ["cityMoney"] call fnc_getWorldVariable;
+	private _factoryTax			= ["factoryGoodsTax"] call fnc_getWorldVariable;
+	private _salesTax			= ["salesTaxPdr"] call fnc_getWorldVariable;
+	private _goodsSellPrice		= ["factoryGoodsSellPrice"] call fnc_getWorldVariable;
+	private _interestRate		= ["interestRate_PDR"] call fnc_getWorldVariable;
+	private _fuelPrice			= ["fuelPrice_PDR"] call fnc_getWorldVariable;
+	private _fuelInStorage		= ["fuelInStorage"] call fnc_getWorldVariable;
+	private _gasStationOpen		= ["gasStationOpen"] call fnc_getWorldVariable;
 
-	private _priceTram		  = ["services_priceTram"] call fnc_getWorldVariable;
-	private _paidTram		  = ["services_paidTram"] call fnc_getWorldVariable;
-	private _tramRunning	  = missionNamespace getVariable ["PDR_tram_enabled", false];
-	private _priceStreetlights= ["services_priceStreetlights"] call fnc_getWorldVariable;
-	private _paidStreetlights = ["services_paidStreetlights"] call fnc_getWorldVariable;
-	private _streetlightsEnabled = ["PDR"] call fnc_areLightsOn;
+	private _priceTram			= ["services_priceTram"] call fnc_getWorldVariable;
+	private _paidTram			= ["services_paidTram"] call fnc_getWorldVariable;
+	private _tramRunning		= missionNamespace getVariable ["PDR_tram_enabled", false];
+	private _priceStreetlights	= ["services_priceStreetlights"] call fnc_getWorldVariable;
+	private _paidStreetlights	= ["services_paidStreetlights"] call fnc_getWorldVariable;
+	private _streetlightsEnabled= ["PDR"] call fnc_areLightsOn;
+
+	// NEW variables
+	private _priceSpeedTraps	= ["services_priceSpeedtraps"] call fnc_getWorldVariable;
+	private _paidSpeedTraps		= ["services_paidSpeedtraps"] call fnc_getWorldVariable;
+	private _speedTrapsEnabled	= ["speedTrapsEnabled"] call fnc_getWorldVariable;
+	private _speedingFineLow	= ["speedingFineLow"] call fnc_getWorldVariable;
+	private _speedingFineHigh	= ["speedingFineHigh"] call fnc_getWorldVariable;
 
 	// Derived values
 	private _dailyInterestPercent = round(_interestRate * 100);
 	private _factoryTaxPercent	= round(_factoryTax * 100);
 	private _salesTaxPercent	= round(_salesTax * 100);
-	private _taxPerItem		   = round(_goodsSellPrice * _factoryTax);
+	private _taxPerItem			= round(_goodsSellPrice * _factoryTax);
 
 	// Helper functions for coloring
 	private _colorNumber = {
@@ -207,42 +214,49 @@ fnc_getCityDashboard = {
 	private _formattedTotalSalaries = _totalSalaries call _colorExpense;
 	private _formattedStreetlightCost = _priceStreetlights call _colorExpense;
 	private _formattedTramCost = _priceTram call _colorExpense;
+	private _formattedSpeedtrapCost = _priceSpeedTraps call _colorExpense;
 
 	private _formattedStreetlightPaid = _paidStreetlights call _colorStatusPaid;
 	private _formattedTramPaid = _paidTram call _colorStatusPaid;
+	private _formattedSpeedtrapPaid = _paidSpeedTraps call _colorStatusPaid;
 
 	private _formattedStreetlightEnabled = _streetlightsEnabled call _colorStatusEnabled;
 	private _formattedTramEnabled = _tramRunning call _colorStatusEnabled;
+	private _formattedSpeedtrapEnabled = _speedTrapsEnabled call _colorStatusEnabled;
 
-	private _totalExpenses = _totalSalaries + _priceStreetlights + _priceTram;
+	private _totalExpenses = _totalSalaries + _priceStreetlights + _priceTram + _priceSpeedTraps;
 	private _formattedTotalExpenses = _totalExpenses call _colorExpense;
 
 	// Compose final dashboard
 	private _dashboard = format [
 		localize "STR_city_dashboard",
-		_cityMoney call _colorNumber,				// %1
-		_dailyInterestPercent call _colorNumber,	// %2
-		_factoryTaxPercent call _colorNumber,		// %3
-		_taxPerItem call _colorNumber,				// %4
-		_gasStationOpen call _gasStationStatus,		// %5
-		_fuelPrice call _colorNumber,				// %6
-		_fuelInStorage call _colorNumber,			// %7
-		_citizensText,								// %8
-		_salesTaxPercent call _colorNumber,			// %9
-		_formattedTotalSalaries,					// %10
-		_formattedStreetlightCost,					// %11
-		_formattedStreetlightPaid,					// %12
-		_formattedStreetlightEnabled,				// %13
-		_formattedTramCost,							// %14
-		_formattedTramPaid,							// %15
-		_formattedTramEnabled,						// %16
-		_formattedTotalExpenses						// %17
+		_cityMoney call _colorNumber,					// %1
+		_dailyInterestPercent call _colorNumber,		// %2
+		_factoryTaxPercent call _colorNumber,			// %3
+		_taxPerItem call _colorNumber,					// %4
+		_gasStationOpen call _gasStationStatus,			// %5
+		_fuelPrice call _colorNumber,					// %6
+		_fuelInStorage call _colorNumber,				// %7
+		_citizensText,									// %8
+		_salesTaxPercent call _colorNumber,				// %9
+		_formattedTotalSalaries,						// %10
+		_formattedStreetlightCost,						// %11
+		_formattedStreetlightPaid,						// %12
+		_formattedStreetlightEnabled,					// %13
+		_formattedTramCost,								// %14
+		_formattedTramPaid,								// %15
+		_formattedTramEnabled,							// %16
+		_formattedSpeedtrapCost,						// %17
+		_formattedSpeedtrapPaid,						// %18
+		_formattedSpeedtrapEnabled,						// %19
+		_formattedTotalExpenses,						// %20
+		_speedTrapsEnabled call _colorStatusEnabled,	// %21
+		_speedingFineLow call _colorNumber,				// %22
+		_speedingFineHigh call _colorNumber				// %23
 	];
 
 	_dashboard
 };
-
-
 
 fnc_getMoldovaDashboard = {
 	// _civiliansDatabase is an array of arrays, each element is:
