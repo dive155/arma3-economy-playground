@@ -48,10 +48,10 @@ fnc_tramTravelLoop = {
 		} forEach PDR_tram_stations;
 		
 		if ((not _wasInStation) and _inStation) then {
-			[] remoteExec ["fnc_soundHorn"];
+			[] remoteExec ["fnc_soundHorn", 0];
 			PDR_tram_velocityChangeHandle = [0] spawn fnc_changeTramSpeed;
 			sleep 20;
-			[] remoteExec ["fnc_soundHorn"];
+			[] remoteExec ["fnc_soundHorn", 0];
 			PDR_tram_velocityChangeHandle = [10] spawn fnc_changeTramSpeed;
 		};
 		

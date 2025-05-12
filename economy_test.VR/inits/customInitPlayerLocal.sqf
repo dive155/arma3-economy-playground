@@ -4,7 +4,7 @@
 0 execVM "hud\initPagedJournalDialog.sqf";
 0 execVM "hud\initRpDialog2.sqf";
 
-player addEventHandler ["GetInMan", {
+fnc_handleFuelConsumtpionCoefficient = {
 	params ["_unit", "_role", "_vehicle", "_turret"];
 	
 	private _coef = [_vehicle] call fnc_getEconomyFuelConsumption;
@@ -20,6 +20,65 @@ player addEventHandler ["GetInMan", {
 	//systemChat ("fuelConsumptionCoefficient " + str(_coef));
 	//_vehicle setFuelConsumptionCoef _coef;
 	[_vehicle, _coef] remoteExec ["setFuelConsumptionCoef", _vehicle];
+};
+	
+
+fnc_addMusicPlayerActionIfMissing = {
+	params ["_unit", "_role", "_vehicle", "_turret"];
+
+	private _cfgVehicle = configOf _vehicle;
+	private _userActions = configProperties [_cfgVehicle >> "UserActions", "isClass _x"];
+
+	private _hasMusicPlayer = false;
+	{
+		if (configName _x == "music_player") exitWith {
+			_hasMusicPlayer = true;
+		};
+	} forEach _userActions;
+
+	if not _hasMusicPlayer then {
+		private _musicPlayerActionId = _vehicle getVariable["DIVE_musicPlayerActionId", -1];
+		if (_musicPlayerActionId == -1) then {
+			private _actionId =_vehicle addAction [
+				 localize "STR_VN_VEHICLE_RADIO_DN",
+				 {
+				 ["open"] call vn_fnc_music;
+				 },
+				 nil,
+				 1.5,
+				 true,
+				 false,
+				 "",
+				 "alive _this && { local _this && { missionnamespace getvariable ['vn_jukebox_enable', true] && { driver _this isEqualTo player } } }",
+				 5,
+				 false,
+				 "",
+				 ""
+			]; 
+			_vehicle setVariable["DIVE_musicPlayerActionId", _actionId];
+		};
+	};
+};
+
+fnc_removeMusicPlayerAction = {
+	params ["_unit", "_role", "_vehicle", "_turret", "_isEject"];
+	
+	private _musicPlayerActionId = _vehicle getVariable["DIVE_musicPlayerActionId", -1];
+	if (_musicPlayerActionId != -1) then {
+		_vehicle removeAction _musicPlayerActionId;
+		_vehicle setVariable["DIVE_musicPlayerActionId", -1]; 
+	};
+};
+
+player addEventHandler ["GetInMan", {
+	params ["_unit", "_role", "_vehicle", "_turret"];
+		_this call fnc_handleFuelConsumtpionCoefficient;
+		_this call fnc_addMusicPlayerActionIfMissing;
+	}];
+
+player addEventHandler ["GetOutMan", {
+	params ["_unit", "_role", "_vehicle", "_turret", "_isEject"];
+	_this call fnc_removeMusicPlayerAction;
 }];
 
 0 spawn {
