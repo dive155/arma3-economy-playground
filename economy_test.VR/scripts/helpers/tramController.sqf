@@ -84,19 +84,19 @@ fnc_changeTramSpeed = {
 };
 
 fnc_soundHorn = {
-	private _front = [PDR_Tram] call ATRAIN_fnc_findFrontCar;
-	private _local = _front getVariable ["ATRAIN_Local_Copy", objNull];
-	_hornDistance = 500;
-	_local say3D ["ATSHornStart", _hornDistance, 1];
-	sleep 0.99;
-	if((floor random 2) > 0) then {
-		_local say3D ["ATSHornMiddle1", _hornDistance, 1];
-	} else {
-		_local say3D ["ATSHornMiddle2", _hornDistance, 1];
-	};
-	sleep 0.99;
-	_local say3D ["ATSHornEnd", _hornDistance, 1];
-	sleep 1;
+	// private _front = [PDR_Tram] call ATRAIN_fnc_findFrontCar;
+	// private _local = _front getVariable ["ATRAIN_Local_Copy", objNull];
+	// _hornDistance = 500;
+	// _local say3D ["ATSHornStart", _hornDistance, 1];
+	// sleep 0.99;
+	// if((floor random 2) > 0) then {
+		// _local say3D ["ATSHornMiddle1", _hornDistance, 1];
+	// } else {
+		// _local say3D ["ATSHornMiddle2", _hornDistance, 1];
+	// };
+	// sleep 0.99;
+	// _local say3D ["ATSHornEnd", _hornDistance, 1];
+	// sleep 1;
 };
 
 sleep 5;
