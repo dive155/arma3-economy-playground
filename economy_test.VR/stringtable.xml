@@ -364,11 +364,11 @@
   <Package name="journals">
 	<Key ID="STR_transaction_log_entry">
 		<Original>%1) %2. Operation: %3. User: %4. Amount: %5. Balance: %6. Note: %7</Original>
-		<Russian>%1) %2. Операция: %3. Пользователь: %4. Сумма Операции: %5. Баланс после Операции: %6. Примечание: %7</Russian>
+		<Russian>%1) %2. Операция: %3. Пользователь: %4. Сумма Операции: %5. На счету после операции: %6. Примечание: %7</Russian>
 	</Key>
 	<Key ID="STR_transaction_log_entry_debt">
 		<Original>%1) %2. Operation: %3. User: %4. Amount: %5. Remaining Debt after Operation: %6. Note: %7</Original>
-		<Russian>%1) %2. Операция: %3. Пользователь: %4. Сумма Операции: %5. Оставшийся долг после Операции: %6. Примечание: %7</Russian>
+		<Russian>%1) %2. Операция: %3. Пользователь: %4. Сумма Операции: %5. Оставшийся долг после операции: %6. Примечание: %7</Russian>
 	</Key>
 	<Key ID="STR_transaction_type_Deposit">
 		<Original>&lt;t color='#5454ff'&gt;Deposit&lt;/t&gt;</Original>
@@ -1078,7 +1078,7 @@
 			&lt;br/&gt;&lt;br/&gt;&lt;t color='#00ffff'&gt;(Adjustable)&lt;/t&gt;
 			&lt;br/&gt;Director Commission  %21
 			&lt;br/&gt;--------------------------
-			&lt;br/&gt;Factory Balance      %22
+			&lt;br/&gt;Factory Receives     %22
 		</Original>
 		<Russian>
 			&lt;t size='1.5' align='center' color='#ffaa00'&gt;Панель Директора Промышленности&lt;/t&gt;
@@ -1102,7 +1102,7 @@
 			&lt;br/&gt;Продажа товара:       %14
 			&lt;br/&gt;&lt;br/&gt;&lt;t color='#00ffff'&gt;(Можно изменить)&lt;/t&gt;
 			&lt;br/&gt;Стоимость производства:
-			&lt;br/&gt;--Ферма:     %15
+			&lt;br/&gt;--Ферма:    %15
 			&lt;br/&gt;--Карьер    %16
 			&lt;br/&gt;--Завод     %17
 			&lt;br/&gt;Всего:               %18
@@ -1111,7 +1111,7 @@
 			&lt;br/&gt;&lt;br/&gt;&lt;t color='#00ffff'&gt;(Можно изменить)&lt;/t&gt;
 			&lt;br/&gt;Комиссия директора:  %21
 			&lt;br/&gt;--------------------------
-			&lt;br/&gt;Остаток завода:      %22
+			&lt;br/&gt;Завод получает:      %22
 		</Russian>
 	</Key>
 	
@@ -1147,7 +1147,7 @@
 			&lt;br/&gt;&lt;br/&gt;Городские деньги:                  %1
 			&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
 			&lt;br/&gt;Дневной процент по долгу:        %2%%
-			&lt;br/&gt;Налог на продажи товаров/услуг: %9%%
+			&lt;br/&gt;Налог на продажи товаров/услуг:  %9%%
 			&lt;br/&gt;Налог на продукцию фабрики:      %3%% (%4/единица)
 			&lt;br/&gt;&lt;br/&gt;&lt;t color="#00ffff"&gt;(Настраивается)&lt;/t&gt;
 			&lt;br/&gt;Заправочная станция:
@@ -1163,7 +1163,7 @@
 			&lt;br/&gt;Общие зарплаты к выплате: %10
 			&lt;br/&gt;Уличное освещение: %11, %12, %13
 			&lt;br/&gt;Трамвай: %14, %15, %16
-			&lt;br/&gt;Обслуживание радаров: %17, %18, %19
+			&lt;br/&gt;Обсл. радаров скор.: %17, %18, %19
 			&lt;br/&gt;------------&lt;br/&gt;Итого: %20
 			&lt;br/&gt;&lt;br/&gt;Граждане:
 			&lt;br/&gt;%8
@@ -1229,8 +1229,8 @@
 	</Key>
 
 	<Key ID="STR_citizen_dailyBills">
-		<Original>Daily Bills:</Original>
-		<Russian>Ежедневные счета:</Russian>
+		<Original>Bills (issued daily):</Original>
+		<Russian>Начисляется счетов каждый день:</Russian>
 	</Key>
 
 	<Key ID="STR_citizen_job">

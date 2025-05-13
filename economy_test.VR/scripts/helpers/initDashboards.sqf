@@ -33,11 +33,11 @@ fnc_getIndustryDashboard = {
         }
     };
 
-    private _prodCostTotal = -_payHay - _payOre - _payFactory;
-    private _postTaxRevenue = _goodsSellPrice * (1 - _taxRate);
-    private _directorCommission = _postTaxRevenue * _bossCut;
-    private _cityTax = _goodsSellPrice * _taxRate;
-    private _factoryBalance = _goodsSellPrice - _cityTax - _directorCommission - abs _prodCostTotal;
+    private _prodCostTotal = _payHay + _payOre + _payFactory;
+	private _cityTax = floor (_goodsSellPrice * _taxRate);
+    private _postExpensesRevenue = _goodsSellPrice - _cityTax - _prodCostTotal;
+    private _directorCommission = floor (_postExpensesRevenue * _bossCut);
+    private _factoryBalance = floor (_goodsSellPrice - _cityTax - _directorCommission - _prodCostTotal);
 
     private _dashboard = format [
         localize "STR_industry_dashboard",
@@ -58,10 +58,10 @@ fnc_getIndustryDashboard = {
         [-_payHay] call _colorValue,
         [-_payOre] call _colorValue,
         [-_payFactory] call _colorValue,
-        [_prodCostTotal] call _colorValue,
+        [-_prodCostTotal] call _colorValue,
         round(_taxRate * 100),
         [-_cityTax] call _colorValue,
-        [-_directorCommission] call _colorValue,
+        [_directorCommission] call _colorValue,
         [_factoryBalance] call _colorValue
     ];
 

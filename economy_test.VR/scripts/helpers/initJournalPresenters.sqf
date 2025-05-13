@@ -6,7 +6,10 @@ fnc_composeAccountRecord = {
 	_date params ["_year", "_month", "_day", "_hours", "_minutes"];
 
 	// Construct formatted string
-	private _dateString = format ["%1.%2.%3 %4:%5", _day, _month, _year, _hours, _minutes];
+	//private _dateString = format ["%1.%2.%3 %4:%5", _day, _month, _year, _hours, _minutes];
+	
+	private _day = ["rpDay"] call fnc_getWorldVariable;
+	private _dateString = format ["RP Day %1; %2:%3", _day, _hours, _minutes];
 	
 	private _result = format ["%1,%2,%3,%4,%5,%6", _dateString, _playerName, _operationType, _amount, _newBalance, _playersNote];
 	_result

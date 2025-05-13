@@ -58,40 +58,43 @@ fnc_sellProducedFactoryGoods = {
 		"_commission", "_netIncome"
 	];
 
-	_income = "factoryGoodsSellPrice" call fnc_getWorldVariable;
-	_taxRate = "factoryGoodsTax" call fnc_getWorldVariable;
+    private _payHay           = ["payHay"] call fnc_getWorldVariable;
+    private _payOre           = ["payOre"] call fnc_getWorldVariable;
+    private _payFactory       = ["payFactory"] call fnc_getWorldVariable;
+    private _goodsSellPrice   = ["factoryGoodsSellPrice"] call fnc_getWorldVariable;
+    private _taxRate          = ["factoryGoodsTax"] call fnc_getWorldVariable;
+    private _bossCut          = ["factoryBossCommission"] call fnc_getWorldVariable;
 
-	_tax = floor (_taxRate * _income);
-	_final = _income - _tax;
+	private _prodCostTotal = _payHay + _payOre + _payFactory;
+	private _cityTax = floor (_goodsSellPrice * _taxRate);
+    private _postExpensesRevenue = _goodsSellPrice - _cityTax - _prodCostTotal;
+    private _directorCommission = floor (_postExpensesRevenue * _bossCut);
+    private _factoryBalance = floor (_goodsSellPrice - _cityTax - _directorCommission - _prodCostTotal);
 
-	_commissionRate = "factoryBossCommission" call fnc_getWorldVariable;
-	_commission = floor (_final * _commissionRate);
-	[factory_commission_box, currencyCodePdrLeu, _commission] call fnc_putMoneyIntoContainer;
-
-	_netIncome = _final - _commission;
+	[factory_commission_box, currencyCodePdrLeu, _directorCommission] call fnc_putMoneyIntoContainer;
 
 	[
 		"factoryMoney",
 		name player,
 		"SaleOfProducts",
-		_netIncome
+		_factoryBalance
 	] call fnc_handleAutomatedAccountTransaction;
 
 	[
 		"cityMoney",
 		name player,
 		"FactoryTax",
-		_tax
+		_cityTax
 	] call fnc_handleAutomatedAccountTransaction;
 
 	hint format [
 		localize "STR_factory_sale_summary",
-		_income,
-		_tax,
+		_goodsSellPrice,
+		_cityTax,
 		round (_taxRate * 100),
-		_commission,
-		round (_commissionRate * 100),
-		_netIncome
+		_directorCommission,
+		round (_bossCut * 100),
+		_factoryBalance
 	];
 };
 
