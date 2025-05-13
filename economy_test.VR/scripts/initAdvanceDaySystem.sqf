@@ -145,10 +145,10 @@ fnc_handleOfflinePlayers = {
 		if not (isNull _player) then { continue };
 		
 		([_steamId, 
-			["grad_passport_passportRsc", "grad_passport_firstName", "grad_passport_lastName", "rp_visas", "rp_debts"],
+			["grad_passport_passportRsc", "grad_passport_firstName", "grad_passport_lastName", "rp_visas", "rp_debts", "rp_fatigue_capacity"],
 			["", "", "", [], []]
 		] call DMP_fnc_getManyPlayerVariablesSteamId)
-		params ["_passportRsc", "_firstName", "_lastName", "_visas", "_debts"];
+		params ["_passportRsc", "_firstName", "_lastName", "_visas", "_debts", "_fatigueCapacity"];
 		
 		private _countryCode = [_passportRsc] call fnc_getCitizenship;
 		private _hasRightToWork = false;
@@ -160,6 +160,10 @@ fnc_handleOfflinePlayers = {
 			};
 		};
 		
+		if (_fatigueCapacity < 2) then {
+			_hasRightToWork = false;
+		};
+		
 		// Dude can't work in PDR :(
 		if not _hasRightToWork then { continue };
 		
@@ -169,21 +173,24 @@ fnc_handleOfflinePlayers = {
 		private _payForHay = "payHay" call fnc_getWorldVariable;
 		private _payForOre = "payOre" call fnc_getWorldVariable;
 		private _payForBoth = _payForHay + _payForOre;
-		if ([["", _payForBoth]] call fnc_checkIfFactoryCanPay) then {
-			[
-				"factoryMoney",
-				_firstName + " " + _lastName,
-				"PaymentForWorkOffline",
-				-1 * _payForBoth
-			] call fnc_handleAutomatedAccountTransactionServer;
-					
-			_totalEarned = _payForBoth;
-			hay_output_box addBackpackCargoGlobal ["b_dive_grain_bag", 1];
-			ore_output_box addBackpackCargoGlobal ["b_dive_ore_bag", 1];
-		};
 		
+		if ((["farmOpen"] call fnc_getWorldVariable) and (["quarryOpen"] call fnc_getWorldVariable)) then {
+			if ([["", _payForBoth]] call fnc_checkIfFactoryCanPay) then {
+				[
+					"factoryMoney",
+					_firstName + " " + _lastName,
+					"PaymentForWorkOffline",
+					-1 * _payForBoth
+				] call fnc_handleAutomatedAccountTransactionServer;
+						
+				_totalEarned = _payForBoth;
+				hay_output_box addBackpackCargoGlobal ["b_dive_grain_bag", 1];
+				ore_output_box addBackpackCargoGlobal ["b_dive_ore_bag", 1];
+			};
+		};
 		// Eats lunch
 		_totalEarned = _totalEarned - ("lunchPrice" call fnc_getWorldVariable);
+		// TODO send money to the cook?
 		
 		if (_totalEarned > 0) then {
 			// A moldovan needs to exchange money first
@@ -193,17 +200,28 @@ fnc_handleOfflinePlayers = {
 				_totalEarned = floor (_totalEarned / _rate);
 			};
 			
+			// Limit amount by country's debt
+			private _debtAmount = 0;
+			{
+				if (_x select 0 == _countryCode) exitWith {
+					_debtAmount = _x select 1;
+				};
+			} forEach _debts;
+
+			_totalEarned = _totalEarned min _debtAmount;
+
+			if (_totalEarned <= 0) exitWith {};
+			
 			// TODO Check if debt will become positive
 			[
 				_steamId,
 				"[Automatic]",
 				_countryCode,
-				"DailyBillsOffline",
+				"DebtPaymentOffline",
 				-1 * _totalEarned,
 				localize "STR_transactions_automatedSystem"
 			] call fnc_handlePlayerDebtTransaction;
 			
-			// Moldovan bills go nowhere
 			if (_countryCode == "PDR") then {
 				[
 					"cityMoney",
