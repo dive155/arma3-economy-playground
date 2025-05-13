@@ -366,6 +366,10 @@
 		<Original>%1) %2. Operation: %3. User: %4. Amount: %5. Balance: %6. Note: %7</Original>
 		<Russian>%1) %2. Операция: %3. Пользователь: %4. Сумма Операции: %5. Баланс после Операции: %6. Примечание: %7</Russian>
 	</Key>
+	<Key ID="STR_transaction_log_entry_debt">
+		<Original>%1) %2. Operation: %3. User: %4. Amount: %5. Remaining Debt after Operation: %6. Note: %7</Original>
+		<Russian>%1) %2. Операция: %3. Пользователь: %4. Сумма Операции: %5. Оставшийся долг после Операции: %6. Примечание: %7</Russian>
+	</Key>
 	<Key ID="STR_transaction_type_Deposit">
 		<Original>&lt;t color='#5454ff'&gt;Deposit&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#5454ff'&gt;Внесение Средств&lt;/t&gt;</Russian>
@@ -1240,8 +1244,8 @@
 	</Key>
 	
 	<Key ID="STR_city_paid">
-		<Original>Paid</Original>
-		<Russian>Оплачено</Russian>
+		<Original>Days Paid</Original>
+		<Russian>Дней Оплачено</Russian>
 	</Key>
 
 	<Key ID="STR_city_notPaid">

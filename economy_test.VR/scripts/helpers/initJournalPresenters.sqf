@@ -13,7 +13,7 @@ fnc_composeAccountRecord = {
 };
 
 fnc_formatAccountRecord = {
-	params ["_rawArray", ["_indexOffset", 0]];
+	params ["_rawArray", ["_indexOffset", 0], ["_isDebt", false]];
     private _result = "";
 	
     {
@@ -27,7 +27,20 @@ fnc_formatAccountRecord = {
 			
 		private _operationType = (_entryParts select 2);
 		_operationType = localize ("STR_transaction_type_" + _operationType);
-        private _operationAmount = if (count _entryParts > 3) then {"<t color='#ffc61c'>" + (_entryParts select 3) + "</t>"} else {"0"};
+		
+        private _amount = if (count _entryParts > 3) then {parseNumber (_entryParts select 3)} else {0};
+		private _color = "";
+
+		if (_isDebt) then {
+			// Debt logic: positive -> yellow, negative -> green
+			_color = if (_amount >= 0) then {"#ff6229"} else {"#19ff19"};
+		} else {
+			// Normal logic: positive -> green, negative -> yellow
+			_color = if (_amount >= 0) then {"#19ff19"} else {"#ff6229"};
+		};
+
+		private _operationAmount = format ["<t color='%1'>%2</t>", _color, _amount];
+		
 		private _remainder = if (count _entryParts > 4) then {"<t color='#b8a548'>" + (_entryParts select 4) + "</t>"} else {"0"};
         private _note = if (count _entryParts > 5) then {
             (_entryParts select [5, count _entryParts - 5]) joinString ","
@@ -35,9 +48,10 @@ fnc_formatAccountRecord = {
             ""
         };
 		_note = "<t color='#b5b5b5'>" + _note + "</t>";
-
+		
+		private _locKey = if (_isDebt) then {"STR_transaction_log_entry_debt"} else {"STR_transaction_log_entry"};
         private _line = format [
-            localize "STR_transaction_log_entry",
+            (localize _locKey) + "<br/>-----------------------------------------------------",
             _index,
             _dateTime,
             _operationType,
@@ -55,10 +69,10 @@ fnc_formatAccountRecord = {
 };
 
 fnc_requestAndShowJournal = {
-	params["_journalName", ["_header", ""]];
+	params["_journalName", ["_header", ""], ["_isDebt", false]];
 	
 	_journalData = ["DMP_fnc_getJournalEntries", [_journalName]] call DMP_fnc_requestServerResult;
 	
-	_journalText = _header + ([_journalData] call fnc_formatAccountRecord);
+	_journalText = _header + ([_journalData, _isDebt] call fnc_formatAccountRecord);
 	[_journalText] call fnc_showLongTextDialog;
 };

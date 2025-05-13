@@ -158,10 +158,10 @@ fnc_getCityDashboard = {
 
 	private _colorStatusPaid = {
 		params ["_paid"];
-		if (_paid) then {
-			format ["<t color='#00ff00'>%1</t>", localize "STR_city_paid"]
+		if (_paid > 0) then {
+			format ["<t color='#00ff00'>%1 %2</t>", _paid, localize "STR_city_paid"]
 		} else {
-			format ["<t color='#fff200'>%1</t>", localize "STR_city_notPaid"]
+			format ["<t color='#fff200'>%1 %2</t>", _paid, localize "STR_city_paid"]
 		}
 	};
 

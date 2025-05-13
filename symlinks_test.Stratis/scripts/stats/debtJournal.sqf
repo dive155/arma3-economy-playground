@@ -12,7 +12,7 @@ fnc_showPlayerDebtHistory = {
 	
 	private _header = "<t align='center'><t size='1.5'>" + (localize "STR_transactions_title") + "<br/><t color='#caf5c4'> " + format [localize "STR_account_debt", _playerLastName, _playerName, localize ("STR_country" + _countryCode)] + "</t></t></t><br/><br/>";
 	
-	["debt_" + _steamId + "_" + _countryCode, _header] call fnc_requestAndShowJournalPaged;
+	["debt_" + _steamId + "_" + _countryCode, _header, true] call fnc_requestAndShowJournalPaged;
 };
 
 // _checkOwnDebtAction = [

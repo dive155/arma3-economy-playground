@@ -1,5 +1,5 @@
 fnc_requestAndShowJournalPaged = {
-    params ["_journalName", ["_header", ""], ["_pageIndex", -1], ["_itemsPerPage", 10]];
+    params ["_journalName", ["_header", ""], ["_pageIndex", -1], ["_itemsPerPage", 10], ["_isDebt", false]];
 
     private _isFirstOpen = isNull findDisplay 13800;
 
@@ -33,7 +33,7 @@ fnc_requestAndShowJournalPaged = {
     };
 
 	private _indexOffset = _returnPageIndex * _itemsPerPage;
-    private _journalText = _header + ([_entries, _indexOffset] call fnc_formatAccountRecord);
+    private _journalText = _header + ([_entries, _indexOffset, _isDebt] call fnc_formatAccountRecord);
 
     private _display = findDisplay 13800;
     private _textCtrl = _display displayCtrl 2101;

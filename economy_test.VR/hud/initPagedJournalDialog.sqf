@@ -1,5 +1,5 @@
 fnc_requestAndShowJournalPaged = {
-    params ["_journalName", ["_header", ""], ["_pageIndex", -1], ["_itemsPerPage", 10]];
+    params ["_journalName", ["_header", ""], ["_pageIndex", -1], ["_itemsPerPage", 10], ["_isDebt", false]];
 
     private _isFirstOpen = isNull findDisplay 13800;
 
@@ -24,6 +24,7 @@ fnc_requestAndShowJournalPaged = {
     uiNamespace setVariable ["JournalTotalPages", _totalPages];
     uiNamespace setVariable ["JournalCurrentPage", _returnPageIndex];
     uiNamespace setVariable ["JournalItemsPerPage", _itemsPerPage];
+	uiNamespace setVariable ["JournalIsDebt", _isDebt];
 
     // Save header (so it's preserved on page switches)
     if (_isFirstOpen) then {
@@ -33,7 +34,7 @@ fnc_requestAndShowJournalPaged = {
     };
 
 	private _indexOffset = _returnPageIndex * _itemsPerPage;
-    private _journalText = _header + ([_entries, _indexOffset] call fnc_formatAccountRecord);
+    private _journalText = _header + ([_entries, _indexOffset, _isDebt] call fnc_formatAccountRecord);
 
     private _display = findDisplay 13800;
     private _textCtrl = _display displayCtrl 2101;
@@ -41,9 +42,10 @@ fnc_requestAndShowJournalPaged = {
     _textCtrl ctrlSetStructuredText parseText _journalText;
 
     // Dynamic height estimate
-    private _lineCount = count (_entries);
-    //private _estimatedHeight = _lineCount * 0.003;
-	private _estimatedHeight = _lineCount * 0.17;
+    //private _lineCount = count (_entries);
+	private _lineCount = round ((count toArray _journalText) / 45.0);
+	//private _estimatedHeight = _lineCount * 0.17;
+	private _estimatedHeight = _lineCount * 0.03;
     _textCtrl ctrlSetPositionH (_estimatedHeight max 0.64);
     _textCtrl ctrlCommit 0;
 	
@@ -63,6 +65,7 @@ fnc_switchJournalPage = {
     private _page = uiNamespace getVariable ["JournalCurrentPage", 0];
     private _total = uiNamespace getVariable ["JournalTotalPages", 1];
     private _itemsPerPage = uiNamespace getVariable ["JournalItemsPerPage", 10];
+	private _isDebt = uiNamespace getVariable ["JournalIsDebt", false];
 
     if (_journalName == "") exitWith {};
 
@@ -75,5 +78,5 @@ fnc_switchJournalPage = {
     if (_newPage == _page) exitWith {};
 
     // Pass _header along with other arguments
-    [_journalName, _header, _newPage, _itemsPerPage] call fnc_requestAndShowJournalPaged;
+    [_journalName, _header, _newPage, _itemsPerPage, _isDebt] call fnc_requestAndShowJournalPaged;
 };

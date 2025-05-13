@@ -114,9 +114,16 @@ fnc_handleDailyTaxes = {
 };
 
 fnc_handleCityServices = {
-	["services_paidTram", false] call fnc_setWorldVariable;
-	["services_paidStreetlights", false] call fnc_setWorldVariable;
-	["services_paidSpeedtraps", false] call fnc_setWorldVariable;
+	_decreaseVar = {
+		params ["_varName"];
+		private _value = [_varName] call fnc_getWorldVariable;
+		_value = (_value - 1) max 0;
+		[_varName, _value] call fnc_setWorldVariable;
+	};
+	
+	["services_paidTram"] call _decreaseVar;
+	["services_paidStreetlights"] call _decreaseVar;
+	["services_paidSpeedtraps"] call _decreaseVar;
 };
 
 // Scenario for offline players

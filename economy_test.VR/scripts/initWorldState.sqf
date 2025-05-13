@@ -35,11 +35,11 @@ fnc_createDefaultWorldState = {
 		["inflationCoef_PDR", 1] call fnc_setWorldVariable;
 		["inflationCoef_Moldova", 1] call fnc_setWorldVariable;
 		["services_priceTram", 1000] call fnc_setWorldVariable;
-		["services_paidTram", false] call fnc_setWorldVariable;
+		["services_paidTram", 0] call fnc_setWorldVariable;
 		["services_priceStreetlights", 500] call fnc_setWorldVariable;
-		["services_paidStreetlights", false] call fnc_setWorldVariable;
+		["services_paidStreetlights", 0] call fnc_setWorldVariable;
 		["services_priceSpeedtraps", 0] call fnc_setWorldVariable;
-		["services_paidSpeedtraps", false] call fnc_setWorldVariable;
+		["services_paidSpeedtraps", 0] call fnc_setWorldVariable;
 		["speedTrapsEnabled", false] call fnc_setWorldVariable;
 		["speedingFineLow", 50] call fnc_setWorldVariable;
 		["speedingFineHigh", 200] call fnc_setWorldVariable;
