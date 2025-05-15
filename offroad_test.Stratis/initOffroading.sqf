@@ -67,9 +67,15 @@ fnc_initOffroadHandling = {
 				_flags
 			];
 			
-			if (_intersections isNotEqualTo []) then {
-				_isOnRoad = true;
-			};
+			{
+				private _obj = _x;
+				if (!isNull _obj) then {
+					private _className = toLower typeOf _obj;
+					if (!(_className find "rail" > -1)) then {
+						_isOnRoad = true;
+					};
+				};
+			} forEach _intersections;
 		};
 	
 		// Now process offroad logic
