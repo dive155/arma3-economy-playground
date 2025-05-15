@@ -1,5 +1,5 @@
 fnc_showLongTextDialog = {
-	params ["_text", ["_lineHeight", 0.003], ["_useMonospace", false]];
+	params ["_text", ["_lineHeight", 0.01], ["_useMonospace", false]];
 
 	createDialog "LongTextDialog";
 	waitUntil { !isNull (findDisplay 13786) };
@@ -17,8 +17,11 @@ fnc_showLongTextDialog = {
 
 	// === Dynamic height estimation ===
 	//private _lineHeight = 0.003; // Approximate height per line
+	
 	private _textPlain = _text splitString "<br/>"; // Very crude approximation
 	private _lineCount = count _textPlain;
+	
+	private _lineCount = _lineCount + round ((count toArray _text) / 45.0);
 	private _estimatedHeight = _lineCount * _lineHeight;
 
 	// Set dynamic height (max to ensure we don’t overflow vertically)
