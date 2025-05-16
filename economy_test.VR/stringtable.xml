@@ -105,10 +105,18 @@
 		<English>Lunch has been cooked and put into the case.</English>
 		<Russian>Обед приготовлен и добавлен в кейс.</Russian>
 	</Key>
+	<Key ID="STR_check_fuel_prices">
+		<Original>Check Fuel Price</Original>
+		<Russian>Посмотреть Стоимость Топлива</Russian>
+	</Key>
+	<Key ID="STR_gas_station_prices">
+		<Original>Fuel Price on this Gas Station:\n%1 %2 per liter.</Original>
+		<Russian>Цена Топлива на этой АЗС:\n%1 %2 за литр.</Russian>
+	</Key>
 	<Key ID="STR_pay_for_fuel">
-		<Original>Pay for Fuel.</Original>
-		<English>Pay for Fuel.</English>
-		<Russian>Оплатить топливо.</Russian>
+		<Original>Pay for Fuel</Original>
+		<English>Pay for Fuel</English>
+		<Russian>Оплатить топливо</Russian>
 	</Key>
 	<Key ID="STR_fuel_payment_no_money">
 		<Original>Put appropriate money into the box to pay for Fuel.</Original>

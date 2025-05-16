@@ -32,7 +32,7 @@ if (isServer) then {
 };
 
 fnc_handleFuelPaymentRequested = {
-	params ["_buttonObject"];
+	params ["_buttonObject", ["_onlyShowPrices", false]];
 	
 	_inputMoneyBox = _buttonObject getVariable ["inputMoneyBox", objNull];
 	_gasPump = _buttonObject getVariable ["gasPump", objNull];
@@ -48,11 +48,16 @@ fnc_handleFuelPaymentRequested = {
 		[_buttonObject, _buttonObject, "failure", 3] call fnc_playStoreSound;
 	};
 	
-	[_target, _target, "action", 3] call fnc_playStoreSound;
-	
 	_priceConfig = call (_buttonObject getVariable ["getPrice", {}]);
 	_currencyCode = _priceConfig select 0;
 	_pricePerLiter = _priceConfig select 1;
+	
+	if (_onlyShowPrices) exitWith {
+		private _currencyText = localize ("STR_" + _currencyCode);
+		hint format[localize "STR_gas_station_prices", _pricePerLiter, _currencyText];
+	};
+	
+	[_target, _target, "action", 3] call fnc_playStoreSound;
 	
 	_moneyInTheBox = [_inputMoneyBox, _currencyCode] call fnc_getMoneyAmountInContainer;
 	if (_moneyInTheBox == 0) exitWith { 
@@ -102,6 +107,17 @@ fnc_handleFuelPaymentRequested = {
 
 
 if (hasInterface) then {
+	_showFuelPrice = {
+		_this select 0 spawn {
+			params ["_target"];
+			
+			[_target, true] call fnc_handleFuelPaymentRequested;
+		};
+	};
+	
+	_showFuelPriceAction = ["ShowFuelPrices", localize "STR_check_fuel_prices", "", _showFuelPrice, {true}] call ace_interact_menu_fnc_createAction;
+	[_buttonObject, 0, ["ACE_MainActions"], _showFuelPriceAction] call ace_interact_menu_fnc_addActionToObject;
+	
 	_processFuelPaymentRequest = {
 		_this select 0 spawn {
 			params ["_target"];
@@ -110,6 +126,6 @@ if (hasInterface) then {
 		};
 	};
 	
-	_payForFuelAction = ["ProcessRawResource", localize "STR_pay_for_fuel", "", _processFuelPaymentRequest, {true}] call ace_interact_menu_fnc_createAction;
-	[_buttonObject, 0, [], _payForFuelAction] call ace_interact_menu_fnc_addActionToObject;
+	_payForFuelAction = ["PayForFuel", localize "STR_pay_for_fuel", "", _processFuelPaymentRequest, {true}] call ace_interact_menu_fnc_createAction;
+	[_buttonObject, 0, ["ACE_MainActions"], _payForFuelAction] call ace_interact_menu_fnc_addActionToObject;
 };
