@@ -1,3 +1,6 @@
+params [["_extraCodndition", {true}]];
+DIVE_offroad_extraCondition = _extraCodndition;
+
 fnc_initOffroadHandling = {
 	// Global state variables
 	DIVE_lastOnRoadStatus = true;
@@ -5,8 +8,10 @@ fnc_initOffroadHandling = {
 	DIVE_departureTime = -1;
 	DIVE_offroadCheckDelay = 0.2;
 	DIVE_offroadPFH = [{
+		if not (call DIVE_offroad_extraCondition) exitWith {};
+	
 		if !(vehicle player isKindOf "Car" && driver vehicle player == player) exitWith {
-			systemChat (str(diag_tickTime) + " not driving");
+			//systemChat (str(diag_tickTime) + " not driving");
 		};
 	
 		private _veh = vehicle player;
@@ -80,7 +85,7 @@ fnc_initOffroadHandling = {
 	
 		// Now process offroad logic
 		if (_isOnRoad) then {
-			systemChat (str(diag_tickTime) + " on road");
+			//systemChat (str(diag_tickTime) + " on road");
 			DIVE_lastOnRoadStatus = true;
 			DIVE_departurePoint = getPosASL _veh;
 			DIVE_departureTime = diag_tickTime;
@@ -90,14 +95,14 @@ fnc_initOffroadHandling = {
 				DIVE_lastOnRoadStatus = false;
 				DIVE_departurePoint = getPosASL _veh;
 				DIVE_departureTime = diag_tickTime;
-				hint ("You left the road! The car is getting stuck and might get damaged.");
+				hint (localize "STR_dive_offroad_warning_1");
 			} else {
 				private _curPos = getPosASL _veh;
 				private _dist = _curPos distance DIVE_departurePoint;
 				private _timeOff = diag_tickTime - DIVE_departureTime;
 				private _speed = abs(speed _veh);
 	
-				systemChat (str(diag_tickTime) + " potentially offroad");
+				//systemChat (str(diag_tickTime) + " potentially offroad");
 	
 				if (_dist > 3 && _speed > 1) then {
 					if (_dist > 5 || _timeOff > 1) then {
@@ -107,7 +112,7 @@ fnc_initOffroadHandling = {
 						private _texPos = (time * 0.03) % 1;
 						private _noise = 0.7 * (1337 random [_texPos, 0]); // Bumpy ride!
 						_speedLimit = _speedLimit - (_speedLimit * _noise);
-						systemChat ("limit " + str(_speedLimit));
+						//systemChat ("limit " + str(_speedLimit));
 						
 						_veh setCruiseControl [_speedLimit, false];
 						
@@ -185,29 +190,35 @@ fnc_offroadDamageCar = {
 	if (_rand < _wheelDamageChance && count _wheels > 0) then {
 		private _wheel = selectRandom _wheels;
 		private _current = _vehicle getHitPointDamage _wheel;
-		_vehicle setHitPointDamage [_wheel, _current + _wheelDamageIncrement];
 		
-		if ((_current < 1) and (_current + _wheelDamageIncrement >= 1)) then {
-			[_veh, "offroad_tire.ogg"] call fnc_offroadPlayCarSound;
-			hint ("Your tire was punctured due to offroading!");
+		if (_current < 1) then {
+			_vehicle setHitPointDamage [_wheel, _current + _wheelDamageIncrement];
+			
+			if (_current + _wheelDamageIncrement >= 1) then {
+				[_veh, "offroad_tire.ogg"] call fnc_offroadPlayCarSound;
+				hint (localize "STR_dive_offroad_warning_2");
+			};
 		};
 	} else {
 		if (_rand < (_wheelDamageChance + _fuelDamageChance) && _fuel != "") then {
 			private _current = _vehicle getHitPointDamage _fuel;
-			_vehicle setHitPointDamage [_fuel, _current + _fuelDamageIncrement];
 			
 			if (_current < 1) then {
+				_vehicle setHitPointDamage [_fuel, _current + _fuelDamageIncrement];
 				[_veh, "offroad_fuel.ogg"] call fnc_offroadPlayCarSound;
-				hint ("Your fuel tank was damaged due to offroading!");
+				hint (localize "STR_dive_offroad_warning_3");
 			};
 		} else {
 			if (_rand < (_wheelDamageChance + _fuelDamageChance + _engineDamageChance) && _engine != "") then {
 				private _current = _vehicle getHitPointDamage _engine;
-				_vehicle setHitPointDamage [_engine, _current + _engineDamageIncrement];
 				
-				hint ("Your engine was damaged due to offroading!");
-				if ((_current < 1) and (_current + _engineDamageIncrement >= 1)) then {
-					[_veh, "offroad_engine.ogg"] call fnc_offroadPlayCarSound;
+				if (_current < 1) then {
+					_vehicle setHitPointDamage [_engine, _current + _engineDamageIncrement];
+					
+					hint (localize "STR_dive_offroad_warning_4");
+					if (_current + _engineDamageIncrement >= 1) then {
+						[_veh, "offroad_engine.ogg"] call fnc_offroadPlayCarSound;
+					};
 				};
 			};
 		};
