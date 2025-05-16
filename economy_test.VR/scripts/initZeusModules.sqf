@@ -117,7 +117,7 @@ fnc_setPlayerVariableZeus = {
 };
 
 [
-	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_title_player",
 	localize "STR_dive_pdr_module_edit_player",
 	{
 		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
@@ -172,7 +172,7 @@ allRpPermissions = [
 ];
 
 [
-	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_title_player",
 	localize "STR_dive_pdr_module_edit_perms",
 	{
 		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
@@ -219,7 +219,7 @@ allRpPermissions = [
 ] call zen_custom_modules_fnc_register;
 
 [
-	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_title_player",
 	localize "STR_dive_pdr_module_edit_passport",
 	{
 		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
@@ -234,7 +234,7 @@ allRpPermissions = [
 ] call zen_custom_modules_fnc_register;
 
 [
-	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_title_player",
 	localize "STR_dive_pdr_module_edit_debt_pdr",
 	{
 		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
@@ -249,7 +249,7 @@ allRpPermissions = [
 ] call zen_custom_modules_fnc_register;
 
 [
-	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_title_player",
 	localize "STR_dive_pdr_module_view_debt_pdr",
 	{
 		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
@@ -265,7 +265,7 @@ allRpPermissions = [
 ] call zen_custom_modules_fnc_register;
 
 [
-	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_title_player",
 	localize "STR_dive_pdr_module_edit_debt_moldova",
 	{
 		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
@@ -280,7 +280,7 @@ allRpPermissions = [
 ] call zen_custom_modules_fnc_register;
 
 [
-	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_title_player",
 	localize "STR_dive_pdr_module_view_debt_moldova",
 	{
 		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];

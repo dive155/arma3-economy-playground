@@ -914,8 +914,12 @@
   </Package>
   <Package name="zeusModules">
 	<Key ID="STR_dive_pdr_module_title">
-		<Original>Dive's PDR RP Modules</Original>
-		<Russian>Dive's ПДР РП Модули</Russian>
+		<Original>Dive's PDR (Settings)</Original>
+		<Russian>Dive's ПДР (Настройки)</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_title_player">
+		<Original>Dive's PDR (Players)</Original>
+		<Russian>Dive's ПДР (Игроки)/Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_advance_day">
 		<Original>Advance Day</Original>
@@ -926,16 +930,16 @@
 		<Russian>Ред. Настройки Мира</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_player">
-		<Original>Edit Player Variables</Original>
-		<Russian>Ред. Настройки Игрока</Russian>
+		<Original>Edit Variables</Original>
+		<Russian>Ред. Настройки</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_number_plate">
 		<Original>Edit Car Numberplate</Original>
 		<Russian>Ред. Номер Автомобиля</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_toggle_tram">
-		<Original>Toggle Tram/Lights</Original>
-		<Russian>Вкл/Выкл Трамвай/Свет</Russian>
+		<Original>Toggle Features</Original>
+		<Russian>Вкл/Выкл Механики</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_tram_enabled">
 		<Original>Tram Enabled</Original>
@@ -975,28 +979,28 @@
 		<Russian>Трамвай включен: %1</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_perms">
-		<Original>Edit Player Permissions</Original>
-		<Russian>Ред. Разрешения Игрока</Russian>
+		<Original>Edit Permissions</Original>
+		<Russian>Ред. Разрешения</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_passport">
-		<Original>Edit Player Civilian Data</Original>
-		<Russian>Ред. Гражд. Инф. Игрока</Russian>
+		<Original>Edit Civilian Data</Original>
+		<Russian>Ред. Гражд. Информацию</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_debt_pdr">
-		<Original>Edit Player Debt (PDR)</Original>
-		<Russian>Ред. Долг Игрока (ПДР)</Russian>
+		<Original>Edit Debt (PDR)</Original>
+		<Russian>Ред. Долг (ПДР)</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_view_debt_pdr">
-		<Original>View Player Debt Log (PDR)</Original>
-		<Russian>Откр. Лог Долга Игрока (ПДР)</Russian>
+		<Original>View Debt Log (PDR)</Original>
+		<Russian>Откр. Лог Долга (ПДР)</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_debt_moldova">
-		<Original>Edit Player Debt (Moldova)</Original>
-		<Russian>Ред. Долг Игрока (Молдова)</Russian>
+		<Original>Edit Debt (Moldova)</Original>
+		<Russian>Ред. Долг (Молдова)</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_view_debt_moldova">
-		<Original>View Player Debt Log (Moldova)</Original>
-		<Russian>Откр. Лог Долга Игрока (Молдова)</Russian>
+		<Original>View Debt Log (Moldova)</Original>
+		<Russian>Откр. Лог Долга (Молдова)</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_hint_place_on_player">
 		<Original>Needs to be placed on a Player</Original>
