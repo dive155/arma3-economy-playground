@@ -43,6 +43,7 @@ fnc_createDefaultWorldState = {
 		["speedTrapsEnabled", false] call fnc_setWorldVariable;
 		["speedingFineLow", 50] call fnc_setWorldVariable;
 		["speedingFineHigh", 200] call fnc_setWorldVariable;
+		["offroadDamage", true] call fnc_setWorldVariable;
 	};
 };
 

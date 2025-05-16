@@ -945,6 +945,10 @@
 		<Original>Enable or disable the tram system</Original>
 		<Russian>Включить или выключить трамвайную систему</Russian>
 	</Key>
+	<Key ID="STR_dive_pdr_offroad_damage">
+		<Original>Vehicle damage from offroading</Original>
+		<Russian>Повреждения машин на бездорожье</Russian>
+	</Key>
 	<Key ID="STR_dive_pdr_lights_enabled_pdr">
 		<Original>Lights Enabled (PDR)</Original>
 		<Russian>Освещение включено (PDR)</Russian>

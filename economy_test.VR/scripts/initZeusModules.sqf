@@ -318,18 +318,21 @@ allRpPermissions = [
 		private _tramEnabled = missionNamespace getVariable ["PDR_tram_enabled", false];
 		private _lightsPDR = ["PDR"] call fnc_areLightsOn;
 		private _lightsMoldova = ["Moldova"] call fnc_areLightsOn;
+		private _offroadDamage = ["offroadDamage"] call fnc_getWorldVariable;
 
 		[
 			localize "STR_dive_pdr_tram_lights_settings", [
 				["CHECKBOX", [localize "STR_dive_pdr_tram_enabled", localize "STR_dive_pdr_tram_enabled_desc"], [_tramEnabled], true],
 				["CHECKBOX", [localize "STR_dive_pdr_lights_enabled_pdr", localize "STR_dive_pdr_lights_enabled_pdr_desc"], [_lightsPDR], true],
-				["CHECKBOX", [localize "STR_dive_pdr_lights_enabled_moldova", localize "STR_dive_pdr_lights_enabled_moldova_desc"], [_lightsMoldova], true]
+				["CHECKBOX", [localize "STR_dive_pdr_lights_enabled_moldova", localize "STR_dive_pdr_lights_enabled_moldova_desc"], [_lightsMoldova], true],
+				["CHECKBOX", [localize "STR_dive_pdr_offroad_damage", ""], [_offroadDamage], true]
 			], {
 				params ["_values", "_arguments"];
 
 				private _tramNew = _values select 0;
 				private _pdrLightsNew = _values select 1;
 				private _moldovaLightsNew = _values select 2;
+				private _offroadDamage = _values select 3;
 
 				private _tramOld = missionNamespace getVariable ["PDR_tram_enabled", false];
 				if (_tramNew != _tramOld) then {
@@ -347,7 +350,8 @@ allRpPermissions = [
 				if (_moldovaLightsNew != (["Moldova"] call fnc_areLightsOn)) then {
 					["Moldova", _moldovaLightsNew] remoteExec ["fnc_setLightsServer", 2];
 				};
-
+				
+				["offroadDamage", _offroadDamage] call fnc_setWorldVariable;
 			}, {}, [_pos, _object]
 		] call zen_dialog_fnc_create;
 
