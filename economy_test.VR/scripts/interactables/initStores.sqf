@@ -23,7 +23,9 @@ private _storeItems = [
 	["B_Carryall_blk", 400],
 	["hgun_P07_F", 2000],
 	["16Rnd_9x21_Mag", 25],
-	["FL_parts_enginepistonsmall", 600]
+	["FL_parts_enginepistonsmall", 600],
+	["Land_CanisterFuel_F", 200],
+	["Land_CanisterFuel_Red_F", 200]
 ];
 
 [

@@ -140,8 +140,13 @@ if (hasInterface) then {
 						_obj setPosATL _pos;
 
 						[_obj] spawn {
+							params ["_obj"];
 							sleep 0.5;
-							(_this select 0) setDamage 0;
+							_obj setDamage 0;
+							
+							if ((typeOf _obj) find "Land_CanisterFuel" > -1) then {
+								_obj setVariable ["ace_refuel_currentfuelcargo", 0, true];
+							};
 						};
 						call _reportSuccess;
 					};
