@@ -1278,7 +1278,26 @@
 		<Original>Disabled</Original>
 		<Russian>Выключено</Russian>
 	</Key>
-
-	
   </Package>
+  <Package name="offroading">
+	<Key ID="STR_dive_offroad_warning_1">
+		<Original>You left the road! The car is getting stuck and might get damaged.</Original>
+		<Russian>Вы съехали с дороги! Машина застревает и может получить повреждения.</Russian>
+	</Key>
+
+	<Key ID="STR_dive_offroad_warning_2">
+		<Original>Your tire was punctured due to offroading!</Original>
+		<Russian>Ваше колесо проколото из-за езды по бездорожью!</Russian>
+	</Key>
+
+	<Key ID="STR_dive_offroad_warning_3">
+		<Original>Your fuel tank was damaged due to offroading!</Original>
+		<Russian>Ваш топливный бак повреждён из-за езды по бездорожью!</Russian>
+	</Key>
+
+	<Key ID="STR_dive_offroad_warning_4">
+		<Original>Your engine was damaged due to offroading!</Original>
+		<Russian>Ваш двигатель повреждён из-за езды по бездорожью!</Russian>
+	</Key>
+ </Package>
 </Project>

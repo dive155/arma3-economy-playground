@@ -28,3 +28,8 @@ waitUntil { scriptDone _scriptHandle };
 
 _scriptHandle = execVM "scripts\helpers\initStreetLights.sqf";
 waitUntil { scriptDone _scriptHandle };
+
+if (hasInterface) then {
+	_scriptHandle = [{["offroadDamage"] call fnc_getWorldVariable}] execVM "scripts\helpers\initOffroading.sqf";
+	waitUntil { scriptDone _scriptHandle };
+};
