@@ -5,8 +5,8 @@ _cashboxSounds = [
 ];
 
 [
-    payment_button_pdr,
-    payment_box_pdr,
+    payment_atm_pdr,
+    payment_atm_pdr,
     "PDR",
     "pdrLeu",
     _cashboxSounds,
@@ -20,8 +20,8 @@ _cashboxSounds = [
 ] execVM "scripts\economy\createPaymentCashbox.sqf";
 
 [
-    payment_button_moldova,
-    payment_box_moldova,
+    payment_atm_moldova,
+    payment_atm_moldova,
     "Moldova",
     "moldovaLeu",
     _cashboxSounds,

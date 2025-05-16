@@ -29,8 +29,8 @@ private _storeItems = [
 ];
 
 [
-	store_1_button,           // The interaction button
-	store_1_money_box,        // Where to put money
+	store_1_terminal,           // The interaction button
+	store_1_terminal,        // Where to put money
 	store_1_item_box,         // Where to spawn inventory items
 	store_1_object_area,      // Where to spawn world objects
 	currencyCodePdrLeu,       // Your game's currency code
@@ -65,8 +65,8 @@ private _storeItems2 = [
 ];
 
 [
-	store_2_button,           // The interaction button
-	store_2_money_box,        // Where to put money
+	store_2_terminal,           // The interaction button
+	store_2_terminal,        // Where to put money
 	store_2_item_box,         // Where to spawn inventory items
 	store_2_object_area,      // Where to spawn world objects
 	currencyCodeMoldovaLeu,       // Your game's currency code

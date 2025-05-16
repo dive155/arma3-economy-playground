@@ -4,8 +4,8 @@ _exchangeSoundsConfig = [
 ];
 
 [
-	exchange_button,
-	exchange_box,
+	exchange_atm,
+	exchange_atm,
 	currencyCodePdrLeu,
 	currencyCodeMoldovaLeu,
 	_exchangeSoundsConfig,

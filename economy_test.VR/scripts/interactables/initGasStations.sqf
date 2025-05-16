@@ -18,8 +18,8 @@ fnc_handleFuelSentToPump = {
 };
 
 [
-	gas_station_button,
-	gas_station_money_box,
+	gas_station_terminal,
+	gas_station_terminal,
 	gas_station_pump,
 	_gasStationSoundsConfig,
 	{ 
@@ -33,8 +33,8 @@ fnc_handleFuelSentToPump = {
 ]execVM "scripts\economy\createGasStation.sqf";
 
 [
-	gas_station_button_moldova,
-	gas_station_money_box_moldova,
+	gas_station_terminal_moldova,
+	gas_station_terminal_moldova,
 	gas_station_pump_moldova,
 	_gasStationSoundsConfig,
 	{ 

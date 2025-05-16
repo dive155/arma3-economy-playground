@@ -1,6 +1,6 @@
 [
-	account_button_cityMoney,
-	account_box_cityMoney,
+	account_atm_cityMoney,
+	account_atm_cityMoney,
 	"cityMoney",
 	currencyCodePdrLeu,
 	{ ["cityMoney", 100] call fnc_getWorldVariable },
@@ -25,7 +25,7 @@
 
 [
 	city_dashboard,
-	account_box_cityMoney,
+	account_atm_cityMoney,
 	"cityMoney",
 	currencyCodePdrLeu,
 	{ ["cityMoney", 100] call fnc_getWorldVariable },
@@ -49,8 +49,8 @@
 ] execVM "scripts\economy\createAccountCashbox.sqf";
 
 [
-	account_button_factoryMoney,
-	account_box_factoryMoney,
+	account_atm_factoryMoney,
+	account_atm_factoryMoney,
 	"factoryMoney",
 	currencyCodePdrLeu,
 	{ ["factoryMoney", 100] call fnc_getWorldVariable },
@@ -75,7 +75,7 @@
 
 [
 	factory_dashboard,
-	account_box_factoryMoney,
+	account_atm_factoryMoney,
 	"factoryMoney",
 	currencyCodePdrLeu,
 	{ ["factoryMoney", 100] call fnc_getWorldVariable },
@@ -99,8 +99,8 @@
 ] execVM "scripts\economy\createAccountCashbox.sqf";
 
 [
-	account_button_moldovaMoney,
-	account_box_moldovaMoney,
+	account_atm_moldovaMoney,
+	account_atm_moldovaMoney,
 	"moldovaMoney",
 	currencyCodeMoldovaLeu,
 	{ ["moldovaMoney", 100] call fnc_getWorldVariable },
