@@ -91,7 +91,7 @@ fnc_initOffroadHandling = {
 				private _obj = _x;
 				if (!isNull _obj) then {
 					private _className = toLower typeOf _obj;
-					if (!(_className find "rail" > -1)) then {
+					if ((_className find "rail" == -1) and (_className find "track" == -1)) then {
 						_isOnRoad = true;
 					};
 				};

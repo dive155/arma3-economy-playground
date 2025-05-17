@@ -30,6 +30,24 @@ _scriptHandle = execVM "scripts\helpers\initStreetLights.sqf";
 waitUntil { scriptDone _scriptHandle };
 
 if (hasInterface) then {
-	_scriptHandle = [{["offroadDamage"] call fnc_getWorldVariable}] execVM "scripts\helpers\initOffroading.sqf";
+	// Collect all existing offroad_safe_N objects
+	private _offroadSafes = [];
+	private _index = 1;
+	private _obj = objNull;
+
+	while {
+		_obj = missionNamespace getVariable [format ["offroad_safe_%1", _index], objNull];
+		!isNull _obj
+	} do {
+		_offroadSafes pushBack _obj;
+		_index = _index + 1;
+	};
+
+	// Execute the script with dynamically found objects
+	private _scriptHandle = [
+		{["offroadDamage"] call fnc_getWorldVariable},
+		_offroadSafes
+	] execVM "scripts\helpers\initOffroading.sqf";
+
 	waitUntil { scriptDone _scriptHandle };
 };
