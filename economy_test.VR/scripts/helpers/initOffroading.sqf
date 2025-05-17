@@ -1,5 +1,15 @@
-params [["_extraCodndition", {true}]];
+params [["_extraCodndition", {true}], ["_safeTriggers", []]];
 DIVE_offroad_extraCondition = _extraCodndition;
+DIVE_safeTriggersOffroading = _safeTriggers;
+
+fnc_isPlayerInSafeTriggerOffroading = {
+	private _safe = false;
+	{
+		if (player inArea _x) then {_safe = true}
+	} forEach DIVE_safeTriggersOffroading;
+	_safe
+};
+
 
 fnc_initOffroadHandling = {
 	// Global state variables
@@ -13,12 +23,17 @@ fnc_initOffroadHandling = {
 		};
 		
 		private _veh = vehicle player;
-		if not (call DIVE_offroad_extraCondition) exitWith {_veh setCruiseControl [9999, false];};
+		
+		if not (call DIVE_offroad_extraCondition) exitWith {
+			_veh setCruiseControl [9999, false];
+		};
 		
 		private _posWorld = getPosWorld _veh;
-	
+		
+		private _inSafeTrigger = call fnc_isPlayerInSafeTriggerOffroading;
+		
 		// First check: isOnRoad
-		private _isOnRoad = isOnRoad _veh;
+		private _isOnRoad = _inSafeTrigger or {isOnRoad _veh};
 	
 		// Second check: surface type
 		if (!_isOnRoad) then {
@@ -35,7 +50,7 @@ fnc_initOffroadHandling = {
 				_isOnRoad = true;
 			};
 		};
-	
+
 		// Third check: object underneath
 		if (!_isOnRoad) then {
 			private _below = lineIntersectsSurfaces [
@@ -83,6 +98,7 @@ fnc_initOffroadHandling = {
 			} forEach _intersections;
 		};
 	
+	
 		// Now process offroad logic
 		if (_isOnRoad) then {
 			//systemChat (str(diag_tickTime) + " on road");
@@ -116,7 +132,7 @@ fnc_initOffroadHandling = {
 						
 						_veh setCruiseControl [_speedLimit, false];
 						
-						if (speed _veh < -3) then {
+						if (speed _veh < -(_speedLimit*0.4)) then {
 							_veh setVelocityModelSpace [0, -(_speedLimit*0.4)/3.6, 0];
 						};
 						
@@ -131,7 +147,7 @@ fnc_initOffroadHandling = {
 	}, 0.2, []] call CBA_fnc_addPerFrameHandler;
 };
 
-DIVE_offroadSpeedLimit = 4;
+DIVE_offroadSpeedLimit = 6;
 
 // Global cache
 DIVE_carsWheelHitpoints = createHashMap;
@@ -143,9 +159,9 @@ fnc_offroadDamageCar = {
 
 	// Configuration — easily editable
 	private _mul = DIVE_offroadCheckDelay * (DIVE_offroadSpeedLimit / 3.6);
-	private _wheelDamageChance     = 0.05 * _mul;
-	private _fuelDamageChance      = 0.02 * _mul;
-	private _engineDamageChance    = 0.01 * _mul;
+	private _wheelDamageChance     = 0.0125 * _mul;
+	private _fuelDamageChance      = 0.01 * _mul;
+	private _engineDamageChance    = 0.0025 * _mul;
 
 	private _wheelDamageIncrement  = 1;
 	private _fuelDamageIncrement   = 0.5;
