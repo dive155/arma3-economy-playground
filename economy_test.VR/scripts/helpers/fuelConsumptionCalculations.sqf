@@ -42,7 +42,7 @@ PDR_classesAliases = [
 	["d3s_zil_130_01","d3s_zil_130_05","d3s_zil_130_04","d3s_zil_130_02","d3s_zil_130","d3s_zil_130_03","d3s_zil_130_06","d3s_zil_130_07"],
 	["RHS_Ural_Civ_01","RHS_Ural_Open_Civ_01","RHS_Ural_Civ_03","RHS_Ural_Open_Civ_03","RHS_Ural_Civ_02","RHS_Ural_Open_Civ_02"],
 	["av_UAZ451"],
-	["gm_gc_pol_p601","gm_gc_ff_p601","gm_gc_dp_p601","gm_gc_civ_p601"],
+	["gm_gc_pol_p601","gm_gc_ff_p601","gm_gc_dp_p601","gm_gc_civ_p601", "gm_gc_pol_p601_pdr"],
 	["gm_ge_civ_w123","gm_ge_ff_w123","gm_ge_pol_w123","gm_ge_dbp_w123","gm_ge_taxi_w123"],
 	["CSLA_CIV_Sarka1200_base"],
 	["RDS_PL_S1203_Civ_01","RDS_PL_S1203_Civ_02","RDS_S1203_Civ_01","RDS_S1203_Civ_02","RDS_S1203_Civ_03"],
