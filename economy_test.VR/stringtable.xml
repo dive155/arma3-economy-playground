@@ -973,11 +973,30 @@
 		<Original>Tram and Lights Settings</Original>
 		<Russian>Настройки трамвая и освещения</Russian>
 	</Key>
-
 	<Key ID="STR_dive_pdr_tram_status">
 		<Original>Tram enabled: %1</Original>
 		<Russian>Трамвай включен: %1</Russian>
 	</Key>
+	<Key ID="STR_dive_pdr_party_active">
+		<Original>Club Party Active</Original>
+		<Russian>Вечеринка в Клубе активна</Russian>
+	</Key>
+
+	<Key ID="STR_dive_pdr_party_active_desc">
+		<Original>Enable or disable club party mode.</Original>
+		<Russian>Включить или отключить режим вечеринки.</Russian>
+	</Key>
+
+	<Key ID="STR_dive_pdr_party_music">
+		<Original>Club Music Enabled</Original>
+		<Russian>Музыка в клубе включена</Russian>
+	</Key>
+
+	<Key ID="STR_dive_pdr_party_music_desc">
+		<Original>Enable or disable club music.</Original>
+		<Russian>Включить или отключить клубную музыку.</Russian>
+	</Key>
+
 	<Key ID="STR_dive_pdr_module_edit_perms">
 		<Original>Edit Permissions</Original>
 		<Russian>Ред. Разрешения</Russian>

@@ -29,6 +29,9 @@ waitUntil { scriptDone _scriptHandle };
 _scriptHandle = execVM "scripts\helpers\initStreetLights.sqf";
 waitUntil { scriptDone _scriptHandle };
 
+_scriptHandle = execVM "scripts\helpers\party\initParty.sqf";
+waitUntil { scriptDone _scriptHandle };
+
 if (hasInterface) then {
 	// Collect all existing offroad_safe_N objects
 	private _offroadSafes = [];
