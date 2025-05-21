@@ -69,7 +69,7 @@ fnc_sellProducedFactoryGoods = {
 	private _cityTax = floor (_goodsSellPrice * _taxRate);
     private _postExpensesRevenue = _goodsSellPrice - _cityTax - _prodCostTotal;
     private _directorCommission = floor (_postExpensesRevenue * _bossCut);
-    private _factoryBalance = floor (_goodsSellPrice - _cityTax - _directorCommission - _prodCostTotal);
+    private _factoryBalance = floor (_goodsSellPrice - _cityTax - _directorCommission);
 
 	[factory_commission_box, currencyCodePdrLeu, _directorCommission] call fnc_putMoneyIntoContainer;
 
