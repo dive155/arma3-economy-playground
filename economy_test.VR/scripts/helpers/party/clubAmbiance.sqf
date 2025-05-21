@@ -66,13 +66,13 @@ fn_createBlinkerLocal = {
 };
 
 fn_createDanceFloorLightsLocal = {
-	["green", [1902.21,7099,4.8072], 300, 224] spawn fn_createSpinningLightLocal;
-	["red", [1902.21,7103.5,4.8072], 210, 261] spawn fn_createSpinningLightLocal;
-	["blue", [1907.39,7103.5,4.8072], 253, 245] spawn fn_createSpinningLightLocal;
+	["green", getPosATL clublight_0, 300, 224] spawn fn_createSpinningLightLocal;
+	["red", getPosATL clublight_1, 210, 261] spawn fn_createSpinningLightLocal;
+	["blue", getPosATL clublight_2, 253, 245] spawn fn_createSpinningLightLocal;
 	
 	// For rotation order is Yaw, Pitch, Roll
-	["orange", [1907.98,7099.13,4.69747], [70,-45,0], 0.1, 0.4, 0] spawn fn_createBlinkerLocal;
-	["red", [1897.14,7100.68,4.8072], [-45,-30,0], 0.2, 0.3, 0.25] spawn fn_createBlinkerLocal;
+	["orange", getPosATL clublight_3, [70,-45,0], 0.1, 0.4, 0] spawn fn_createBlinkerLocal;
+	["red", getPosATL clublight_4, [-45,-30,0], 0.2, 0.3, 0.25] spawn fn_createBlinkerLocal;
 };
 
 fn_destroyDanceFloorLightsLocal = {
