@@ -93,8 +93,10 @@ fn_startMusicServer = {
 	DIVE_Music_Handle = 0 spawn {
 		while { true } do {
 			// TODO replace with new song
-			DIVE_Music_Id = playSound3D [getMissionPath "scripts\helpers\party\pdr_dnb.ogg", partySpeaker, true, getPosASL partySpeaker, 5, 1, 150];
-			sleep 22.647;
+			//DIVE_Music_Id = playSound3D [getMissionPath "scripts\helpers\party\pdr_dnb.ogg", partySpeaker, true, getPosASL partySpeaker, 5, 1, 150];
+			//sleep 22.647;
+			//DIVE_Music_Id = playSound3D ["pdrstuff\music\pdr_grozy.ogg", partySpeaker, false, getPosASL partySpeaker, 5, 1, 150];
+			//waitUntil { sleep 0.5; soundParams DIVE_Music_Id isEqualTo [] };			
 		};
 	};
 };
@@ -102,5 +104,5 @@ fn_startMusicServer = {
 fn_stopMusicServer = {
 	//stopSound DIVE_Music_Id;
 	missionNamespace setVariable ["DIVE_partyMusicEnabled", false, true];
-	terminate DIVE_Music_Handle;
+	//terminate DIVE_Music_Handle;
 };
