@@ -154,8 +154,8 @@
 		<Russian>Магазин - Выберите товар. Валюта: %1</Russian>
 	</Key>
 	<Key ID="STR_store_not_enough_money">
-		<Original>You do not have enough money.</Original>
-		<Russian>У вас недостаточно денег.</Russian>
+		<Original>Not enough money in the terminal! Put more money into the terminal.</Original>
+		<Russian>Недостаточно денег в Терминале! Положите больше денег в Терминал.</Russian>
 	</Key>
 	<Key ID="STR_store_purchase_success">
 		<Original>You spent %1 %2 and bought %3.</Original>
