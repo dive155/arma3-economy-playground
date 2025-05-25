@@ -40,7 +40,7 @@ fnc_showOwnRpInfo = {
 	private _countryCode = [_passport] call fnc_getCitizenship;
 	private _citizenship = localize ("STR_country" + _countryCode);
 	private _citizenshipColor = switch (_countryCode) do {
-		case "PDR": { "#3daeff" };       // Blue
+		case "Pdr": { "#3daeff" };       // Blue
 		case "Moldova": { "#ff0000" };   // Red
 		default { "#ffffff" };           // Default white
 	};
