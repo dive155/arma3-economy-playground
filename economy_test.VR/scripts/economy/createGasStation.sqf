@@ -26,6 +26,7 @@ if (isServer) then {
 	_soundsMap set ["failure", _soundsConfig select 2];
 	_buttonObject setVariable ["soundsMap", _soundsMap, true];
 	
+	[_gasPump, 0] call ace_refuel_fnc_setfuel;
 	_gasPump setVariable ["ace_refuel_capacity", gas_station_pump_capacity, true];
 } else {
 	waitUntil {sleep 1; not (isNull (_buttonObject getVariable ["inputMoneyBox", objNull]))};
@@ -77,7 +78,7 @@ fnc_handleFuelPaymentRequested = {
 		_desiredLiters = _fuelInStorage;
 	};
 	
-	// Checking if we can fit this much fuel into the fuel pump
+	//Checking if we can fit this much fuel into the fuel pump
 	if (_fuelInPump + _desiredLiters > gas_station_pump_capacity) then {
 		_desiredLiters = gas_station_pump_capacity - _fuelInPump;
 	};
@@ -105,6 +106,67 @@ fnc_handleFuelPaymentRequested = {
 	hint(_message);
 };
 
+// A workaround for multiple vehicles refueling until this is merged
+// https://github.com/acemod/ACE3/issues/10904
+if (local _gasPump) then {
+	[_gasPump] spawn {
+		params ["_gasPump"];
+
+		private _prevFuel = [_gasPump] call ace_refuel_fnc_getfuel;
+		private _nozzleInUse = false;
+		private _refueling = false;
+		private _cachedFuel = -1;
+
+		while {true} do {
+			sleep 1;
+
+			private _nozzle = _gasPump getVariable ["ace_refuel_ownednozzle", objNull];
+			private _currentFuel = [_gasPump] call ace_refuel_fnc_getfuel;
+			//systemChat "tick";
+			
+			// Nozzle has been taken
+			if (!isNull _nozzle && !_nozzleInUse) then {
+				_nozzleInUse = true;
+				_refueling = false;
+				// Do not reset _cachedFuel here — it's used to track lock state now
+				//systemChat "nozzle taken";
+			};
+
+			// Nozzle in use and fuel has changed → refueling started
+			if (_nozzleInUse && !_refueling && _currentFuel < _prevFuel) then {
+				_refueling = true;
+				//systemChat "refueling detected";
+			};
+
+			// If nozzle is in use, refueling started, but fuel is not decreasing anymore
+			// AND the pump is not already locked (_cachedFuel == -1)
+			if (_nozzleInUse && _refueling && _currentFuel >= _prevFuel && _cachedFuel == -1) then {
+				// Lock pump
+				_cachedFuel = _currentFuel;
+				[_gasPump, 0] call ace_refuel_fnc_setfuel;
+				_gasPump setVariable ["DIVE_fuelCargoCached", _cachedFuel, true];
+				_refueling = false;
+				//systemChat "locking pump caching " + str(_cachedFuel);
+			};
+
+			// Nozzle returned
+			if (isNull _nozzle && _nozzleInUse) then {
+				_nozzleInUse = false;
+
+				// Restore cached fuel only if it was cached (i.e. pump was locked)
+				_cachedFuel = _gasPump getVariable ["DIVE_fuelCargoCached", -1];
+				//systemChat "restoring cached amount " + str(_cachedFuel);
+				if (_cachedFuel > -1) then {
+					[_gasPump, _cachedFuel] call ace_refuel_fnc_setfuel;
+					_gasPump setVariable ["DIVE_fuelCargoCached", -1, true];
+					_cachedFuel = -1;
+				};
+			};
+
+			_prevFuel = _currentFuel;
+		};
+	};
+};
 
 if (hasInterface) then {
 	_showFuelPrice = {
