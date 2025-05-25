@@ -25,7 +25,9 @@ private _storeItems = [
 	["16Rnd_9x21_Mag", 25],
 	["FL_parts_enginepistonsmall", 600],
 	["Land_CanisterFuel_F", 200],
-	["Land_CanisterFuel_Red_F", 200]
+	["Land_CanisterFuel_Red_F", 200],
+	["H_Cap_grn", 30],
+    ["ACE_morphine", 180]
 ];
 
 [
@@ -78,6 +80,7 @@ private _storeItems2 = [
 	fnc_giveSalesTaxToMoldova
 ] execVM "scripts\economy\createStore.sqf";
 
+if (worldName == "VR") exitWith {};
 
 // Shops:
 /*
@@ -299,8 +302,10 @@ private _storeItemsMedical = [
 private _storeItemsCigsMoldova = [
     ["cigs_Kosmos_cigpack", 7],
     ["kss_beer_light", 9],
-    ["cigs_matches", 1],
-	["kss_vodka", 18]
+    ["cigs_matches", 2],
+	["kss_vodka", 15],
+	["pdr_bugulma", 19],
+	["ACE_Sunflower_Seeds", 1]
 ];
 
 [
@@ -323,9 +328,8 @@ private _priceJackets = 110;
 private _priceBombers = 110;
 private _priceSuits = 230;
 private _priceCowboyHats = 50;
-private _priceGlasses = 30; // Assuming default value
+private _priceGlasses = 30;
 
-// Packed items
 private _storeItemsClothing = [
     // Куртки с джинсами разных цветов
     ["Skyline_Character_U_CivilC_02_F", _priceJackets],

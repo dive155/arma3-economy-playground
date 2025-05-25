@@ -54,6 +54,7 @@ if (hasInterface) then {
 			private _cfg = configFile >> "CfgWeapons" >> _class;
 			if (!isClass _cfg) then { _cfg = configFile >> "CfgMagazines" >> _class };
 			if (!isClass _cfg) then { _cfg = configFile >> "CfgVehicles" >> _class };
+			if (!isClass _cfg) then { _cfg = configFile >> "CfgGlasses" >> _class };
 			if (!isClass _cfg) then { continue };
 
 			private _name = getText (_cfg >> "displayName");
