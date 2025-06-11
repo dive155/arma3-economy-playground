@@ -4,11 +4,6 @@ waitUntil { scriptDone _scriptHandle };
 _scriptHandle = execVM "scripts\initWorldState.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-["worldVariableChanged", {
-    params ["_varName", "_newValue"];
-    systemChat format ["%1 set to %2", _varName, _newValue];
-}] call CBA_fnc_addEventHandlerArgs;
-
 _scriptHandle = execVM "scripts\economy\storeHelpers.sqf";
 waitUntil { scriptDone _scriptHandle };
 

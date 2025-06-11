@@ -154,13 +154,21 @@ if (hasInterface) then {
 
 					_cfg = configFile >> "CfgWeapons" >> _class;
 					if (isClass _cfg) exitWith {
+						private _typeInfo = _class call BIS_fnc_itemType;
+						private _category = _typeInfo select 0;
+						private _type = _typeInfo select 1;
+
 						call _reportSuccess;
-						
-						private _type = (_class call BIS_fnc_itemType) select 1;
-						if (_type isEqualTo "Uniform" or _type isEqualTo "Vest") then {
+
+						if (_type in ["Item", "Uniform", "Vest", "Headgear", "Goggles", "NVGoggles"]) then {
 							_itemBox addItemCargoGlobal [_class, 1];
 						} else {
-							_itemBox addWeaponCargoGlobal [_class, 1];
+							// This includes things like ACE_morphine, ACE_epinephrine, etc.
+							if (_category isEqualTo "Item") then {
+								_itemBox addItemCargoGlobal [_class, 1];
+							} else {
+								_itemBox addWeaponCargoGlobal [_class, 1];
+							};
 						};
 					};
 

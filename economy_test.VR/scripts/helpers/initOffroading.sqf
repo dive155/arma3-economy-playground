@@ -101,7 +101,11 @@ fnc_initOffroadHandling = {
 	
 		// Now process offroad logic
 		if (_isOnRoad) then {
-			//systemChat (str(diag_tickTime) + " on road");
+			if (!DIVE_lastOnRoadStatus) then {
+				// We were offroad before, now back on-road — clear offroad hint
+				hintSilent "";
+			};
+
 			DIVE_lastOnRoadStatus = true;
 			DIVE_departurePoint = getPosASL _veh;
 			DIVE_departureTime = diag_tickTime;
