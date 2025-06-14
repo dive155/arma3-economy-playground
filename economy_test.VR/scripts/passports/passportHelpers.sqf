@@ -97,5 +97,7 @@ fnc_getCitizenship = {
 	params ["_passportCode"];
 	
 	//remove "passport" prefix
-	_passportCode select [8]
+	private _citizenship = _passportCode select [8];
+	if (_citizenship isEqualTo "Pdr") then {_citizenship = "PDR"};
+	_citizenship
 };
