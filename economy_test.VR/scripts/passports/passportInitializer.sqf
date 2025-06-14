@@ -28,7 +28,8 @@ fnc_initializeDefaultPassport = {
 			["rp_permissions", []], 
 			["rp_fatigue_current", 0], 
 			["rp_fatigue_capacity", 4], 
-			["rp_daysSinceLastMeal", 0]
+			["rp_daysSinceLastMeal", 0],
+			["rp_visas", []]
 		]] call fnc_setPassportVariablesBulk;
 		
 		_unit setVariable ["PDR_passportInitialized", true];

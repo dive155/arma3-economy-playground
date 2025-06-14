@@ -74,20 +74,21 @@ fnc_handleDailyInterest = {
 	
 				private _interest = ceil (_currentDebt * _interestRate);
 				_interest = _interest max 0;
-						
-				[
-					_steamId,
-					"[Automatic]",
-					_countryCode,
-					"DailyInterest",
-					_interest,
-					localize "STR_transactions_automatedSystem"
-				] spawn fnc_handlePlayerDebtTransaction;
 				
+				if (_interest > 0) then {
+					[
+						_steamId,
+						"[Automatic]",
+						_countryCode,
+						"DailyInterest",
+						_interest,
+						localize "STR_transactions_automatedSystem"
+					] spawn fnc_handlePlayerDebtTransaction;	
+				};
 				sleep 0.3;
 			} forEach _debts;
 		};
-		sleep 0.3;
+		sleep 0.5;
 	} forEach _steamIdPlayerPairs;
 };
 
