@@ -178,8 +178,8 @@ private _storeItemsClothingPdr = [
 	["Skyline_Character_U_CivilB_05_F", _priceMatraska],
 	["Skyline_Character_U_CivilB_06_F", _priceMatraska],
 	
-	["G_Spectacles", 150], // очки пластиковые
-	["G_G_Squares_Tinted", 250] // очки солнцезащитные железные
+	["G_Spectacles", 250], // очки пластиковые
+	["G_G_Squares_Tinted", 350] // очки солнцезащитные железные
 ];
 
 [
@@ -238,10 +238,9 @@ private _storeItemsGear = [
     ["MMM_DuffleBag_Blue", 900],
     ["MMM_DuffleBag_Red", 900],
     ["MMM_DuffleBag_Vrana", 900],
-    ["rhsgref_chicom", 520],
-    ["rhs_chicom_khk", 520],
-    ["V_BandollierB_rgr", 450],
-    ["V_BandollierB_cbr", 450],
+	["rhs_belt_sks", 450],
+    ["rhsgref_chicom", 720],
+    ["rhs_chicom_khk", 720],
     ["G_Bandanna_blk", 320],
     ["G_Bandanna_khk", 320],
     ["G_Bandanna_oli", 320],
@@ -253,8 +252,18 @@ private _storeItemsGear = [
     ["usm_headwrap_tan", 190],
     ["rds_weap_latarka_janta", 310],
     ["Crowbar", 900],
-    ["WBK_SmallHammer", 850],
-    ["Binocular", 350]
+	["WBK_SmallHammer", 850],
+	["Binocular", 350],
+	["G_Shades_Black", 250],
+	["G_Shades_Blue", 250],
+	["G_Shades_Green", 250],
+	["G_Shades_Red", 250],
+	["G_Sport_Red", 500],
+	["G_Sport_Blackyellow", 500],
+	["G_Sport_BlackWhite", 500],
+	["G_Sport_Checkered", 500],
+	["G_Sport_Blackred", 500],
+	["G_Sport_Greenblack", 500]
 ];
 
 [
