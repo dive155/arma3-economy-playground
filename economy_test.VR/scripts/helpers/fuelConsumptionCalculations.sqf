@@ -49,7 +49,7 @@ PDR_classesAliases = [
 	["RDS_PL_Octavia_Civ_01","RDS_Octavia_Civ_01"],
 	["RDS_PL_Golf4_Civ_01","RDS_Golf4_Civ_01"],
 	["AMG_Caprice1993"],
-	["AMG_Tahoe"],
+	["AMG_Tahoe", "AMG_TahoePolice"],
 	["gm_ge_civ_typ251","gm_ge_dbp_typ251","gm_ge_civ_typ247","gm_ge_ff_typ247","gm_ge_dbp_typ247","gm_ge_civ_typ253","gm_ge_ff_typ253","gm_ge_pol_typ253","gm_ge_taxi_typ253"],
 	["gm_ge_army_iltis_cargo"],
 	["gm_ge_army_u1300l_container","gm_ge_army_u1300l_firefighter","gm_ge_army_u1300l_medic","gm_ge_army_u1300l_repair","gm_ge_army_u1300l_cargo"],
