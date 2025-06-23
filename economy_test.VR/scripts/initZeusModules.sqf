@@ -163,7 +163,7 @@ allRpPermissions = [
 	"accountRead_moldovaMoney",
 	"debtEditing_PDR",
 	"debtEditing_Moldova",
-	"passportEditing_PDR",
+	"passportEditing_Pdr",
 	"passportEditing_Moldova",
 	"visaGiving_PDR",
 	"visaGiving_Moldova",
