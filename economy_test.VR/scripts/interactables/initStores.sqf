@@ -253,6 +253,7 @@ private _storeItemsGear = [
     ["rds_weap_latarka_janta", 310],
     ["Crowbar", 900],
 	["WBK_SmallHammer", 850],
+	["pdr_grinder", 1050],
 	["Binocular", 350],
 	["G_Shades_Black", 250],
 	["G_Shades_Blue", 250],

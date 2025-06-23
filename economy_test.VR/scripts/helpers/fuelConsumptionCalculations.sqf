@@ -34,7 +34,7 @@ PDR_baseFuelCoefficients = [
 ];
 
 PDR_classesAliases = [
-	["RDS_PL_JAWA353_Civ_01","RDS_PL_JAWA353_Civ_01"],
+	["RDS_PL_JAWA353_Civ_01","RDS_JAWA353_Civ_01"],
 	["CSLA_CIV_ADA1600","CSLA_CIV_ADA1600VB"],
 	["d3s_zaz968m"],
 	["gm_gc_army_uaz469_cargo"],
