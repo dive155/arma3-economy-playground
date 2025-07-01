@@ -6,7 +6,7 @@ fn_setVisaStatusLocal = {
 		_visas = _visas select { _x select 0 != _countryName};
 	};
 	_visas pushBack [_countryName, _visaStatus];
-	_player setVariable ["rp_visas", _visas];
+	_player setVariable ["rp_visas", _visas, true];
 	
 	[_player] call fn_updateVisaInfo;
 };
@@ -18,7 +18,7 @@ fn_addBorderCrossingLocal = {
 	
 	private _day = ["rpDay"] call fnc_getWorldVariable;
 	_crossings pushBack [("Day " + str(_day)) + (call getTimeText), _countryName, _crossingIsEntry];
-	_player setVariable ["rp_borderCrossings", _crossings];
+	_player setVariable ["rp_borderCrossings", _crossings, true];
 	
 	[_player] call fn_updateVisaInfo;
 };

@@ -291,7 +291,8 @@ private _storeItemsMedical = [
     ["ACE_splint", 220],
     ["ACE_tourniquet", 120],
     ["ACE_salineIV", 520],
-    ["ACE_salineIV_500", 310]
+    ["ACE_salineIV_500", 310],
+	["rds_uniform_doctor", 1100]
 ];
 
 [

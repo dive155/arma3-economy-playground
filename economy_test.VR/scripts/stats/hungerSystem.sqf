@@ -10,13 +10,13 @@ fnc_incrementDaysSinceLastMeal = {
 	params ["_player"];
 	_days = _player getVariable [daysSinceLastMealVarName, 0];
 	_days = _days + 1;
-	_player setVariable [daysSinceLastMealVarName, _days];
+	_player setVariable [daysSinceLastMealVarName, _days, true];
 	_days
 };
 
 fnc_satiateHunger = {
 	params ["_player"];
-	_player setVariable [daysSinceLastMealVarName, 0];
+	_player setVariable [daysSinceLastMealVarName, 0, true];
 };
 
 ["KSS_usedItem", {

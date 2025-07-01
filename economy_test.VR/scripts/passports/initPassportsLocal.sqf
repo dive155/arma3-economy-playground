@@ -8,7 +8,7 @@ call compile preprocessFileLineNumbers "scripts\passports\compilePassportNotes.s
 	execVM "scripts\passports\initPassportEditing.sqf";
 	execVM "scripts\passports\initDebtEditing.sqf";
 	
-	sleep 1;
+	sleep 10;
 	[player] call fn_updateCivilianInfo;
 	[player] call fn_updateVisaInfo;
 };

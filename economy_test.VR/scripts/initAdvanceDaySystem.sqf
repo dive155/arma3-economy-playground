@@ -258,7 +258,7 @@ fnc_showLoadingMessage = {
         "<t size='2' font='EtelkaMonospaceProBold'>%1</t><br/>",
         localize "STR_NewRPDayLoading"
     ];
-	titleText [_text, "PLAIN NOFADE", 1, true, true];
+	titleText [_text, "PLAIN NOFADE", 30, true, true];
 };
 
 fnc_showNextDayMessage = {
