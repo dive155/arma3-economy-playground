@@ -9,7 +9,8 @@ PDR_allLampClasses = [
 	"Land_Ind_Expedice_2",
 	"Land_Ind_Mlyn_03",
 	"Land_GuardTower_02_on",
-	"Land_Pub_A"
+	"Land_Pub_A",
+	"Land_M_Court"
 ];
 
 PDR_lightTriggers_PDR = [
