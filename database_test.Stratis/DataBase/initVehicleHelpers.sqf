@@ -135,6 +135,7 @@ DMP_fnc_createVehicleFromData = {
 		_veh = createVehicle [_className, _position];
 		[_veh, _varName] remoteExec ["DMP_fnc_setVarName", 0];
 	};
+	_veh allowDamage false;
 	
 	[_veh, _varName] remoteExec ["DMP_fnc_setVarName", 0];
 	[_veh, _vehicleData] remoteExec ["DMP_fnc_initializeExistingVehicleLocally", _veh];
@@ -189,6 +190,9 @@ DMP_fnc_initializeExistingVehicleLocally = {
 
 DMP_fnc_applyDamageLocal = {
 	params ["_vehicle", "_damageStructural", "_damageHitPoints"];
+	
+	sleep 4;
+	_vehicle allowDamage true;
 	
 	_vehicle setDamage [_damageStructural, false];
 	
