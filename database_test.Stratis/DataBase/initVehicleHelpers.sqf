@@ -132,7 +132,7 @@ DMP_fnc_createVehicleFromData = {
 	
 	_veh = _existingVehicle;
 	if (isNull _veh) then { 
-		_veh = createVehicle [_className, _position];
+		_veh = createVehicle [_className, _position vectorAdd [0, 0, 500]];
 		[_veh, _varName] remoteExec ["DMP_fnc_setVarName", 0];
 	};
 	_veh allowDamage false;
@@ -161,8 +161,10 @@ DMP_fnc_initializeExistingVehicleLocally = {
 		"_aceFuelCargo"
 	];
 	
-	_veh setPosATL _position;	
+	sleep 0.1;
+	
 	_veh setVectorDir _rotation;
+	_veh setPosATL _position;	
 	_veh setFuel _fuel;
 	_veh setPlateNumber _plate;
 	
