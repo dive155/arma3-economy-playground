@@ -118,9 +118,10 @@ fnc_initOffroadHandling = {
 				private _speed = abs(speed _veh);
 	
 				//systemChat (str(diag_tickTime) + " potentially offroad");
+				//systemChat ("time " + str(_timeOff) + " dist " + str(_dist));
 	
 				if (_dist > 3 && _speed > 1) then {
-					if (_dist > 5 || _timeOff > 1) then {
+					if (_dist > 10 || _timeOff > 3) then {
 						//systemChat (str(diag_tickTime) + " fully offroad");
 						private _speedLimit = DIVE_offroadSpeedLimit;
 						
