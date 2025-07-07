@@ -153,28 +153,37 @@ if (hasInterface) then {
 				{
 					_match = _x select 0;
 					_rawResourceSource = _x select 1;
-					
+
 					// Only 1 item of each type is consumed
 					[_target, _match, _rawResourceSource] call fnc_removeRawResouce;
-					
 				} forEach _allMatches;
-				
+
+				// Give conversion result
 				[_target] call fnc_giveConversionOutput;
+
+				// Trigger success callback
 				[_target, _payConfig] spawn _onSuccess;
-			};
-			
-			// Cosmetics 
-			[_target, _target, "action", 4] call fnc_playStoreSound;
-			sleep 1.6;
-			
-			if (_hasResourceToConvert) then {
+
+				[_target, _target, "action", 4] call fnc_playStoreSound;
+				sleep 1.6;
+
+				// Show localized success message
 				private _locKey = _localizationConfig select 1;
-				if not (_locKey isEqualTo "") then {
+				if (!(_locKey isEqualTo "")) then {
 					hint localize _locKey;
 				};
+
+				// Success sound effect
 				[_target, _target, "success", 3] call fnc_playStoreSound;
+
 			} else {
+				[_target, _target, "action", 4] call fnc_playStoreSound;
+				sleep 1.6;
+
+				// Show localized failure message
 				hint localize (_localizationConfig select 2);
+
+				// Failure sound effect
 				[_target, _target, "failure", 3] call fnc_playStoreSound;
 			};
 		};
