@@ -10,7 +10,8 @@ params [
 	["_logsAccessCondition", { true }],
 	["_dashboardAction", {}],
 	["_canDispenseCash", false],
-	["_rootLocalizationKey", "STR_accountActionRoot"]
+	["_rootLocalizationKey", "STR_accountActionRoot"],
+	["_numHistoricJournals", 0]
 ];
 
 if (isServer) then {
@@ -146,9 +147,13 @@ if (isNil "fnc_launchAccountDialog") then {
 
 if (isNil "fnc_launchAccountJournalDialog") then {
 	fnc_launchAccountJournalDialog = {
-		params ["_buttonObject"];
+		params ["_buttonObject", "_historicIndex"];
 		private _accountID = _buttonObject getVariable ["accountID", "unknown"];
 		private _accessCondition = _buttonObject getVariable ["logsAccessCondition", {true}];
+		
+		if (_historicIndex > 0) then {
+			_accountID = _accountID + "_" + str(_historicIndex);
+		};
 		
 		if (call _accessCondition) then {
 			private _header = "<t align='center'><t size='1.5'>" + (localize "STR_transactions_title") + "<t color='#caf5c4'> " + (localize ("STR_account_" + _accountID)) + "</t></t></t><br/><br/>";
@@ -171,6 +176,7 @@ if (isNil "fnc_launchDashboard") then {
 
 if (hasInterface) then {
 	private _accountRootAction = ["AccountRoot", localize _rootLocalizationKey, "", {}, {true}] call ace_interact_menu_fnc_createAction;
+	[_buttonObject, 0, [], _accountRootAction] call ace_interact_menu_fnc_addActionToObject;
 
 	private _createAction = {
 		params ["_id", "_label", "_isWithdrawal", "_buttonObject", "_currencyCode"];
@@ -191,22 +197,29 @@ if (hasInterface) then {
 			[player, _isWithdrawal, _buttonObject, _currencyCode] call fnc_launchAccountDialog;
 	}, {true}, {}, [false, _buttonObject, _currencyCode]] call ace_interact_menu_fnc_createAction;
 	
-	private _journalAction = ["AccountJournal", localize "STR_accountActionJournal", "", {
-			(_this select 2) params ["_buttonObject"];
-			[_buttonObject] spawn fnc_launchAccountJournalDialog;
-	}, {true}, {}, [_buttonObject]] call ace_interact_menu_fnc_createAction;
-	
 	private _dashboardAction = ["AccountDashboard", localize "STR_accountActionDashboard", "", {
 			(_this select 2) params ["_buttonObject"];
 			[_buttonObject] spawn fnc_launchDashboard;
 	}, {true}, {}, [_buttonObject]] call ace_interact_menu_fnc_createAction;
 
-	[_buttonObject, 0, [], _accountRootAction] call ace_interact_menu_fnc_addActionToObject;
 	[_buttonObject, 0, ["AccountRoot"], _dashboardAction] call ace_interact_menu_fnc_addActionToObject;
-	[_buttonObject, 0, ["AccountRoot"], _journalAction] call ace_interact_menu_fnc_addActionToObject;
-	
+
 	if (_canDispenseCash) then {
 		[_buttonObject, 0, ["AccountRoot"], _withdrawAction] call ace_interact_menu_fnc_addActionToObject;
 		[_buttonObject, 0, ["AccountRoot"], _depositAction] call ace_interact_menu_fnc_addActionToObject;
+	};
+
+	for "_i" from 0 to _numHistoricJournals do {
+		private _locKey = "STR_accountActionJournal";
+		if (_i > 0) then {
+			_locKey = _locKey + "_" + str(_i);
+		};
+		
+		private _journalAction = ["AccountJournal", localize "STR_accountActionJournal", "", {
+				(_this select 2) params ["_buttonObject", "_historicIndex"];
+				[_buttonObject, _historicIndex] spawn fnc_launchAccountJournalDialog;
+		}, {true}, {}, [_buttonObject, _i]] call ace_interact_menu_fnc_createAction;	
+
+		[_buttonObject, 0, ["AccountRoot"], _journalAction] call ace_interact_menu_fnc_addActionToObject;
 	};
 };
