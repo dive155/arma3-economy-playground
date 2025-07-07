@@ -113,7 +113,7 @@ if (hasInterface) then {
 	//Action to pass to ace actions
 	_processRawResource = {
 		// Using spawn to get to scheduled environment
-		_this select 0 spawn {
+		_this select 0 call {
 			params ["_target"];
 			
 			// Getting vars
@@ -150,41 +150,74 @@ if (hasInterface) then {
 			} forEach _rawResources;
 			
 			if (_hasResourceToConvert) then {
-				{
-					_match = _x select 0;
-					_rawResourceSource = _x select 1;
+				
+				private _args = [
+					_target,
+					_allMatches,
+					_payConfig,
+					_onSuccess,
+					_localizationConfig
+				];
 
-					// Only 1 item of each type is consumed
-					[_target, _match, _rawResourceSource] call fnc_removeRawResouce;
-				} forEach _allMatches;
+				// Run QTE with success callback only
+				[
+					8, // QTE difficulty
+					{
+						// Success callback
+						private _arguments = _this select 0 select 2;
+						
+						_arguments spawn {
+							private _target = _this select 0;
+							private _allMatches = _this select 1;
+							private _payConfig = _this select 2;
+							private _onSuccess = _this select 3;
+							private _localizationConfig = _this select 4;
 
-				// Give conversion result
-				[_target] call fnc_giveConversionOutput;
+							// Consume resources
+							{
+								private _match = _x select 0;
+								private _rawResourceSource = _x select 1;
+								[_target, _match, _rawResourceSource] call fnc_removeRawResouce;
+							} forEach _allMatches;
 
-				// Trigger success callback
-				[_target, _payConfig] spawn _onSuccess;
+							// Give conversion result
+							[_target] call fnc_giveConversionOutput;
 
-				[_target, _target, "action", 4] call fnc_playStoreSound;
-				sleep 1.6;
+							// Run success handler
+							[_target, _payConfig] spawn _onSuccess;
 
-				// Show localized success message
-				private _locKey = _localizationConfig select 1;
-				if (!(_locKey isEqualTo "")) then {
-					hint localize _locKey;
-				};
+							// Sound & feedback
+							[_target, _target, "action", 4] call fnc_playStoreSound;
+							sleep 1.6;
 
-				// Success sound effect
-				[_target, _target, "success", 3] call fnc_playStoreSound;
+							private _locKey = _localizationConfig select 1;
+							if (!(_locKey isEqualTo "")) then {
+								hint localize _locKey;
+							};
+
+							[_target, _target, "success", 3] call fnc_playStoreSound;
+						};
+					},
+
+					{}, 
+					{true}, 
+					0,
+					0,
+					_args // Packed arguments
+				] call qte_ace_main_fnc_runqte;
 
 			} else {
 				[_target, _target, "action", 4] call fnc_playStoreSound;
-				sleep 1.6;
-
-				// Show localized failure message
-				hint localize (_localizationConfig select 2);
-
-				// Failure sound effect
-				[_target, _target, "failure", 3] call fnc_playStoreSound;
+				[
+					{
+						params ["_target", "_localizationConfig"];
+						systemChat str(_this);
+						hint localize (_localizationConfig select 2);
+						[_target, _target, "failure", 3] call fnc_playStoreSound;
+					},
+					[_target, _localizationConfig],
+					1.6
+				] call CBA_fnc_waitAndExecute;
 			};
 		};
 	};
