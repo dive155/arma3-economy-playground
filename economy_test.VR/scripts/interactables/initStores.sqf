@@ -443,3 +443,27 @@ private _storeItemsMedical = [
 	{["inflationCoef_Moldova"] call fnc_getWorldVariable},
 	fnc_giveSalesTaxToMoldova
 ] execVM "scripts\economy\createStore.sqf";
+
+// Moldova: Club
+private _storeItemsClub = [
+    ["cigs_Kosmos_cigpack", 15],
+    ["kss_beer_light", 20],
+    ["cigs_matches", 5],
+	["kss_vodka", 30],
+	["pdr_bugulma", 40],
+	["ACE_Sunflower_Seeds", 4]
+];
+
+[
+	store_club_terminal,
+	store_club_terminal,
+	store_club_item_box,
+	storePharmMoldova_object_area,
+	currencyCodeMoldovaLeu,
+	_storeItemsClub,
+	_storeSoundsConfig,       // Sounds
+	{true},
+	{["salesTaxMoldova"] call fnc_getWorldVariable},
+	{["inflationCoef_Moldova"] call fnc_getWorldVariable},
+	fnc_giveSalesTaxToMoldova
+] execVM "scripts\economy\createStore.sqf";

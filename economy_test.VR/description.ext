@@ -3,6 +3,15 @@
 class CfgFunctions {
     #include "node_modules\grad-passport\cfgFunctions.hpp"
 	#include "cau\userinputmenus\CfgFunctions.cpp"
+	
+	class ACE_Override {
+        tag = "ace_nametags";
+        class ace_nametags {
+            class drawNameTagIcon {
+                file = "hud\customNametags.sqf";
+            };
+        };
+    };
 };
 
 #include "descriptionPassports.hpp"

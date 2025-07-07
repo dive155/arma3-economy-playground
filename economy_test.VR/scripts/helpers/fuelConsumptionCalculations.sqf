@@ -20,7 +20,7 @@ PDR_baseFuelCoefficients = [
 	["gm_ge_army_u1300l_container", 5.38],
 	["RDS_Ikarus_Civ_01", 6.04],
 	["RDS_Zetor6945_Base", 9.27],
-	["CSLA_CIV_V3S", 5.77],
+	["CSLA_CIV_V3S", 8.0],
 	["gm_ge_civ_typ1200", 2.20],
 	["C_Truck_02_transport_F", 11.45],
 	["rhs_btr70_vdv", 2.61],
@@ -30,7 +30,18 @@ PDR_baseFuelCoefficients = [
 	["focus03_civ", 2.16],
 	["focussw1998_civ", 2.13],
 	["ch206_civ", 1.89],
-	["ClioIch_civ", 2.01]
+	["ClioIch_civ", 2.01],
+	
+	["chbalayeuse", 4.75],
+	["chchariot", 4.05],
+	["chGrue_Mobile", 10.65],
+	["chbetonniere", 8.65],
+	["chbom", 8.73],
+	["chgrue", 10.42],
+	["chTransport_L", 7.64],
+	["plateau", 6.92],
+	["roller", 4.95],
+	["chtondeuse", 3.40]
 ];
 
 PDR_classesAliases = [
@@ -65,7 +76,17 @@ PDR_classesAliases = [
 	["focus03_civ","focus03_civ_bleu","focus03_civ_gris","focus03_civ_yellow","focus03_civ_noir","focus03_civ_rouge","Focus03_bac","Focus03_GN"],
 	["focussw1998_civ","focussw1998_GN","focussw1998_civ_bleu","focussw1998_civ_gris","focussw1998_civ_yellow","focussw1998_civ_noir","focussw1998_civ_rouge"],
 	["ch206_civ","206_gn","206_gns","ch206_civ_bleu","ch206_civ_gris","ch206_civ_yellow","ch206_civ_noir","ch206_civ_rouge"],
-	["ClioIch_civ","ClioIch","ClioIch_pn","ClioIch_pdr","ClioIch_civ_bleu","ClioIch_civ_gris","ClioIch_civ_yellow","ClioIch_civ_noir","ClioIch_civ_rouge"]
+	["ClioIch_civ","ClioIch","ClioIch_pn","ClioIch_pdr","ClioIch_civ_bleu","ClioIch_civ_gris","ClioIch_civ_yellow","ClioIch_civ_noir","ClioIch_civ_rouge"],
+	["chbalayeuse"],
+	["chchariot"],
+	["chGrue_Mobile"],
+	["chbetonniere"],
+	["chbom"],
+	["chgrue"],
+	["chTransport_L"],
+	["plateau"],
+	["roller"],
+	["chtondeuse"]
 ];
 
 PDR_fuelConsumptionMultiplier = 0.65;
