@@ -455,8 +455,8 @@
 		<Russian>История Транзакций:</Russian>
 	</Key>
 	<Key ID="STR_transactions_automatedSystem">
-		<Original>Automated System</Original>
-		<Russian>Automated System</Russian>
+		<Original>System</Original>
+		<Russian>System</Russian>
 	</Key>
   </Package>
   <Package name="visas">
