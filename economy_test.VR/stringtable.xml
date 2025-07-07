@@ -701,8 +701,48 @@
 		<Russian>Положить на счёт</Russian>
 	</Key>
 	<Key ID="STR_accountActionJournal">
-		<Original>Show Transaction History</Original>
-		<Russian>Посмотреть историю транзакций</Russian>
+		<Original>Show Transaction History (Current)</Original>
+		<Russian>Посмотреть историю транзакций (Текущая)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_1">
+		<Original>Show Transaction History (Days 1-3)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 1-3)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_2">
+		<Original>Show Transaction History (Days 5-6)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 5-6)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_3">
+		<Original>Show Transaction History (Days 7–8)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 7–8)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_4">
+		<Original>Show Transaction History (Days 9–10)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 9–10)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_5">
+		<Original>Show Transaction History (Days 11–12)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 11–12)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_6">
+		<Original>Show Transaction History (Days 13–14)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 13–14)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_7">
+		<Original>Show Transaction History (Days 15–16)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 15–16)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_8">
+		<Original>Show Transaction History (Days 17–18)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 17–18)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_9">
+		<Original>Show Transaction History (Days 19–20)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 19–20)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_10">
+		<Original>Show Transaction History (Days 21–22)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 21–22)</Russian>
 	</Key>
 	<Key ID="STR_accountDialogWithdrawTitle">
 		<Original>Withdraw from %1 (Balance: %2)</Original>
@@ -772,9 +812,89 @@
 		<Original>City Treasury</Original>
 		<Russian>Городская казна</Russian>
 	</Key>
+	<Key ID="STR_account_cityMoney_1">
+		<Original>City Treasury (Days 1-3)</Original>
+		<Russian>Городская казна (Дни 1-3)</Russian>
+	</Key>
+	<Key ID="STR_account_cityMoney_2">
+		<Original>City Treasury (Days 5-6)</Original>
+		<Russian>Городская казна (Дни 5-6)</Russian>
+	</Key>
+	<Key ID="STR_account_cityMoney_3">
+		<Original>City Treasury (Days 7–8)</Original>
+		<Russian>Городская казна (Дни 7–8)</Russian>
+	</Key>
+	<Key ID="STR_account_cityMoney_4">
+		<Original>City Treasury (Days 9–10)</Original>
+		<Russian>Городская казна (Дни 9–10)</Russian>
+	</Key>
+	<Key ID="STR_account_cityMoney_5">
+		<Original>City Treasury (Days 11–12)</Original>
+		<Russian>Городская казна (Дни 11–12)</Russian>
+	</Key>
+	<Key ID="STR_account_cityMoney_6">
+		<Original>City Treasury (Days 13–14)</Original>
+		<Russian>Городская казна (Дни 13–14)</Russian>
+	</Key>
+	<Key ID="STR_account_cityMoney_7">
+		<Original>City Treasury (Days 15–16)</Original>
+		<Russian>Городская казна (Дни 15–16)</Russian>
+	</Key>
+	<Key ID="STR_account_cityMoney_8">
+		<Original>City Treasury (Days 17–18)</Original>
+		<Russian>Городская казна (Дни 17–18)</Russian>
+	</Key>
+	<Key ID="STR_account_cityMoney_9">
+		<Original>City Treasury (Days 19–20)</Original>
+		<Russian>Городская казна (Дни 19–20)</Russian>
+	</Key>
+	<Key ID="STR_account_cityMoney_10">
+		<Original>City Treasury (Days 21–22)</Original>
+		<Russian>Городская казна (Дни 21–22)</Russian>
+	</Key>
 	<Key ID="STR_account_factoryMoney">
 		<Original>Factory Funds</Original>
 		<Russian>Средства завода</Russian>
+	</Key>
+	<Key ID="STR_account_factoryMoney_1">
+		<Original>Factory Funds (Days 1-3)</Original>
+		<Russian>Средства завода (Дни 1-3)</Russian>
+	</Key>
+	<Key ID="STR_account_factoryMoney_2">
+		<Original>Factory Funds (Days 5-6)</Original>
+		<Russian>Средства завода (Дни 5-6)</Russian>
+	</Key>
+	<Key ID="STR_account_factoryMoney_3">
+		<Original>Factory Funds (Days 7–8)</Original>
+		<Russian>Средства завода (Дни 7–8)</Russian>
+	</Key>
+	<Key ID="STR_account_factoryMoney_4">
+		<Original>Factory Funds (Days 9–10)</Original>
+		<Russian>Средства завода (Дни 9–10)</Russian>
+	</Key>
+	<Key ID="STR_account_factoryMoney_5">
+		<Original>Factory Funds (Days 11–12)</Original>
+		<Russian>Средства завода (Дни 11–12)</Russian>
+	</Key>
+	<Key ID="STR_account_factoryMoney_6">
+		<Original>Factory Funds (Days 13–14)</Original>
+		<Russian>Средства завода (Дни 13–14)</Russian>
+	</Key>
+	<Key ID="STR_account_factoryMoney_7">
+		<Original>Factory Funds (Days 15–16)</Original>
+		<Russian>Средства завода (Дни 15–16)</Russian>
+	</Key>
+	<Key ID="STR_account_factoryMoney_8">
+		<Original>Factory Funds (Days 17–18)</Original>
+		<Russian>Средства завода (Дни 17–18)</Russian>
+	</Key>
+	<Key ID="STR_account_factoryMoney_9">
+		<Original>Factory Funds (Days 19–20)</Original>
+		<Russian>Средства завода (Дни 19–20)</Russian>
+	</Key>
+	<Key ID="STR_account_factoryMoney_10">
+		<Original>Factory Funds (Days 21–22)</Original>
+		<Russian>Средства завода (Дни 21–22)</Russian>
 	</Key>
 	<Key ID="STR_account_moldovaMoney">
 		<Original>Moldova Money</Original>

@@ -20,7 +20,8 @@
 		[_str, 0.01, true] call fnc_showLongTextDialog;
 	},
 	true,
-	"STR_accountOperationsCity"
+	"STR_accountOperationsCity",
+	1
 ] execVM "scripts\economy\createAccountCashbox.sqf";
 
 [
@@ -45,7 +46,8 @@
 		[_str, 0.01, true] call fnc_showLongTextDialog;
 	},
 	false,
-	"STR_operationsCity"
+	"STR_operationsCity",
+	1
 ] execVM "scripts\economy\createAccountCashbox.sqf";
 
 [
@@ -70,7 +72,8 @@
 		[_str, 0.02, true] call fnc_showLongTextDialog;
 	},
 	true,
-	"STR_accountOperationsFactory"
+	"STR_accountOperationsFactory",
+	1
 ] execVM "scripts\economy\createAccountCashbox.sqf";
 
 [
@@ -95,7 +98,8 @@
 		[_str, 0.02, true] call fnc_showLongTextDialog;
 	},
 	false,
-	"STR_operationsFactory"
+	"STR_operationsFactory",
+	1
 ] execVM "scripts\economy\createAccountCashbox.sqf";
 
 [
@@ -120,5 +124,6 @@
 		[_str, 0.02, true] call fnc_showLongTextDialog;
 	},
 	true,
-	"STR_accountOperationsMoldova"
+	"STR_accountOperationsMoldova",
+	0
 ] execVM "scripts\economy\createAccountCashbox.sqf";

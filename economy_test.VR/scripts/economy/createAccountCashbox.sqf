@@ -215,7 +215,7 @@ if (hasInterface) then {
 			_locKey = _locKey + "_" + str(_i);
 		};
 		
-		private _journalAction = ["AccountJournal", localize "STR_accountActionJournal", "", {
+		private _journalAction = ["AccountJournal", localize _locKey, "", {
 				(_this select 2) params ["_buttonObject", "_historicIndex"];
 				[_buttonObject, _historicIndex] spawn fnc_launchAccountJournalDialog;
 		}, {true}, {}, [_buttonObject, _i]] call ace_interact_menu_fnc_createAction;	
