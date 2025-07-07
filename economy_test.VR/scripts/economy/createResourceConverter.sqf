@@ -161,7 +161,7 @@ if (hasInterface) then {
 
 				// Run QTE with success callback only
 				[
-					8, // QTE difficulty
+					16, // QTE difficulty
 					{
 						// Success callback
 						private _arguments = _this select 0 select 2;
@@ -203,7 +203,8 @@ if (hasInterface) then {
 					{true}, 
 					0,
 					0,
-					_args // Packed arguments
+					_args,
+					localize "STR_do_work"
 				] call qte_ace_main_fnc_runqte;
 
 			} else {

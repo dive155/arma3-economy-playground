@@ -11,6 +11,10 @@
 		<English>Leu (Moldova)</English>
 		<Russian>Лей (Молдова)</Russian>
 	</Key>
+	<Key ID="STR_do_work">
+		<Original>Do Work</Original>
+		<Russian>Работать</Russian>
+	</Key>
 	<Key ID="STR_ore_converter_action">
 		<Original>Process Ore</Original>
 		<English>Process Ore</English>
