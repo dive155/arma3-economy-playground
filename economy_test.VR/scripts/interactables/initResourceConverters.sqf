@@ -105,3 +105,18 @@ waitUntil { scriptDone _scriptHandle };
 		[player, "cooking", true] call fnc_checkHasPermission;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
+
+// Prison
+// [
+	// prison_button,
+	// [[prison_input_box, "b_dive_grain_bag"]],
+	// prison_output_box,
+	// objNull,
+	// ["pdr_lunch_full", 8],
+	// ["pdrstuff\sounds\stove_ignition.ogg", "pdrstuff\sounds\stove_cooking.ogg", "pdrstuff\sounds\stove_failure.ogg", ""],
+	// ["STR_stove_action", "STR_stove_success", "STR_stove_failure"],
+	// {["", 0]},
+	// { // Extra condition
+		// [player, "cooking", true] call fnc_checkHasPermission;
+	// }
+// ]execVM "scripts\economy\createResourceConverter.sqf";
