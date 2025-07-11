@@ -28,11 +28,11 @@ fnc_energizePlayer = {
 
 ["KSS_usedItem", {
 	private _foodType = _this select 0;
-	if (_foodType isEqualTo "pdr_lunch_full2") then {
+	if (_foodType isEqualTo "pdr_lunch_full") then {
 		[player] call fnc_satiateHunger;
 	};
 	
-	if (_foodType isEqualTo "pdr_lunch_full") then {
+	if (_foodType isEqualTo "pdr_whoyarilo" or _foodType isEqualTo "pdr_jaguar") then {
 		[player] call fnc_energizePlayer;
 	};
 	//systemChat ("AA used " + str(_this select 0))

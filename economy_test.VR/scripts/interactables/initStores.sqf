@@ -27,7 +27,9 @@ private _storeItems = [
 	["Land_CanisterFuel_F", 200],
 	["Land_CanisterFuel_Red_F", 200],
 	["H_Cap_grn", 30],
-    ["ACE_morphine", 180]
+    ["ACE_morphine", 180],
+	["pdr_jaguar", 120],
+	["pdr_whoyarilo", 120]
 ];
 
 [
@@ -102,14 +104,15 @@ Pharmacy basic
 // PDR: Cigs & Booze
 private _storeItemsCigsPdr = [
     ["cigs_pops_poppack", 120],
-	["kss_beer_dark", 230],
+	["kss_beer_dark", 105],
 	["kss_soda_coke", 50],
 	["kss_soda_drpepper", 50],
     ["kss_soda_mdew", 50],
 	["cigs_lighter", 80],
 	["cigs_lucky_strike_cigpack", 200],
 	["cigs_morley_cigpack", 200],
-    ["cigs_baja_blast_cigpack", 200]
+    ["cigs_baja_blast_cigpack", 200],
+	["pdr_whoyarilo", 130]
 ];
 
 [
@@ -312,11 +315,12 @@ private _storeItemsMedical = [
 // Moldova: Cigs&Booze
 private _storeItemsCigsMoldova = [
     ["cigs_Kosmos_cigpack", 7],
-    ["kss_beer_light", 9],
+    ["kss_beer_light", 6],
     ["cigs_matches", 2],
 	["kss_vodka", 15],
 	["pdr_bugulma", 19],
-	["ACE_Sunflower_Seeds", 1]
+	["ACE_Sunflower_Seeds", 1],
+	["pdr_jaguar", 9]
 ];
 
 [
@@ -451,7 +455,8 @@ private _storeItemsClub = [
     ["cigs_matches", 5],
 	["kss_vodka", 30],
 	["pdr_bugulma", 40],
-	["ACE_Sunflower_Seeds", 4]
+	["ACE_Sunflower_Seeds", 4],
+	["pdr_jaguar", 25]
 ];
 
 [
