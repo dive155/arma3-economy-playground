@@ -18,7 +18,7 @@ fnc_showPlayerStats = {
 		(localize "STR_stats_text_format"),
 		[player] call fnc_getDaysSinceLastMeal,
 		[player] call fnc_getPlayerFatigue,
-		[player] call fnc_getFatigueCapacity,
+		[player] call fnc_getFatigueCapacityEnergized,
 		_pdrDebt,
 		_moldovaDebt
 	];

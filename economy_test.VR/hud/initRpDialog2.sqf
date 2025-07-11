@@ -23,17 +23,27 @@ fnc_showOwnRpInfo = {
 	};
 	_daysSinceMeal = "<t color='" + _mealColor + "'>" + str(_daysSinceMeal) + "</t>";
 
- 
 	// Fatigue 
 	private _fatigueCurrent = player getVariable ["rp_fatigue_current", 0];
-	private _fatigueMax = player getVariable ["rp_fatigue_capacity", 4];
-	private _fatigueColor = switch (true) do {
-		case (_fatigueCurrent == 0): { "#1ade00" };                         // Green
-		case (_fatigueCurrent < _fatigueMax - 1): { "#ffff00" };           // Yellow
-		case (_fatigueCurrent == _fatigueMax - 1): { "#ffa500" };          // Orange
-		default { "#ff0000" };                                             // Red
+	private _fatigueMaxActual = [player] call fnc_getFatigueCapacityEnergized;
+	private _fatigueBase = player getVariable ["rp_fatigue_capacity", 4];
+
+	private _fatigueMax = if (_fatigueMaxActual isEqualTo _fatigueBase) then {
+		_fatigueMaxActual
+	} else {
+		// Display purple if boosted
+		"<t color='#a020f0'>" + str(_fatigueMaxActual) + "</t>"
 	};
+
+	private _fatigueColor = switch (true) do {
+		case (_fatigueCurrent == 0): { "#1ade00" };                             // Green
+		case (_fatigueCurrent < _fatigueMaxActual - 1): { "#ffff00" };         // Yellow
+		case (_fatigueCurrent == _fatigueMaxActual - 1): { "#ffa500" };        // Orange
+		default { "#ff0000" };                                                 // Red
+	};
+
 	_fatigueCurrent = "<t color='" + _fatigueColor + "'>" + str(_fatigueCurrent) + "</t>";
+
 
 	// Citizenship 
 	private _passport = player getVariable ["grad_passport_passportRsc", ""];
