@@ -49,6 +49,18 @@
 		<English>Hay has been processed! You can take your pay from the cash register. Your Work Fatigue has increased.</English>
 		<Russian>Сено переработано! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
 	</Key>
+	<Key ID="STR_uniform_crafter_action">
+		<Original>Sew Uniform</Original>
+		<Russian>Сшить Форму</Russian>
+	</Key>
+	<Key ID="STR_uniform_crafter_failure">
+		<Original>No fabric bags found in the box</Original>
+		<Russian>Не найдено мешков с тканью в ящике.</Russian>
+	</Key>
+	<Key ID="STR_uniform_crafter_success">
+		<Original>Uniform has been sewn.</Original>
+		<Russian>Форма сшита.</Russian>
+	</Key>
 	<Key ID="STR_factory_action">
 		<Original>Produce Goods</Original>
 		<English>Produce Goods</English>

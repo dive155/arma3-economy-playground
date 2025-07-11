@@ -111,17 +111,17 @@ waitUntil { scriptDone _scriptHandle };
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
-// Prison
-// [
-	// prison_button,
-	// [[prison_input_box, "b_dive_grain_bag"]],
-	// prison_output_box,
-	// objNull,
-	// ["pdr_lunch_full", 8],
-	// ["pdrstuff\sounds\stove_ignition.ogg", "pdrstuff\sounds\stove_cooking.ogg", "pdrstuff\sounds\stove_failure.ogg", ""],
-	// ["STR_stove_action", "STR_stove_success", "STR_stove_failure"],
-	// {["", 0]},
-	// { // Extra condition
-		// [player, "cooking", true] call fnc_checkHasPermission;
-	// }
-// ]execVM "scripts\economy\createResourceConverter.sqf";
+[
+	prison_button,
+	[[prison_input_box, "b_dive_fabric_bag"]],
+	prison_output_box,
+	objNull,
+	["rhs_uniform_afghanka_boots", 1],
+	industrialConverterSoundsConfig,
+	["STR_uniform_crafter_action", "STR_uniform_crafter_success", "STR_uniform_crafter_failure"],
+	16,
+	{["", 0]},
+	{ // Extra condition
+		true
+	}
+]execVM "scripts\economy\createResourceConverter.sqf";
