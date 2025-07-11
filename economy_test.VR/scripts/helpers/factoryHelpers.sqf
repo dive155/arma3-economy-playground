@@ -21,11 +21,11 @@ fnc_checkFactoryWorkConditions = {
 		false
 	};
 	
-	private _moneyInBox = [_moneyBox, _payConfig select 0] call fnc_getMoneyAmountInContainer;
-	if (_moneyInBox > 0) exitWith {
-		hint(localize "STR_factory_take_money");
-		false
-	};
+	// private _moneyInBox = [_moneyBox, _payConfig select 0] call fnc_getMoneyAmountInContainer;
+	// if (_moneyInBox > 0) exitWith {
+		// hint(localize "STR_factory_take_money");
+		// false
+	// };
 	
 	_fatigueIncrease = _fatigueKey call fnc_getWorldVariable;
 	_canPay = 	if ([_payConfig] call fnc_checkIfFactoryCanPay) then { true } else {
