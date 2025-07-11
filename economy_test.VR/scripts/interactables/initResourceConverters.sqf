@@ -14,6 +14,7 @@ waitUntil { scriptDone _scriptHandle };
 	["b_dive_grain_bag", 1],
 	industrialConverterSoundsConfig,
 	["STR_hay_converter_action", "STR_hay_converter_success", "STR_hay_converter_failure"],
+	8,
 	{ // Get pay config
 		[currencyCodePdrLeu, "payHay" call fnc_getWorldVariable]
 	},
@@ -36,6 +37,7 @@ waitUntil { scriptDone _scriptHandle };
 	["b_dive_ore_bag", 1],
 	industrialConverterSoundsConfig,
 	["STR_ore_converter_action", "STR_ore_converter_success", "STR_ore_converter_failure"],
+	8,
 	{ // Get pay config
 		[currencyCodePdrLeu, "payOre" call fnc_getWorldVariable]
 	},
@@ -58,6 +60,7 @@ waitUntil { scriptDone _scriptHandle };
 	["b_dive_goods_bag",1],
 	industrialConverterSoundsConfig,
 	["STR_factory_action", "STR_factory_success", "STR_factory_failure"],
+	8,
 	{ // Get pay config
 		[currencyCodePdrLeu, "payFactory" call fnc_getWorldVariable]
 	},
@@ -80,6 +83,7 @@ waitUntil { scriptDone _scriptHandle };
 	["",0],
 	industrialConverterSoundsConfig,
 	["STR_goods_action", "", "STR_goods_failure"],
+	3,
 	{ // Get pay config
 		["", 0]
 	},
@@ -100,6 +104,7 @@ waitUntil { scriptDone _scriptHandle };
 	["pdr_lunch_full", 8],
 	["pdrstuff\sounds\stove_ignition.ogg", "pdrstuff\sounds\stove_cooking.ogg", "pdrstuff\sounds\stove_failure.ogg", ""],
 	["STR_stove_action", "STR_stove_success", "STR_stove_failure"],
+	16,
 	{["", 0]},
 	{ // Extra condition
 		[player, "cooking", true] call fnc_checkHasPermission;

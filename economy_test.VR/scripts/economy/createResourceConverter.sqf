@@ -8,6 +8,7 @@ params [
 	"_outputItemConfig",            // Items to be outputed, Format [_classname, _amount]
 	"_soundsConfig",                // Format: [soundAction, soundSuccess, soundFailure, soundMoney]
 	"_localizationConfig",			// Format: [keyAction, keySuccess, keyFailure]
+	["_qteActions", 8],
 	
 	// Callbacks
 	["_getPayConfig", {["", 0]}],                                          // Which currency to pay in and how much
@@ -21,6 +22,7 @@ if (isServer) then {
 	_buttonObject setVariable ["outputItemBox", _outputItemBox, true];
 	_buttonObject setVariable ["outputItemConfig", _outputItemConfig, true];
 	_buttonObject setVariable ["localizationConfig", _localizationConfig, true];
+	_buttonObject setVariable ["qteActions", _qteActions, true];
 	_buttonObject setVariable ["getPayConfig", _getPayConfig, true];
 	_buttonObject setVariable ["extraCondition", _extraCondition, true];
 	_buttonObject setVariable ["onSuccess", _onSuccess, true];
@@ -120,6 +122,7 @@ if (hasInterface) then {
 			//_rawResources = (_target getVariable ["rawResources", []]) select 0;
 			_rawResources = _target getVariable ["rawResources", []];
 			_localizationConfig = _target getVariable["localizationConfig", []];
+			_qteActions = _target getVariable["qteActions", []];
 			_onSuccess = _target getVariable ["onSuccess", {}];
 			_payConfig = call (_target getVariable "getPayConfig");
 			_extraCondition = _target getVariable ["extraCondition", {true}];
@@ -161,7 +164,7 @@ if (hasInterface) then {
 
 				// Run QTE with success callback only
 				[
-					8, // QTE difficulty
+					_qteActions, // QTE difficulty
 					{
 						// Success callback
 						private _arguments = _this select 0 select 2;
@@ -242,7 +245,7 @@ if (hasInterface) then {
 				[
 					{
 						params ["_target", "_localizationConfig"];
-						systemChat str(_this);
+						//systemChat str(_this);
 						hint localize (_localizationConfig select 2);
 						[_target, _target, "failure", 3] call fnc_playStoreSound;
 					},
