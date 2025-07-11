@@ -30,6 +30,10 @@
 		<English>Ore has been processed! You can take your pay from the cash register. Your Work Fatigue has increased.</English>
 		<Russian>Руда переработана! Можете забрать оплату из кассы. Усталость от Работы увеличена.</Russian>
 	</Key>
+	<Key ID="STR_resource_missing">
+		<Original>The required Resource is missing!</Original>
+		<Russian>Требуемый Ресурс не найден!</Russian>
+	</Key>
 	<Key ID="STR_hay_converter_action">
 		<Original>Process Hay</Original>
 		<English>Process Hay</English>

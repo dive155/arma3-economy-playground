@@ -161,7 +161,7 @@ if (hasInterface) then {
 
 				// Run QTE with success callback only
 				[
-					16, // QTE difficulty
+					8, // QTE difficulty
 					{
 						// Success callback
 						private _arguments = _this select 0 select 2;
@@ -172,6 +172,36 @@ if (hasInterface) then {
 							private _payConfig = _this select 2;
 							private _onSuccess = _this select 3;
 							private _localizationConfig = _this select 4;
+
+							private _resourceStillAvailable = true;
+
+							{
+								private _match = _x select 0;
+								private _rawResourceSource = _x select 1;
+
+								private _isStillThere = false;
+
+								if (_match isEqualType objNull) then {
+									// Object-based resource (in trigger area)
+									private _rawResourceClassname = typeOf _match;
+									private _foundAgain = [_rawResourceSource, _rawResourceClassname] call fnc_checkItemsInTrigger;
+									_isStillThere = (_foundAgain findIf {_x isEqualTo _match} != -1);
+								} else {
+									// Backpack resource (in cargo box)
+									private _rawResourceClassname = _match;
+									private _foundAgain = [_rawResourceSource, _rawResourceClassname] call fnc_checkBackpacksInBox;
+									_isStillThere = (_foundAgain findIf {_x isEqualTo _rawResourceClassname} != -1);
+								};
+
+								if (!_isStillThere) exitWith {
+									_resourceStillAvailable = false;
+								};
+							} forEach _allMatches;
+
+							if (!_resourceStillAvailable) exitWith {
+								[_target, _target, "failure", 3] call fnc_playStoreSound;
+								hint localize "STR_resource_missing";
+							};
 
 							// Consume resources
 							{
