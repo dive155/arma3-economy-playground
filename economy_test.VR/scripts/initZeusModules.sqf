@@ -99,6 +99,7 @@ playerVariablesForZeusEditing = [
 	"grad_passport_expires",
 	"rp_fatigue_current",
 	"rp_fatigue_capacity",
+	"rp_energized",
 	"rp_daysSinceLastMeal"
 ];
 

@@ -376,6 +376,14 @@
 		<Original>This vehicle is not available for players!</Original>
 		<Russian>Это ТС не доступно для игроков!</Russian>
 	</Key>
+	<Key ID="STR_HungerSatiated">
+		<Original>Your hunger has been satiated.</Original>
+		<Russian>Вы утолили голод.</Russian>
+	</Key>
+	<Key ID="STR_EnergizedWork">
+		<Original>You've consumed an energy drink! Your Work Fatigue Capacity has been increased until the end of the day.</Original>
+		<Russian>Вы употребили энергитик! Ваш ресурс Усталости от Работы увеличен до конца дня.</Russian>
+	</Key>
   </Package>
   <Package name="journals">
 	<Key ID="STR_transaction_log_entry">
