@@ -264,16 +264,16 @@ private _storeItemsGear = [
 	["WBK_SmallHammer", 850],
 	["pdr_grinder", 1050],
 	["Binocular", 350],
-	["G_Shades_Black", 250],
-	["G_Shades_Blue", 250],
-	["G_Shades_Green", 250],
-	["G_Shades_Red", 250],
-	["G_Sport_Red", 500],
-	["G_Sport_Blackyellow", 500],
-	["G_Sport_BlackWhite", 500],
-	["G_Sport_Checkered", 500],
-	["G_Sport_Blackred", 500],
-	["G_Sport_Greenblack", 500]
+	["G_Shades_Black", 100],
+	["G_Shades_Blue", 100],
+	["G_Shades_Green", 100],
+	["G_Shades_Red", 100],
+	["G_Sport_Red", 150],
+	["G_Sport_Blackyellow", 150],
+	["G_Sport_BlackWhite", 150],
+	["G_Sport_Checkered", 150],
+	["G_Sport_Blackred", 150],
+	["G_Sport_Greenblack", 150]
 ];
 
 [
