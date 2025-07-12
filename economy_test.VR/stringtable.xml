@@ -268,6 +268,10 @@
 		<Original>No money of the right currency in the payment box.</Original>
 		<Russian>В коробке нет денег подходящей валюты.</Russian>
 	</Key>
+	<Key ID="STR_bill_change_success">
+		<Original>Bills have been exchanged!</Original>
+		<Russian>Деньги успешно разменяны!.</Russian>
+	</Key>
 	<Key ID="STR_payment_success">
 		<Original>You paid %1 %2 towards your debt to %3. Remaining debt: %4</Original>
 		<Russian>Вы оплатили %1 %2 долга (%3). Осталось: %4</Russian>
@@ -275,6 +279,18 @@
 	<Key ID="STR_payment_change">
 		<Original>Returned change: %1 %2</Original>
 		<Russian>Сдача: %1 %2</Russian>
+	</Key>
+	<Key ID="STR_bill_change_success">
+		<Original>Bills have been exchanged!</Original>
+		<Russian>Деньги успешно разменяны!</Russian>
+	</Key>
+	<Key ID="STR_exchange_small_bills">
+		<Original>Exchange to Small Bills</Original>
+		<Russian>Разменять на мелкие купюры</Russian>
+	</Key>
+	<Key ID="STR_exchange_large_bills">
+		<Original>Exchange to Large Bills</Original>
+		<Russian>Разменять на крупные купюры</Russian>
 	</Key>
    </Package>
   <Package name="perms">

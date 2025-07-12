@@ -16,7 +16,8 @@ _cashboxSounds = [
 	{
 		 private _args = ["cityMoney"] + _this;
 		_args call fnc_handleAutomatedAccountTransaction;
- 	}
+ 	},
+	50
 ] execVM "scripts\economy\createPaymentCashbox.sqf";
 
 [
@@ -31,5 +32,6 @@ _cashboxSounds = [
 	{
 		 private _args = ["moldovaMoney"] + _this;
 		_args call fnc_handleAutomatedAccountTransaction;
- 	}
+ 	},
+	5
 ] execVM "scripts\economy\createPaymentCashbox.sqf";

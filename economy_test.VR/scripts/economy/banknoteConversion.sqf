@@ -23,14 +23,19 @@ fnc_createCurrencyDefinition = {
 };
 
 fnc_getBanknotes = {
-    params ["_currencyCode", "_moneyAmount"];
+    params ["_currencyCode", "_moneyAmount", ["_banknoteValueLimit", -1]];
     
     private _result = [];
-	private _sortedBanknotes = (currencyDefinitions get _currencyCode) select 1;
-	
+    private _sortedBanknotes = (currencyDefinitions get _currencyCode) select 1;
+    
     {
         private _noteName = _x select 0;
         private _noteValue = _x select 1;
+
+        // Skip if banknote is above the limit (if limit is set)
+        if (_banknoteValueLimit > 0 && _noteValue > _banknoteValueLimit) then {
+            continue;
+        };
         
         private _count = floor (_moneyAmount / _noteValue);
         if (_count > 0) then {
@@ -42,15 +47,17 @@ fnc_getBanknotes = {
     _result
 };
 
+
 fnc_putMoneyIntoContainer = {
-	params ["_container","_currencyCode", "_amount"];
-	_banknotes = [_currencyCode, _amount] call fnc_getBanknotes;
-	
-	{
-		_className = _x select 0;
-		_amount = _x select 1;
-		_container addItemCargoGlobal [_className, _amount];
-	} forEach _banknotes;
+    params ["_container", "_currencyCode", "_amount", ["_banknoteValueLimit", -1]];
+
+    _banknotes = [_currencyCode, _amount, _banknoteValueLimit] call fnc_getBanknotes;
+    
+    {
+        _className = _x select 0;
+        _count = _x select 1;
+        _container addItemCargoGlobal [_className, _count];
+    } forEach _banknotes;
 };
 
 fnc_getMoneyAmountInContainer = {

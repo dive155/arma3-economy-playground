@@ -5,7 +5,8 @@ params [
     "_currencyCode",           // Currency type used
     "_soundsConfig",           // Format: [soundAction, soundSuccess, soundFailure]
 	["_handleJournalingPlayer", {params ["_steamId", "_instigatorName", "_countryCode", "_operationType", "_amount", "_playersNote"];}],
-	["_sendPayment", {params ["_playerName", "_operationType", "_amount", "_playersNote"]}]
+	["_sendPayment", {params ["_playerName", "_operationType", "_amount", "_playersNote"]}],
+	["_smallBillLimit", 50]
 ];
 
 // Store config on the server
@@ -15,6 +16,7 @@ if (isServer) then {
     _buttonObject setVariable ["currencyCode", _currencyCode, true];
 	_buttonObject setVariable ["handleJournalingPlayer", _handleJournalingPlayer, true];
 	_buttonObject setVariable ["sendPayment", _sendPayment, true];
+	_buttonObject setVariable ["smallBillLimit", _smallBillLimit, true];
 
     _soundsMap = createHashMap;
     _soundsMap set ["action", _soundsConfig select 0];
@@ -101,6 +103,37 @@ fnc_handleCashboxPayment = {
     hint _message;
 };
 
+fnc_changeMoneyBill = {
+	params ["_buttonObject", "_wantSmall"];
+	
+	private _moneyBox = _buttonObject getVariable ["moneyBox", objNull];
+    private _countryCode = _buttonObject getVariable ["countryCode", ""];
+    private _currencyCode = _buttonObject getVariable ["currencyCode", ""];
+    private _soundsMap = _buttonObject getVariable ["soundsMap", createHashMap];
+	private _smallBillLimit = _buttonObject getVariable ["smallBillLimit", createHashMap];
+	
+	[_buttonObject, _buttonObject, "action", 3] call fnc_playStoreSound;
+	
+	private _moneyInBox = [_moneyBox, _currencyCode] call fnc_getMoneyAmountInContainer;
+    if (_moneyInBox == 0) exitWith {
+        sleep 1;
+        hint (localize "STR_payment_no_money");
+        [_buttonObject, _buttonObject, "failure", 3] call fnc_playStoreSound;
+    };
+	
+	[_moneyBox, _currencyCode, _moneyInBox] call fnc_takeMoneyFromContainer;
+	
+	_billLimit = -1;
+	if (_wantSmall) then {
+		_billLimit = _smallBillLimit;
+	};
+	
+	sleep 1;
+	hint (localize "STR_bill_change_success");
+	[_moneyBox, _currencyCode, _moneyInBox, _billLimit] call fnc_putMoneyIntoContainer;
+	[_buttonObject, _buttonObject, "success", 3] call fnc_playStoreSound;
+};
+
 // Attach ACE interaction
 if (hasInterface) then {
     private _interact = {
@@ -111,5 +144,27 @@ if (hasInterface) then {
     };
 	private _actionName = format [localize "STR_pay_debt", localize format ["STR_country%1", _countryCode]];
     private _action = ["PayDebtCashbox", _actionName, "", _interact, {true}] call ace_interact_menu_fnc_createAction;
-    [_buttonObject, 0, [], _action] call ace_interact_menu_fnc_addActionToObject;
+    [_buttonObject, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+	
+	// Exchange to Small Bills
+    private _smallInteract = {
+        [_this select 0] spawn {
+            params ["_target"];
+            [_target, true] call fnc_changeMoneyBill;
+        };
+    };
+    private _smallActionName = localize "STR_exchange_small_bills";
+    private _smallAction = ["ExchangeSmallBills", _smallActionName, "", _smallInteract, {true}] call ace_interact_menu_fnc_createAction;
+    [_buttonObject, 0, ["ACE_MainActions"], _smallAction] call ace_interact_menu_fnc_addActionToObject;
+
+    // Exchange to Large Bills
+    private _largeInteract = {
+        [_this select 0] spawn {
+            params ["_target"];
+            [_target, false] call fnc_changeMoneyBill;
+        };
+    };
+    private _largeActionName = localize "STR_exchange_large_bills";
+    private _largeAction = ["ExchangeLargeBills", _largeActionName, "", _largeInteract, {true}] call ace_interact_menu_fnc_createAction;
+    [_buttonObject, 0, ["ACE_MainActions"], _largeAction] call ace_interact_menu_fnc_addActionToObject;
 };
