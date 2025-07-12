@@ -20,7 +20,7 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // Extra condition
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueHay", "farmOpen", hay_money_box] call  fnc_checkFactoryWorkConditions
+		[_payConfig, "fatigueHay", "farmOpen", hay_money_box] call fnc_checkFactoryWorkConditions
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 
@@ -43,7 +43,7 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // Extra condition
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueOre", "quarryOpen", ore_money_box] call  fnc_checkFactoryWorkConditions
+		[_payConfig, "fatigueOre", "quarryOpen", ore_money_box] call fnc_checkFactoryWorkConditions
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 
@@ -66,7 +66,7 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{ // Extra condition
 		params["_buttonObject", "_payConfig"]; 
-		[_payConfig, "fatigueFactory", "factoryOpen", factory_money_box] call  fnc_checkFactoryWorkConditions
+		[_payConfig, "fatigueFactory", "factoryOpen", factory_money_box] call fnc_checkFactoryWorkConditions
 	},
 	{ // On work completed
 		params["_buttonObject", "_payConfig"]; 

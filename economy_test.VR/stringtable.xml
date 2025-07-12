@@ -105,6 +105,10 @@
 		<Original>This Facility is currently Closed. Speak to the Director of Industry for information.</Original>
 		<Russian>Данное Предприятие сейчас закрыто. Обращайтесь к Директору Промышленности для информации.</Russian>
 	</Key>
+	<Key ID="STR_factory_no_power">
+		<Original>Can't perform the action - no electricity!</Original>
+		<Russian>Невозможно выполнить действие - нет электричества!</Russian>
+	</Key>
 	<Key ID="STR_city_no_money">
 		<Original>City does not have enough money for this.</Original>
 		<English>City does not have enough money for this.</English>

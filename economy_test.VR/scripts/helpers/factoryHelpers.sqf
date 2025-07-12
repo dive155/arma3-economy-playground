@@ -21,6 +21,12 @@ fnc_checkFactoryWorkConditions = {
 		false
 	};
 	
+	_hasPower = ["PDR"] call fnc_areLightsOn;
+	if not _hasPower exitWith {
+		hint(localize "STR_factory_no_power");
+		false
+	};
+	
 	// private _moneyInBox = [_moneyBox, _payConfig select 0] call fnc_getMoneyAmountInContainer;
 	// if (_moneyInBox > 0) exitWith {
 		// hint(localize "STR_factory_take_money");
