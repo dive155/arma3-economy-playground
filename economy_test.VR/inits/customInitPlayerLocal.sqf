@@ -108,3 +108,6 @@ player addEventHandler ["GetOutMan", {
 	
 	hint (format [localize "STR_PaidForPager", _messagePrice]);
 }] call CBA_fnc_addEventHandler;
+
+sleep 10;
+[player] call fnc_updateBuff;
