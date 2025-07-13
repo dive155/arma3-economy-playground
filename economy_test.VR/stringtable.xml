@@ -416,6 +416,10 @@
 		<Original>You've consumed an energy drink! Your Work Fatigue Capacity has been increased until the end of the day.</Original>
 		<Russian>Вы употребили энергитик! Ваш ресурс Усталости от Работы увеличен до конца дня.</Russian>
 	</Key>
+	<Key ID="STR_PaidForPager">
+		<Original>%1 Leu (PDR) added to your debt for sending the message.</Original>
+		<Russian>%1 Лей (ПДР) добавлено к вашему долгу за отправку сообщения.</Russian>
+	</Key>
   </Package>
   <Package name="journals">
 	<Key ID="STR_transaction_log_entry">
@@ -493,6 +497,10 @@
 	<Key ID="STR_transaction_type_SalesTax">
 		<Original>&lt;t color='#b184fa'&gt;Sales Tax&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#b184fa'&gt;Налог на Продажи&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_Pager">
+		<Original>&lt;t color='#1ff0b8'&gt;Pager Services Payment&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#1ff0b8'&gt;Оплата Услуг Пейджера&lt;/t&gt;</Russian>
 	</Key>
 	<Key ID="STR_transactions_title">
 		<Original>Transaction History:</Original>
