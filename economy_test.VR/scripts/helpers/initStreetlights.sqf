@@ -61,6 +61,23 @@ fnc_updateLightsLocal = {
 	};
 };
 
+fnc_showTrafficLightsServer = {
+	params ["_visible"];
+
+	private _i = 1;
+	while { true } do {
+		private _varName = format ["tl_%1", _i];
+		private _obj = missionNamespace getVariable [_varName, objNull];
+
+		if (isNull _obj) then { breakWith {}; }; // stop when no more traffic lights found
+
+		// Set 'active' variable globally
+		_obj hideObjectGlobal (!_visible);
+
+		_i = _i + 1;
+	};
+};
+
 fnc_getObjectsOfTypesInTrigger = {
 	params ["_trigger", "_typeArray"];
 	private _result = [];

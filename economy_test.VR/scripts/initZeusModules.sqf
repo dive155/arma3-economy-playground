@@ -352,6 +352,7 @@ allRpPermissions = [
 
 				if (_pdrLightsNew != (["PDR"] call fnc_areLightsOn)) then {
 					["PDR", _pdrLightsNew] remoteExec ["fnc_setLightsServer", 2];
+					[_pdrLightsNew] remoteExec ["fnc_showTrafficLightsServer", 2];
 				};
 
 				if (_moldovaLightsNew != (["Moldova"] call fnc_areLightsOn)) then {
