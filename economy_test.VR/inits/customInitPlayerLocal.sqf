@@ -106,6 +106,11 @@ player addEventHandler ["GetOutMan", {
 		localize "STR_transactions_automatedSystem"
 	] spawn fnc_handlePlayerDebtTransaction;
 	
+	0 spawn {
+		sleep 1;
+		[player] call fn_updateCivilianInfo;
+	};
+	
 	hint (format [localize "STR_PaidForPager", _messagePrice]);
 }] call CBA_fnc_addEventHandler;
 
