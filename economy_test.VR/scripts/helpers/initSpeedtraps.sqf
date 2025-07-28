@@ -1,16 +1,22 @@
+PDR_speedtraps_excluded_vehicles = ["RDS_S1203_Civ_02", "RDS_PL_S1203_Civ_02", "ClioIch_pdr", "gm_gc_pol_p601_pdr"];
+
 fnc_handleSpeedtrapActivation = {
 	params ["_activators", "_speedLimit", "_radarId"];
 	
-	if not (["speedTrapsEnabled"] call fnc_getWorldVariable) exitWith {};
+	private _shouldActivate = (["speedTrapsEnabled"] call fnc_getWorldVariable) and (["PDR"] call fnc_areLightsOn);
+	if (not _shouldActivate) exitWith {};
 	
 	_drivers = [];
 	_speedViolators = [];
 	{
 		// Check if the object is a vehicle
 		if ( _x isKindOf "LandVehicle") then {
-			_driver = driver _x;
-			if (!isNull _driver && isPlayer _driver) then {
-				_drivers pushBackUnique _driver;
+			private _vehicleClass = typeOf _x;
+			if (!(_vehicleClass in PDR_speedtraps_excluded_vehicles)) then {
+				private _driver = driver _x;
+				if (!isNull _driver && isPlayer _driver) then {
+					_drivers pushBackUnique _driver;
+				};
 			};
 		};
 	} forEach _activators;
