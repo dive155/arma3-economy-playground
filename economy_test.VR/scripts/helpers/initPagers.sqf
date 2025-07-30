@@ -1,6 +1,5 @@
 if (hasInterface) then {
 	["pdr_pager_used", {
-		systemChat ("receiver is" + str(_this));
 		private _receiver = _this select 0;
 		private _message = _this select 1;
 		
