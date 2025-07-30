@@ -58,3 +58,15 @@ fnc_handlePlayerDebtTransactionServer = {
 	
 	["debt_" + _steamId + "_" + _countryCode, _record] call DMP_fnc_addToJournal;
 };
+
+fnc_getPlayerLegalName = {
+	params ["_player"];
+	private _name = _player getVariable ["grad_passport_firstName", ""];
+	_name = _name + " " + (_player getVariable ["grad_passport_lastName", ""]);
+	
+	if (_name isEqualTo "") then {
+		_name = name _player;
+	};
+	
+	_name
+};

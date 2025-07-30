@@ -91,28 +91,5 @@ player addEventHandler ["GetOutMan", {
 	} forEach ["PDR", "Moldova"];
 };
 
-["pdr_pager_used", {
-	private _passportRsc = player getVariable ["grad_passport_passportRsc", "Pdr"];
-	private _countryCode = [_passportRsc] call fnc_getCitizenship;
-	private _steamId = player getVariable ["DMP_SteamID", ""];
-	private _messagePrice = 60;
-	
-	[
-		_steamId,
-		"[Automatic]",
-		_countryCode,
-		"Pager",
-		_messagePrice,
-		localize "STR_transactions_automatedSystem"
-	] spawn fnc_handlePlayerDebtTransaction;
-	
-	0 spawn {
-		sleep 1;
-		[player] call fn_updateCivilianInfo;
-	};
-	
-	hint (format [localize "STR_PaidForPager", _messagePrice]);
-}] call CBA_fnc_addEventHandler;
-
 sleep 10;
 [player] call fnc_updateBuff;
