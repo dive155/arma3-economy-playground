@@ -82,7 +82,7 @@ player addEventHandler ["GetOutMan", {
 }];
 
 0 spawn {
-	sleep 10;
+	sleep 20;
 	//systemChat "updating lights";
 	{
 		private _country = _x;

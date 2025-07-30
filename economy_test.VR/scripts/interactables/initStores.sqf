@@ -104,7 +104,7 @@ Pharmacy basic
 // PDR: Cigs & Booze
 private _storeItemsCigsPdr = [
     ["cigs_pops_poppack", 120],
-	["kss_beer_dark", 105],
+	["kss_beer_dark", 230],
 	["kss_soda_coke", 50],
 	["kss_soda_drpepper", 50],
     ["kss_soda_mdew", 50],
@@ -321,7 +321,7 @@ private _storeItemsMedical = [
 // Moldova: Cigs&Booze
 private _storeItemsCigsMoldova = [
     ["cigs_Kosmos_cigpack", 7],
-    ["kss_beer_light", 6],
+    ["kss_beer_light", 9],
     ["cigs_matches", 2],
 	["kss_vodka", 15],
 	["pdr_bugulma", 19],
