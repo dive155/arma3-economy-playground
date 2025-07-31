@@ -31,26 +31,7 @@ worldVariablesForZeusEditing = [
 	"salesTaxMoldova",
 	"exchangeRate",
 	"exchangeSpread",
-	"gasStationOpen",
-	"fuelPrice_PDR",
-	"fuelInStorage",
-	"factoryMoney",
-	"factoryGoodsSellPrice",
-	"factoryGoodsTax",
-	"factoryBossCommission",
-	"factoryOpen",
-	"payFactory",
-	"fatigueFactory",
-	"quarryOpen",
-	"payOre",
-	"fatigueOre",
-	"farmOpen",
-	"payHay",
-	"fatigueHay",
 	"lunchPrice",
-	"fuelInStorageMoldova",
-	"fuelPrice_Moldova",
-	"gasStationOpenMoldova",
 	"services_priceTram",
 	"services_paidTram",
 	"services_priceStreetlights",
@@ -88,7 +69,55 @@ worldVariablesForZeusEditing = [
 	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;
 
-playerVariablesForZeusEditing = [
+worldVariablesForZeusEditing2 = [
+	"gasStationOpen",
+	"fuelPrice_PDR",
+	"fuelInStorage",
+	"factoryMoney",
+	"factoryGoodsSellPrice",
+	"factoryGoodsTax",
+	"factoryBossCommission",
+	"factoryOpen",
+	"payFactory",
+	"fatigueFactory",
+	"quarryOpen",
+	"payOre",
+	"fatigueOre",
+	"farmOpen",
+	"payHay",
+	"fatigueHay",
+	"fuelInStorageMoldova",
+	"fuelPrice_Moldova",
+	"gasStationOpenMoldova"
+];
+
+[
+	localize "STR_dive_pdr_module_title",
+	localize "STR_dive_pdr_module_edit_world2",
+	{
+		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
+		
+		private _initialVariablesText = [worldVariablesForZeusEditing2, fnc_getWorldVariable] call fnc_getVariablesForEditing;
+		
+		[
+			localize "STR_dive_pdr_module_edit_world", [
+				["EDIT:MULTI",["Variables",""],[_initialVariablesText,{},40], true]
+			], {
+				params["_values","_arguments"];
+				
+				_pos = _arguments select 0;
+				_object = _arguments select 1;
+				_initialVariablesText = _arguments select 2;
+				_modifiedVariablesText = _values select 0;
+												
+				[_initialVariablesText, _modifiedVariablesText, fnc_setWorldVariable] call fnc_setEditedVariables;
+			}, {}, [_pos, _object, _initialVariablesText]
+		] call zen_dialog_fnc_create;
+
+	}, "hud\pdr_module.paa"
+] call zen_custom_modules_fnc_register;
+
+playerVariablesForZeusEditing2 = [
 	//"rp_permissions",
 	"grad_passport_passportRsc",
 	"grad_passport_firstName",

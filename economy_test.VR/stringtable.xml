@@ -1102,8 +1102,12 @@
 		<Russian>.Продвинуть День</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_world">
-		<Original>Edit World Variables</Original>
-		<Russian>Ред. Настройки Мира</Russian>
+		<Original>Settings (City and Economy)</Original>
+		<Russian>Настройки (Город и Эк-ка)</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_module_edit_world2">
+		<Original>Settings (Enterprises)</Original>
+		<Russian>Настройки (Предприятия)</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_module_edit_player">
 		<Original>Edit Variables</Original>
