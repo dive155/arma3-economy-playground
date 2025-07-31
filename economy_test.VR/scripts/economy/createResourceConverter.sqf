@@ -5,7 +5,7 @@ params [
 									// _rawResource1Classname - Classname of the raw resource to be processed
 	"_outputItemBox",               // Where to put processed items
 	"_outputMoneyBox",              // Where to put money
-	"_outputItemConfig",            // Items to be outputed, Format [_classname, _amount]
+	"_outputItemConfig",            // Items to be outputed, Format [[_classname, _amount]]
 	"_soundsConfig",                // Format: [soundAction, soundSuccess, soundFailure, soundMoney]
 	"_localizationConfig",			// Format: [keyAction, keySuccess, keyFailure]
 	["_qteActions", 8],
@@ -84,16 +84,19 @@ fnc_giveConversionOutput = {
 	// Give Item
 	_outputItemBox = _buttonObject getVariable ["outputItemBox", objNull];
 	if (not isNull _outputItemBox) then {
-		// Check where and what to give
-		_outputItemConfig = _buttonObject getVariable ["outputItemConfig", ""];
-		_outputItemConfig params ["_outputItemClassname", "_outputItemAmount"];
-		
-		// Check if we're giving a backpack or an item
-		if (isClass (configFile >> "CfgVehicles" >> _outputItemClassname)) then {
-			_outputItemBox addBackpackCargoGlobal [_outputItemClassname, _outputItemAmount];
-		} else {
-			_outputItemBox addItemCargoGlobal [_outputItemClassname, _outputItemAmount];
-		};
+		// Get list of output items
+		_outputItemConfig = _buttonObject getVariable ["outputItemConfig", []];
+
+		{
+			_x params ["_outputItemClassname", "_outputItemAmount"];
+
+			// Check if we're giving a backpack or an item
+			if (isClass (configFile >> "CfgVehicles" >> _outputItemClassname)) then {
+				_outputItemBox addBackpackCargoGlobal [_outputItemClassname, _outputItemAmount];
+			} else {
+				_outputItemBox addItemCargoGlobal [_outputItemClassname, _outputItemAmount];
+			};
+		} forEach _outputItemConfig;
 	};
 	
 	// Give money
