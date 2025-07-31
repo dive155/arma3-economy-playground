@@ -198,7 +198,8 @@ allRpPermissions = [
 	"visaGiving_PDR",
 	"visaGiving_Moldova",
 	"sellingIndustrialGoods",
-	"numberplateEditing"
+	"numberplateEditing",
+	"moonshine"
 ];
 
 [

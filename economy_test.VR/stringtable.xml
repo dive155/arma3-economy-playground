@@ -61,6 +61,18 @@
 		<Original>Uniform has been sewn.</Original>
 		<Russian>Форма сшита.</Russian>
 	</Key>
+	<Key ID="STR_moonshine_crafter_action">
+		<Original>Distill Moonshine</Original>
+		<Russian>Гнать Самогон</Russian>
+	</Key>
+	<Key ID="STR_moonshine_crafter_failure">
+		<Original>No agricultural bags found in the box</Original>
+		<Russian>Не найдено мешков с сельхозпродукцией в ящике.</Russian>
+	</Key>
+	<Key ID="STR_moonshine_crafter_success">
+		<Original>Moonshine has been distilled.</Original>
+		<Russian>Самогон произведён.</Russian>
+	</Key>
 	<Key ID="STR_factory_action">
 		<Original>Produce Goods</Original>
 		<English>Produce Goods</English>
@@ -301,6 +313,10 @@
 	<Key ID="STR_permission_cooking">
 		<Original>Cooking</Original>
 		<Russian>Готовка</Russian>
+	</Key>
+	<Key ID="STR_permission_moonshine">
+		<Original>Making Moonshine</Original>
+		<Russian>Изготовление Самогона</Russian>
 	</Key>
 	<Key ID="STR_permission_accountFull_cityMoney">
 		<Original>City Treasury Access</Original>

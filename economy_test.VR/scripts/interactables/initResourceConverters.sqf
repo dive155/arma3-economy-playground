@@ -112,16 +112,25 @@ waitUntil { scriptDone _scriptHandle };
 ]execVM "scripts\economy\createResourceConverter.sqf";
 
 [
-	prison_button,
-	[[prison_input_box, "b_dive_fabric_bag"]],
-	prison_output_box,
+	moonshine_button,
+	[[moonshine_input_box, "b_dive_grain_bag"]],
+	moonshine_output_box,
 	objNull,
-	[["rhs_uniform_afghanka_boots", 1]],
-	industrialConverterSoundsConfig,
-	["STR_uniform_crafter_action", "STR_uniform_crafter_success", "STR_uniform_crafter_failure"],
+	[
+		["pdr_moonshine_pear", 4],
+		["pdr_moonshine_plum", 4],
+		["pdr_moonshine_apple", 4]
+	],
+	[
+		"\z\ace\addons\refuel\sounds\nozzle_start.ogg",
+		"pdrstuff\sounds\stove_cooking.ogg",
+		"pdrstuff\sounds\machine_error.ogg",
+		""
+	],
+	["STR_moonshine_crafter_action", "STR_moonshine_crafter_success", "STR_moonshine_crafter_failure"],
 	16,
 	{["", 0]},
 	{ // Extra condition
-		true
+		[player, "moonshine", true] call fnc_checkHasPermission;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
