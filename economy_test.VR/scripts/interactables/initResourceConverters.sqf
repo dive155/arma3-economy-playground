@@ -131,6 +131,12 @@ waitUntil { scriptDone _scriptHandle };
 	16,
 	{["", 0]},
 	{ // Extra condition
-		[player, "moonshine", true] call fnc_checkHasPermission;
+		params["_buttonObject", "_payConfig"]; 		
+		private _hasEnergy = [player, 1] call fnc_checkIfNotTooFatigued;
+		private _hasPerms = [player, "moonshine", true] call fnc_checkHasPermission;
+		_hasEnergy and _hasPerms
+	},
+	{
+		[player, 1] call fnc_increasePlayerFatigue;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
