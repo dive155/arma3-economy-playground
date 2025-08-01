@@ -40,7 +40,10 @@ worldVariablesForZeusEditing = [
 	"services_paidSpeedtraps",
 	"speedTrapsEnabled", 
 	"speedingFineLow",
-	"speedingFineHigh"
+	"speedingFineHigh",
+	"noiseEnabled",
+	"noiseMinDelay",
+	"noiseMaxDelay"
 ];
 
 [
