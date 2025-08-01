@@ -46,11 +46,9 @@ if (isServer) then {
 				private _randPosASL = ATLToASL _randPosATL;
 
 				playSound3D [_sound, objNull, false, _randPosASL, 5, 1, 150];
-				systemChat _sound;
 				
 				// --- Optional "double sound" ---
 				if (random 1 < 0.6) then {
-					systemChat "double";
 					sleep (3 + random 5); // short delay: 3–8s
 
 					private _sound2 = selectRandom PDR_noiseSounds;
@@ -62,7 +60,6 @@ if (isServer) then {
 			};
 
 			private _delay = (_minDelay + random (_maxDelay - _minDelay));
-			systemChat str(_delay);
 			sleep _delay;
 		};
 	};
