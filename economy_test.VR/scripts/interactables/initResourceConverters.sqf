@@ -140,3 +140,16 @@ waitUntil { scriptDone _scriptHandle };
 		[player, 1] call fnc_increasePlayerFatigue;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
+
+[
+	prison_button,
+	[[prison_input_box, "b_dive_fabric_bag"]],
+	prison_output_box,
+	objNull,
+	[["rhs_uniform_afghanka_boots", 1]],
+	industrialConverterSoundsConfig,
+	["STR_uniform_crafter_action", "STR_uniform_crafter_success", "STR_uniform_crafter_failure"],
+	16,
+	{["", 0]},
+	{true}
+]execVM "scripts\economy\createResourceConverter.sqf";
