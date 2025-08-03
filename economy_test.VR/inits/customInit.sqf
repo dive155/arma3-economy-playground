@@ -41,6 +41,9 @@ waitUntil { scriptDone _scriptHandle };
 _scriptHandle = execVM "scripts\helpers\initFactoryCargo.sqf";
 waitUntil { scriptDone _scriptHandle };
 
+_scriptHandle = execVM "scripts\passports\initBorderCrossingMachines.sqf";
+waitUntil { scriptDone _scriptHandle };
+
 if (hasInterface) then {
 	// Collect all existing offroad_safe_N objects
 	private _offroadSafes = [];

@@ -14,8 +14,10 @@ fn_setVisaStatusLocal = {
 fn_addBorderCrossingLocal = {
 	params ["_player", "_countryName", "_crossingIsEntry"];
 	_crossings = _player getVariable ["rp_borderCrossings", []];
-	//_crossings pushBack [(call getDateText) + (call getTimeText), _countryName, _crossingIsEntry];
-	
+	if (typeName _crossings isEqualTo "STRING") then {
+		_crossings = [];
+	};
+
 	private _day = ["rpDay"] call fnc_getWorldVariable;
 	_crossings pushBack [("Day " + str(_day)) + (call getTimeText), _countryName, _crossingIsEntry];
 	_player setVariable ["rp_borderCrossings", _crossings, true];

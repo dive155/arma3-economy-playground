@@ -600,6 +600,44 @@
 		<Original>Moldova</Original>
 		<Russian>Молдова</Russian>
 	</Key>
+	<Key ID="STR_border_confirm_title">
+		<Original>Confirm Border Crossing</Original>
+		<Russian>Подтверждение Пересечения Границы</Russian>
+	</Key>
+	<Key ID="STR_border_action_label">
+		<Original>Request Border Crossing</Original>
+		<Russian>Запросить Пересечение Границы</Russian>
+	</Key>
+	<Key ID="STR_border_confirm_ok">
+		<Original>Confirm</Original>
+		<Russian>Подтвердить</Russian>
+	</Key>
+	<Key ID="STR_border_confirm_cancel">
+		<Original>Cancel</Original>
+		<Russian>Отмена</Russian>
+	</Key>
+	<Key ID="STR_border_confirm_text">
+		<Original> By clicking this button, you confirm that you are not committing any RP law violations. If you are carrying contraband or otherwise breaking the law, press Cancel and call Zeus.λDrivers: You also confirm that each of your passengers has pressed this button individually.λλThere is a %1 percent chance of having to do an additional manual checkup. If that happens, step aside, ping Zeus and wait.λλCrossing from %2 to %3.
+		</Original>
+		<Russian> Нажимая эту кнопку, вы подтверждаете, что не нарушаете законы в рамках РП. Если у вас есть контрабанда или совершаются другие нарушения — нажмите Отмена и вызовите Зевса.λВодители: Вы также подтверждаете, что каждый из ваших пассажиров нажал эту кнопку самостоятельно.λλСуществует вероятность в %1 процентов, что вам потребуется пройти дополнительную ручную проверку. В этом случае отойдите в сторону, позовите Зевса и ожидайте.λλ Пересечение из %2 в %3.
+		</Russian>
+	</Key>
+	<Key ID="STR_border_already_approved">
+		<Original>You have already been approved for crossing. Please proceed.</Original>
+		<Russian>Вы уже получили разрешение на пересечение. Пожалуйста, проходите.</Russian>
+	</Key>
+	<Key ID="STR_border_manual_check">
+		<Original>You’ve been selected for manual inspection. Wait for Zeus.</Original>
+		<Russian>Вы выбраны для ручной проверки. Ожидайте Зевса.</Russian>
+	</Key>
+	<Key ID="STR_border_approved">
+		<Original>Automated access granted. Proceed from %1 to %2.</Original>
+		<Russian>Автоматический доступ разрешен. Следуйте из %1 в %2.</Russian>
+	</Key>
+	<Key ID="STR_border_selected_for_check">
+		<Original>You’ve been selected for manual inspection. Step aside and wait for Zeus.</Original>
+		<Russian>Вы выбраны для ручной проверки. Отойдите в сторону и ожидайте Зевса.</Russian>
+	</Key>
   </Package>
   <Package name="passportActions">
 	<Key ID="STR_checkPassport">
@@ -643,7 +681,7 @@
 		<Russian>%1 сейчас занят и не может посмотреть ваш паспорт.</Russian>
 	</Key>
 	</Package>
-	<Package name="civilianInfo">
+  <Package name="civilianInfo">
 	<Key ID="STR_govtJobFormat">
 		<Original>Government Job: %1</Original>
 		<Russian>Гос. Должность: %1</Russian>
