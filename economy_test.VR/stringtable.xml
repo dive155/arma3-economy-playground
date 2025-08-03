@@ -92,6 +92,22 @@
 		<Original>Factory goods sold for %1!\n%2 has been paid to the City as Tax (%3%%)\n%4 has been paid as a commission to Industrial Director (%5%%)\n%6 has been added to Factory Funds.</Original>
 		<Russian>Товары фабрики проданы за %1!\n%2 уплачено в городскую казну в качестве налога (%3%%)\n%4 выплачено директору завода в качестве комиссии (%5%%)\n%6 добавлено в фонд фабрики.</Russian>
 	</Key>
+	<Key ID="STR_cargo_action_process">
+		<Original>Process Cargo</Original>
+		<Russian>Обработать Груз</Russian>
+	</Key>
+	<Key ID="STR_cargo_error_no_vehicle">
+		<Original>No vehicle detected. Please park a vehicle inside the processing zone.</Original>
+		<Russian>Нет транспортного средства. Пожалуйста, припаркуйте транспорт в зоне обработки.</Russian>
+	</Key>
+	<Key ID="STR_cargo_error_no_bags">
+		<Original>No bags with resources found in the vehicle.</Original>
+		<Russian>В транспортном средстве не найдено мешков с ресурсами.</Russian>
+	</Key>
+	<Key ID="STR_cargo_success_transfer">
+		<Original>Cargo transferred successfully.</Original>
+		<Russian>Груз успешно передан.</Russian>
+	</Key>
 	<Key ID="STR_goods_action">
 		<Original>Sell Industrial Goods</Original>
 		<Russian>Продать Промышленную Продукцию</Russian>
