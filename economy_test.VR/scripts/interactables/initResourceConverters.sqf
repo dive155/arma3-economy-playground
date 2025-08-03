@@ -8,7 +8,7 @@ waitUntil { scriptDone _scriptHandle };
 // Hay to Agricultural Products Converter
 [
 	hay_button,
-	[[hay_trigger, "DIVE_Haystack"]],
+	[[hay_trigger, "DIVE_Haystack", false]],
 	hay_output_box,
 	hay_money_box,
 	[["b_dive_grain_bag", 1]],
@@ -31,7 +31,7 @@ waitUntil { scriptDone _scriptHandle };
 // Ore to Minerals Converter
 [
 	ore_button,
-	[[ore_trigger, "DIVE_OreRock"]],
+	[[ore_trigger, "DIVE_OreRock", false]],
 	ore_output_box,
 	ore_money_box,
 	[["b_dive_ore_bag", 1]],
@@ -54,7 +54,10 @@ waitUntil { scriptDone _scriptHandle };
 // Factory
 [
 	factory_button,
-	[[factory_hay_box, "b_dive_grain_bag"], [factory_ore_box, "b_dive_ore_bag"]],
+	[
+		[factory_hay_trigger, "b_dive_grain_bag", true], 
+		[factory_ore_trigger, "b_dive_ore_bag", true]
+	],
 	factory_goods_box,
 	factory_money_box,
 	[["b_dive_goods_bag",1]],
@@ -77,7 +80,7 @@ waitUntil { scriptDone _scriptHandle };
 // Selling goods
 [
 	goods_button,
-	[[factory_goods_box, "b_dive_goods_bag"]],
+	[[factory_goods_box, "b_dive_goods_bag", false]],
 	objNull,
 	objNull,
 	[["",0]],
@@ -98,7 +101,7 @@ waitUntil { scriptDone _scriptHandle };
 // Cafe stove
 [
 	stove,
-	[[stove_input_box, "b_dive_grain_bag"]],
+	[[stove_input_box, "b_dive_grain_bag", false]],
 	stove_output_box,
 	objNull,
 	[["pdr_lunch_full", 8]],
@@ -113,7 +116,7 @@ waitUntil { scriptDone _scriptHandle };
 
 [
 	moonshine_button,
-	[[moonshine_input_box, "b_dive_grain_bag"]],
+	[[moonshine_input_box, "b_dive_grain_bag", false]],
 	moonshine_output_box,
 	objNull,
 	[
@@ -143,7 +146,7 @@ waitUntil { scriptDone _scriptHandle };
 
 [
 	prison_button,
-	[[prison_input_box, "b_dive_fabric_bag"]],
+	[[prison_input_box, "b_dive_fabric_bag", false]],
 	prison_output_box,
 	objNull,
 	[["rhs_uniform_afghanka_boots", 1]],

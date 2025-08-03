@@ -1,6 +1,6 @@
 params [
 	"_buttonObject", 				// Button to press
-	"_rawResources",                // Format: [[_rawResource1Source, _rawResource1Classname],[...]]
+	"_rawResources",                // Format: [[_rawResource1Source, _rawResource1Classname, _useBoxLookup],[...]]
 									// _rawResource1Source - Where raw items are checked for. Could be a trigger or a container.
 									// _rawResource1Classname - Classname of the raw resource to be processed
 	"_outputItemBox",               // Where to put processed items
@@ -63,6 +63,23 @@ fnc_checkBackpacksInBox = {
 	};
 	_matches
 };
+
+fnc_findBoxInTrigger = {
+	params ["_trigger"];
+	private _box = objNull;
+
+	private _objectsInArea = (allMissionObjects "") inAreaArray _trigger;
+
+	// Filter to find first object with inventory (maximumLoad > 0)
+	{
+		if ((getNumber (configFile >> "CfgVehicles" >> typeOf _x >> "maximumLoad")) > 0) exitWith {
+			_box = _x;
+		};
+	} forEach _objectsInArea;
+
+	_box
+};
+
 
 // Do conversion on the CLIENT
 fnc_removeRawResouce = {
@@ -139,12 +156,21 @@ if (hasInterface) then {
 			{
 				_rawResourceSource = _x select 0;
 				_rawResourceClassname = _x select 1;
+				_useDynamicBoxLookup = _x select 2;
 				_matches = [];
 				
-				if (_rawResourceSource isKindOf "EmptyDetector") then {
-					_matches = [_rawResourceSource, _rawResourceClassname] call fnc_checkItemsInTrigger;
-				} else {
+				if (_useDynamicBoxLookup) then {
+					_rawResourceSource = [_rawResourceSource] call fnc_findBoxInTrigger;
+					
+					if (isNull _rawResourceSource) exitWith {hint "No box!"};
+					
 					_matches = [_rawResourceSource, _rawResourceClassname] call fnc_checkBackpacksInBox;
+				} else {				
+					if (_rawResourceSource isKindOf "EmptyDetector") then {
+						_matches = [_rawResourceSource, _rawResourceClassname] call fnc_checkItemsInTrigger;
+					} else {
+						_matches = [_rawResourceSource, _rawResourceClassname] call fnc_checkBackpacksInBox;
+					};
 				};
 				
 				// Conversion happens only if EVERY type of resource has at least 1 item present
@@ -184,6 +210,7 @@ if (hasInterface) then {
 							{
 								private _match = _x select 0;
 								private _rawResourceSource = _x select 1;
+								private _useDynamicBoxLookup = _x select 2;
 
 								private _isStillThere = false;
 
