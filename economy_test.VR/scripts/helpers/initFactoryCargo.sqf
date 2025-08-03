@@ -25,6 +25,12 @@ if (hasInterface) then {
 
 			private _vehicle = _vehiclesInTrigger select 0;
 
+			private _dir = getDir _vehicle;
+			if !(_dir >= 341 || _dir <= 9) exitWith {
+				playSound3D ["pdrstuff\sounds\machine_error.ogg", _button, false, getPosASL _button, 1, 1, 0];
+				hint localize "STR_cargo_error_bad_alignment";
+			};
+
 			private _cargo = getBackpackCargo _vehicle;
 			private _bags = ["b_dive_grain_bag", "b_dive_ore_bag"];
 			private _foundBags = [];

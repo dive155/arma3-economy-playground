@@ -108,6 +108,10 @@
 		<Original>Cargo transferred successfully.</Original>
 		<Russian>Груз успешно передан.</Russian>
 	</Key>
+	<Key ID="STR_cargo_error_bad_alignment">
+		<Original>Vehicle is not properly aligned. Reverse with the cargo hold toward the receiver.</Original>
+		<Russian>Транспорт выровнен неправильно. Сдайте назад, чтобы грузовая часть была направлена к приёмнику.</Russian>
+	</Key>
 	<Key ID="STR_goods_action">
 		<Original>Sell Industrial Goods</Original>
 		<Russian>Продать Промышленную Продукцию</Russian>
