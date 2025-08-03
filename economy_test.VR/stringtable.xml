@@ -642,6 +642,10 @@
 		<Original>Border crossing registration successfull. Added to the passport.</Original>
 		<Russian>Переход границы зарегестрирован успешно и внесен в паспорт.</Russian>
 	</Key>
+	<Key ID="STR_border_abandoned">
+		<Original>Border zone abandoned. Automated border crossing request canceled.</Original>
+		<Russian>Вы покинули пограничную зону. Запрос на автоматический проход границы отменён.</Russian>
+	</Key>
 	<Key ID="STR_border_cancel_label">
 		<Original>Cancel Border Crossing Request</Original>
 		<Russian>Отменить Запрос на Пересечение Границы</Russian>

@@ -12,12 +12,12 @@
 	{ 0.5 }
 ]execVM "scripts\passports\createBorderCrossingMachine.sqf";
 
-fnc_resetAutoBorderCrossing = {
+fnc_handlePlayerIsCrossingBorder = {
 	params ["_player"];
 	
 	private _pendingCrossing = player getVariable ["rp_crossingPending", []];
-	_player setVariable ["rp_crossingPending", [], true];
 	if (count _pendingCrossing > 0) then {
+		_player setVariable ["rp_crossingPending", [], true];
 		[_player, _pendingCrossing] spawn {
 			params ["_player", "_pendingCrossing"];
 			_pendingCrossing params ["_from", "_to"];
@@ -39,16 +39,39 @@ fnc_resetAutoBorderCrossing = {
 	systemChat "ResetStatus"
 };
 
+fnc_handlePlayerAbandonedBorder = {
+	params ["_player"];
+	
+	private _pendingCrossing = player getVariable ["rp_crossingPending", []];
+	if (count _pendingCrossing > 0) then {
+		_player setVariable ["rp_crossingPending", [], true];
+		["STR_border_abandoned"] remoteExec ["fn_hintLocalized", _player];
+	};
+	
+	systemChat "Left border"
+};
+
 if (isServer) then {
 	[
 		{
 			{
 				if (_x inArea border_reset_trigger) then {
-					[_x] call fnc_resetAutoBorderCrossing;
+					[_x] call fnc_handlePlayerIsCrossingBorder;
 				};
 			} forEach allPlayers;
 		}, 
 		1, 
+	[]] call CBA_fnc_addPerFrameHandler;
+	
+	[
+		{
+			{
+				if not (_x inArea border_zone_trigger) then {
+					[_x] call fnc_handlePlayerAbandonedBorder;
+				};
+			} forEach allPlayers;
+		}, 
+		3.1234, 
 	[]] call CBA_fnc_addPerFrameHandler;
 };
 
