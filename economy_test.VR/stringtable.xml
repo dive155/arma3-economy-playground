@@ -617,9 +617,9 @@
 		<Russian>Отмена</Russian>
 	</Key>
 	<Key ID="STR_border_confirm_text">
-		<Original> By clicking this button, you confirm that you are not committing any RP law violations. If you are carrying contraband or otherwise breaking the law, press Cancel and call Zeus.λDrivers: You also confirm that each of your passengers has pressed this button individually.λλThere is a %1 percent chance of having to do an additional manual checkup. If that happens, step aside, ping Zeus and wait.λλCrossing from %2 to %3.
+		<Original> By clicking this button, you confirm that you are not committing any RP law violations. If you are carrying contraband or otherwise breaking the law, press Cancel and call Zeus.&lt;br/&gt;&lt;br/&gt;Drivers: You also confirm that each of your passengers has pressed this button individually.&lt;br/&gt;&lt;br/&gt;There is a %1 percent chance of having to do an additional manual checkup. If that happens, step aside, ping Zeus and wait.&lt;br/&gt;&lt;br/&gt;Crossing from %2 to %3.
 		</Original>
-		<Russian> Нажимая эту кнопку, вы подтверждаете, что не нарушаете законы в рамках РП. Если у вас есть контрабанда или совершаются другие нарушения — нажмите Отмена и вызовите Зевса.λВодители: Вы также подтверждаете, что каждый из ваших пассажиров нажал эту кнопку самостоятельно.λλСуществует вероятность в %1 процентов, что вам потребуется пройти дополнительную ручную проверку. В этом случае отойдите в сторону, позовите Зевса и ожидайте.λλ Пересечение из %2 в %3.
+		<Russian> Нажимая эту кнопку, вы подтверждаете, что не нарушаете законы в рамках РП. Если у вас есть контрабанда или совершаются другие нарушения — нажмите Отмена и вызовите Зевса.&lt;br/&gt;&lt;br/&gt;Водители: Вы также подтверждаете, что каждый из ваших пассажиров нажал эту кнопку самостоятельно.&lt;br/&gt;&lt;br/&gt;Существует вероятность в %1 процентов, что вам потребуется пройти дополнительную ручную проверку. В этом случае отойдите в сторону, позовите Зевса и ожидайте.&lt;br/&gt;&lt;br/&gt; Пересечение из %2 в %3.
 		</Russian>
 	</Key>
 	<Key ID="STR_border_already_approved">

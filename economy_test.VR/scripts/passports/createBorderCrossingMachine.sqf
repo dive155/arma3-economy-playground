@@ -56,8 +56,7 @@ private _actionCode = {
 			localize ("STR_country" + _to)
 		];
 		
-		_confirmText = _confirmText splitString "λ";
-		_confirmText = _confirmText joinString (toString [10]);
+		_confirmText = parseText _confirmText;
 		
 		private _confirmed = [
 			_confirmText,
