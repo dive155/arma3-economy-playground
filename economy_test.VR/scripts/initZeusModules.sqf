@@ -120,7 +120,7 @@ worldVariablesForZeusEditing2 = [
 	}, "hud\pdr_module.paa"
 ] call zen_custom_modules_fnc_register;
 
-playerVariablesForZeusEditing2 = [
+playerVariablesForZeusEditing = [
 	//"rp_permissions",
 	"grad_passport_passportRsc",
 	"grad_passport_firstName",
