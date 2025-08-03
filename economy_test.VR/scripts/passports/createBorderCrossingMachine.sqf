@@ -105,4 +105,25 @@ private _action = [
 	{true}
 ] call ace_interact_menu_fnc_createAction;
 
-[_buttonObject, 0, [], _action] call ace_interact_menu_fnc_addActionToObject;
+[_buttonObject, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+
+// Cancel action
+private _cancelActionCode = {
+	player setVariable ["rp_crossingPending", [], true];
+	hint localize "STR_border_request_cancelled";
+};
+
+private _cancelActionCondition = {
+	private _pending = player getVariable ["rp_crossingPending", []];
+	(count _pending) > 0
+};
+
+private _cancelAction = [
+	"BorderCrossCancel",
+	localize "STR_border_cancel_label",
+	"",
+	_cancelActionCode,
+	_cancelActionCondition
+] call ace_interact_menu_fnc_createAction;
+
+[_buttonObject, 0, ["ACE_MainActions"], _cancelAction] call ace_interact_menu_fnc_addActionToObject;

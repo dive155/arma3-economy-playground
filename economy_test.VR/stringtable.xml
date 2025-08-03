@@ -642,6 +642,15 @@
 		<Original>Border crossing registration successfull. Added to the passport.</Original>
 		<Russian>Переход границы зарегестрирован успешно и внесен в паспорт.</Russian>
 	</Key>
+	<Key ID="STR_border_cancel_label">
+		<Original>Cancel Border Crossing Request</Original>
+		<Russian>Отменить Запрос на Пересечение Границы</Russian>
+	</Key>
+	<Key ID="STR_border_request_cancelled">
+		<Original>Border crossing request cancelled.</Original>
+		<Russian>Запрос на пересечение границы отменён.</Russian>
+	</Key>
+
   </Package>
   <Package name="passportActions">
 	<Key ID="STR_checkPassport">
