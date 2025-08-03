@@ -33,8 +33,9 @@ private _actionCode = {
 		private _onFailure = _target getVariable ["onFailure", {}];
 
 		if !(call _condition) exitWith {};
-
-		if (player getVariable ["rp_crossingPending", false]) exitWith {
+		
+		private _pendingCrossing = player getVariable ["rp_crossingPending", []];
+		if (count _pendingCrossing > 0) exitWith {
 			hint localize "STR_border_already_approved";
 		};
 
@@ -71,7 +72,7 @@ private _actionCode = {
 		private _roll = random 1;
 
 		if (_roll > _checkChance) then {
-			player setVariable ["rp_crossingPending", true, true];
+			player setVariable ["rp_crossingPending", [_from, _to], true];
 
 			private _grantedMsg = format [
 				localize "STR_border_approved",
@@ -79,9 +80,6 @@ private _actionCode = {
 				localize ("STR_country" + _to)
 			];
 			hint _grantedMsg;
-
-			[player, _from, false] call fn_addBorderCrossingLocal;
-			[player, _to, true] call fn_addBorderCrossingLocal;
 
 			call _onSuccess;
 		} else {

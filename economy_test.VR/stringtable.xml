@@ -638,6 +638,10 @@
 		<Original>You’ve been selected for manual inspection. Step aside and wait for Zeus.</Original>
 		<Russian>Вы выбраны для ручной проверки. Отойдите в сторону и ожидайте Зевса.</Russian>
 	</Key>
+	<Key ID="STR_border_completed">
+		<Original>Border crossing registration successfull. Added to the passport.</Original>
+		<Russian>Переход границы зарегестрирован успешно и внесен в паспорт.</Russian>
+	</Key>
   </Package>
   <Package name="passportActions">
 	<Key ID="STR_checkPassport">

@@ -15,8 +15,26 @@
 fnc_resetAutoBorderCrossing = {
 	params ["_player"];
 	
-	_player setVariable ["rp_crossingPending", false, true];
-	_player setVariable ["rp_checkupPending", false, true];
+	private _pendingCrossing = player getVariable ["rp_crossingPending", []];
+	_player setVariable ["rp_crossingPending", [], true];
+	if (count _pendingCrossing > 0) then {
+		[_player, _pendingCrossing] spawn {
+			params ["_player", "_pendingCrossing"];
+			_pendingCrossing params ["_from", "_to"];
+			
+			[_player, _from, false] remoteExec ["fn_addBorderCrossingLocal", _player];
+			sleep 1;
+			
+			[_player, _to, true] remoteExec ["fn_addBorderCrossingLocal", _player];
+			sleep 0.5;
+			
+			["STR_border_completed"] remoteExec ["fn_hintLocalized", _player];
+		};
+	};
+	
+	if (_player getVariable ["rp_checkupPending", false]) then {
+		_player setVariable ["rp_checkupPending", false, true];
+	};
 	
 	systemChat "ResetStatus"
 };
