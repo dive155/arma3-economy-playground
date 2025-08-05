@@ -47,18 +47,21 @@ fnc_handlePlayerIsCrossingBorder = {
 	
 	private _pendingCrossing = player getVariable ["rp_crossingPending", []];
 	if (count _pendingCrossing > 0) then {
-		_player setVariable ["rp_crossingPending", [], true];
-		[_player, _pendingCrossing] spawn {
-			params ["_player", "_pendingCrossing"];
-			_pendingCrossing params ["_from", "_to"];
-			
-			[_player, _from, false] remoteExec ["fn_addBorderCrossingLocal", _player];
-			sleep 1;
-			
-			[_player, _to, true] remoteExec ["fn_addBorderCrossingLocal", _player];
-			sleep 0.5;
-			
-			["STR_border_completed"] remoteExec ["fn_hintLocalized", _player];
+		_pendingCrossing params ["_from", "_to", "_completed"];
+		if !(_completed) then {
+			_player setVariable ["rp_crossingPending", [_from, _to, true], true];
+			[_player, _pendingCrossing] spawn {
+				params ["_player", "_pendingCrossing"];
+				_pendingCrossing params ["_from", "_to", "_completed"];
+				
+				[_player, _from, false] remoteExec ["fn_addBorderCrossingLocal", _player];
+				sleep 1;
+				
+				[_player, _to, true] remoteExec ["fn_addBorderCrossingLocal", _player];
+				sleep 0.5;
+				
+				["STR_border_completed"] remoteExec ["fn_hintLocalized", _player];
+			};
 		};
 	};
 	
@@ -72,8 +75,12 @@ fnc_handlePlayerAbandonedBorder = {
 	
 	private _pendingCrossing = player getVariable ["rp_crossingPending", []];
 	if (count _pendingCrossing > 0) then {
+		_pendingCrossing params ["_from", "_to", "_completed"];
 		_player setVariable ["rp_crossingPending", [], true];
-		["STR_border_abandoned"] remoteExec ["fn_hintLocalized", _player];
+		
+		if (not _completed) then {
+			["STR_border_abandoned"] remoteExec ["fn_hintLocalized", _player];
+		};
 	};
 };
 

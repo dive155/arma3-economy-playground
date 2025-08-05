@@ -77,7 +77,7 @@ private _actionCode = {
 		private _roll = random 1;
 
 		if ((_roll > _checkChance) and (call _condition)) then {
-			player setVariable ["rp_crossingPending", [_from, _to], true];
+			player setVariable ["rp_crossingPending", [_from, _to, false], true];
 
 			private _grantedMsg = format [
 				localize "STR_border_approved",

@@ -628,7 +628,7 @@
 	</Key>
 	<Key ID="STR_autoborder_closed">
 		<Original>Automatic border crossing is currently disabled. Ping Zeus.</Original>
-		<Russian>Автоматический проход границы сейчас выключен. Пингуйте Зевса.</Russian>
+		<Russian>Автоматизированный проход границы сейчас выключен. Пингуйте Зевса.</Russian>
 	</Key>
 	<Key ID="STR_border_manual_check">
 		<Original>You’ve been selected for manual inspection. Wait for Zeus.</Original>
@@ -636,7 +636,7 @@
 	</Key>
 	<Key ID="STR_border_approved">
 		<Original>&lt;t size='1.5' color='#51f07c'&gt;Automated access granted.&lt;/t&gt;&lt;br/&gt;Proceed from %1 to %2.&lt;br/&gt;&lt;t size='0.5' color='#3870ff'&gt;Only you can see this message.&lt;/t&gt;</Original>
-		<Russian>&lt;t size='1.5' color='#51f07c'&gt;Автоматический доступ разрешен.&lt;/t&gt;&lt;br/&gt;Следуйте из %1 в %2.&lt;br/&gt;&lt;t size='0.5' color='#3870ff'&gt;Это сообщение видно только вам.&lt;/t&gt;</Russian>
+		<Russian>&lt;t size='1.5' color='#51f07c'&gt;Автоматизированный переход разрешен.&lt;/t&gt;&lt;br/&gt;Следуйте из %1 в %2.&lt;br/&gt;&lt;t size='0.5' color='#3870ff'&gt;Это сообщение видно только вам.&lt;/t&gt;</Russian>
 	</Key>
 	<Key ID="STR_border_selected_for_check">
 		<Original>&lt;t size='1.5' color='#f5a214'&gt;Selected for Manual Inspection.&lt;/t&gt;&lt;br/&gt;Step aside, ping Zeus and wait.&lt;br/&gt;&lt;t size='0.5' color='#3870ff'&gt;Only you can see this message.&lt;/t&gt;</Original>
@@ -647,18 +647,17 @@
 		<Russian>Переход границы зарегестрирован успешно и внесен в паспорт.</Russian>
 	</Key>
 	<Key ID="STR_border_abandoned">
-		<Original>Border zone abandoned. Automated border crossing request canceled.</Original>
-		<Russian>Вы покинули пограничную зону. Запрос на автоматический проход границы отменён.</Russian>
+		<Original>Border zone abandoned. Automated border crossing request no longer active.</Original>
+		<Russian>Вы покинули пограничную зону. Запрос на автоматизированный проход границы больше неактивен.</Russian>
 	</Key>
 	<Key ID="STR_border_cancel_label">
 		<Original>Cancel Border Crossing Request</Original>
 		<Russian>Отменить Запрос на Пересечение Границы</Russian>
 	</Key>
 	<Key ID="STR_border_request_cancelled">
-		<Original>Border crossing request cancelled.</Original>
-		<Russian>Запрос на пересечение границы отменён.</Russian>
+		<Original>Automated border crossing request no longer active.</Original>
+		<Russian>Запрос на автоматизированное пересечение границы больше неактивен.</Russian>
 	</Key>
-
   </Package>
   <Package name="passportActions">
 	<Key ID="STR_checkPassport">
