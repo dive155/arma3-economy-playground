@@ -2,14 +2,44 @@
 	crossing_button_pdr,
 	"PDR",
 	"Moldova",
-	{ 0.5 }
+	{ 
+		["autoBorderChance"] call fnc_getWorldVariable 
+	},
+	{
+		private _debt = [player, "PDR"] call fnc_getPlayerDebt;
+		
+		private _passport = player getVariable ["grad_passport_passportRsc", ""];
+		private _citizenship = [_passport] call fnc_getCitizenship;
+		private _hasVisa = [player, "Moldova"] call fnc_checkHasVisa;
+		_hasVisa = _hasVisa or (_citizenship isEqualTo "Moldova");
+		
+		(_debt <= 500) and _hasVisa
+	},
+	{
+		["autoBorderEnabled"] call fnc_getWorldVariable
+	}
 ]execVM "scripts\passports\createBorderCrossingMachine.sqf";
 
 [
 	crossing_button_moldova,
 	"Moldova",
 	"PDR",
-	{ 0.5 }
+	{ 
+		["autoBorderChance"] call fnc_getWorldVariable 
+	},
+	{
+		private _debt = [player, "Moldova"] call fnc_getPlayerDebt;
+		
+		private _passport = player getVariable ["grad_passport_passportRsc", ""];
+		private _citizenship = [_passport] call fnc_getCitizenship;
+		private _hasVisa = [player, "PDR"] call fnc_checkHasVisa;
+		_hasVisa = _hasVisa or (_citizenship isEqualTo "PDR");
+		
+		(_debt <= 40) and _hasVisa
+	},
+	{
+		["autoBorderEnabled"] call fnc_getWorldVariable
+	}
 ]execVM "scripts\passports\createBorderCrossingMachine.sqf";
 
 fnc_handlePlayerIsCrossingBorder = {
@@ -35,8 +65,6 @@ fnc_handlePlayerIsCrossingBorder = {
 	if (_player getVariable ["rp_checkupPending", false]) then {
 		_player setVariable ["rp_checkupPending", false, true];
 	};
-	
-	systemChat "ResetStatus"
 };
 
 fnc_handlePlayerAbandonedBorder = {
@@ -47,8 +75,6 @@ fnc_handlePlayerAbandonedBorder = {
 		_player setVariable ["rp_crossingPending", [], true];
 		["STR_border_abandoned"] remoteExec ["fn_hintLocalized", _player];
 	};
-	
-	systemChat "Left border"
 };
 
 if (isServer) then {

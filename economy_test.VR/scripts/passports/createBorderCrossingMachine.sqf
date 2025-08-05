@@ -4,6 +4,7 @@ params [
 	"_toCountry",
 	["_getExtraCheckupChance", {0.25}],
 	["_extraCondition", {true}],
+	["_borderOpenCondition", {true}],
 	["_onSuccess", {}],
 	["_onFailure", {}]
 ];
@@ -13,6 +14,7 @@ if (isServer) then {
 	_buttonObject setVariable ["toCountry", _toCountry, true];
 	_buttonObject setVariable ["getExtraCheckupChance", _getExtraCheckupChance, true];
 	_buttonObject setVariable ["extraCondition", _extraCondition, true];
+	_buttonObject setVariable ["borderOpenCondition", _borderOpenCondition, true];
 	_buttonObject setVariable ["onSuccess", _onSuccess, true];
 	_buttonObject setVariable ["onFailure", _onFailure, true];
 } else {
@@ -29,10 +31,13 @@ private _actionCode = {
 		private _to = _target getVariable ["toCountry", ""];
 		private _extraCheckChance = _target getVariable ["getExtraCheckupChance", {0.25}];
 		private _condition = _target getVariable ["extraCondition", {true}];
+		private _borderOpenCondition = _target getVariable ["borderOpenCondition", {true}];
 		private _onSuccess = _target getVariable ["onSuccess", {}];
 		private _onFailure = _target getVariable ["onFailure", {}];
 
-		if !(call _condition) exitWith {};
+		if !(call _borderOpenCondition) exitWith {
+			hint localize "STR_autoborder_closed";
+		};
 		
 		private _pendingCrossing = player getVariable ["rp_crossingPending", []];
 		if (count _pendingCrossing > 0) exitWith {
@@ -71,7 +76,7 @@ private _actionCode = {
 		private _checkChance = call _extraCheckChance;
 		private _roll = random 1;
 
-		if (_roll > _checkChance) then {
+		if ((_roll > _checkChance) and (call _condition)) then {
 			player setVariable ["rp_crossingPending", [_from, _to], true];
 
 			private _grantedMsg = format [

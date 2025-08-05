@@ -101,3 +101,20 @@ fnc_getCitizenship = {
 	if (_citizenship isEqualTo "Pdr") then {_citizenship = "PDR"};
 	_citizenship
 };
+
+fnc_checkHasVisa = {
+	params ["_player", "_country"];
+	private _visas = _player getVariable ["rp_visas", []];
+	if (typeName _visas != "ARRAY") then {
+		_visas = [];
+	};
+	
+	private _hasVisa = false;
+	{ 
+		private _tag = _x select 0; 
+		private _issued = _x select 1;
+		if ((_tag == _country) and _issued) then {_hasVisa = true};
+	} forEach _visas; 
+	
+	_hasVisa
+};

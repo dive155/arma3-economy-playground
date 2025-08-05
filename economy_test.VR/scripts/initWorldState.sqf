@@ -44,6 +44,12 @@ fnc_createDefaultWorldState = {
 		["speedingFineLow", 50] call fnc_setWorldVariable;
 		["speedingFineHigh", 200] call fnc_setWorldVariable;
 		["offroadDamage", true] call fnc_setWorldVariable;
+		["noiseEnabled", false] call fnc_setWorldVariable;
+		["noiseMaxDelay", 30] call fnc_setWorldVariable;
+		["noiseMinDelay", 5] call fnc_setWorldVariable;
+		["autoBorderEnabled", true] call fnc_setWorldVariable;
+		["autoBorderChance", 0.15] call fnc_setWorldVariable;
+		
 	};
 };
 

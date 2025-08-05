@@ -70,3 +70,18 @@ fnc_getPlayerLegalName = {
 	
 	_name
 };
+
+fnc_getPlayerDebt = {
+	params ["_player", "_country"];
+	private _debts = _player getVariable ["rp_debts", []]; 
+	
+	if (typeName _debts != "ARRAY") exitWith {0};
+	
+	private _debt = 0;
+	{ 
+		private _tag = _x select 0; 
+		private _amount = _x select 1; 
+		if (_tag == _country) then { _debt = _amount; };
+	} forEach _debts; 
+	_debt
+};
