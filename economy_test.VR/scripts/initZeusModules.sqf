@@ -134,7 +134,8 @@ playerVariablesForZeusEditing = [
 	"rp_fatigue_current",
 	"rp_fatigue_capacity",
 	"rp_energized",
-	"rp_daysSinceLastMeal"
+	"rp_daysSinceLastMeal",
+	"rp_checkupPending"
 ];
 
 fnc_getPlayerVariableZeus = {

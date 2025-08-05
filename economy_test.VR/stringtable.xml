@@ -635,12 +635,12 @@
 		<Russian>Вы выбраны для ручной проверки. Ожидайте Зевса.</Russian>
 	</Key>
 	<Key ID="STR_border_approved">
-		<Original>Automated access granted. Proceed from %1 to %2.</Original>
-		<Russian>Автоматический доступ разрешен. Следуйте из %1 в %2.</Russian>
+		<Original>&lt;t size='1.5' color='#51f07c'&gt;Automated access granted.&lt;/t&gt;&lt;br/&gt;Proceed from %1 to %2.&lt;br/&gt;&lt;t size='0.5' color='#3870ff'&gt;Only you can see this message.&lt;/t&gt;</Original>
+		<Russian>&lt;t size='1.5' color='#51f07c'&gt;Автоматический доступ разрешен.&lt;/t&gt;&lt;br/&gt;Следуйте из %1 в %2.&lt;br/&gt;&lt;t size='0.5' color='#3870ff'&gt;Это сообщение видно только вам.&lt;/t&gt;</Russian>
 	</Key>
 	<Key ID="STR_border_selected_for_check">
-		<Original>You’ve been selected for manual inspection. Step aside, ping Zeus and wait.</Original>
-		<Russian>Вы выбраны для ручной проверки. Отойдите в сторону, пинганите Зевса и ждите.</Russian>
+		<Original>&lt;t size='1.5' color='#f5a214'&gt;Selected for Manual Inspection.&lt;/t&gt;&lt;br/&gt;Step aside, ping Zeus and wait.&lt;br/&gt;&lt;t size='0.5' color='#3870ff'&gt;Only you can see this message.&lt;/t&gt;</Original>
+		<Russian>&lt;t size='1.5' color='#f5a214'&gt;Выбраны для ручной проверки.&lt;/t&gt;&lt;br/&gt;Отойдите в сторону, пинганите Зевса и ждите.&lt;br/&gt;&lt;t size='0.5' color='#3870ff'&gt;Это сообщение видно только вам.&lt;/t&gt;</Russian>
 	</Key>
 	<Key ID="STR_border_completed">
 		<Original>Border crossing registration successfull. Added to the passport.</Original>

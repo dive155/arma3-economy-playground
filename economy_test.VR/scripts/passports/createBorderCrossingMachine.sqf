@@ -84,12 +84,13 @@ private _actionCode = {
 				localize ("STR_country" + _from),
 				localize ("STR_country" + _to)
 			];
-			hint _grantedMsg;
+			[_grantedMsg, -1, -0.3, 8, 0, 0, 789] spawn BIS_fnc_dynamicText;
 
 			call _onSuccess;
 		} else {
 			player setVariable ["rp_checkupPending", true, true];
-			hint localize "STR_border_selected_for_check";
+			_deniedMessage = localize "STR_border_selected_for_check";
+			[_deniedMessage, -1, -0.3, 8, 0, 0, 789] spawn BIS_fnc_dynamicText;
 			call _onFailure;
 		};
 	};
