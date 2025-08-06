@@ -41,7 +41,8 @@ PDR_baseFuelCoefficients = [
 	["chTransport_L", 7.64],
 	["plateau", 6.92],
 	["roller", 4.95],
-	["chtondeuse", 3.40]
+	["chtondeuse", 3.40],
+	["RDS_PL_Lada_Civ_04", 4.2]
 ];
 
 PDR_classesAliases = [
@@ -86,7 +87,8 @@ PDR_classesAliases = [
 	["chTransport_L"],
 	["plateau"],
 	["roller"],
-	["chtondeuse"]
+	["chtondeuse"],
+	["RDS_PL_Lada_Civ_04", "RDS_PL_Lada_Civ_01","RDS_PL_Lada_Civ_03","RDS_PL_Lada_Civ_05","RDS_PL_Lada_Civ_02","RDS_Lada_Civ_01","RDS_Lada_Civ_04","RDS_Lada_Civ_03","RDS_Lada_Civ_05","RDS_Lada_Civ_02"]
 ];
 
 PDR_fuelConsumptionMultiplier = 0.65;
