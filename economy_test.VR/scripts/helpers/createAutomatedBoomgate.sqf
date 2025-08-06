@@ -31,7 +31,8 @@ private _delay = 0.8 + random 0.4;
 				_gate animateSource ['Door_1_sound_source', 1];
 			};
 			
-			if (!_shouldOpen and (_phase != 0)) then {
+			private _forcedOpen = _gate getVariable ["forced_open", false];
+			if (!_shouldOpen and (_phase != 0) and (not _forcedOpen)) then {
 				_gate animateSource ['Door_1_sound_source', 0];
 			};
 		};

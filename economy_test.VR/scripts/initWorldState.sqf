@@ -49,6 +49,7 @@ fnc_createDefaultWorldState = {
 		["noiseMinDelay", 5] call fnc_setWorldVariable;
 		["autoBorderEnabled", true] call fnc_setWorldVariable;
 		["autoBorderChance", 0.15] call fnc_setWorldVariable;
+		["autoBoomgatesEnabled", true] call fnc_setWorldVariable;
 		
 	};
 };

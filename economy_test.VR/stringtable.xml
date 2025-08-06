@@ -643,8 +643,8 @@
 		<Russian>&lt;t size='1.5' color='#f5a214'&gt;Выбраны для ручной проверки.&lt;/t&gt;&lt;br/&gt;Отойдите в сторону, пинганите Зевса и ждите.&lt;br/&gt;&lt;t size='0.5' color='#3870ff'&gt;Это сообщение видно только вам.&lt;/t&gt;</Russian>
 	</Key>
 	<Key ID="STR_border_completed">
-		<Original>Border crossing registration successfull. Added to the passport.</Original>
-		<Russian>Переход границы зарегестрирован успешно и внесен в паспорт.</Russian>
+		<Original>Border crossing registration successfull.\n Stamps added to the passport.\nProceed ahead freely, good luck!</Original>
+		<Russian>Переход границы зарегестрирован успешно.\n Штампы поставленны в паспорт.\nПродолжайте движение свободно, счастливого пути!</Russian>
 	</Key>
 	<Key ID="STR_border_abandoned">
 		<Original>Border zone abandoned. Automated border crossing request no longer active.</Original>

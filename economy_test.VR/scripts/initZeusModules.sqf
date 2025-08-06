@@ -45,7 +45,8 @@ worldVariablesForZeusEditing = [
 	"noiseMinDelay",
 	"noiseMaxDelay",
 	"autoBorderEnabled",
-	"autoBorderChance"
+	"autoBorderChance",
+	"autoBoomgatesEnabled"
 ];
 
 [

@@ -45,7 +45,7 @@
 fnc_handlePlayerIsCrossingBorder = {
 	params ["_player"];
 	
-	private _pendingCrossing = player getVariable ["rp_crossingPending", []];
+	private _pendingCrossing = _player getVariable ["rp_crossingPending", []];
 	if (count _pendingCrossing > 0) then {
 		_pendingCrossing params ["_from", "_to", "_completed"];
 		if !(_completed) then {
@@ -73,7 +73,7 @@ fnc_handlePlayerIsCrossingBorder = {
 fnc_handlePlayerAbandonedBorder = {
 	params ["_player"];
 	
-	private _pendingCrossing = player getVariable ["rp_crossingPending", []];
+	private _pendingCrossing = _player getVariable ["rp_crossingPending", []];
 	if (count _pendingCrossing > 0) then {
 		_pendingCrossing params ["_from", "_to", "_completed"];
 		_player setVariable ["rp_crossingPending", [], true];

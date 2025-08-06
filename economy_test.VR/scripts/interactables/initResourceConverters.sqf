@@ -86,7 +86,7 @@ waitUntil { scriptDone _scriptHandle };
 	[["",0]],
 	industrialConverterSoundsConfig,
 	["STR_goods_action", "", "STR_goods_failure"],
-	3,
+	1,
 	{ // Get pay config
 		["", 0]
 	},
