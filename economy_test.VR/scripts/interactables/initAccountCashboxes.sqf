@@ -21,7 +21,7 @@
 	},
 	true,
 	"STR_accountOperationsCity",
-	1
+	2
 ] execVM "scripts\economy\createAccountCashbox.sqf";
 
 [
@@ -47,7 +47,7 @@
 	},
 	false,
 	"STR_operationsCity",
-	1
+	2
 ] execVM "scripts\economy\createAccountCashbox.sqf";
 
 [
@@ -73,7 +73,7 @@
 	},
 	true,
 	"STR_accountOperationsFactory",
-	1
+	2
 ] execVM "scripts\economy\createAccountCashbox.sqf";
 
 [
@@ -99,7 +99,7 @@
 	},
 	false,
 	"STR_operationsFactory",
-	1
+	2
 ] execVM "scripts\economy\createAccountCashbox.sqf";
 
 [
