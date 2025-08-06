@@ -29,7 +29,8 @@ private _storeItems = [
 	["H_Cap_grn", 30],
     ["ACE_morphine", 180],
 	["pdr_jaguar", 120],
-	["pdr_whoyarilo", 120]
+	["pdr_whoyarilo", 120],
+	["WBK_HandFlashlight_Weak", 123]
 ];
 
 [
@@ -259,7 +260,7 @@ private _storeItemsGear = [
     ["usm_headwrap_blk", 190],
     ["usm_headwrap_odg1", 190],
     ["usm_headwrap_tan", 190],
-    ["rds_weap_latarka_janta", 310],
+    ["WBK_HandFlashlight_Weak", 310],
     ["Crowbar", 700],
 	["WBK_SmallHammer", 600],
 	["pdr_grinder", 1050],
