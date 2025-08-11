@@ -50,6 +50,8 @@ fnc_createDefaultWorldState = {
 		["autoBorderEnabled", true] call fnc_setWorldVariable;
 		["autoBorderChance", 0.15] call fnc_setWorldVariable;
 		["autoBoomgatesEnabled", true] call fnc_setWorldVariable;
+		["autoBorderForPDRans", true] call fnc_setWorldVariable;
+		["autoBorderForMoldovans", true] call fnc_setWorldVariable;
 		
 	};
 };
