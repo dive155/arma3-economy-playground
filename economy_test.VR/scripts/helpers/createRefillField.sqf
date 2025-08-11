@@ -5,7 +5,7 @@ params [
 	"_amountToSpawn"  // Number of objects to spawn when threshold is not met
 ];
 
-private _delay = 3 + random 1;
+private _delay = 10 + random 3;
 
 [
 	{

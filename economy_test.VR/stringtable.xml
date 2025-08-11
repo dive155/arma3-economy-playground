@@ -135,7 +135,7 @@
 	</Key>
 	<Key ID="STR_factory_closed">
 		<Original>This Facility is currently Closed. Speak to the Director of Industry for information.</Original>
-		<Russian>Данное Предприятие сейчас закрыто. Обращайтесь к Директору Промышленности для информации.</Russian>
+		<Russian>Данное Предприятие сейчас закрыто. Обращайтесь к Директору Промышленности для информации. Предприятие не откроется пока Промдир не примет такое решение.</Russian>
 	</Key>
 	<Key ID="STR_factory_no_power">
 		<Original>Can't perform the action - no electricity!</Original>
