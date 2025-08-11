@@ -452,6 +452,10 @@
 		<Original>You've consumed an energy drink! Your Work Fatigue Capacity has been increased until the end of the day.</Original>
 		<Russian>Вы употребили энергитик! Ваш ресурс Усталости от Работы увеличен до конца дня.</Russian>
 	</Key>
+	<Key ID="STR_WellFed">
+		<Original>You've consumed an nice snack! Your buff for rolls has been increased by 1 till the end of the day.</Original>
+		<Russian>Вы съели вкусный перекус! Ваш бонус к броскам увеличен на 1 до конца дня.</Russian>
+	</Key>
 	<Key ID="STR_PaidForPager">
 		<Original>%1 Leu (PDR) added to your debt for sending the message.</Original>
 		<Russian>%1 Лей (ПДР) добавлено к вашему долгу за отправку сообщения.</Russian>
