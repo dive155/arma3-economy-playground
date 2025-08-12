@@ -36,7 +36,7 @@ DMP_fnc_getVehicleData = {
     _rotation = vectorDir _vehicle;
 	_className = typeOf _vehicle;
 	
-	_category = call DMP_fnc_getPersistenObjectCategory;
+	_category = [_vehicle] call DMP_fnc_getPersistenObjectCategory;
 	
 	_cargo = [];
 	_damageStructural = damage _vehicle;

@@ -6,9 +6,9 @@ DMP_fnc_getAceCargoData = {
 		if (typeName _x == "STRING") then {
 			_cargoSerialized pushBack _x;
 		} else {
-			_cargo = [_x] call DMP_fnc_getCargoData;
+			private _cargo = [_x] call DMP_fnc_getCargoData;
 			
-			_fuelCargoData = [_x] call DMP_fnc_getAceFuelCargoData;
+			private _fuelCargoData = [_x] call DMP_fnc_getAceFuelCargoData;
 			
 			_cargoSerialized pushBack [
 				typeOf _x, 

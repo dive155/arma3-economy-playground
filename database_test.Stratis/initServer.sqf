@@ -3,7 +3,7 @@
 	"TestDatabase",
 	
 	// Save interval in seconds
-	60,
+	20,
 	
 	// Whether or not to use database when testing in 3Den editor. Set to false to not use.
 	true,
