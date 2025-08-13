@@ -141,8 +141,42 @@ waitUntil { scriptDone _scriptHandle };
 	},
 	{
 		[player, 1] call fnc_increasePlayerFatigue;
+		[] remoteExec ["fnc_showMoonshineSmokeServer", 2];
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
+
+if (isServer) then {
+	private _pos = getPosWorld moonshine_smoke;
+	moonshine_smoke setVariable ["initialPos", _pos, true];
+	moonshine_smoke setVariable ["smokeEndTime", 0, true];
+	moonshine_smoke setPosWorld [0, 0, 0];
+};
+
+fnc_showMoonshineSmokeServer = {
+	private _cookTime = 15;
+	private _endTime = moonshine_smoke getVariable "smokeEndTime";
+	if (_endTime > serverTime) then {
+		// Already smoking
+		_endTime = _endTime + _cookTime;
+		moonshine_smoke setVariable ["smokeEndTime", _endTime, true];
+	} else {
+		// Not smoking
+		private _showPos = moonshine_smoke getVariable "initialPos";
+		moonshine_smoke setPosWorld _showPos;
+		
+		_endTime = serverTime + _cookTime;
+		moonshine_smoke setVariable ["smokeEndTime", _endTime, true];
+		0 spawn {
+			private _endTime = serverTime + 100;
+			while { serverTime < _endTime } do {
+				systemChat format["server %1 end %2", serverTime, _endTime];
+				_endTime = moonshine_smoke getVariable "smokeEndTime";
+				sleep 0.9;
+			};
+			moonshine_smoke setPosWorld [0, 0, 0];
+		};
+	};
+};
 
 [
 	prison_button,
