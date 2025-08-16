@@ -8,7 +8,10 @@ waitUntil { scriptDone _scriptHandle };
 // Hay to Agricultural Products Converter
 [
 	hay_button,
-	[[hay_trigger, "DIVE_Haystack", false]],
+	[
+		[hay_trigger, "DIVE_Haystack", false],
+		[hay_stimulator_box, "pdr_harvest_stimulator", false]
+	],
 	hay_output_box,
 	hay_money_box,
 	[["b_dive_grain_bag", 1]],
@@ -169,7 +172,6 @@ fnc_showMoonshineSmokeServer = {
 		0 spawn {
 			private _endTime = serverTime + 100;
 			while { serverTime < _endTime } do {
-				systemChat format["server %1 end %2", serverTime, _endTime];
 				_endTime = moonshine_smoke getVariable "smokeEndTime";
 				sleep 0.9;
 			};

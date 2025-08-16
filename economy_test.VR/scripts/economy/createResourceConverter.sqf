@@ -51,17 +51,25 @@ fnc_checkItemsInTrigger = {
 	_matches
 };
 
+// Check backpacks or items in box
 fnc_checkBackpacksInBox = {
-	params ["_rawResourceSource", "_rawResourceClassname"];
+    params ["_rawResourceSource", "_rawResourceClassname"];
 	
-	_cargo = getBackpackCargo _rawResourceSource;
+    // Check if it's the special harvest stimulator
+	// This fucking sucks but I'm too burnt out to make a prettier solution
+	private _cargo = [];
+    if (_rawResourceClassname == "pdr_harvest_stimulator") then {
+        _cargo = getItemCargo _rawResourceSource;
+    } else {
+        _cargo = getBackpackCargo _rawResourceSource;
+    };
 	_cargo = _cargo select 0;
 	
-	_matches = [];
-	if ((_cargo find _rawResourceClassname) != -1) then {
-		_matches pushBack _rawResourceClassname;
-	};
-	_matches
+    _matches = [];
+    if ((_cargo find _rawResourceClassname) != -1) then {
+        _matches pushBack _rawResourceClassname;
+    };
+    _matches
 };
 
 fnc_findBoxInTrigger = {
@@ -81,17 +89,23 @@ fnc_findBoxInTrigger = {
 };
 
 
-// Do conversion on the CLIENT
+// Remove backpack or item from box
 fnc_removeRawResouce = {
-	params ["_buttonObject", "_submittedObject", "_rawResourceSource"];
+    params ["_buttonObject", "_submittedObject", "_rawResourceSource"];
 	
-	if (_rawResourceSource isKindOf "EmptyDetector") then {
-		// If source is a trigger we need to remove the object inside the trigger
-		deleteVehicle _submittedObject;
-	} else {
-		// If source is a box we need to remove a backpack inside the box
-		_rawResourceSource addBackpackCargoGlobal [_submittedObject, -1];
-	};
+    if (_rawResourceSource isKindOf "EmptyDetector") then {
+        // If source is a trigger we need to remove the object inside the trigger
+        deleteVehicle _submittedObject;
+    } else {
+		// This fucking sucks but I'm too burnt out to make a prettier solution
+        if (_submittedObject == "pdr_harvest_stimulator") then {
+            // Use item cargo functions for the stimulator
+            _rawResourceSource addItemCargoGlobal [_submittedObject, -1];
+        } else {
+            // Use backpack cargo functions for normal backpacks
+            _rawResourceSource addBackpackCargoGlobal [_submittedObject, -1];
+        };
+    };
 };
 
 // Do conversion on the CLIENT

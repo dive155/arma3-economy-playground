@@ -40,9 +40,8 @@
 		<Russian>Переработать Сено</Russian>
 	</Key>
 	<Key ID="STR_hay_converter_failure">
-		<Original>No hay found in the loading zone</Original>
-		<English>No hay found in the loading zone</English>
-		<Russian>Не найдено сена в зоне погрузки.</Russian>
+		<Original>No hay found in the loading zone or no Harvest Stimulator found in the Input Box</Original>
+		<Russian>Не найдено сена в зоне погрузки либо в ящике отсутсвует Стимулятор Урожая.</Russian>
 	</Key>
 	<Key ID="STR_hay_converter_success">
 		<Original>Hay has been processed! You can take your pay from the cash register. Your Work Fatigque has increased.</Original>
