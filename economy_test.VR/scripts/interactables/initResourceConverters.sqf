@@ -191,9 +191,9 @@ waitUntil { scriptDone _scriptHandle };
 	moonshine_output_box,
 	objNull,
 	[
-		["pdr_moonshine_pear", 2],
-		["pdr_moonshine_plum", 2],
-		["pdr_moonshine_apple", 2]
+		["pdr_moonshine_pear", 3],
+		["pdr_moonshine_plum", 3],
+		["pdr_moonshine_apple", 4]
 	],
 	[
 		"\z\ace\addons\refuel\sounds\nozzle_start.ogg",
