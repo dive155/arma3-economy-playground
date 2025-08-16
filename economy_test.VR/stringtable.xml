@@ -61,26 +61,40 @@
 		<Russian>Форма сшита.</Russian>
 	</Key>
 	<Key ID="STR_moonshine_crafter_action">
-		<Original>Distill Moonshine</Original>
-		<Russian>Гнать Самогон</Russian>
+		<Original>Distill Moonshine (Use High-Quality Agricultural Products)</Original>
+		<Russian>Гнать Самогон (Использовать Качественную Сельхоз Продукцию)</Russian>
 	</Key>
 	<Key ID="STR_moonshine_crafter_failure">
-		<Original>No agricultural bags found in the box</Original>
-		<Russian>Не найдено мешков с сельхозпродукцией в ящике.</Russian>
+		<Original>No High-Quality Agricultural Products found in the box.</Original>
+		<Russian>Не найдено Качественной Сельхоз Продукции в ящике.</Russian>
+	</Key>
+	<Key ID="STR_moonshine_crafter_action_worse">
+		<Original>Distill Moonshine (Use Inferior Agricultural Products)</Original>
+		<Russian>Гнать Самогон (Использовать Посредственную Сельхоз Продукцию)</Russian>
+	</Key>
+	<Key ID="STR_moonshine_crafter_failure_worse">
+		<Original>No Inferior Agricultural Products found in the box.</Original>
+		<Russian>Не найдено Посредственной Сельхоз Продукции в ящике.</Russian>
 	</Key>
 	<Key ID="STR_moonshine_crafter_success">
 		<Original>Moonshine has been distilled.</Original>
 		<Russian>Самогон произведён.</Russian>
 	</Key>
 	<Key ID="STR_factory_action">
-		<Original>Produce Goods</Original>
-		<English>Produce Goods</English>
-		<Russian>Произвести Товар</Russian>
+		<Original>Produce Goods (Use High-Quality Agricultural Products)</Original>
+		<Russian>Произвести Товар (Использовать Качественную Сельхоз Продукцию)</Russian>
 	</Key>
 	<Key ID="STR_factory_failure">
-		<Original>No Agricultural Products found or no Ore found in their corresponding boxes.</Original>
-		<English>No Agricultural Products found or no Ore found in their corresponding boxes.</English>
-		<Russian>Не найдено Сельхоз Продукции или Руды в соответствующих им ящиках.</Russian>
+		<Original>No High-Quality Agricultural Products found or no Ore found in their corresponding boxes.</Original>
+		<Russian>Не найдено Качественной Сельхоз Продукции или Руды в соответствующих им ящиках.</Russian>
+	</Key>
+	<Key ID="STR_factory_action_worse">
+		<Original>Produce Goods (Use Inferior Agricultural Products)</Original>
+		<Russian>Произвести Товар (Использовать Посредственную Сельхоз Продукцию)</Russian>
+	</Key>
+	<Key ID="STR_factory_failure_worse">
+		<Original>No Inferior Agricultural Products found or no Ore found in their corresponding boxes.</Original>
+		<Russian>Не найдено Посредственной Сельхоз Продукции или Руды в соответствующих им ящиках.</Russian>
 	</Key>
 	<Key ID="STR_factory_success">
 		<Original>Goods have been produced! You can take your pay from the cash register. Your Work Fatigue has increased.</Original>
@@ -146,14 +160,20 @@
 		<Russian>У Города не хватает денег для этого.</Russian>
 	</Key>
 	<Key ID="STR_stove_action">
-		<Original>Cook Lunch</Original>
-		<English>Cook Lunch</English>
-		<Russian>Приготовить Обед</Russian>
+		<Original>Cook Lunch (Use High-Quality Agricultural Products)</Original>
+		<Russian>Приготовить Обед (Использовать Качественную Сельхоз Продукцию)</Russian>
 	</Key>
 	<Key ID="STR_stove_failure">
-		<Original>No agricultural products found in the box</Original>
-		<English>No agricultural products found in the box</English>
-		<Russian>Не найдено сельхоз продукции в ящике.</Russian>
+		<Original>No High-Quality Agricultural Products found in the box.</Original>
+		<Russian>Не найдено Качественной Сельхоз Продукции в ящике.</Russian>
+	</Key>
+	<Key ID="STR_stove_action_worse">
+		<Original>Cook Lunch (Use Inferior Agricultural Products)</Original>
+		<Russian>Приготовить Обед (Использовать Посредственную Сельхоз Продукцию)</Russian>
+	</Key>
+	<Key ID="STR_stove_failure_worse">
+		<Original>No Inferior Agricultural Products found in the box.</Original>
+		<Russian>Не найдено Посредственной Сельхоз Продукции в ящике.</Russian>
 	</Key>
 	<Key ID="STR_stove_success">
 		<Original>Lunch has been cooked and put into the case.</Original>

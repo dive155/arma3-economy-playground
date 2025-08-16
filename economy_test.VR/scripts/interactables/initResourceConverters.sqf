@@ -14,7 +14,7 @@ waitUntil { scriptDone _scriptHandle };
 	],
 	hay_output_box,
 	hay_money_box,
-	[["b_dive_grain_bag", 1]],
+	[["b_dive_grain_bag_worse", 1]],
 	industrialConverterSoundsConfig,
 	["STR_hay_converter_action", "STR_hay_converter_success", "STR_hay_converter_failure"],
 	8,
@@ -79,6 +79,30 @@ waitUntil { scriptDone _scriptHandle };
 		[_payConfig, "fatigueFactory"] call  fnc_handleConverterWorkCompleted;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
+[
+	factory_button_1,
+	[
+		[factory_hay_trigger, "b_dive_grain_bag_worse", true], 
+		[factory_ore_trigger, "b_dive_ore_bag", true]
+	],
+	factory_goods_box,
+	factory_money_box,
+	[["b_dive_goods_bag",1]],
+	industrialConverterSoundsConfig,
+	["STR_factory_action_worse", "STR_factory_success", "STR_factory_failure_worse"],
+	8,
+	{ // Get pay config
+		[currencyCodePdrLeu, "payFactory" call fnc_getWorldVariable]
+	},
+	{ // Extra condition
+		params["_buttonObject", "_payConfig"]; 
+		[_payConfig, "fatigueFactory", "factoryOpen", factory_money_box] call fnc_checkFactoryWorkConditions
+	},
+	{ // On work completed
+		params["_buttonObject", "_payConfig"]; 
+		[_payConfig, "fatigueFactory"] call  fnc_handleConverterWorkCompleted;
+	}
+]execVM "scripts\economy\createResourceConverter.sqf";
 
 // Selling goods
 [
@@ -116,6 +140,20 @@ waitUntil { scriptDone _scriptHandle };
 		[player, "cooking", true] call fnc_checkHasPermission;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
+[
+	stove_1,
+	[[stove_input_box, "b_dive_grain_bag_worse", false]],
+	stove_output_box,
+	objNull,
+	[["pdr_lunch_full", 4]],
+	["pdrstuff\sounds\stove_ignition.ogg", "pdrstuff\sounds\stove_cooking.ogg", "pdrstuff\sounds\stove_failure.ogg", ""],
+	["STR_stove_action_worse", "STR_stove_success", "STR_stove_failure_worse"],
+	16,
+	{["", 0]},
+	{ // Extra condition
+		[player, "cooking", true] call fnc_checkHasPermission;
+	}
+]execVM "scripts\economy\createResourceConverter.sqf";
 
 [
 	moonshine_button,
@@ -134,6 +172,36 @@ waitUntil { scriptDone _scriptHandle };
 		""
 	],
 	["STR_moonshine_crafter_action", "STR_moonshine_crafter_success", "STR_moonshine_crafter_failure"],
+	16,
+	{["", 0]},
+	{ // Extra condition
+		params["_buttonObject", "_payConfig"]; 		
+		private _hasEnergy = [player, 1] call fnc_checkIfNotTooFatigued;
+		private _hasPerms = [player, "moonshine", true] call fnc_checkHasPermission;
+		_hasEnergy and _hasPerms
+	},
+	{
+		[player, 1] call fnc_increasePlayerFatigue;
+		[] remoteExec ["fnc_showMoonshineSmokeServer", 2];
+	}
+]execVM "scripts\economy\createResourceConverter.sqf";
+[
+	moonshine_button_1,
+	[[moonshine_input_box, "b_dive_grain_bag_worse", false]],
+	moonshine_output_box,
+	objNull,
+	[
+		["pdr_moonshine_pear", 2],
+		["pdr_moonshine_plum", 2],
+		["pdr_moonshine_apple", 2]
+	],
+	[
+		"\z\ace\addons\refuel\sounds\nozzle_start.ogg",
+		"pdrstuff\sounds\stove_cooking.ogg",
+		"pdrstuff\sounds\machine_error.ogg",
+		""
+	],
+	["STR_moonshine_crafter_action_worse", "STR_moonshine_crafter_success", "STR_moonshine_crafter_failure_worse"],
 	16,
 	{["", 0]},
 	{ // Extra condition
