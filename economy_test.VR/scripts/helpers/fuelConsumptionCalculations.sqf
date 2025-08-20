@@ -42,7 +42,13 @@ PDR_baseFuelCoefficients = [
 	["plateau", 6.92],
 	["roller", 4.95],
 	["chtondeuse", 3.40],
-	["RDS_PL_Lada_Civ_04", 4.2]
+	
+	["RDS_PL_Lada_Civ_04", 4.2],
+	
+	["Aka_2CH_civ", 2.3],
+	["Aka_Defender110_11_7", 11],
+	["aka_Golf", 7],
+	["Aka_M5_E39_civ", 4.2]
 ];
 
 PDR_classesAliases = [
@@ -88,7 +94,14 @@ PDR_classesAliases = [
 	["plateau"],
 	["roller"],
 	["chtondeuse"],
-	["RDS_PL_Lada_Civ_04", "RDS_PL_Lada_Civ_01","RDS_PL_Lada_Civ_03","RDS_PL_Lada_Civ_05","RDS_PL_Lada_Civ_02","RDS_Lada_Civ_01","RDS_Lada_Civ_04","RDS_Lada_Civ_03","RDS_Lada_Civ_05","RDS_Lada_Civ_02"]
+	
+	["RDS_PL_Lada_Civ_04", "RDS_PL_Lada_Civ_01","RDS_PL_Lada_Civ_03","RDS_PL_Lada_Civ_05","RDS_PL_Lada_Civ_02","RDS_Lada_Civ_01","RDS_Lada_Civ_04","RDS_Lada_Civ_03","RDS_Lada_Civ_05","RDS_Lada_Civ_02"],
+	
+	["Aka_2CH_civ", "Aka_2CH_civ_rouge","Aka_2CH_civ_bleu","Aka_2CH_cochonou","Aka_2CH_civ_gris","Aka_2CH_civ_yellow","Aka_2CH_civ_noir"],
+	["Aka_Defender110_11_7", "Aka_Defender110_11_7_gn_sable_off","Aka_Defender110_11_7_gn_sable","Aka_Defender110_11_5_gn_sable","Aka_Defender110_11_5_gn_sable_off","Aka_Defender110_11_7_gn","Aka_Defender110_11_7_gn_off","Aka_Defender110_11_5","Aka_Defender110_11_5_off","Aka_Defender110_11_5_gn","Aka_Defender110_11_5_gn_off","Aka_Defender110_11_7_off"],
+	["aka_Golf","aka_Golf_bleu","aka_Golf_gris","aka_Golf_jaune","aka_Golf_noir","Aka_Golf_rouge","Aka_GolfGTI_GendarmerieBE"],
+	["Aka_M5_E39_civ", "Aka_M5_E39_bana","Aka_M5_E39_gn","Aka_M5_E39_civ_gris","Aka_M5_E39_civ_yellow","Aka_M5_E39_civ_noir","Aka_M5_E39_civ_rouge","Aka_M5_E39_civ_bleu","Aka_M5_E39_b_civ","Aka_M5_E39_b_civ_gris","Aka_M5_E39_b_civ_noir"]
+	
 ];
 
 PDR_fuelConsumptionMultiplier = 0.65;
