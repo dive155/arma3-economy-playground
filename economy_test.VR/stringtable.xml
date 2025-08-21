@@ -1600,6 +1600,10 @@
 		<Original>You left the road! The car is getting stuck and might get damaged.</Original>
 		<Russian>Вы съехали с дороги! Машина застревает и может получить повреждения.</Russian>
 	</Key>
+	<Key ID="STR_dive_offroad_warning_safe">
+		<Original>You left the road! The car is slowed down.</Original>
+		<Russian>Вы съехали с дороги! Машина замедленна.</Russian>
+	</Key>
 
 	<Key ID="STR_dive_offroad_warning_2">
 		<Original>Your tire was punctured due to offroading!</Original>

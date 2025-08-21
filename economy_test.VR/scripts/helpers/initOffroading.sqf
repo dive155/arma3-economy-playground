@@ -10,6 +10,12 @@ fnc_isPlayerInSafeTriggerOffroading = {
 	_safe
 };
 
+DIVE_offroadingSafeVehicles = [
+	"gm_gc_army_uaz469_cargo",
+	"av_UAZ451",
+	"AMG_Tahoe", "AMG_TahoePolice",
+	"Aka_Defender110_11_7", "Aka_Defender110_11_7_gn_sable_off","Aka_Defender110_11_7_gn_sable","Aka_Defender110_11_5_gn_sable","Aka_Defender110_11_5_gn_sable_off","Aka_Defender110_11_7_gn","Aka_Defender110_11_7_gn_off","Aka_Defender110_11_5","Aka_Defender110_11_5_off","Aka_Defender110_11_5_gn","Aka_Defender110_11_5_gn_off","Aka_Defender110_11_7_off"
+];
 
 fnc_initOffroadHandling = {
 	// Global state variables
@@ -30,10 +36,12 @@ fnc_initOffroadHandling = {
 		
 		private _posWorld = getPosWorld _veh;
 		
-		private _inSafeTrigger = call fnc_isPlayerInSafeTriggerOffroading;
+		private _isOnRails = false;
+		private _isOnRoad = isOnRoad _veh;
 		
-		// First check: isOnRoad
-		private _isOnRoad = _inSafeTrigger or {isOnRoad _veh};
+		if (!_isOnRoad) then {
+			_isOnRoad = call fnc_isPlayerInSafeTriggerOffroading;
+		};
 	
 		// Second check: surface type
 		if (!_isOnRoad) then {
@@ -93,6 +101,8 @@ fnc_initOffroadHandling = {
 					private _className = toLower typeOf _obj;
 					if ((_className find "rail" == -1) and (_className find "track" == -1)) then {
 						_isOnRoad = true;
+					} else {
+						_isOnRails = true;
 					};
 				};
 			} forEach _intersections;
@@ -111,11 +121,17 @@ fnc_initOffroadHandling = {
 			DIVE_departureTime = diag_tickTime;
 			_veh setCruiseControl [9999, false];
 		} else {
+			private _isInSafeVehicle = (typeOf _veh) in DIVE_offroadingSafeVehicles;
 			if (DIVE_lastOnRoadStatus) then {
 				DIVE_lastOnRoadStatus = false;
 				DIVE_departurePoint = getPosASL _veh;
 				DIVE_departureTime = diag_tickTime;
-				hint (localize "STR_dive_offroad_warning_1");
+				
+				if (_isInSafeVehicle) then {
+					hint (localize "STR_dive_offroad_warning_safe");
+				} else {
+					hint (localize "STR_dive_offroad_warning_1");
+				};
 			} else {
 				private _curPos = getPosASL _veh;
 				private _dist = _curPos distance DIVE_departurePoint;
@@ -140,7 +156,7 @@ fnc_initOffroadHandling = {
 							_veh setVelocityModelSpace [0, -(_speedLimit*0.4)/3.6, 0];
 						};
 						
-						[_veh] call fnc_offroadDamageCar;
+						[_veh, _isOnRails, _isInSafeVehicle] call fnc_offroadDamageCar;
 						
 						// Trigger offroad mode logic here
 						//DIVE_departureTime = diag_tickTime + 9999;
@@ -157,15 +173,26 @@ DIVE_offroadSpeedLimit = 6;
 DIVE_carsWheelHitpoints = createHashMap;
 
 fnc_offroadDamageCar = {
-	params ["_vehicle"];
-
-	private _className = typeOf _vehicle;
+	params ["_vehicle", "_isOnRails", "_isInSafeVehicle"];
 
 	// Configuration — easily editable
 	private _mul = DIVE_offroadCheckDelay * (DIVE_offroadSpeedLimit / 3.6);
 	private _wheelDamageChance     = 0.0125 * _mul;
 	private _fuelDamageChance      = 0.01 * _mul;
 	private _engineDamageChance    = 0.0025 * _mul;
+	
+	private _className = typeOf _vehicle;
+	if (_isOnRails) then {
+		_wheelDamageChance = _wheelDamageChance * 2;
+		_fuelDamageChance = _fuelDamageChance * 4;
+		_engineDamageChance = _engineDamageChance * 2;
+	} else {	
+		if (_isInSafeVehicle) then {
+			_wheelDamageChance = _wheelDamageChance * 0.01;
+			_fuelDamageChance = 0;
+			_engineDamageChance = 0;
+		};
+	};
 
 	private _wheelDamageIncrement  = 1;
 	private _fuelDamageIncrement   = 0.5;
@@ -252,7 +279,9 @@ fnc_offroadPlayCarSound = {
 		_veh,
 		false,
 		getPosASL _veh,
-		5
+		5,
+		1,
+		60
 	];
 };
 call fnc_initOffroadHandling;
