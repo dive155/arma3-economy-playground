@@ -101,7 +101,7 @@ if (hasInterface) then {
 					
 					private _class = _data;
 					private _price = _value;
-					_price = _price * (call _inflationGetter);
+					//_price = _price * (call _inflationGetter);
 					private _tax = ceil (_price *  (call _taxGetter));
 					private _priceWithTax = _price + _tax;
 					
