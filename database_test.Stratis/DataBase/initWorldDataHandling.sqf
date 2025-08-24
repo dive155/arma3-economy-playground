@@ -73,6 +73,11 @@ DMP_fnc_loadWorldData = {
 		0 setRain _rain;
 		
 		forceWeatherChange;
+		
+		_values spawn {
+			sleep 3;
+			[_this] remoteExec ["DMP_fnc_setWeatherLocal", 0];
+		};
 	};
 };
 
