@@ -4,6 +4,12 @@ DMP_fnc_handlePlayerConnected = {
 	
 	if not DMP_shouldUseDB exitWith { };
 	
+	private _uid = _unit getVariable ["DMP_SteamID", ""];
+	while {_uid isEqualTo ""} do {
+		_uid = _unit getVariable ["DMP_SteamID", ""];
+		sleep 1;
+	};
+	
 	if (_unit call DMP_fnc_hasDataForPlayer) then {
 		_unit call DMP_fnc_loadPlayerData;
 	} else {
@@ -72,7 +78,7 @@ DMP_fnc_loadPlayerData = {
 		_unit setDir _dir;
 		
 		if (_face != "") then {
-			[_unit, _face] remoteExec ["setFace",0];
+			[_unit, _face] remoteExec ["setFace",0,true];
 		};
 		
 		sleep 0.1;
