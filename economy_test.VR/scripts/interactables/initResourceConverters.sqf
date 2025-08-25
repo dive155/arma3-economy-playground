@@ -262,3 +262,71 @@ if (not (isNil "prison_button")) then {
 		{true}
 	]execVM "scripts\economy\createResourceConverter.sqf";
 };
+
+[
+	uniform_crafter_button,
+	[[uniform_crafter_input_box, "b_dive_goods_bag", false]],
+	uniform_crafter_output_box,
+	objNull,
+	[
+		[["U_BG_Guerrilla_6_1", "U_BG_Guerilla3_1","Skyline_Character_U_Chasseur_05_F", "rds_uniform_Woodlander2", "Skyline_Character_U_Chasseur_02_F", "Skyline_Character_U_Chasseur_03_F"], 1],
+		[["rhs_lifchik_light","rhs_6sh46", "rhsgref_chestrig", "usm_vest_lbe_rm", "V_BandollierB_rgr", "rhs_belt_sks", "rhs_belt_AK", "rhs_suspender_AK"], 1],
+		["G_Armband_pdr_F", 1]
+	],
+	industrialConverterSoundsConfig,
+	["STR_gear_crafter_action", "STR_gear_crafter_success", "STR_gear_crafter_failure"],
+	16,
+	{["", 0]},
+	{ // Extra condition
+		params["_buttonObject", "_payConfig"]; 		
+		private _hasEnergy = [player, 1] call fnc_checkIfNotTooFatigued;
+		_hasEnergy
+	},
+	{
+		[player, 1] call fnc_increasePlayerFatigue;
+	}
+]execVM "scripts\economy\createResourceConverter.sqf";
+
+[
+	helmet_crafter_button,
+	[[helmet_crafter_input_box, "pdr_stahlpot", false]],
+	helmet_crafter_output_box,
+	objNull,
+	[
+		[["rhsgref_helmet_m1942_heermarshcover","rhsgref_helmet_m1942_heersplintercover","rhsgref_helmet_M1_painted_alt01","rhsgref_helmet_M1_liner"], 1]
+	],
+	industrialConverterSoundsConfig,
+	["STR_helmet_crafter_action", "STR_helmet_crafter_success", "STR_helmet_crafter_failure"],
+	8,
+	{["", 0]},
+	{ // Extra condition
+		params["_buttonObject", "_payConfig"]; 		
+		private _hasEnergy = [player, 0.5] call fnc_checkIfNotTooFatigued;
+		_hasEnergy
+	},
+	{
+		[player, 0.5] call fnc_increasePlayerFatigue;
+	}
+]execVM "scripts\economy\createResourceConverter.sqf";
+
+[
+	gun_crafter_button,
+	[[gun_crafter_input_box, "b_dive_goods_bag", false]],
+	gun_crafter_output_box,
+	objNull,
+	[
+		["pdr_gun_kit", 1]
+	],
+	industrialConverterSoundsConfig,
+	["STR_gun_crafter_action", "STR_gun_crafter_success", "STR_gun_crafter_failure"],
+	16,
+	{["", 0]},
+	{ // Extra condition
+		params["_buttonObject", "_payConfig"]; 		
+		private _hasEnergy = [player, 2] call fnc_checkIfNotTooFatigued;
+		_hasEnergy
+	},
+	{
+		[player, 2] call fnc_increasePlayerFatigue;
+	}
+]execVM "scripts\economy\createResourceConverter.sqf";

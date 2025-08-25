@@ -80,6 +80,43 @@
 		<Original>Moonshine has been distilled.</Original>
 		<Russian>Самогон произведён.</Russian>
 	</Key>
+	<Key ID="STR_gear_crafter_action">
+		<Original>Craft Gear Set</Original>
+		<Russian>Создать Комплект Снаряжения</Russian>
+	</Key>
+	<Key ID="STR_gear_crafter_failure">
+		<Original>No industrial goods found in the box</Original>
+		<Russian>Не найдено Промышленной Продукции в ящике.</Russian>
+	</Key>
+	<Key ID="STR_gear_crafter_success">
+		<Original>Gear set has been crafted.</Original>
+		<Russian>Комплект Снаряжения создан.</Russian>
+	</Key>
+	<Key ID="STR_gun_crafter_action">
+		<Original>Craft Gun Repair Kit</Original>
+		<Russian>Создать Набор для Ремонта Оружия</Russian>
+	</Key>
+	<Key ID="STR_gun_crafter_failure">
+		<Original>No industrial goods found in the box</Original>
+		<Russian>Не найдено Промышленной Продукции в ящике.</Russian>
+	</Key>
+	<Key ID="STR_gun_crafter_success">
+		<Original>Gun repair kit has been crafted.</Original>
+		<Russian>Набор для Ремонта Оружия создан.</Russian>
+	</Key>
+	<Key ID="STR_helmet_crafter_action">
+		<Original>Craft Helmet</Original>
+		<Russian>Создать Шлем</Russian>
+	</Key>
+	<Key ID="STR_helmet_crafter_failure">
+		<Original>Input resource not found</Original>
+		<Russian>Исходный предмет не найден.</Russian>
+	</Key>
+	<Key ID="STR_helmet_crafter_success">
+		<Original>Helmet has been crafted.</Original>
+		<Russian>Шлем создан.</Russian>
+	</Key>
+
 	<Key ID="STR_factory_action">
 		<Original>Produce Goods (Use High-Quality Agricultural Products)</Original>
 		<Russian>Произвести Товар (Использовать Качественную Сельхоз Продукцию)</Russian>

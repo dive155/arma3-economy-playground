@@ -58,7 +58,7 @@ fnc_checkBackpacksInBox = {
     // Check if it's the special harvest stimulator
 	// This fucking sucks but I'm too burnt out to make a prettier solution
 	private _cargo = [];
-    if (_rawResourceClassname == "pdr_harvest_stimulator") then {
+    if (_rawResourceClassname == "pdr_harvest_stimulator" or _rawResourceClassname == "pdr_stahlpot") then {
         _cargo = getItemCargo _rawResourceSource;
     } else {
         _cargo = getBackpackCargo _rawResourceSource;
@@ -98,7 +98,7 @@ fnc_removeRawResouce = {
         deleteVehicle _submittedObject;
     } else {
 		// This fucking sucks but I'm too burnt out to make a prettier solution
-        if (_submittedObject == "pdr_harvest_stimulator") then {
+        if (_submittedObject == "pdr_harvest_stimulator" or _submittedObject ==  "pdr_stahlpot") then {
             // Use item cargo functions for the stimulator
             _rawResourceSource addItemCargoGlobal [_submittedObject, -1];
         } else {
@@ -121,11 +121,18 @@ fnc_giveConversionOutput = {
 		{
 			_x params ["_outputItemClassname", "_outputItemAmount"];
 
-			// Check if we're giving a backpack or an item
-			if (isClass (configFile >> "CfgVehicles" >> _outputItemClassname)) then {
-				_outputItemBox addBackpackCargoGlobal [_outputItemClassname, _outputItemAmount];
+			// Handle case where classname is array or string
+			private _classname = if (_outputItemClassname isEqualType []) then {
+				selectRandom _outputItemClassname
 			} else {
-				_outputItemBox addItemCargoGlobal [_outputItemClassname, _outputItemAmount];
+				_outputItemClassname
+			};
+
+			// Check if we're giving a backpack or an item
+			if (isClass (configFile >> "CfgVehicles" >> _classname)) then {
+				_outputItemBox addBackpackCargoGlobal [_classname, _outputItemAmount];
+			} else {
+				_outputItemBox addItemCargoGlobal [_classname, _outputItemAmount];
 			};
 		} forEach _outputItemConfig;
 	};
