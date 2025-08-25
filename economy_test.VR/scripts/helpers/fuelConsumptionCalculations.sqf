@@ -48,7 +48,9 @@ PDR_baseFuelCoefficients = [
 	["Aka_2CH_civ", 2.3],
 	["Aka_Defender110_11_7", 11],
 	["aka_Golf", 7],
-	["Aka_M5_E39_civ", 4.2]
+	["Aka_M5_E39_civ", 4.2],
+	
+	["Catamaran_GY", 0.01]
 ];
 
 PDR_classesAliases = [
@@ -100,8 +102,9 @@ PDR_classesAliases = [
 	["Aka_2CH_civ", "Aka_2CH_civ_rouge","Aka_2CH_civ_bleu","Aka_2CH_cochonou","Aka_2CH_civ_gris","Aka_2CH_civ_yellow","Aka_2CH_civ_noir"],
 	["Aka_Defender110_11_7", "Aka_Defender110_11_7_gn_sable_off","Aka_Defender110_11_7_gn_sable","Aka_Defender110_11_5_gn_sable","Aka_Defender110_11_5_gn_sable_off","Aka_Defender110_11_7_gn","Aka_Defender110_11_7_gn_off","Aka_Defender110_11_5","Aka_Defender110_11_5_off","Aka_Defender110_11_5_gn","Aka_Defender110_11_5_gn_off","Aka_Defender110_11_7_off"],
 	["aka_Golf","aka_Golf_bleu","aka_Golf_gris","aka_Golf_jaune","aka_Golf_noir","Aka_Golf_rouge","Aka_GolfGTI_GendarmerieBE"],
-	["Aka_M5_E39_civ", "Aka_M5_E39_bana","Aka_M5_E39_gn","Aka_M5_E39_civ_gris","Aka_M5_E39_civ_yellow","Aka_M5_E39_civ_noir","Aka_M5_E39_civ_rouge","Aka_M5_E39_civ_bleu","Aka_M5_E39_b_civ","Aka_M5_E39_b_civ_gris","Aka_M5_E39_b_civ_noir"]
+	["Aka_M5_E39_civ", "Aka_M5_E39_bana","Aka_M5_E39_gn","Aka_M5_E39_civ_gris","Aka_M5_E39_civ_yellow","Aka_M5_E39_civ_noir","Aka_M5_E39_civ_rouge","Aka_M5_E39_civ_bleu","Aka_M5_E39_b_civ","Aka_M5_E39_b_civ_gris","Aka_M5_E39_b_civ_noir"],
 	
+	["Catamaran_GY"]
 ];
 
 PDR_fuelConsumptionMultiplier = 0.65;
