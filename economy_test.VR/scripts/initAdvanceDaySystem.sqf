@@ -127,6 +127,11 @@ fnc_handleCityServices = {
 	["services_paidTram"] call _decreaseVar;
 	["services_paidStreetlights"] call _decreaseVar;
 	["services_paidSpeedtraps"] call _decreaseVar;
+	
+	private _lightsPaid = ["services_paidStreetlights"] call fnc_getWorldVariable;
+	if (_lightsPaid == 0) then {
+		["PDR", false] remoteExec ["fnc_setLightsServer", 2];
+	};
 };
 
 // Scenario for offline players
