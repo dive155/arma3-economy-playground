@@ -177,7 +177,15 @@ fnc_handleOfflinePlayers = {
 		private _payForOre = "payOre" call fnc_getWorldVariable;
 		private _payForBoth = _payForHay + _payForOre;
 		
-		if ((["farmOpen"] call fnc_getWorldVariable) and (["quarryOpen"] call fnc_getWorldVariable)) then {
+		// Check if stimulator exists in hay_stimulator_box
+		_cargo = getItemCargo hay_stimulator_box;
+		_hasStimulator = ("pdr_harvest_stimulator" in (_cargo select 0));
+
+		if (
+			(["farmOpen"] call fnc_getWorldVariable) and
+			(["quarryOpen"] call fnc_getWorldVariable) and
+			_hasStimulator
+		) then {
 			if ([["", _payForBoth]] call fnc_checkIfFactoryCanPay) then {
 				[
 					"factoryMoney",
@@ -185,12 +193,16 @@ fnc_handleOfflinePlayers = {
 					"PaymentForWorkOffline",
 					-1 * _payForBoth
 				] call fnc_handleAutomatedAccountTransactionServer;
-						
+
+				// Remove one stimulator
+				hay_stimulator_box addItemCargoGlobal ["pdr_harvest_stimulator", -1];
+
 				_totalEarned = _payForBoth;
 				hay_output_box addBackpackCargoGlobal ["b_dive_grain_bag_worse", 1];
 				ore_output_box addBackpackCargoGlobal ["b_dive_ore_bag", 1];
 			};
 		};
+		
 		// Eats lunch
 		_totalEarned = _totalEarned - ("lunchPrice" call fnc_getWorldVariable);
 		// TODO send money to the cook?
