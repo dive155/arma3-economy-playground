@@ -278,7 +278,13 @@ if (not (isNil "prison_button")) then {
 	16,
 	{["", 0]},
 	{ // Extra condition
-		params["_buttonObject", "_payConfig"]; 		
+		params["_buttonObject", "_payConfig"]; 
+		private _hasPower = ["PDR"] call fnc_areLightsOn;
+		if not _hasPower exitWith {
+			hint(localize "STR_factory_no_power");
+			false
+		};
+		
 		private _hasEnergy = [player, 1] call fnc_checkIfNotTooFatigued;
 		_hasEnergy
 	},
@@ -300,7 +306,13 @@ if (not (isNil "prison_button")) then {
 	8,
 	{["", 0]},
 	{ // Extra condition
-		params["_buttonObject", "_payConfig"]; 		
+		params["_buttonObject", "_payConfig"];
+		private _hasPower = ["PDR"] call fnc_areLightsOn;
+		if not _hasPower exitWith {
+			hint(localize "STR_factory_no_power");
+			false
+		};
+		
 		private _hasEnergy = [player, 0.5] call fnc_checkIfNotTooFatigued;
 		_hasEnergy
 	},
@@ -322,7 +334,13 @@ if (not (isNil "prison_button")) then {
 	16,
 	{["", 0]},
 	{ // Extra condition
-		params["_buttonObject", "_payConfig"]; 		
+		params["_buttonObject", "_payConfig"];
+		private _hasPower = ["PDR"] call fnc_areLightsOn;
+		if not _hasPower exitWith {
+			hint(localize "STR_factory_no_power");
+			false
+		};	
+		
 		private _hasEnergy = [player, 2] call fnc_checkIfNotTooFatigued;
 		_hasEnergy
 	},
