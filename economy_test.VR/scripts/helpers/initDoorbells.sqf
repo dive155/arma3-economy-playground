@@ -51,7 +51,7 @@ _doorbellActionFunc = {
 	playSound3D ["pdrstuff\sounds\machine_success.ogg", _target, false, getPosASL _target, 1, 1, 40];
 
     // 50% chance outcome
-    if (random 1 < 0.5) then {
+    if (random 1 < 0.4) then {
         // SUCCESS – spawn item
         [_target, "pdr_stahlpot", -1] call fn_spawnItemInFront;
         hint localize "STR_doorbell_success";

@@ -187,7 +187,7 @@ fnc_handleOfflinePlayers = {
 				] call fnc_handleAutomatedAccountTransactionServer;
 						
 				_totalEarned = _payForBoth;
-				hay_output_box addBackpackCargoGlobal ["b_dive_grain_bag", 1];
+				hay_output_box addBackpackCargoGlobal ["b_dive_grain_bag_worse", 1];
 				ore_output_box addBackpackCargoGlobal ["b_dive_ore_bag", 1];
 			};
 		};

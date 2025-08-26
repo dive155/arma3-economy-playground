@@ -81,8 +81,8 @@
 		<Russian>Самогон произведён.</Russian>
 	</Key>
 	<Key ID="STR_gear_crafter_action">
-		<Original>Craft Gear Set</Original>
-		<Russian>Создать Комплект Снаряжения</Russian>
+		<Original>Craft Gear Set (from Industrial Goods)</Original>
+		<Russian>Создать Комплект Снаряжения (из Промышленной Продукции)</Russian>
 	</Key>
 	<Key ID="STR_gear_crafter_failure">
 		<Original>No industrial goods found in the box</Original>
@@ -93,8 +93,8 @@
 		<Russian>Комплект Снаряжения создан.</Russian>
 	</Key>
 	<Key ID="STR_gun_crafter_action">
-		<Original>Craft Gun Repair Kit</Original>
-		<Russian>Создать Набор для Ремонта Оружия</Russian>
+		<Original>Craft Gun Repair Kit (from Industrial Goods)</Original>
+		<Russian>Создать Набор для Ремонта Оружия (из Промышленной Продукции)</Russian>
 	</Key>
 	<Key ID="STR_gun_crafter_failure">
 		<Original>No industrial goods found in the box</Original>
