@@ -38,9 +38,6 @@ waitUntil { scriptDone _scriptHandle };
 _scriptHandle = execVM "scripts\helpers\initNoise.sqf";
 waitUntil { scriptDone _scriptHandle };
 
-_scriptHandle = execVM "scripts\helpers\initFactoryCargo.sqf";
-waitUntil { scriptDone _scriptHandle };
-
 _scriptHandle = execVM "scripts\passports\initBorderCrossingMachines.sqf";
 waitUntil { scriptDone _scriptHandle };
 
@@ -48,6 +45,12 @@ _scriptHandle = execVM "scripts\helpers\initBoomgates.sqf";
 waitUntil { scriptDone _scriptHandle };
 
 _scriptHandle = execVM "scripts\helpers\initRefillFields.sqf";
+waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "scripts\helpers\initFactoryCargo.sqf";
+waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "scripts\helpers\initDoorbells.sqf";
 waitUntil { scriptDone _scriptHandle };
 
 if (hasInterface) then {
