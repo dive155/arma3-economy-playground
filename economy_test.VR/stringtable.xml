@@ -344,6 +344,10 @@
 		<Original>View Exchange Rates</Original>
 		<Russian>Посмотреть Курсы Валют</Russian>
 	</Key>
+	<Key ID="STR_moneyExchangeUnavailable">
+		<Original>This exchange is currently forbidden.</Original>
+		<Russian>Данный обмен сейчас запрещён.</Russian>
+	</Key>
 	<Key ID="STR_pay_debt">
 		<Original>Pay Debt to %1</Original>
 		<Russian>Оплатить долг (%1)</Russian>

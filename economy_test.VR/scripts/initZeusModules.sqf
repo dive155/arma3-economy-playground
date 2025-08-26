@@ -96,7 +96,9 @@ worldVariablesForZeusEditing2 = [
 	"fatigueHay",
 	"fuelInStorageMoldova",
 	"fuelPrice_Moldova",
-	"gasStationOpenMoldova"
+	"gasStationOpenMoldova",
+	"canBuyMoldovaLeu",
+	"canBuyPdrLeu"
 ];
 
 [

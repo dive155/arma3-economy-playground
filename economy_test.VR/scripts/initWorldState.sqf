@@ -52,7 +52,8 @@ fnc_createDefaultWorldState = {
 		["autoBoomgatesEnabled", true] call fnc_setWorldVariable;
 		["autoBorderForPDRans", true] call fnc_setWorldVariable;
 		["autoBorderForMoldovans", true] call fnc_setWorldVariable;
-		
+		["canBuyMoldovaLeu", true] call fnc_setWorldVariable;
+		["canBuyPdrLeu", true] call fnc_setWorldVariable;
 	};
 };
 

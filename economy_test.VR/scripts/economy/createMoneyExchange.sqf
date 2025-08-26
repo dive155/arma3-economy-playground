@@ -7,7 +7,9 @@ params [
 	["_getExchangeRate", {1}], 			// How much of currency 1 to pay to get 1 currency2
 	["_getSpread", {0}],					// How much spread on buying/selling currency2 (in Units)
 	["_inflationGetter1", {1}],
-	["_inflationGetter2", {1}]
+	["_inflationGetter2", {1}],
+	["_extraCondition1", {true}],
+	["_extraCondition2", {true}]
 ];
 
 
@@ -19,6 +21,8 @@ if (isServer) then {
 	_buttonObject setVariable ["getSpread", _getSpread, true];
 	_buttonObject setVariable ["inflationGetter1", _inflationGetter1, true];
 	_buttonObject setVariable ["inflationGetter2", _inflationGetter2, true];
+	_buttonObject setVariable ["extraCondition1", _extraCondition1, true];
+	_buttonObject setVariable ["extraCondition2", _extraCondition2, true];
 	
 	_soundsMap = createHashMap;
 	_soundsMap set ["success", _soundsConfig select 0];
@@ -40,6 +44,8 @@ fnc_handleMoneyExchangeRequested = {
 	
 	_inflationGetter1 = _buttonObject getVariable ["inflationGetter1", {1}];
 	_inflationGetter2 = _buttonObject getVariable ["inflationGetter2", {1}];
+	_extraCondition1 = _buttonObject getVariable ["extraCondition1", {true}];
+	_extraCondition2 = _buttonObject getVariable ["extraCondition2", {true}];
 	_inflation1 = call _inflationGetter1;
 	_inflation2 = call _inflationGetter2;
 	_exchangeRate = _exchangeRate * (_inflation1 / _inflation2);
@@ -50,6 +56,13 @@ fnc_handleMoneyExchangeRequested = {
 	if (_onlyShowRates) exitWith {
 		private _msg = format [localize "STR_moneyExchangeViewRate", _exchangeRate - _spread, _exchangeRate + _spread];
 		hint (_msg);
+	};
+	
+	private _condition = if (_buyingSecondCurrency) then {_extraCondition1} else {_extraCondition2};
+	
+	if (not (call _condition)) exitWith {
+		[_buttonObject, _buttonObject, "failure", 3] call fnc_playStoreSound;
+		hint (localize "STR_moneyExchangeUnavailable");
 	};
 	
 	if (_buyingSecondCurrency) then {
