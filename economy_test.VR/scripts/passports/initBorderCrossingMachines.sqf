@@ -17,6 +17,9 @@
 		if ((_citizenship isEqualTo "PDR") and (not (["autoBorderForPDRans"] call fnc_getWorldVariable))) then {
 			_canGoWithThisPassport = false;
 		};
+		if ((_citizenship isEqualTo "Moldova") and (not (["autoBorderForMoldovans"] call fnc_getWorldVariable))) then {
+			_canGoWithThisPassport = false;
+		};
 		
 		(_debt <= 500) and _hasVisa and _canGoWithThisPassport
 	},
@@ -42,6 +45,9 @@
 		
 		_canGoWithThisPassport = true;
 		if ((_citizenship isEqualTo "Moldova") and (not (["autoBorderForMoldovans"] call fnc_getWorldVariable))) then {
+			_canGoWithThisPassport = false;
+		};
+		if ((_citizenship isEqualTo "PDR") and (not (["autoBorderForPDRans"] call fnc_getWorldVariable))) then {
 			_canGoWithThisPassport = false;
 		};
 		
