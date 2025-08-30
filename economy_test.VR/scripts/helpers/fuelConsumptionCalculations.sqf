@@ -50,7 +50,9 @@ PDR_baseFuelCoefficients = [
 	["aka_Golf", 7],
 	["Aka_M5_E39_civ", 4.2],
 	
-	["Catamaran_GY", 0.01]
+	["Catamaran_GY", 0.01],
+	
+	["vurtual_seat", 0.01]
 ];
 
 PDR_classesAliases = [
@@ -104,7 +106,9 @@ PDR_classesAliases = [
 	["aka_Golf","aka_Golf_bleu","aka_Golf_gris","aka_Golf_jaune","aka_Golf_noir","Aka_Golf_rouge","Aka_GolfGTI_GendarmerieBE"],
 	["Aka_M5_E39_civ", "Aka_M5_E39_bana","Aka_M5_E39_gn","Aka_M5_E39_civ_gris","Aka_M5_E39_civ_yellow","Aka_M5_E39_civ_noir","Aka_M5_E39_civ_rouge","Aka_M5_E39_civ_bleu","Aka_M5_E39_b_civ","Aka_M5_E39_b_civ_gris","Aka_M5_E39_b_civ_noir"],
 	
-	["Catamaran_GY"]
+	["Catamaran_GY"],
+	
+	["vurtual_seat"]
 ];
 
 PDR_fuelConsumptionMultiplier = 0.65;

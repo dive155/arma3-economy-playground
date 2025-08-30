@@ -10,7 +10,7 @@ fnc_startPartyCommand = {
 	
 		{
 			[_x, false] remoteExec ["hideObjectGlobal", _x];
-		} foreach [dancer_0, dancer_1, dancer_2, dancer_3, dancer_4];
+		} foreach [dancer_0, dancer_1, dancer_2, dancer_3, dancer_4, dancer_5, dancer_6, dancer_7, dancer_8, dancer_9];
 		
 		sleep 2;
 	

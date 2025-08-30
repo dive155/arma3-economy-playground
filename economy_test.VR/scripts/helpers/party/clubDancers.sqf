@@ -3,7 +3,13 @@ DIVE_Dances = [
 	[dancer_1, "kka3_dubstepdance"],
 	[dancer_2, "kka3_nightclubdance"],
 	[dancer_3, "kka3_hiphopdance"],
-	[dancer_4, "Acts_Dance_02"]
+	[dancer_4, "Acts_Dance_02"],
+	
+	[dancer_5, "Acts_Dance_01"],
+	[dancer_6, "kka3_dubstepdance"],
+	[dancer_7, "kka3_nightclubdance"],
+	[dancer_8, "kka3_hiphopdance"],
+	[dancer_9, "Acts_Dance_02"]
 ];
 
 DIVE_DanceHandles = [];

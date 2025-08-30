@@ -47,8 +47,8 @@ _doorbellActionFunc = {
     ["checkedDoorbells", _checkedDoorbells] call fnc_setWorldVariable;
 
     // play doorbell sound
-    //playSound3D ["pdrstuff\sounds\doorbell.ogg", _target, false, getPosASL _target, 1, 1, 40];
-	playSound3D ["pdrstuff\sounds\machine_success.ogg", _target, false, getPosASL _target, 1, 1, 40];
+    playSound3D ["pdrstuff\sounds\doorbell.ogg", _target, false, getPosASL _target, 1, 1, 40];
+	//playSound3D ["pdrstuff\sounds\machine_success.ogg", _target, false, getPosASL _target, 1, 1, 40];
 
     // 50% chance outcome
     if (random 1 < 0.4) then {

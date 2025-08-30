@@ -3,8 +3,9 @@ DIVE_AllLights_Local = [];
 fn_createLightLocal = {
 	params ["_color", "_position"];
 	
-	_className = format ["Reflector_Cone_01_narrow_%1_F", _color];
-	_light = createVehicleLocal [_className, _position];
+	private _className = format ["Reflector_Cone_01_narrow_%1_F", _color];
+	private _light = createVehicleLocal [_className, _position];
+	_light setPosATL _position;
 	DIVE_AllLights_Local pushBack _light;
 	
 	_light
@@ -13,16 +14,16 @@ fn_createLightLocal = {
 fn_createSpinningLightLocal = {
 	params ["_color", "_position", "_rotSpeed", "_pitchSpeed"];
 	
-	_light = [_color, _position] call fn_createLightLocal;
+	private _light = [_color, _position] call fn_createLightLocal;
 	
-	_handle = [_light, _rotSpeed, _pitchSpeed] spawn {
+	private _handle = [_light, _rotSpeed, _pitchSpeed] spawn {
 		params ["_light", "_rotSpeed", "_pitchSpeed"];
 		while { true} do {
-			_pitch = -1 * abs( cos (time * _pitchSpeed) * 50 ) - 10;
+			private _pitch = -1 * abs( cos (time * _pitchSpeed) * 50 ) - 10;
 			
-			_vecs = [[[0,1,0],[0,0,1]], 0, _pitch, 0] call BIS_fnc_transformVectorDirAndUp;
-			_newDir = _vecs select 0;
-			_newUp = _vecs select 1;
+			private _vecs = [[[0,1,0],[0,0,1]], 0, _pitch, 0] call BIS_fnc_transformVectorDirAndUp;
+			private _newDir = _vecs select 0;
+			private _newUp = _vecs select 1;
 			
 			_vecs = [[_newDir,_newUp], time * _rotSpeed, 0, 0] call BIS_fnc_transformVectorDirAndUp;
 			_light setVectorDirAndUp [_vecs select 0, _vecs select 1];
@@ -36,15 +37,15 @@ fn_createSpinningLightLocal = {
 fn_createBlinkerLocal = {
 	params ["_color", "_position", "_rotation", "_timeShown", "_timeHidden", "_timeOffset"];
 	
-	_light = [_color, _position] call fn_createLightLocal;
+	private _light = [_color, _position] call fn_createLightLocal;
 	
 	[_light, _rotation] call BIS_fnc_setObjectRotation;
 	
-	_handle = [_light, _timeShown, _timeHidden, _timeOffset] spawn {
+	private _handle = [_light, _timeShown, _timeHidden, _timeOffset] spawn {
 		params ["_light", "_timeShown", "_timeHidden", "_timeOffset"];
 		
-		_nextFlip = time + _timeHidden + _timeOffset;
-		_isHidden = true;
+		private _nextFlip = time + _timeHidden + _timeOffset;
+		private _isHidden = true;
 		
 		while { true} do {
 			if (time < _nextFlip) then { continue };
@@ -73,6 +74,14 @@ fn_createDanceFloorLightsLocal = {
 	// For rotation order is Yaw, Pitch, Roll
 	["orange", getPosATL clublight_3, [70,-45,0], 0.1, 0.4, 0] spawn fn_createBlinkerLocal;
 	["red", getPosATL clublight_4, [-45,-30,0], 0.2, 0.3, 0.25] spawn fn_createBlinkerLocal;
+	
+	["green", getPosATL clublight_5, 300, 224] spawn fn_createSpinningLightLocal;
+	["red", getPosATL clublight_6, 210, 261] spawn fn_createSpinningLightLocal;
+	["blue", getPosATL clublight_7, 253, 245] spawn fn_createSpinningLightLocal;
+	
+	// For rotation order is Yaw, Pitch, Roll
+	["orange", getPosATL clublight_8, [70,-45,0], 0.1, 0.4, 0] spawn fn_createBlinkerLocal;
+	["red", getPosATL clublight_9, [-45,-30,0], 0.2, 0.3, 0.25] spawn fn_createBlinkerLocal;
 };
 
 fn_destroyDanceFloorLightsLocal = {
