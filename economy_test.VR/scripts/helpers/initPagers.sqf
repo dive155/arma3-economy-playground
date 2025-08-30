@@ -6,7 +6,7 @@ if (hasInterface) then {
 		private _passportRsc = player getVariable ["grad_passport_passportRsc", "Pdr"];
 		private _countryCode = [_passportRsc] call fnc_getCitizenship;
 		private _steamId = player getVariable ["DMP_SteamID", ""];
-		private _messagePrice = 60;
+		private _messagePrice = 100;
 		
 		[
 			_steamId,
@@ -26,6 +26,15 @@ if (hasInterface) then {
 		
 		[player, _receiver, _message] remoteExec ["fnc_recordPagerMessageServer", 2];
 	}] call CBA_fnc_addEventHandlerArgs;
+	
+	private _sendPagerMessageAction = [
+		"Send_Pager_Message", 
+		localize "STR_PagerSendMessage", 
+		"\tfd_melder\data\melder.paa", 
+		{[1, player] call TFD_Melder_fnc_ls}, 
+		{'tfd_pager1' in items player}
+	] call ace_interact_menu_fnc_createAction;
+	[player, 1, ["ACE_SelfActions", "FME"], _sendPagerMessageAction] call ace_interact_menu_fnc_addActionToObject;
 };
 
 fnc_recordPagerMessageServer = {

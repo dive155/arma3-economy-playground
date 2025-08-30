@@ -536,6 +536,10 @@
 		<Original>%1 Leu (PDR) added to your debt for sending the message.</Original>
 		<Russian>%1 Лей (ПДР) добавлено к вашему долгу за отправку сообщения.</Russian>
 	</Key>
+	<Key ID="STR_PagerSendMessage">
+		<Original>Send Message</Original>
+		<Russian>Отправить Сообщение</Russian>
+	</Key>
   </Package>
   <Package name="journals">
 	<Key ID="STR_transaction_log_entry">
