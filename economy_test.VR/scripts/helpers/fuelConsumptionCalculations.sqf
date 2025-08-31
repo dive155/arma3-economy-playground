@@ -2,7 +2,7 @@ PDR_baseFuelCoefficients = [
 	["CSLA_CIV_ADA1600", 9.72],
 	["RDS_PL_JAWA353_Civ_01", 7.23],
 	["d3s_zaz968m", 9.23],
-	["gm_gc_army_uaz469_cargo", 3.12],
+	["gm_gc_army_uaz469_cargo", 2.2],
 	["RDS_PL_Gaz24_Civ_03", 8.11],
 	["d3s_zil_130_01", 22.96],
 	["RHS_Ural_Civ_01", 3.60],
