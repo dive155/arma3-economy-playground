@@ -4,14 +4,13 @@ if (hasInterface) then {
 		private _message = _this select 1;
 		
 		private _passportRsc = player getVariable ["grad_passport_passportRsc", "Pdr"];
-		private _countryCode = [_passportRsc] call fnc_getCitizenship;
 		private _steamId = player getVariable ["DMP_SteamID", ""];
 		private _messagePrice = 100;
 		
 		[
 			_steamId,
 			"[Automatic]",
-			_countryCode,
+			"PDR",
 			"Pager",
 			_messagePrice,
 			localize "STR_transactions_automatedSystem"
