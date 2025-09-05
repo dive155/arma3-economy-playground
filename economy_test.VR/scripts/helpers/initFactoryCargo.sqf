@@ -32,7 +32,7 @@ if (hasInterface) then {
 			};
 
 			private _cargo = getBackpackCargo _vehicle;
-			private _bags = ["b_dive_grain_bag", "b_dive_ore_bag"];
+			private _bags = ["b_dive_grain_bag", "b_dive_ore_bag", "b_dive_grain_bag_worse"];
 			private _foundBags = [];
 
 			{
