@@ -297,6 +297,7 @@ private _storeItemsMedical = [
     ["ACE_epinephrine", 150],
     ["ACE_adenosine", 150],
     ["ACE_morphine", 180],
+	["pdr_narcan", 120],
     ["ACE_painkillers", 110],
     ["ACE_splint", 220],
     ["ACE_tourniquet", 120],
