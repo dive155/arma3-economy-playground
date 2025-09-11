@@ -1147,6 +1147,10 @@
 		<Original>Account operations</Original>
 		<Russian>Операции со счётом</Russian>
 	</Key>
+	<Key ID="STR_accountJournalsRoot">
+		<Original>Transactions History</Original>
+		<Russian>История Транзакций</Russian>
+	</Key>
 	<Key ID="STR_operationsCity">
 		<Original>City Control</Original>
 		<Russian>Управление Городом</Russian>

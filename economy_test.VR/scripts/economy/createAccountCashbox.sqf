@@ -208,6 +208,10 @@ if (hasInterface) then {
 		[_buttonObject, 0, ["AccountRoot"], _withdrawAction] call ace_interact_menu_fnc_addActionToObject;
 		[_buttonObject, 0, ["AccountRoot"], _depositAction] call ace_interact_menu_fnc_addActionToObject;
 	};
+	
+	private _journalsRootAction = ["JournalsRoot", localize "STR_accountJournalsRoot", "", {}, {true}] call ace_interact_menu_fnc_createAction;
+	[_buttonObject, 0, ["AccountRoot"], _journalsRootAction] call ace_interact_menu_fnc_addActionToObject;
+	
 
 	for "_i" from 0 to _numHistoricJournals do {
 		private _locKey = "STR_accountActionJournal";
@@ -220,6 +224,6 @@ if (hasInterface) then {
 				[_buttonObject, _historicIndex] spawn fnc_launchAccountJournalDialog;
 		}, {true}, {}, [_buttonObject, _i]] call ace_interact_menu_fnc_createAction;	
 
-		[_buttonObject, 0, ["AccountRoot"], _journalAction] call ace_interact_menu_fnc_addActionToObject;
+		[_buttonObject, 0, ["AccountRoot", "JournalsRoot"], _journalAction] call ace_interact_menu_fnc_addActionToObject;
 	};
 };
