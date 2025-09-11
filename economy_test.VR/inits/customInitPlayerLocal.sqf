@@ -91,5 +91,18 @@ player addEventHandler ["GetOutMan", {
 	} forEach ["PDR", "Moldova"];
 };
 
+// Jam the AK
+player addEventHandler ["Fired", {
+	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
+
+	if (_weapon isEqualTo "rhs_weap_akmn") then {
+		if (random 1 < 0.4) then {
+			[_unit, _weapon] call ace_overheating_fnc_jamWeapon;
+			hint localize "STR_jam_ak";
+		};
+	};
+}];
+
+
 sleep 10;
 [player] call fnc_updateBuff;

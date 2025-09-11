@@ -540,6 +540,11 @@
 		<Original>Send Message</Original>
 		<Russian>Отправить Сообщение</Russian>
 	</Key>
+	<Key ID="STR_jam_ak">
+		<Original>The gun jams. You notice that the gun looks damaged, and the damage looks intentional.</Original>
+		<Russian>Оружие заклинивает. Вы замечаете, что оно повреждено, и повреждения выглядят преднамеренными.</Russian>
+	</Key>
+
   </Package>
   <Package name="journals">
 	<Key ID="STR_transaction_log_entry">
