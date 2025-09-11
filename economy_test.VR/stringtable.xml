@@ -591,6 +591,14 @@
 		<Original>&lt;t color='#ababab'&gt;Payment For Work (Player Offline)&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#ababab'&gt;Плата за Работу (Игрок Оффлайн)&lt;/t&gt;</Russian>
 	</Key>
+	<Key ID="STR_transaction_type_PaymentForNpcs">
+		<Original>&lt;t color='#faa489'&gt;Payment For Work (NPCs)&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#faa489'&gt;Плата за Работу (Неигровые Персонажи)&lt;/t&gt;</Russian>
+	</Key>
+	<Key ID="STR_transaction_type_TaxFromNpcs">
+		<Original>&lt;t color='#adc478'&gt;Tax from Hired NPCs&lt;/t&gt;</Original>
+		<Russian>&lt;t color='#adc478'&gt;Налог с Нанятых Неигровых Персонажей&lt;/t&gt;</Russian>
+	</Key>
 	<Key ID="STR_transaction_type_FineIssuing">
 		<Original>&lt;t color='#db0804'&gt;Fine&lt;/t&gt;</Original>
 		<Russian>&lt;t color='#db0804'&gt;Начисление Штрафа&lt;/t&gt;</Russian>
@@ -1448,6 +1456,10 @@
 	<Key ID="STR_dive_pdr_mark_services_unpaid">
 		<Original>Mark city services as unpaid</Original>
 		<Russian>Отметить городские сервисы как неоплаченные</Russian>
+	</Key>
+	<Key ID="STR_dive_pdr_pay_for_npcs">
+		<Original>Payment charged for NPC work</Original>
+		<Russian>Взять деньги за работу НПС</Russian>
 	</Key>
 	<Key ID="STR_dive_pdr_edit_plate_title">
 		<Original>Edit Number Plate</Original>

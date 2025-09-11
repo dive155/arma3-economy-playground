@@ -1,5 +1,5 @@
 fnc_advanceDayServer = {
-	params ["_chargeInterest", "_chargeTaxes", "_offlinePlayersWork", "_markServicesUnpaid"];
+	params ["_chargeInterest", "_chargeTaxes", "_offlinePlayersWork", "_markServicesUnpaid", "_chargeNpcPayment"];
 	[] remoteExec ["fnc_showLoadingMessage"];
 
 	private _currentDay = ["rpDay"] call fnc_getWorldVariable;
@@ -33,6 +33,12 @@ fnc_advanceDayServer = {
 	
 	if (_markServicesUnpaid) then {
 		call fnc_handleCityServices;
+		sleep 1;
+	};
+	
+	if (_chargeNpcPayment) then {
+		call fnc_handleNpcPayments;
+		sleep 1;
 	};
 	
 	call DMP_fnc_saveAll;
@@ -131,6 +137,43 @@ fnc_handleCityServices = {
 	private _lightsPaid = ["services_paidStreetlights"] call fnc_getWorldVariable;
 	if (_lightsPaid == 0) then {
 		["PDR", false] remoteExec ["fnc_setLightsServer", 2];
+	};
+};
+
+fnc_handleNpcPayments = {
+	private _factoryPayment = "factoryNpcPayment" call fnc_getWorldVariable;
+	
+	if (_factoryPayment > 0) then {
+		if ([["", _factoryPayment]] call fnc_checkIfFactoryCanPay) then {
+			[
+				"factoryMoney",
+				"NPC",
+				"PaymentForNpcs",
+				-1 * _factoryPayment
+			] call fnc_handleAutomatedAccountTransactionServer;
+			
+			_factoryPayment = round (_factoryPayment * 0.2);
+			[
+				"cityMoney",
+				"NPC",
+				"TaxFromNpcs",
+				_factoryPayment
+			] call fnc_handleAutomatedAccountTransactionServer;
+		};
+	};
+	
+	sleep 0.2;
+	private _cityPayment = "cityNpcPayment" call fnc_getWorldVariable;
+	
+	if (_cityPayment > 0) then {
+		if ([["", _cityPayment]] call fnc_checkIfCityCanPay) then {
+			[
+				"cityMoney",
+				"NPC",
+				"PaymentForNpcs",
+				-1 * _cityPayment
+			] call fnc_handleAutomatedAccountTransactionServer;
+		};
 	};
 };
 

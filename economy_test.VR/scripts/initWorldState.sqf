@@ -54,6 +54,8 @@ fnc_createDefaultWorldState = {
 		["autoBorderForMoldovans", true] call fnc_setWorldVariable;
 		["canBuyMoldovaLeu", true] call fnc_setWorldVariable;
 		["canBuyPdrLeu", true] call fnc_setWorldVariable;
+		["factoryNpcPayment", 0] call fnc_setWorldVariable;
+		["cityNpcPayment", 0] call fnc_setWorldVariable;
 	};
 };
 

@@ -5,7 +5,7 @@ fnc_checkIfCityCanPay = {
 	_leftover = _cityMoney - _toPay;
 	
 	if (_leftover > 0) then { true } else {
-		hint(localize "STR_city_no_money");
+		//hint(localize "STR_city_no_money");
 		false
 	};
 };

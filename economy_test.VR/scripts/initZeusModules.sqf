@@ -9,7 +9,8 @@
 				["CHECKBOX", [localize "STR_dive_pdr_players_pay_interest_title", localize "STR_dive_pdr_players_pay_interest_desc"], [true]],
 				["CHECKBOX", [localize "STR_dive_pdr_players_pay_taxes_title", localize "STR_dive_pdr_players_pay_taxes_desc"], [true]],
 				["CHECKBOX", [localize "STR_dive_pdr_offline_players_work_title", localize "STR_dive_pdr_offline_players_work_desc"], [true]],
-				["CHECKBOX", [localize "STR_dive_pdr_mark_services_unpaid", ""], [true]]
+				["CHECKBOX", [localize "STR_dive_pdr_mark_services_unpaid", ""], [true]],
+				["CHECKBOX", [localize "STR_dive_pdr_pay_for_npcs", ""], [true]]
 			], {
 				params["_values","_arguments"];
 				_values remoteExec ["fnc_advanceDayServer", 2];
@@ -48,7 +49,8 @@ worldVariablesForZeusEditing = [
 	"autoBorderChance",
 	"autoBorderForPDRans",
 	"autoBorderForMoldovans",
-	"autoBoomgatesEnabled"
+	"autoBoomgatesEnabled",
+	"cityNpcPayment"
 ];
 
 [
@@ -98,7 +100,8 @@ worldVariablesForZeusEditing2 = [
 	"fuelPrice_Moldova",
 	"gasStationOpenMoldova",
 	"canBuyMoldovaLeu",
-	"canBuyPdrLeu"
+	"canBuyPdrLeu",
+	"factoryNpcPayment"
 ];
 
 [
