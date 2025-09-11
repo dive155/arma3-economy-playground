@@ -1,6 +1,6 @@
 fnc_advanceDayServer = {
 	params ["_chargeInterest", "_chargeTaxes", "_offlinePlayersWork", "_markServicesUnpaid", "_chargeNpcPayment"];
-	[] remoteExec ["fnc_showLoadingMessage"];
+	[0, 0] call fnc_showLoadingMessageLocal;
 
 	private _currentDay = ["rpDay"] call fnc_getWorldVariable;
 	private _newDay = _currentDay + 1;
@@ -19,11 +19,13 @@ fnc_advanceDayServer = {
 		sleep 1;
 	};
 	
+	[1, 0] call fnc_showLoadingMessageLocal;
 	if (_chargeTaxes) then {
 		[_steamIdPlayerPairs] call fnc_handleDailyTaxes;
 		sleep 1;
 	};
 	
+	[2, 0] call fnc_showLoadingMessageLocal;
 	if (_offlinePlayersWork) then {
 		[_steamIdPlayerPairs] call fnc_handleOfflinePlayers;
 		sleep 1;
@@ -31,6 +33,7 @@ fnc_advanceDayServer = {
 	
 	[_steamIdPlayerPairs] call fnc_handleCivilianInfo;
 	
+	[3, 0] call fnc_showLoadingMessageLocal;
 	if (_markServicesUnpaid) then {
 		call fnc_handleCityServices;
 		sleep 1;
@@ -322,10 +325,28 @@ fnc_handleCivilianInfo = {
 	} forEach _steamIdPlayerPairs;
 };
 
+pdr_advanceDayLastUpdate = time;
+fnc_showLoadingMessageLocal = {
+	params ["_progressStep", "_progressPercent"];
+	systemchat "aa";
+	if ((time - pdr_advanceDayLastUpdate) > 1) then {
+		systemchat "bb";
+		
+		private _totalSteps = 4;
+		private _progressPerStep = 100 / _totalSteps;
+		private _progress = _progressStep * _progressPerStep + _progressPercent / _totalSteps;
+	
+		systemchat str(_progress);
+		[_progress] remoteExec ["fnc_showLoadingMessage"];
+		pdr_advanceDayLastUpdate = time;
+	};
+};
+
 fnc_showLoadingMessage = {
+	params ["_progressPercent"];
 	_text = format [
         "<t size='2' font='EtelkaMonospaceProBold'>%1</t><br/>",
-        localize "STR_NewRPDayLoading"
+        localize "STR_NewRPDayLoading" + format [" (%1 %%)", _progressPercent]
     ];
 	titleText [_text, "PLAIN NOFADE", 30, true, true];
 };
