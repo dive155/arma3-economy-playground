@@ -130,10 +130,12 @@ player addEventHandler ["Fired", {
 			hint localize "STR_cant_deploy";
 		};
 		
-		private _sightForbidden = (_sightUsage == 0) or ((_sightUsage == 1) and not (stance player isEqualTo "PRONE"));
-		if (_sightForbidden and (cameraView == "gunner")) then {
-			hint localize ("STR_cant_aim_" + str(_sightUsage));
-			player switchCamera "internal";
+		if (isNull objectParent player) then  {
+			private _sightForbidden = (_sightUsage == 0) or ((_sightUsage == 1) and not (stance player isEqualTo "PRONE"));
+			if (_sightForbidden and (cameraView == "gunner")) then {
+				hint localize ("STR_cant_aim_" + str(_sightUsage));
+				player switchCamera "internal";
+			};
 		};
 		
 		private _panic = player getVariable ["pdr_weaponPanic", 0];
