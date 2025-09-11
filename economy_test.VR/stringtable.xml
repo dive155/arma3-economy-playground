@@ -1269,7 +1269,30 @@
 			Штраф в размере &lt;t font='EtelkaMonospaceProBold' color='#ff9100'&gt;%3 %4&lt;/t&gt; добавлен к вашему долгу.&lt;/t&gt;
 		</Russian>
 	</Key>
-
+	<Key ID="STR_rpdialog_weapon_skill_title">
+		<Original>Shooting Skill</Original>
+		<Russian>Навык Владения Оружием</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_weapon_skill_0">
+		<Original>Untrained</Original>
+		<Russian>Отсутствует</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_weapon_skill_1">
+		<Original>Beginner</Original>
+		<Russian>Начинающий</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_weapon_skill_2">
+		<Original>Experienced</Original>
+		<Russian>Опытный</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_weapon_skill_3">
+		<Original>Professional</Original>
+		<Russian>Профессионал</Russian>
+	</Key>
+	<Key ID="STR_cant_aim">
+		<Original>Your Shooting Skill is insufficient to use sight.</Original>
+		<Russian>Вашего Навыка Владения Оружием недостаточно чтобы использовать прицел.</Russian>
+	</Key>
   </Package>
   <Package name="zeusModules">
 	<Key ID="STR_dive_pdr_module_title">

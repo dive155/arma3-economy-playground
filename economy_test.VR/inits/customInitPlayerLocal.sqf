@@ -3,6 +3,7 @@
 0 execVM "hud\fuelConsumptionIndicator.sqf";
 0 execVM "hud\initPagedJournalDialog.sqf";
 0 execVM "hud\initRpDialog2.sqf";
+0 execVM "scripts\helpers\initWeaponsSkill.sqf";
 
 fnc_handleFuelConsumtpionCoefficient = {
 	params ["_unit", "_role", "_vehicle", "_turret"];
