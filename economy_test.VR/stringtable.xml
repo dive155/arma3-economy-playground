@@ -1567,7 +1567,8 @@
 			&lt;br/&gt;Violation Fine (Low): %22
 			&lt;br/&gt;Violation Fine (High): %23
 			&lt;br/&gt;&lt;br/&gt;&lt;t color="#ffa500"&gt;Potential Expenses:&lt;/t&gt;
-			&lt;br/&gt;Total salaries to pay: %10
+			&lt;br/&gt;Salaries to players: %10
+			&lt;br/&gt;Salaries to NPCs: %24
 			&lt;br/&gt;Street Lights: %11, %12, %13
 			&lt;br/&gt;Tram Service: %14, %15, %16
 			&lt;br/&gt;Speeding Radars Upkeep: %17, %18, %19
@@ -1593,7 +1594,8 @@
 			&lt;br/&gt;Штраф (низк. превыш.): %22
 			&lt;br/&gt;Штраф (высок. превыш.): %23
 			&lt;br/&gt;&lt;br/&gt;&lt;t color="#ffa500"&gt;Потенциальные расходы:&lt;/t&gt;
-			&lt;br/&gt;Общие зарплаты к выплате: %10
+			&lt;br/&gt;Зарплаты игрокам: %10
+			&lt;br/&gt;Зарплаты ботам: %24
 			&lt;br/&gt;Уличное освещение: %11, %12, %13
 			&lt;br/&gt;Трамвай: %14, %15, %16
 			&lt;br/&gt;Обсл. радаров скор.: %17, %18, %19

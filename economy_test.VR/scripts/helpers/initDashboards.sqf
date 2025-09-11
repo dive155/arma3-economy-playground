@@ -209,9 +209,12 @@ fnc_getCityDashboard = {
 
 		_citizensText = _citizensText + _citizenLine + "<br/>";
 	} forEach _sortedCivilians;
-
+	
+	private _npcsSalaries = "cityNpcPayment" call fnc_getWorldVariable;
+	
 	// Format expense section parameters
 	private _formattedTotalSalaries = _totalSalaries call _colorExpense;
+	private _formattedNpcsSalaries = _npcsSalaries call _colorExpense;
 	private _formattedStreetlightCost = _priceStreetlights call _colorExpense;
 	private _formattedTramCost = _priceTram call _colorExpense;
 	private _formattedSpeedtrapCost = _priceSpeedTraps call _colorExpense;
@@ -224,7 +227,7 @@ fnc_getCityDashboard = {
 	private _formattedTramEnabled = _tramRunning call _colorStatusEnabled;
 	private _formattedSpeedtrapEnabled = _speedTrapsEnabled call _colorStatusEnabled;
 
-	private _totalExpenses = _totalSalaries + _priceStreetlights + _priceTram + _priceSpeedTraps;
+	private _totalExpenses = _totalSalaries + _npcsSalaries + _priceStreetlights + _priceTram + _priceSpeedTraps;
 	private _formattedTotalExpenses = _totalExpenses call _colorExpense;
 
 	// Compose final dashboard
@@ -252,7 +255,8 @@ fnc_getCityDashboard = {
 		_formattedTotalExpenses,						// %20
 		_speedTrapsEnabled call _colorStatusEnabled,	// %21
 		_speedingFineLow call _colorNumber,				// %22
-		_speedingFineHigh call _colorNumber				// %23
+		_speedingFineHigh call _colorNumber,			// %23
+		_formattedNpcsSalaries							// %24
 	];
 
 	_dashboard
