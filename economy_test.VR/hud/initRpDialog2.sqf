@@ -59,9 +59,17 @@ fnc_showOwnRpInfo = {
 	// Permissions 
 	private _perms = player getVariable ["rp_permissions", []]; 
 	private _permTextList = _perms apply { localize ("STR_permission_" + _x) }; 
-	private _permissionsText = _permTextList joinString ", "; 
+	private _permissionsText = _permTextList joinString ", ";
+	
+	private _weaponSkill = player getVariable ["rp_weaponSkill", 3];
+	if ((_weaponSkill isEqualType "") or (_weaponSkill isEqualType [])) then {
+		_weaponSkill = 3;
+	};
+	_weaponSkill = localize ("STR_rpdialog_weapon_skill_" + str(_weaponSkill));
+	private _weaponSkill = "<br/><t size='0.7' color='#ffd333'>" + (localize "STR_rpdialog_weapon_skill_title") + " " + _weaponSkill + ".</t>";
+	
 	if (_permissionsText isEqualTo "") then { _permissionsText = localize "STR_common_none"; };
-	_permissionsText = "<t size='0.7' color='#fce0ff'>" + _permissionsText + "</t>";
+	_permissionsText = "<t size='0.6' color='#fce0ff'>" + _permissionsText + "</t>" + _weaponSkill;
  
 	// Debts 
 	private _debts = player getVariable ["rp_debts", []]; 
