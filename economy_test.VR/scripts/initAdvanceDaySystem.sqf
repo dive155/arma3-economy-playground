@@ -39,6 +39,8 @@ fnc_advanceDayServer = {
 		sleep 1;
 	};
 	
+	[3, 0.5] call fnc_showLoadingMessageLocal;
+	
 	if (_chargeNpcPayment) then {
 		call fnc_handleNpcPayments;
 		sleep 1;
@@ -70,6 +72,10 @@ fnc_handleHunger = {
 
 fnc_handleDailyInterest = {
 	params ["_steamIdPlayerPairs"];
+	
+	private _totalPlayers = count _steamIdPlayerPairs;
+	private _progress = 0;
+	
 	{	
 		_x params ["_steamId", "_player"];
 		_x  spawn {
@@ -99,12 +105,20 @@ fnc_handleDailyInterest = {
 				sleep 0.3;
 			} forEach _debts;
 		};
+		
+		_progress = _forEachIndex / _totalPlayers;
+		[0, _progress] call fnc_showLoadingMessageLocal;
+		
 		sleep 0.5;
 	} forEach _steamIdPlayerPairs;
 };
 
 fnc_handleDailyTaxes = {
 	params ["_steamIdPlayerPairs"];
+	
+	private _totalPlayers = count _steamIdPlayerPairs;
+	private _progress = 0;
+	
 	{
 		_x params ["_steamId", "_player"];
 		
@@ -122,6 +136,9 @@ fnc_handleDailyTaxes = {
 			localize "STR_transactions_automatedSystem"
 		] spawn fnc_handlePlayerDebtTransaction;
 		sleep 0.2;
+		
+		_progress = _forEachIndex / _totalPlayers;
+		[1, _progress] call fnc_showLoadingMessageLocal;
 	} forEach _steamIdPlayerPairs;
 };
 
@@ -200,6 +217,10 @@ fnc_handleNpcPayments = {
 
 fnc_handleOfflinePlayers = {
 	params ["_steamIdPlayerPairs"];
+	
+	private _totalPlayers = count _steamIdPlayerPairs;
+	private _progress = 0;
+	
 	{
 		_x params ["_steamId", "_player"];
 				
@@ -312,6 +333,9 @@ fnc_handleOfflinePlayers = {
 			};
 		};
 		sleep 0.5;
+		
+		_progress = _forEachIndex / _totalPlayers;
+		[2, _progress] call fnc_showLoadingMessageLocal;
 	} forEach _steamIdPlayerPairs;
 };
 
@@ -328,13 +352,11 @@ fnc_handleCivilianInfo = {
 pdr_advanceDayLastUpdate = time;
 fnc_showLoadingMessageLocal = {
 	params ["_progressStep", "_progressPercent"];
-	systemchat "aa";
 	if ((time - pdr_advanceDayLastUpdate) > 1) then {
-		systemchat "bb";
-		
 		private _totalSteps = 4;
+		_progressPercent = round (_progressPercent * 100 / _totalSteps);
 		private _progressPerStep = 100 / _totalSteps;
-		private _progress = _progressStep * _progressPerStep + _progressPercent / _totalSteps;
+		private _progress = _progressStep * _progressPerStep + _progressPercent;
 	
 		systemchat str(_progress);
 		[_progress] remoteExec ["fnc_showLoadingMessage"];
