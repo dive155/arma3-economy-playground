@@ -38,7 +38,9 @@ fnc_getIndustryDashboard = {
     private _postExpensesRevenue = _goodsSellPrice - _cityTax - _prodCostTotal;
     private _directorCommission = floor (_postExpensesRevenue * _bossCut);
     private _factoryBalance = floor (_goodsSellPrice - _cityTax - _directorCommission - _prodCostTotal);
-
+	
+	private _npcsSalaries = "factoryNpcPayment" call fnc_getWorldVariable;
+	
     private _dashboard = format [
         localize "STR_industry_dashboard",
         _factoryMoney,
@@ -62,7 +64,8 @@ fnc_getIndustryDashboard = {
         round(_taxRate * 100),
         [-_cityTax] call _colorValue,
         [_directorCommission] call _colorValue,
-        [_factoryBalance] call _colorValue
+        [_factoryBalance] call _colorValue,
+		[-1 * _npcsSalaries] call _colorValue
     ];
 
     _dashboard

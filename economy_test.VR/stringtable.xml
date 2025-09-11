@@ -1483,7 +1483,8 @@
 		<Original>
 			&lt;t size='1.5' align='center' color='#ffaa00'&gt;Director of Industry Dashboard&lt;/t&gt;
 			&lt;br/&gt;
-			&lt;br/&gt;Factory Funds:       %1
+			&lt;br/&gt;Factory Funds:        %1
+			&lt;br/&gt;Daily NPC payment:    %23
 			&lt;br/&gt;&lt;br/&gt;Farm Status:
 			&lt;br/&gt;&lt;t color='%2'&gt;%3&lt;/t&gt;
 			&lt;br/&gt;Pay:                  %4
@@ -1516,15 +1517,16 @@
 		<Russian>
 			&lt;t size='1.5' align='center' color='#ffaa00'&gt;Панель Директора Промышленности&lt;/t&gt;
 			&lt;br/&gt;
-			&lt;br/&gt;Средства Завода:         %1
+			&lt;br/&gt;Средства Завода:       %1
+			&lt;br/&gt;Выплаты НПС (ежедн.):  %23
 			&lt;br/&gt;&lt;br/&gt;Ферма:
 			&lt;br/&gt;&lt;t color='%2'&gt;%3&lt;/t&gt;
-			&lt;br/&gt;Оплата:               %4
+			&lt;br/&gt;Оплата:                %4
 			&lt;br/&gt;Сена на складе:        %5
 			&lt;br/&gt;&lt;br/&gt;Карьер:
 			&lt;br/&gt;&lt;t color='%6'&gt;%7&lt;/t&gt;
-			&lt;br/&gt;Оплата:               %8
-			&lt;br/&gt;Руды на складе:       %9
+			&lt;br/&gt;Оплата:                %8
+			&lt;br/&gt;Руды на складе:        %9
 			&lt;br/&gt;&lt;br/&gt;Завод:
 			&lt;br/&gt;&lt;t color='%10'&gt;%11&lt;/t&gt;
 			&lt;br/&gt;Оплата:               %12
@@ -1538,13 +1540,13 @@
 			&lt;br/&gt;--Ферма:    %15
 			&lt;br/&gt;--Карьер    %16
 			&lt;br/&gt;--Завод     %17
-			&lt;br/&gt;Всего:               %18
+			&lt;br/&gt;Всего:                %18
 			&lt;br/&gt;&lt;br/&gt;&lt;t color='#aaaaaa'&gt;(Контролируется Мэром Города)&lt;/t&gt;
 			&lt;br/&gt;Налог (%19%%):        %20
 			&lt;br/&gt;&lt;br/&gt;&lt;t color='#00ffff'&gt;(Можно изменить)&lt;/t&gt;
-			&lt;br/&gt;Комиссия директора:  %21
+			&lt;br/&gt;Комиссия директора:   %21
 			&lt;br/&gt;--------------------------
-			&lt;br/&gt;Завод получает:      %22
+			&lt;br/&gt;Завод получает:       %22
 		</Russian>
 	</Key>
 	
