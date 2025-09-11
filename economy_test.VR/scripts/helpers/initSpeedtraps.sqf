@@ -62,6 +62,12 @@ fnc_handleSpeedViolator = {
 		_fine,
 		format["%1km/h, limit %2km/h", _currentSpeed toFixed 0, _speedLimit]
 	] call fnc_handlePlayerDebtTransaction;
+	
+	[_unit] spawn {
+		params ["_unit"];
+		sleep 2;
+		[_unit] call fn_updateCivilianInfo;
+	};
 };
 
 fnc_showSpeedingMessage = {
