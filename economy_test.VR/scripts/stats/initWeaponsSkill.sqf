@@ -2,39 +2,49 @@ sleep 5;
 
 // TODO don't use on zeuses
 
+// sightUsage values:
+// 0 - no sight, no deploy
+// 1 - sight allowed when prone, no deploy
+// 2 - sight allowed always, no deploy
+// 3 - deploying and sight always allowed
+
 private _skill0 = createHashMapFromArray [
-	["canUseSight",false],
+	["sightUsage",0],
 	["panicGain", 0.2],
+	["panicDrain", 0.99],
 	["nudgeMin",2], 
-	["nudgeMax",8],
+	["nudgeMax",10],
 	["shakeMin",8], 
 	["shakeMax",15],
 	["ppStrength", 0.1]
 ];
 
 private _skill1 = createHashMapFromArray [
-	["canUseSight",false],
+	["sightUsage",1],
 	["panicGain", 0.15],
+	["panicDrain", 0.985],
 	["nudgeMin", 0.4], 
-	["nudgeMax",3],
+	["nudgeMax",5],
 	["shakeMin",3], 
 	["shakeMax",9],
 	["ppStrength", 0.08]
 ];
 
 private _skill2 = createHashMapFromArray [
-	["canUseSight",true],
+	["sightUsage",2],
 	["panicGain", 0.1],
-	["nudgeMin", 0.3], 
-	["nudgeMax",5],
+	["panicDrain", 0.97],
+	["nudgeMin", 0.4], 
+	["nudgeMax",4],
 	["shakeMin",1], 
 	["shakeMax",7],
-	["ppStrength", 0.05]
+	["ppStrength", 0.02]
 ];
 
 private _skill3 = createHashMapFromArray [
-	["canUseSight",true],
+	["sightUsage",3],
 	["panicGain", 0],
+	["panicDrain", 0.01],
 	["nudgeMin", 0], 
 	["nudgeMax",0],
 	["shakeMin",0], 
@@ -108,14 +118,21 @@ player addEventHandler ["Fired", {
 
 [
 	{
-		//call fnc_refreshPlayerWeaponSkill;
+		call fnc_refreshPlayerWeaponSkill;
 		
 		if (pdr_current_weapon_skill > 2) exitWith {PDR_panicPP ppEffectEnable false};
 		
-		private _canUseSight = pdr_current_weapon_skill_config get "canUseSight";
+		private _sightUsage = pdr_current_weapon_skill_config get "sightUsage";
+		private _panicDrain = pdr_current_weapon_skill_config get "panicDrain";
 		
-		if (!_canUseSight and (cameraView == "gunner")) then {
-			hint localize "STR_cant_aim";
+		if ((_sightUsage < 3) and (isWeaponDeployed player)) then {
+			player setPos (player modelToWorld [0,0,0]);
+			hint localize "STR_cant_deploy";
+		};
+		
+		private _sightForbidden = (_sightUsage == 0) or ((_sightUsage == 1) and not (stance player isEqualTo "PRONE"));
+		if (_sightForbidden and (cameraView == "gunner")) then {
+			hint localize ("STR_cant_aim_" + str(_sightUsage));
 			player switchCamera "internal";
 		};
 		
@@ -123,7 +140,7 @@ player addEventHandler ["Fired", {
 				
 		if (_panic == 0) exitWith {PDR_panicPP ppEffectEnable false};
 		
-		_panic = _panic * 0.985;
+		_panic = _panic * _panicDrain;
 
 		if (_panic < 0.05) then {_panic = 0};
 		
@@ -131,7 +148,7 @@ player addEventHandler ["Fired", {
 		PDR_panicPP ppEffectCommit 0;
 
 		player setVariable ["pdr_weaponPanic", _panic, false];
-		systemChat ("weapon panic " + str(_panic));
+		//systemChat ("weapon panic " + str(_panic));
 	},
 	0.05
 ] call CBA_fnc_addPerFrameHandler;

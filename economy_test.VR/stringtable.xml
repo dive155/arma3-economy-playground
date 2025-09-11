@@ -541,8 +541,8 @@
 		<Russian>Отправить Сообщение</Russian>
 	</Key>
 	<Key ID="STR_jam_ak">
-		<Original>The gun jams. You notice that the gun looks damaged, and the damage looks intentional.</Original>
-		<Russian>Оружие заклинивает. Вы замечаете, что оно повреждено, и повреждения выглядят преднамеренными.</Russian>
+		<Original>The gun jams. You notice that the gun looks damaged.</Original>
+		<Russian>Оружие заклинивает. Вы замечаете, что оно повреждено.</Russian>
 	</Key>
 
   </Package>
@@ -1286,24 +1286,32 @@
 		<Russian>Навык Владения Оружием: </Russian>
 	</Key>
 	<Key ID="STR_rpdialog_weapon_skill_0">
-		<Original>Untrained</Original>
-		<Russian>Отсутствует</Russian>
+		<Original>Lvl 0: Untrained</Original>
+		<Russian>Уровень 0: Отсутствует</Russian>
 	</Key>
 	<Key ID="STR_rpdialog_weapon_skill_1">
-		<Original>Beginner</Original>
-		<Russian>Начинающий</Russian>
+		<Original>Lvl 1: Beginner</Original>
+		<Russian>Уровень 1: Начинающий</Russian>
 	</Key>
 	<Key ID="STR_rpdialog_weapon_skill_2">
-		<Original>Experienced</Original>
-		<Russian>Опытный</Russian>
+		<Original>Lvl 2: Experienced</Original>
+		<Russian>Уровень 2: Опытный</Russian>
 	</Key>
 	<Key ID="STR_rpdialog_weapon_skill_3">
-		<Original>Professional</Original>
-		<Russian>Профессионал</Russian>
+		<Original>Lvl 3: Professional</Original>
+		<Russian>Уровень 3: Профессионал</Russian>
 	</Key>
-	<Key ID="STR_cant_aim">
-		<Original>Your Shooting Skill is insufficient to use sight.</Original>
+	<Key ID="STR_cant_aim_0">
+		<Original>Your Shooting Skill is insufficient to aim down the sight.</Original>
 		<Russian>Вашего Навыка Владения Оружием недостаточно чтобы использовать прицел.</Russian>
+	</Key>
+	<Key ID="STR_cant_aim_1">
+		<Original>With your Shooting Skill you can only aim down sight when prone.</Original>
+		<Russian>Вашего Навыка Владения Оружием недостаточно чтобы использовать прицел вне положения лёжа.</Russian>
+	</Key>
+	<Key ID="STR_cant_deploy">
+		<Original>Your Shooting Skill is insufficient to deploy weapons.</Original>
+		<Russian>Вашего Навыка Владения Оружием недостаточно чтобы разместить оружие.</Russian>
 	</Key>
   </Package>
   <Package name="zeusModules">
