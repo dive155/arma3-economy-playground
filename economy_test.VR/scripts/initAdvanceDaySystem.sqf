@@ -134,9 +134,16 @@ fnc_handleCityServices = {
 	["services_paidStreetlights"] call _decreaseVar;
 	["services_paidSpeedtraps"] call _decreaseVar;
 	
+	sleep 0.2;
+	
 	private _lightsPaid = ["services_paidStreetlights"] call fnc_getWorldVariable;
 	if (_lightsPaid == 0) then {
 		["PDR", false] remoteExec ["fnc_setLightsServer", 2];
+	};
+	
+	private _speedPaid = ["services_paidSpeedtraps"] call fnc_getWorldVariable;
+	if (_speedPaid == 0) then {
+		["speedTrapsEnabled", false] call fnc_setWorldVariable;
 	};
 };
 
