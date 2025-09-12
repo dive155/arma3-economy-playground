@@ -11,7 +11,7 @@ PDR_baseFuelCoefficients = [
 	["gm_ge_civ_w123", 4.24],
 	["CSLA_CIV_Sarka1200_base", 4.56],
 	["RDS_PL_S1203_Civ_01", 6.75],
-	["RDS_PL_Octavia_Civ_01", 6.18],
+	["RDS_PL_Octavia_Civ_01", 5.0],
 	["RDS_PL_Golf4_Civ_01", 6.51],
 	["AMG_Caprice1993", 5.31],
 	["AMG_Tahoe", 7.36],
@@ -47,7 +47,7 @@ PDR_baseFuelCoefficients = [
 	
 	["Aka_2CH_civ", 2.3],
 	["Aka_Defender110_11_7", 11],
-	["aka_Golf", 7],
+	["aka_Golf", 5],
 	["Aka_M5_E39_civ", 4.2],
 	
 	["Catamaran_GY", 0.01],
