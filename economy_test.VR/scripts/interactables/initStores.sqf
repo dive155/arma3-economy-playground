@@ -481,38 +481,38 @@ private _storeItemsClub = [
 	fnc_giveSalesTaxToMoldova
 ] execVM "scripts\economy\createStore.sqf";
 
-private _storeItemsRomani = [
-    ["rds_rocker_hair1_NVG", 950],
-    ["rds_rocker_hair2_NVG", 950],
-    ["rds_rocker_hair3_NVG", 950],
-    ["UMI_Dickhead_NVG", 500],
-    ["JK_CircleBeard_Black_NVG", 900],
-    ["JK_CircleBeard_Brown_NVG", 900],
-    ["JK_CircleBeard_DarkBrown_NVG", 900],
-    ["JK_FriendlyMuttonChops_Black_NVG", 900],
-    ["JK_FriendlyMuttonChops_Brown_NVG", 900],
-    ["JK_FriendlyMuttonChops_DarkBrown_NVG", 900],
-    ["JK_FullBeard_Black_NVG", 900],
-    ["JK_FullBeard_Brown_NVG", 900],
-    ["JK_FullBeard_DarkBrown_NVG", 900],
-    ["JK_Mustage_Black_NVG", 600],
-    ["JK_Mustage_Brown_NVG", 600],
-    ["JK_Mustage_DarkBrown_NVG", 600],
-    ["JK_VanDyke_Black_NVG", 600],
-    ["JK_VanDyke_Brown_NVG", 600],
-    ["JK_VanDyke_DarkBrown_NVG", 600]
-];
+// private _storeItemsRomani = [
+    // ["rds_rocker_hair1_NVG", 950],
+    // ["rds_rocker_hair2_NVG", 950],
+    // ["rds_rocker_hair3_NVG", 950],
+    // ["UMI_Dickhead_NVG", 500],
+    // ["JK_CircleBeard_Black_NVG", 900],
+    // ["JK_CircleBeard_Brown_NVG", 900],
+    // ["JK_CircleBeard_DarkBrown_NVG", 900],
+    // ["JK_FriendlyMuttonChops_Black_NVG", 900],
+    // ["JK_FriendlyMuttonChops_Brown_NVG", 900],
+    // ["JK_FriendlyMuttonChops_DarkBrown_NVG", 900],
+    // ["JK_FullBeard_Black_NVG", 900],
+    // ["JK_FullBeard_Brown_NVG", 900],
+    // ["JK_FullBeard_DarkBrown_NVG", 900],
+    // ["JK_Mustage_Black_NVG", 600],
+    // ["JK_Mustage_Brown_NVG", 600],
+    // ["JK_Mustage_DarkBrown_NVG", 600],
+    // ["JK_VanDyke_Black_NVG", 600],
+    // ["JK_VanDyke_Brown_NVG", 600],
+    // ["JK_VanDyke_DarkBrown_NVG", 600]
+// ];
 
-[
-	store_romani_terminal,
-	store_romani_money_box,
-	store_romani_item_box,
-	store_2_object_area,
-	currencyCodePdrLeu,
-	_storeItemsRomani,
-	_storeSoundsConfig,       // Sounds
-	{true},
-	{0},
-	{1},
-	{}
-] execVM "scripts\economy\createStore.sqf";
+// [
+	// store_romani_terminal,
+	// store_romani_money_box,
+	// store_romani_item_box,
+	// store_2_object_area,
+	// currencyCodePdrLeu,
+	// _storeItemsRomani,
+	// _storeSoundsConfig,       // Sounds
+	// {true},
+	// {0},
+	// {1},
+	// {}
+// ] execVM "scripts\economy\createStore.sqf";
