@@ -363,7 +363,13 @@ if (not (isNil "prison_button")) then {
 	{["", 0]},
 	{ // Extra condition
 		params["_buttonObject", "_payConfig"];
+		private _hasPerms = [player, "carParts", true] call fnc_checkHasPermission;
+		if not _hasPerms exitWith {
+			false
+		};	
+		
 		private _hasPower = ["PDR"] call fnc_areLightsOn;
+		
 		if not _hasPower exitWith {
 			hint(localize "STR_factory_no_power");
 			false

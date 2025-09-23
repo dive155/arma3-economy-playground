@@ -434,6 +434,10 @@
 		<Original>Making Moonshine</Original>
 		<Russian>Изготовление Самогона</Russian>
 	</Key>
+	<Key ID="STR_permission_carParts">
+		<Original>Making Car Parts</Original>
+		<Russian>Изготовление Автозапчастей</Russian>
+	</Key>
 	<Key ID="STR_permission_accountFull_cityMoney">
 		<Original>City Treasury Access</Original>
 		<Russian>Доступ к Городской Казне</Russian>
