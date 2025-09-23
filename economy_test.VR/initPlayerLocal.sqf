@@ -1,4 +1,4 @@
-0 execVM "inits\customInitPlayerLocal.sqf";
+//0 execVM "inits\customInitPlayerLocal.sqf";
 
 ["worldVariableChanged", {
     params ["_varName", "_newValue"];

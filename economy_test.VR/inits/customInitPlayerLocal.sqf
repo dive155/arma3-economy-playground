@@ -1,9 +1,23 @@
-0 execVM "scripts\passports\initPassportsLocal.sqf";
-0 execVM "hud\hudControl.sqf";
-0 execVM "hud\fuelConsumptionIndicator.sqf";
-0 execVM "hud\initPagedJournalDialog.sqf";
-0 execVM "hud\initRpDialog2.sqf";
-0 execVM "scripts\stats\initWeaponsSkill.sqf";
+_scriptHandle = execVM "scripts\passports\initPassportsLocal.sqf";
+waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "hud\hudControl.sqf";
+waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "hud\fuelConsumptionIndicator.sqf";
+waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "hud\initPagedJournalDialog.sqf";
+waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "hud\initRpDialog2.sqf";
+waitUntil { scriptDone _scriptHandle };
+
+_scriptHandle = execVM "scripts\stats\initWeaponsSkill.sqf";
+waitUntil { scriptDone _scriptHandle };
+
+rp_root_self_action = ["RpSelfRoot",localize "STR_rp_root_self_action","hud\pdr_module.paa",{0 spawn fnc_showOwnRpInfo;},{true}] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions"], rp_root_self_action] call ace_interact_menu_fnc_addActionToObject;
 
 fnc_handleFuelConsumtpionCoefficient = {
 	params ["_unit", "_role", "_vehicle", "_turret"];
