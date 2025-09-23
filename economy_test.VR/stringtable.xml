@@ -321,6 +321,10 @@
 		<Original>No nearby players found</Original>
 		<Russian>Не найдено игроков рядом</Russian>
 	</Key>
+	<Key ID="STR_durak_error2">
+		<Original>The game supports up to 4 players. Too many players around.</Original>
+		<Russian>Игра поддерживает до 4х игроков. Слишком много игроков вблизи.</Russian>
+	</Key>
   </Package>
   <Package name="stats">
 	<Key ID="STR_misc_yes">

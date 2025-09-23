@@ -8,7 +8,11 @@ private _readBookAction = [
 		};
 		
 		if (count _nearPlayers > 1) then {
-			[_nearPlayers] remoteExecCall ["DB_fnc_createGame", 2];
+			if (count _nearPlayers < 5) then {
+				[_nearPlayers] remoteExecCall ["DB_fnc_createGame", 2];
+			} else {
+				hint localize "STR_durak_error2";
+			};
 		} else {
 			hint localize "STR_durak_error";
 		};
