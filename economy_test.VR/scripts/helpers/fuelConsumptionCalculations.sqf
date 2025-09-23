@@ -52,7 +52,9 @@ PDR_baseFuelCoefficients = [
 	
 	["Catamaran_GY", 0.01],
 	
-	["vurtual_seat", 0.01]
+	["vurtual_seat", 0.01],
+	
+	["av_niva_01", 9.55]
 ];
 
 PDR_classesAliases = [
@@ -108,7 +110,9 @@ PDR_classesAliases = [
 	
 	["Catamaran_GY"],
 	
-	["vurtual_seat"]
+	["vurtual_seat"],
+	
+	["av_niva_01"]
 ];
 
 PDR_fuelConsumptionMultiplier = 0.65;

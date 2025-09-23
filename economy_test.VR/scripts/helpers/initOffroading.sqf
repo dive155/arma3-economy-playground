@@ -14,7 +14,8 @@ DIVE_offroadingSafeVehicles = [
 	"gm_gc_army_uaz469_cargo",
 	"av_UAZ451",
 	"AMG_Tahoe", "AMG_TahoePolice",
-	"Aka_Defender110_11_7", "Aka_Defender110_11_7_gn_sable_off","Aka_Defender110_11_7_gn_sable","Aka_Defender110_11_5_gn_sable","Aka_Defender110_11_5_gn_sable_off","Aka_Defender110_11_7_gn","Aka_Defender110_11_7_gn_off","Aka_Defender110_11_5","Aka_Defender110_11_5_off","Aka_Defender110_11_5_gn","Aka_Defender110_11_5_gn_off","Aka_Defender110_11_7_off"
+	"Aka_Defender110_11_7", "Aka_Defender110_11_7_gn_sable_off","Aka_Defender110_11_7_gn_sable","Aka_Defender110_11_5_gn_sable","Aka_Defender110_11_5_gn_sable_off","Aka_Defender110_11_7_gn","Aka_Defender110_11_7_gn_off","Aka_Defender110_11_5","Aka_Defender110_11_5_off","Aka_Defender110_11_5_gn","Aka_Defender110_11_5_gn_off","Aka_Defender110_11_7_off",
+	"av_niva_01"
 ];
 
 fnc_initOffroadHandling = {
