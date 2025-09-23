@@ -37,12 +37,14 @@ fn_hintLocalized = {
 	private _value = localize _key;
 	
 	if (count _formatArgs > 0) then {
-		_formatArgs = [_value] append _formatArgs;
-		_value = format _formatArgs;
+		private _formated = [_value];
+		_formated append _formatArgs;
+		_value = format _formated;
 	};
 	
 	hint _value;
 };
+
 
 fn_rpIsNumber = {
 	(_this) regexMatch "^-?[0-9]+(\.[0-9]+)?$"
