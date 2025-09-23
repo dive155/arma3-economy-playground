@@ -113,7 +113,8 @@ private _storeItemsCigsPdr = [
 	["cigs_lucky_strike_cigpack", 200],
 	["cigs_morley_cigpack", 200],
     ["cigs_baja_blast_cigpack", 200],
-	["pdr_whoyarilo", 130]
+	["pdr_whoyarilo", 130],
+	["ico_cards", 250]
 ];
 
 [
@@ -328,7 +329,8 @@ private _storeItemsCigsMoldova = [
 	["kss_vodka", 15],
 	["pdr_bugulma", 19],
 	["ACE_Sunflower_Seeds", 1],
-	["pdr_jaguar", 9]
+	["pdr_jaguar", 9],
+	["ico_cards", 11]
 ];
 
 [

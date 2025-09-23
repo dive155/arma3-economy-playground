@@ -301,6 +301,14 @@
 		<Original>Tax</Original>
 		<Russian>Налог</Russian>
 	</Key>
+	<Key ID="STR_play_durak">
+		<Original>Play Durak</Original>
+		<Russian>Играть в Дурака</Russian>
+	</Key>
+	<Key ID="STR_durak_error">
+		<Original>No nearby players found</Original>
+		<Russian>Не найдено игроков рядом</Russian>
+	</Key>
   </Package>
   <Package name="stats">
 	<Key ID="STR_misc_yes">
