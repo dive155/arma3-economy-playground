@@ -348,3 +348,31 @@ if (not (isNil "prison_button")) then {
 		[player, 2] call fnc_increasePlayerFatigue;
 	}
 ]execVM "scripts\economy\createResourceConverter.sqf";
+
+[
+	parts_button,
+	[[parts_input_box, "b_dive_ore_bag", false]],
+	parts_output_box,
+	objNull,
+	[
+		["pdr_moonshine_parts", 1]
+	],
+	industrialConverterSoundsConfig,
+	["STR_parts_action", "STR_parts_success", "STR_parts_failure"],
+	16,
+	{["", 0]},
+	{ // Extra condition
+		params["_buttonObject", "_payConfig"];
+		private _hasPower = ["PDR"] call fnc_areLightsOn;
+		if not _hasPower exitWith {
+			hint(localize "STR_factory_no_power");
+			false
+		};	
+		
+		private _hasEnergy = [player, 2] call fnc_checkIfNotTooFatigued;
+		_hasEnergy
+	},
+	{
+		[player, 2] call fnc_increasePlayerFatigue;
+	}
+]execVM "scripts\economy\createResourceConverter.sqf";

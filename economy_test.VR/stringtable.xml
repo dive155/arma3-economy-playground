@@ -104,6 +104,18 @@
 		<Original>Gun repair kit has been crafted.</Original>
 		<Russian>Набор для Ремонта Оружия создан.</Russian>
 	</Key>
+	<Key ID="STR_parts_action">
+		<Original>Craft Fuel Injector (from Ore)</Original>
+		<Russian>Создать Инжектор Топлива (из Руды)</Russian>
+	</Key>
+	<Key ID="STR_parts_failure">
+		<Original>No ore found in the box</Original>
+		<Russian>Не найдено руды в ящике.</Russian>
+	</Key>
+	<Key ID="STR_parts_success">
+		<Original>Fuel Injector has been crafted.</Original>
+		<Russian>Инжектор Топлива создан.</Russian>
+	</Key>
 	<Key ID="STR_helmet_crafter_action">
 		<Original>Craft Helmet</Original>
 		<Russian>Создать Шлем</Russian>
