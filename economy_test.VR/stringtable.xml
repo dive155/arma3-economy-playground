@@ -984,16 +984,32 @@
 		<Russian>Посмотреть историю транзакций (Дни 15–16)</Russian>
 	</Key>
 	<Key ID="STR_accountActionJournal_8">
-		<Original>Show Transaction History (Days 17–18)</Original>
-		<Russian>Посмотреть историю транзакций (Дни 17–18)</Russian>
+		<Original>Show Transaction History (Day 17)</Original>
+		<Russian>Посмотреть историю транзакций (День 17)</Russian>
 	</Key>
 	<Key ID="STR_accountActionJournal_9">
-		<Original>Show Transaction History (Days 19–20)</Original>
-		<Russian>Посмотреть историю транзакций (Дни 19–20)</Russian>
+		<Original>Show Transaction History (Days 18–19)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 18–19)</Russian>
 	</Key>
 	<Key ID="STR_accountActionJournal_10">
-		<Original>Show Transaction History (Days 21–22)</Original>
-		<Russian>Посмотреть историю транзакций (Дни 21–22)</Russian>
+		<Original>Show Transaction History (Days 20–21)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 20–21)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_11">
+		<Original>Show Transaction History (Days 22–23)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 22–23)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_12">
+		<Original>Show Transaction History (Days 24–25)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 24–25)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_13">
+		<Original>Show Transaction History (Days 26–27)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 26–27)</Russian>
+	</Key>
+	<Key ID="STR_accountActionJournal_14">
+		<Original>Show Transaction History (Days 28–29)</Original>
+		<Russian>Посмотреть историю транзакций (Дни 28–29)</Russian>
 	</Key>
 	<Key ID="STR_accountDialogWithdrawTitle">
 		<Original>Withdraw from %1 (Balance: %2)</Original>
