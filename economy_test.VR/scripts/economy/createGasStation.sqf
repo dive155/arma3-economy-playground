@@ -83,6 +83,13 @@ fnc_handleFuelPaymentRequested = {
 		_desiredLiters = gas_station_pump_capacity - _fuelInPump;
 	};
 	
+	private _minimumOrderLiters = 1;
+	if (_desiredLiters < _minimumOrderLiters) exitWith {
+		sleep 1;
+		hint(localize "STR_fuel_payment_too_small");
+		[_buttonObject, _buttonObject, "failure", 3] call fnc_playStoreSound;
+	};
+	
 	_moneyForPayment = _desiredLiters * _pricePerLiter;
 	[_inputMoneyBox, _currencyCode, _moneyForPayment] call fnc_takeMoneyFromContainer;
 	

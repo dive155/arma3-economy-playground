@@ -3,13 +3,15 @@
   <Package name="items">
 	<Key ID="STR_pdrLeu">
 		<Original>Leu (PDR)</Original>
-		<English>Leu (PDR)</English>
 		<Russian>Лей (ПДР)</Russian>
 	</Key>
 	<Key ID="STR_moldovaLeu">
 		<Original>Leu (Moldova)</Original>
-		<English>Leu (Moldova)</English>
 		<Russian>Лей (Молдова)</Russian>
+	</Key>
+	<Key ID="STR_fuelTickets">
+		<Original>(PDR) Fuel Tickets</Original>
+		<Russian>(ПДР) Талоны на Топливо</Russian>
 	</Key>
 	<Key ID="STR_do_work">
 		<Original>Do Work</Original>
@@ -260,8 +262,11 @@
 	</Key>
 	<Key ID="STR_fuel_payment_no_money">
 		<Original>Put appropriate money into the box to pay for Fuel.</Original>
-		<English>Put appropriate money into the box to pay for Fuel.</English>
 		<Russian>Положите подходящие деньги в ящик чтобы оплатить Топливо.</Russian>
+	</Key>
+	<Key ID="STR_fuel_payment_too_small">
+		<Original>Error! Minimum order is 1 liter. Either not enough money or not enough fuel in storage.</Original>
+		<Russian>Ошибка! Минимальный заказ 1 литр. Либо недостаточно денег, либо недостаточно топлива в хранилище.</Russian>
 	</Key>
 	<Key ID="STR_gasStationClosed">
 		<Original>The Gas Station is currently closed. Speak to the Mayor for information.</Original>

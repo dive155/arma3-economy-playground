@@ -9,12 +9,13 @@ fnc_handleFuelSentToPump = {
 	
 	["fuelInStorage", -1 * _litersSent] call fnc_increaseWorldVariable;
 	
-	[
-		"cityMoney",
-		name player,
-		"FuelTrade",
-		_moneyAmount
-	] call fnc_handleAutomatedAccountTransaction;
+	// Commented out while using fuel tickets
+	// [
+		// "cityMoney",
+		// name player,
+		// "FuelTrade",
+		// _moneyAmount
+	// ] call fnc_handleAutomatedAccountTransaction;
 };
 
 [
@@ -28,7 +29,8 @@ fnc_handleFuelSentToPump = {
 		_isOpen
 	},
 	{"fuelInStorage" call fnc_getWorldVariable},
-	{[currencyCodePdrLeu, "fuelPrice_PDR" call fnc_getWorldVariable]},
+	//{[currencyCodePdrLeu, "fuelPrice_PDR" call fnc_getWorldVariable]},
+	{[currencyCodeFuelTickets, 1]},
 	fnc_handleFuelSentToPump
 ]execVM "scripts\economy\createGasStation.sqf";
 

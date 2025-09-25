@@ -22,3 +22,12 @@ currencyCodeMoldovaLeu = "moldovaLeu";
 	["moldova_5_leu", 5], 
 	["moldova_1_leu", 1]]
 ] call fnc_createCurrencyDefinition;
+
+currencyCodeFuelTickets = "fuelTickets";
+[
+	currencyCodeFuelTickets, 
+	[["pdr_fuel_50", 50], 
+	["pdr_fuel_10", 10], 
+	["pdr_fuel_5", 5], 
+	["pdr_fuel_1", 1]]
+] call fnc_createCurrencyDefinition;
