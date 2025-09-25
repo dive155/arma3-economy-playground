@@ -10,12 +10,13 @@ fnc_handleFuelSentToPump = {
 	["fuelInStorage", -1 * _litersSent] call fnc_increaseWorldVariable;
 	
 	// Commented out while using fuel tickets
-	// [
-		// "cityMoney",
-		// name player,
-		// "FuelTrade",
-		// _moneyAmount
-	// ] call fnc_handleAutomatedAccountTransaction;
+	[
+		"cityMoney",
+		name player,
+		"FuelTrade",
+		//_moneyAmount
+		0
+	] call fnc_handleAutomatedAccountTransaction;
 };
 
 [
