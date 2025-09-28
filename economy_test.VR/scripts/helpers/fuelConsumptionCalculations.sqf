@@ -20,7 +20,7 @@ PDR_baseFuelCoefficients = [
 	["gm_ge_army_u1300l_container", 5.38],
 	["RDS_Ikarus_Civ_01", 6.04],
 	["RDS_Zetor6945_Base", 9.27],
-	["CSLA_CIV_V3S", 8.0],
+	["CSLA_CIV_V3S", 5.7],
 	["gm_ge_civ_typ1200", 2.20],
 	["C_Truck_02_transport_F", 11.45],
 	["rhs_btr70_vdv", 2.61],
