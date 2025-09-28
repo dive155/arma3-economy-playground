@@ -10,7 +10,8 @@ fnc_getIndustryDashboard = {
     private _taxRate          = ["factoryGoodsTax"] call fnc_getWorldVariable;
     private _bossCut          = ["factoryBossCommission"] call fnc_getWorldVariable;
 
-    private _hayStock     = [hay_output_box, "b_dive_grain_bag"] call fnc_checkHowManyBackpacksInBox;
+    private _hayStock     = ([hay_output_box, "b_dive_grain_bag"] call fnc_checkHowManyBackpacksInBox)
+		+ ([hay_output_box, "b_dive_grain_bag_worse"] call fnc_checkHowManyBackpacksInBox);
     private _oreStock     = [ore_output_box, "b_dive_ore_bag"] call fnc_checkHowManyBackpacksInBox;
     private _goodsStock   = [factory_goods_box, "b_dive_goods_bag"] call fnc_checkHowManyBackpacksInBox;
 
