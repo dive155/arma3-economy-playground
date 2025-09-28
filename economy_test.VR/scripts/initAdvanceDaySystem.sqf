@@ -39,13 +39,14 @@ fnc_advanceDayServer = {
 		sleep 1;
 	};
 	
-	[3, 0.5] call fnc_showLoadingMessageLocal;
+	[3, 0.3] call fnc_showLoadingMessageLocal;
 	
 	if (_chargeNpcPayment) then {
 		call fnc_handleNpcPayments;
 		sleep 1;
 	};
 	
+	[3, 0.7] call fnc_showLoadingMessageLocal;
 	call DMP_fnc_saveAll;
  	[_newDay] remoteExec ["fnc_showNextDayMessage"];
 };
