@@ -82,7 +82,7 @@ PDR_classesAliases = [
 	["CSLA_CIV_V3S"],
 	["gm_ge_civ_typ1200","gm_ge_ff_typ1200","gm_ge_pol_typ1200","gm_ge_dbp_typ1200"],
 	["C_Truck_02_transport_F","C_Truck_02_fuel_F","C_Truck_02_box_F","C_Truck_02_transport_F","C_Truck_02_covered_F"],
-	["rhs_btr70_vdv"],
+	["rhs_btr70_vdv", "rhs_btr70_vv"],
 	["rhs_bmd1","rhs_bmd1k","rhs_bmd1p","rhs_bmd1pk","rhs_bmd1r"],
 	["rhs_gaz66_vdv","rhs_gaz66_ammo_vdv","rhs_gaz66_flat_vdv","rhs_gaz66o_vdv","rhs_gaz66o_flat_vdv","rhs_gaz66_r142_vdv","rhs_gaz66_zu23_vdv","rhs_gaz66_ap2_vdv","rhs_gaz66_repair_vdv"],
 	

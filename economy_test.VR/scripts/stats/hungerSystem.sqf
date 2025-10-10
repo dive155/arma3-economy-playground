@@ -68,17 +68,21 @@ fnc_setPlayerWellFed = {
 
 ["KSS_usedItem", {
 	private _foodType = _this select 0;
-	if ((_foodType isEqualTo "pdr_lunch_full") or (_foodType isEqualTo "pdr_onion_soup")) then {
+
+	// Hunger
+	if (_foodType in ["pdr_lunch_full", "pdr_onion_soup", "pdr_shawarma"]) then {
 		[player] call fnc_satiateHunger;
 	};
 	
-	if (_foodType isEqualTo "pdr_whoyarilo" or _foodType isEqualTo "pdr_jaguar") then {
-		[player] call fnc_energizePlayer;
-	};
-	
-	if ((_foodType isEqualTo "pdr_caviar") or (_foodType isEqualTo "pdr_cake")) then {
+	// Well Fed
+	if (_foodType in ["pdr_caviar", "pdr_cake", "pdr_shawarma"]) then {
 		[player, 1] call fnc_setPlayerWellFed;
 	};
-	
-	//systemChat ("AA used " + str(_this select 0))
+
+	// Energy
+	if (_foodType in ["pdr_whoyarilo", "pdr_jaguar"]) then {
+		[player] call fnc_energizePlayer;
+	};
+
+	// systemChat ("AA used " + str _foodType);
 }] call CBA_fnc_addEventHandler;

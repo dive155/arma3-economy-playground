@@ -330,7 +330,8 @@ private _storeItemsCigsMoldova = [
 	["pdr_bugulma", 19],
 	["ACE_Sunflower_Seeds", 1],
 	["pdr_jaguar", 9],
-	["ico_cards", 11]
+	["ico_cards", 11],
+	["pdr_suneli", 5]
 ];
 
 [
