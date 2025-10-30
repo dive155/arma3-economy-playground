@@ -212,6 +212,7 @@ allRpPermissions = [
 	"passportEditing_Moldova",
 	"visaGiving_PDR",
 	"visaGiving_Moldova",
+	"visaGiving_Horsk",
 	"sellingIndustrialGoods",
 	"numberplateEditing",
 	"moonshine",

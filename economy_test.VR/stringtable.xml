@@ -487,6 +487,10 @@
 		<Original>Visa Issuing (Moldova)</Original>
 		<Russian>Выдача Виз (Молдова)</Russian>
 	</Key>
+	<Key ID="STR_permission_visaGiving_Horsk">
+		<Original>Visa Issuing (Horsk)</Original>
+		<Russian>Выдача Виз (Хорск)</Russian>
+	</Key>
 	<Key ID="STR_permission_sellingIndustrialGoods">
 		<Original>Selling Industrial Goods</Original>
 		<Russian>Продажа Промышленных Товаров</Russian>
@@ -729,6 +733,10 @@
 	<Key ID="STR_countryMoldova">
 		<Original>Moldova</Original>
 		<Russian>Молдова</Russian>
+	</Key>
+	<Key ID="STR_countryHorsk">
+		<Original>Horsk</Original>
+		<Russian>Хорск</Russian>
 	</Key>
 	<Key ID="STR_border_confirm_title">
 		<Original>Confirm Border Crossing</Original>

@@ -37,7 +37,8 @@ permissionBasedActions = [
 	["passportEditing_Pdr", {["Pdr"] call fn_applyPassportEditorPermissionLocal}],
 	["passportEditing_Moldova", {["Moldova"] call fn_applyPassportEditorPermissionLocal}],
 	["visaGiving_PDR", {["PDR"] call fn_applyVisaGiverPermissionsLocal}],
-	["visaGiving_Moldova", {["Moldova"] call fn_applyVisaGiverPermissionsLocal}]
+	["visaGiving_Moldova", {["Moldova"] call fn_applyVisaGiverPermissionsLocal}],
+	["visaGiving_Horsk", {["Horsk"] call fn_applyVisaGiverPermissionsLocal}]
 ];
 
 addedPermissionsActions = [];
