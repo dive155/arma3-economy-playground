@@ -1297,10 +1297,18 @@
 		<Russian>(+ %1%%/День)</Russian>
 	</Key>
 	<Key ID="STR_rpdialog_countryPDR">
+		<Original>Horsk (PDR Leu)</Original>
+		<Russian>Хорск (Лей ПДР)</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_countryMoldova">
+		<Original>Horsk (Moldova Leu)</Original>
+		<Russian>Хорск (Молдавский Лей)</Russian>
+	</Key>
+	<Key ID="STR_rpdialog_countryPDR_old">
 		<Original>PDR</Original>
 		<Russian>ПДР</Russian>
 	</Key>
-	<Key ID="STR_rpdialog_countryMoldova">
+	<Key ID="STR_rpdialog_countryMoldova_old">
 		<Original>Moldova</Original>
 		<Russian>Молдова</Russian>
 	</Key>

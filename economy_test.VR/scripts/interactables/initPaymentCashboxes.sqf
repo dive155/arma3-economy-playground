@@ -30,7 +30,18 @@ _cashboxSounds = [
 		_this call fnc_handlePlayerDebtTransaction;
 	},
 	{
-		 private _args = ["moldovaMoney"] + _this;
+		//private _args = ["moldovaMoney"] + _this;
+		//_args call fnc_handleAutomatedAccountTransaction;
+		
+		// Money stays in Horsk due to independence
+		private _rate = ["exchangeRate"] call fnc_getWorldVariable;
+		private _inf = ["inflationCoef_PDR"] call fnc_getWorldVariable;
+		_rate = _rate * _inf;	
+		
+		private _args = ["cityMoney"] + _this;
+		private _amount = _args select 3;
+		_amount = round (_amount * _rate);
+		_args set [3, _amount];
 		_args call fnc_handleAutomatedAccountTransaction;
  	},
 	5

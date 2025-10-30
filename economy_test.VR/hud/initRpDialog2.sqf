@@ -123,7 +123,7 @@ fnc_showOwnRpInfo = {
 		private _debtLabel = localize "STR_rpdialog_debts"; 
 		private _pdr = localize "STR_rpdialog_countryPDR"; 
 		private _mol = localize "STR_rpdialog_countryMoldova"; 
-		private _text = format ["<t size='0.95'>%1:<br/><t color='#3daeff'>%2: %3 %6</t><br/><br/><t color='#ff0000'>%4: %5 %7</t><t/>", _debtLabel, _pdr, _debtPDR, _mol, _debtMoldova, _ratePDR, _rateMoldova]; 
+		private _text = format ["<t size='0.6'>%1:<br/><t color='#3daeff'>%2: %3 %6</t><br/><br/><t color='#ff0000'>%4: %5 %7</t><t/>", _debtLabel, _pdr, _debtPDR, _mol, _debtMoldova, _ratePDR, _rateMoldova]; 
 		_debtCtrl ctrlSetStructuredText parseText _text; 
 	};
 	
