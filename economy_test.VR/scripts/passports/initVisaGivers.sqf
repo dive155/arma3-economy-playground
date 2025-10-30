@@ -50,6 +50,14 @@ fn_applyVisaGiverPermissionsLocal = {
 		["CAManBase", 0, ["ACE_MainActions"], visa_root_action, true] call ace_interact_menu_fnc_addActionToClass;
 	};
 	
+	private _countryVisaRootName = "visa_root_country_" + _countryName;
+	private _countryVisaRootPath = "VisaRoot_" + _countryName;
+	if (isNil _countryVisaRootName) then {
+		private _countryRootAction = [_countryVisaRootPath,localize ("STR_country" + _countryName),"",{nil},{ isPlayer _target or is3DENPreview}] call ace_interact_menu_fnc_createAction;
+		missionNamespace setVariable [_countryVisaRootName, _countryRootAction];
+		["CAManBase", 0, ["ACE_MainActions", "VisaRoot"], _countryRootAction, true] call ace_interact_menu_fnc_addActionToClass;
+	};
+	
 	_issueVisa = {
 		params ["_target", "_player", "_actionParams"];
 		_countryName = _actionParams select 0;
@@ -84,17 +92,17 @@ fn_applyVisaGiverPermissionsLocal = {
 	
 	_actionName = format [localize "STR_issueVisaActionFormat", localize ("STR_country" + _countryName)];
 	_currentAction = ["IssueVisa" + _countryName, _actionName, "", _issueVisa, {[player, "visaGiving_" + ((_this select 2) select 0), true] call fnc_checkHasPermission}, {}, [_countryName]] call ace_interact_menu_fnc_createAction;
-	["CAManBase", 0, ["ACE_MainActions", "VisaRoot"], _currentAction, true] call ace_interact_menu_fnc_addActionToClass;
+	["CAManBase", 0, ["ACE_MainActions", "VisaRoot", _countryVisaRootPath], _currentAction, true] call ace_interact_menu_fnc_addActionToClass;
 	
 	_actionName = format [localize "STR_revokeVisaActionFormat", localize ("STR_country" + _countryName)];
 	_currentAction = ["RevokeVisa" + _countryName, _actionName, "", _revokeVisa, {[player, "visaGiving_" + ((_this select 2) select 0), true] call fnc_checkHasPermission}, {}, [_countryName]] call ace_interact_menu_fnc_createAction;
-	["CAManBase", 0, ["ACE_MainActions", "VisaRoot"], _currentAction, true] call ace_interact_menu_fnc_addActionToClass;
+	["CAManBase", 0, ["ACE_MainActions", "VisaRoot", _countryVisaRootPath], _currentAction, true] call ace_interact_menu_fnc_addActionToClass;
 	
 	_actionName = format [localize "STR_putEntryActionFormat", localize ("STR_country" + _countryName)];
 	_currentAction = ["PutEntry" + _countryName, _actionName, "", _putEntry, {[player, "visaGiving_" + ((_this select 2) select 0), true] call fnc_checkHasPermission}, {}, [_countryName]] call ace_interact_menu_fnc_createAction;
-	["CAManBase", 0, ["ACE_MainActions", "VisaRoot"], _currentAction, true] call ace_interact_menu_fnc_addActionToClass;
+	["CAManBase", 0, ["ACE_MainActions", "VisaRoot", _countryVisaRootPath], _currentAction, true] call ace_interact_menu_fnc_addActionToClass;
 	
 	_actionName = format [localize "STR_putExitActionFormat", localize ("STR_country" + _countryName)];
 	_currentAction = ["PutExit" + _countryName, _actionName, "", _putExit, {[player, "visaGiving_" + ((_this select 2) select 0), true] call fnc_checkHasPermission}, {}, [_countryName]] call ace_interact_menu_fnc_createAction;
-	["CAManBase", 0, ["ACE_MainActions", "VisaRoot"], _currentAction, true] call ace_interact_menu_fnc_addActionToClass;
+	["CAManBase", 0, ["ACE_MainActions", "VisaRoot", _countryVisaRootPath], _currentAction, true] call ace_interact_menu_fnc_addActionToClass;
 };

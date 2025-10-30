@@ -225,7 +225,10 @@ allRpPermissions = [
 	{
 		params [["_pos",[0,0,0],[[]],3], ["_object",objNull,[objNull]]];
 
-		if ((isNull _object) or {not isPlayer _object}) exitWith {
+		if (
+			isNull _object
+			|| { !(isPlayer _object) && { !(is3DENPreview && {_object isKindOf "Man"}) } }
+		) exitWith {
 			[objNull, localize "STR_dive_pdr_module_hint_place_on_player"] call BIS_fnc_showCuratorFeedbackMessage;
 		};
 
