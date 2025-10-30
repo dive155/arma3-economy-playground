@@ -1,4 +1,4 @@
-PDR_speedtraps_excluded_vehicles = ["RDS_S1203_Civ_02", "RDS_PL_S1203_Civ_02", "ClioIch_pdr", "gm_gc_pol_p601_pdr"];
+PDR_speedtraps_excluded_vehicles = ["RDS_S1203_Civ_02", "RDS_PL_S1203_Civ_02", "ClioIch_pdr", "gm_gc_pol_p601_pdr", "Aka_M5_E39_bana", "gm_ge_civ_typ253_pdr_krb", "ClioIch_krb"];
 
 fnc_handleSpeedtrapActivation = {
 	params ["_activators", "_speedLimit", "_radarId"];
